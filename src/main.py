@@ -1,0 +1,83 @@
+import os
+
+import yaml
+from dotenv import load_dotenv
+
+from fetch_arxiv import fetch_arxiv_papers
+from fetch_arxiv import filter_recent_papers
+from fetch_arxiv import deduplicate_papers
+from summarize import summarize_paper
+from render_markdown import render_markdown_report
+from notify_feishu import notify_feishu
+
+
+DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 10
+DEFAULT_RECENT_DAYS = 7
+
+
+def load_keywords():
+    with open("config/keywords.yaml", "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+
+    return data["keywords"]
+
+
+def main():
+    load_dotenv()
+    max_papers_to_summarize = int(os.getenv("MAX_PAPERS_TO_SUMMARIZE", DEFAULT_MAX_PAPERS_TO_SUMMARIZE))
+    recent_days = int(os.getenv("RECENT_DAYS", DEFAULT_RECENT_DAYS))
+
+    print("=" * 60)
+    print("Paper Weekly Agent 启动")
+    print("=" * 60)
+
+    print("正在读取关键词...")
+    keywords = load_keywords()
+
+    for kw in keywords:
+        print(f"  - {kw}")
+
+    print("\n正在抓取 arXiv 论文...")
+    papers = fetch_arxiv_papers(keywords, max_results=50)
+    print(f"原始抓取论文数量：{len(papers)}")
+
+    print("\n正在按标题去重...")
+    papers = deduplicate_papers(papers)
+    print(f"去重后论文数量：{len(papers)}")
+
+    print(f"\n正在筛选最近 {recent_days} 天论文...")
+    recent_papers = filter_recent_papers(papers, days=recent_days)
+    print(f"最近 {recent_days} 天相关论文数量：{len(recent_papers)}")
+
+    recent_papers = recent_papers[:max_papers_to_summarize]
+    print(f"本次最多总结论文数量：{len(recent_papers)}")
+
+    papers_with_summaries = []
+
+    for idx, paper in enumerate(recent_papers, start=1):
+        print("\n" + "-" * 60)
+        print(f"正在处理第 {idx}/{len(recent_papers)} 篇", flush=True)
+        print(paper["title"], flush=True)
+        summary = summarize_paper(paper)
+        print("已写入原文摘要。", flush=True)
+
+        papers_with_summaries.append({
+            "paper": paper,
+            "summary": summary
+        })
+
+    print("\n正在生成 Markdown 周报...")
+    report_path = render_markdown_report(papers_with_summaries)
+    print(f"Markdown 周报已生成：{report_path}")
+
+    report_text = report_path.read_text(encoding="utf-8")
+
+    print("\n正在推送飞书通知...")
+    notify_feishu(report_path, len(papers_with_summaries), report_text=report_text)
+
+    print("\n任务完成。")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
+    main()
