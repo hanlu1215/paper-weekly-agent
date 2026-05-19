@@ -22,7 +22,7 @@ def find_latest_report(output_dir: Path) -> Path | None:
 
 def send_report_file(report_path: Path, chunk_size: int = DEFAULT_CHUNK_SIZE) -> None:
     webhook_url = os.getenv("FEISHU_WEBHOOK_URL")
-    if not webhook_url:
+    if not webhook_url or not str(webhook_url).strip():
         print("未配置 FEISHU_WEBHOOK_URL，跳过飞书推送。", file=sys.stderr)
         return
 

@@ -9,6 +9,27 @@ DEFAULT_DEEPSEEK_MAX_TOKENS = 1400
 DEFAULT_DEEPSEEK_TEMPERATURE = 0.2
 
 
+def _env_str(name: str, default: str) -> str:
+    value = os.getenv(name)
+    if value is None or not str(value).strip():
+        return default
+    return value.strip()
+
+
+def _env_int(name: str, default: int) -> int:
+    value = os.getenv(name)
+    if value is None or not str(value).strip():
+        return default
+    return int(value)
+
+
+def _env_float(name: str, default: float) -> float:
+    value = os.getenv(name)
+    if value is None or not str(value).strip():
+        return default
+    return float(value)
+
+
 def _build_deepseek_messages(paper):
     authors = ", ".join(paper["authors"])
     categories = ", ".join(paper.get("categories", [])) or "N/A"
@@ -56,15 +77,17 @@ arXiv 链接：{paper["arxiv_url"]}
 
 def _call_deepseek(paper):
     api_key = os.getenv("DEEPSEEK_API_KEY")
+    if api_key is not None:
+        api_key = api_key.strip()
 
     if not api_key:
         print("未配置 DEEPSEEK_API_KEY，使用 arXiv 原文摘要。")
         return None
 
-    base_url = os.getenv("DEEPSEEK_BASE_URL", DEFAULT_DEEPSEEK_BASE_URL).rstrip("/")
-    model = os.getenv("DEEPSEEK_MODEL", DEFAULT_DEEPSEEK_MODEL)
-    max_tokens = int(os.getenv("DEEPSEEK_MAX_TOKENS", DEFAULT_DEEPSEEK_MAX_TOKENS))
-    temperature = float(os.getenv("DEEPSEEK_TEMPERATURE", DEFAULT_DEEPSEEK_TEMPERATURE))
+    base_url = _env_str("DEEPSEEK_BASE_URL", DEFAULT_DEEPSEEK_BASE_URL).rstrip("/")
+    model = _env_str("DEEPSEEK_MODEL", DEFAULT_DEEPSEEK_MODEL)
+    max_tokens = _env_int("DEEPSEEK_MAX_TOKENS", DEFAULT_DEEPSEEK_MAX_TOKENS)
+    temperature = _env_float("DEEPSEEK_TEMPERATURE", DEFAULT_DEEPSEEK_TEMPERATURE)
 
     payload = {
         "model": model,

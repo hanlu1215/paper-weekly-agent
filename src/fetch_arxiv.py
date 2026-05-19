@@ -107,16 +107,25 @@ def fetch_arxiv_papers(keywords, max_results=50):
     return papers
 
 
+def _parse_published_time(published: str):
+    """解析 arXiv 发布时间（兼容 Z 后缀与 +00:00 等 ISO 格式）。"""
+    text = published.strip()
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    dt = datetime.datetime.fromisoformat(text)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=datetime.timezone.utc)
+    return dt.astimezone(datetime.timezone.utc)
+
+
 def filter_recent_papers(papers, days=7):
     now = datetime.datetime.now(datetime.timezone.utc)
     recent = []
 
     for paper in papers:
         try:
-            published_time = datetime.datetime.strptime(
-                paper["published"], "%Y-%m-%dT%H:%M:%SZ"
-            ).replace(tzinfo=datetime.timezone.utc)
-        except ValueError:
+            published_time = _parse_published_time(paper["published"])
+        except (ValueError, TypeError):
             continue
 
         if (now - published_time).days <= days:

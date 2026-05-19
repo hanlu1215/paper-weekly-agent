@@ -25,24 +25,20 @@ def send_feishu_text_chunks(
     """将长文本按 chunk_size 分段发送到飞书（不在日志中输出 webhook）。"""
     full_text = f"{header}{body}"
     if len(full_text) <= chunk_size:
-        chunks = [full_text]
+        messages = [full_text]
     else:
-        chunks = []
+        # 多段时预留 "[99/99]\n" 前缀空间，避免截断后丢字
+        prefix_reserve = 16
+        part_size = max(1, chunk_size - prefix_reserve)
+        parts = []
         remaining = full_text
         while remaining:
-            chunks.append(remaining[:chunk_size])
-            remaining = remaining[chunk_size:]
+            parts.append(remaining[:part_size])
+            remaining = remaining[part_size:]
+        total = len(parts)
+        messages = [f"[{i}/{total}]\n{part}" for i, part in enumerate(parts, start=1)]
 
-    total = len(chunks)
-    for index, chunk in enumerate(chunks, start=1):
-        if total > 1:
-            prefix = f"[{index}/{total}]\n"
-            # 保证加上前缀后仍不超限
-            room = max(0, chunk_size - len(prefix))
-            message = prefix + chunk[:room]
-        else:
-            message = chunk
-
+    for message in messages:
         response = _post_text(webhook_url, message)
         if response.status_code != 200:
             raise requests.HTTPError(
@@ -66,7 +62,7 @@ def send_feishu_text_chunks(
 def notify_feishu(report_path, paper_count, report_text=None):
     webhook_url = os.getenv("FEISHU_WEBHOOK_URL")
 
-    if not webhook_url:
+    if not webhook_url or not str(webhook_url).strip():
         print("未配置 FEISHU_WEBHOOK_URL，跳过飞书推送。")
         return
 
