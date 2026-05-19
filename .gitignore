@@ -1,6 +1,16 @@
 .env
+*.env
+!*.env.example
+config/*.env
+!config/*.env.example
 __pycache__/
 *.pyc
-output/
+.venv/
+venv/
 .DS_Store
 .vscode/
+
+# 周报 Markdown 需要提交到仓库；仅忽略 output 下非 .md 文件（当前无其他类型）
+output/*
+!output/
+!output/*.md

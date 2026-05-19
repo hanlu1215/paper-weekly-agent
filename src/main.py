@@ -24,6 +24,7 @@ def load_keywords():
 
 def main():
     load_dotenv()
+    load_dotenv("config/deepseek.env", override=True)
     max_papers_to_summarize = int(os.getenv("MAX_PAPERS_TO_SUMMARIZE", DEFAULT_MAX_PAPERS_TO_SUMMARIZE))
     recent_days = int(os.getenv("RECENT_DAYS", DEFAULT_RECENT_DAYS))
 
@@ -59,7 +60,7 @@ def main():
         print(f"正在处理第 {idx}/{len(recent_papers)} 篇", flush=True)
         print(paper["title"], flush=True)
         summary = summarize_paper(paper)
-        print("已写入原文摘要。", flush=True)
+        print("摘要已生成。", flush=True)
 
         papers_with_summaries.append({
             "paper": paper,
@@ -72,8 +73,11 @@ def main():
 
     report_text = report_path.read_text(encoding="utf-8")
 
-    print("\n正在推送飞书通知...")
-    notify_feishu(report_path, len(papers_with_summaries), report_text=report_text)
+    if os.getenv("SKIP_FEISHU_NOTIFY", "").lower() in ("1", "true", "yes"):
+        print("\n已设置 SKIP_FEISHU_NOTIFY，跳过飞书推送（由 CI 在提交后单独发送）。")
+    else:
+        print("\n正在推送飞书通知...")
+        notify_feishu(report_path, len(papers_with_summaries), report_text=report_text)
 
     print("\n任务完成。")
     print("=" * 60)
