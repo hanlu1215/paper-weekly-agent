@@ -85,7 +85,7 @@ FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
 | `DEEPSEEK_MODEL` | 可选 | 默认 `deepseek-v4-pro` |
 | `DEEPSEEK_MAX_TOKENS` | 可选 | 默认 `1400` |
 | `DEEPSEEK_TEMPERATURE` | 可选 | 默认 `0.2` |
-| `MAX_PAPERS_TO_SUMMARIZE` | 可选 | 默认 `10` |
+| `MAX_PAPERS_TO_SUMMARIZE` | 可选 | 默认 `5` |
 | `RECENT_DAYS` | 可选 | 默认 `7` |
 | `SKIP_FEISHU_NOTIFY` | 可选 | 设为 `1`/`true` 时主流程不推送（供 CI 在提交后调用 `send_to_feishu.py`） |
 
@@ -148,7 +148,7 @@ FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
 
 | Variable | 示例 | 说明 |
 |----------|------|------|
-| `MAX_PAPERS_TO_SUMMARIZE` | `10` | 每周最多总结篇数 |
+| `MAX_PAPERS_TO_SUMMARIZE` | `5` | 每天最多总结篇数 |
 | `RECENT_DAYS` | `7` | 仅保留近 N 天论文 |
 
 ## 飞书配置（知识库 + 群链接）

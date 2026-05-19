@@ -11,7 +11,7 @@ from render_markdown import render_markdown_report
 from notify_feishu import notify_feishu
 
 
-DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 10
+DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 5
 DEFAULT_RECENT_DAYS = 7
 
 
