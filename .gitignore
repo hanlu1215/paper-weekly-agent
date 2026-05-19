@@ -14,3 +14,8 @@ venv/
 output/*
 !output/
 !output/*.md
+
+# 已发布文献 registry 需要提交，供每日去重
+data/*
+!data/
+!data/published_papers.json

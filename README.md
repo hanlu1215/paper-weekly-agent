@@ -94,10 +94,11 @@ FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
 ## 输出文件
 
 - 目录：`output/`
-- 命名：`{年}-W{ISO周数}-paper-weekly.md`（例如 `2026-W21-paper-weekly.md`）
-- 标题含 ISO 周次与生成日期
+- **日报**（每日新增、不重复）：`YYYY-MM-DD-paper-daily.md`
+- **周报**（当周累计追加）：`{年}-W{周}-paper-weekly.md`
+- **已发布记录**（跨日去重）：`data/published_papers.json`（按 arXiv ID 记录，已发过的不会再次总结/推送）
 
-该目录下的 `.md` 文件会纳入 Git 版本管理（`.env` 等仍被忽略）。
+该目录下的 `.md` 与 `data/published_papers.json` 会纳入 Git 版本管理（`.env` 等仍被忽略）。
 
 ## GitHub Actions 自动化
 

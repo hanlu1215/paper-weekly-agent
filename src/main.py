@@ -9,6 +9,8 @@ from fetch_arxiv import deduplicate_papers
 from summarize import summarize_paper
 from render_markdown import render_markdown_report
 from notify_feishu import notify_feishu
+from published_history import filter_unpublished
+from published_history import mark_as_published
 
 
 DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 5
@@ -57,6 +59,10 @@ def main():
     recent_papers = filter_recent_papers(papers, days=recent_days)
     print(f"最近 {recent_days} 天相关论文数量：{len(recent_papers)}")
 
+    print("\n正在排除历史已发布文献...")
+    recent_papers, skipped_duplicates = filter_unpublished(recent_papers)
+    print(f"排除已发布后剩余：{len(recent_papers)} 篇（跳过 {skipped_duplicates} 篇）")
+
     recent_papers = recent_papers[:max_papers_to_summarize]
     print(f"本次最多总结论文数量：{len(recent_papers)}")
 
@@ -74,14 +80,23 @@ def main():
             "summary": summary
         })
 
-    print("\n正在生成 Markdown 周报...")
-    report_path = render_markdown_report(papers_with_summaries)
-    print(f"Markdown 周报已生成：{report_path}")
+    print("\n正在生成 Markdown 报告...")
+    report_path = render_markdown_report(
+        papers_with_summaries,
+        skipped_duplicates=skipped_duplicates,
+    )
+    print(f"Markdown 日报已生成：{report_path}")
+
+    if papers_with_summaries:
+        mark_as_published([item["paper"] for item in papers_with_summaries])
+        print(f"已记录 {len(papers_with_summaries)} 篇到发布历史（data/published_papers.json）。")
 
     report_text = report_path.read_text(encoding="utf-8")
 
     if os.getenv("SKIP_FEISHU_NOTIFY", "").lower() in ("1", "true", "yes"):
         print("\n已设置 SKIP_FEISHU_NOTIFY，跳过飞书推送（由 CI 在提交后单独发送）。")
+    elif not papers_with_summaries:
+        print("\n今日无新增文献，跳过飞书推送。")
     else:
         print("\n正在推送飞书通知...")
         notify_feishu(report_path, len(papers_with_summaries), report_text=report_text)

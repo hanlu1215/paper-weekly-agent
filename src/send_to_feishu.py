@@ -1,6 +1,7 @@
 """发布周报到飞书：默认写入知识库并推送文档链接；可回退为全文推送。"""
 
 import argparse
+import datetime
 import os
 import re
 import sys
@@ -17,6 +18,13 @@ DEFAULT_CHUNK_SIZE = 3500
 
 
 def find_latest_report(output_dir: Path) -> Path | None:
+    today_name = f"{datetime.date.today().isoformat()}-paper-daily.md"
+    today_path = output_dir / today_name
+    if today_path.is_file():
+        return today_path
+    reports = sorted(output_dir.glob("*-paper-daily.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+    if reports:
+        return reports[0]
     reports = sorted(output_dir.glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
     return reports[0] if reports else None
 
