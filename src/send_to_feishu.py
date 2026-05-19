@@ -93,7 +93,6 @@ def send_report_as_wiki_link(report_path: Path) -> None:
         title=title,
         doc_url=doc_url,
         paper_count=paper_count,
-        report_name=report_path.name,
     )
     print(f"知识库文档已创建：{doc_url}")
     print("飞书群聊已发送文档链接。")

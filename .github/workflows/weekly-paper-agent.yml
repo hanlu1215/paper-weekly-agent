@@ -72,6 +72,8 @@ jobs:
       - name: Send report to Feishu
         if: success()
         env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPO_BRANCH: ${{ github.ref_name }}
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
           FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
           FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}

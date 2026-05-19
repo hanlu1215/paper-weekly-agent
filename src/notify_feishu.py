@@ -78,24 +78,39 @@ def send_feishu_webhook_text(webhook_url: str, text: str) -> None:
         )
 
 
+def get_github_daily_reports_url() -> str | None:
+    """GitHub 仓库 daily_reports/ 目录链接（Actions 自动识别 GITHUB_REPOSITORY）。"""
+    branch = os.getenv("GITHUB_REPO_BRANCH", "main").strip() or "main"
+    explicit = os.getenv("GITHUB_REPO_URL", "").strip().rstrip("/")
+    if explicit:
+        return f"{explicit}/tree/{branch}/daily_reports"
+
+    repository = os.getenv("GITHUB_REPOSITORY", "").strip()
+    if repository and "/" in repository:
+        return f"https://github.com/{repository}/tree/{branch}/daily_reports"
+
+    return None
+
+
 def send_feishu_document_link(
     webhook_url: str,
     *,
     title: str,
     doc_url: str,
     paper_count: int | None = None,
-    report_name: str | None = None,
+    archive_url: str | None = None,
 ) -> None:
     """向群聊发送知识库文档链接（不发送全文）。"""
     lines = [
-        "📚 文献每日速递已发布到知识库",
+        "📚 本周文献周报已发布到知识库",
         f"标题：{title}",
         f"链接：{doc_url}",
     ]
     if paper_count is not None:
         lines.append(f"共 {paper_count} 篇论文")
-    if report_name:
-        lines.append(f"源文件：{report_name}")
+    history_url = archive_url or get_github_daily_reports_url()
+    if history_url:
+        lines.append(f"查看往期推送：{history_url}")
     send_feishu_webhook_text(webhook_url, "\n".join(lines))
 
 
