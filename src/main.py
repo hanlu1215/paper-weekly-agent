@@ -15,6 +15,13 @@ DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 10
 DEFAULT_RECENT_DAYS = 7
 
 
+def _env_int(name: str, default: int) -> int:
+    value = os.getenv(name)
+    if value is None or not str(value).strip():
+        return default
+    return int(value)
+
+
 def load_keywords():
     with open("config/keywords.yaml", "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
@@ -25,8 +32,8 @@ def load_keywords():
 def main():
     load_dotenv()
     load_dotenv("config/deepseek.env", override=True)
-    max_papers_to_summarize = int(os.getenv("MAX_PAPERS_TO_SUMMARIZE", DEFAULT_MAX_PAPERS_TO_SUMMARIZE))
-    recent_days = int(os.getenv("RECENT_DAYS", DEFAULT_RECENT_DAYS))
+    max_papers_to_summarize = _env_int("MAX_PAPERS_TO_SUMMARIZE", DEFAULT_MAX_PAPERS_TO_SUMMARIZE)
+    recent_days = _env_int("RECENT_DAYS", DEFAULT_RECENT_DAYS)
 
     print("=" * 60)
     print("Paper Weekly Agent 启动")
