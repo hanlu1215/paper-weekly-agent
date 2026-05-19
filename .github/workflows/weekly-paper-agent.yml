@@ -52,4 +52,10 @@ jobs:
         if: success()
         env:
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_WIKI_SPACE_ID: ${{ secrets.FEISHU_WIKI_SPACE_ID }}
+          FEISHU_WIKI_PARENT_NODE_TOKEN: ${{ secrets.FEISHU_WIKI_PARENT_NODE_TOKEN }}
+          FEISHU_WIKI_BASE_URL: ${{ secrets.FEISHU_WIKI_BASE_URL }}
+          FEISHU_NOTIFY_MODE: wiki_link
         run: python src/send_to_feishu.py

@@ -59,6 +59,46 @@ def send_feishu_text_chunks(
             )
 
 
+def send_feishu_webhook_text(webhook_url: str, text: str) -> None:
+    """向群机器人 Webhook 发送单条文本（不打印 webhook）。"""
+    response = _post_text(webhook_url, text)
+    if response.status_code != 200:
+        raise requests.HTTPError(
+            f"飞书返回 HTTP {response.status_code}: {response.text[:200]}",
+            response=response,
+        )
+    try:
+        data = response.json()
+    except ValueError:
+        data = {}
+    if isinstance(data, dict) and data.get("code") not in (None, 0):
+        raise requests.HTTPError(
+            f"飞书 API 错误 code={data.get('code')} msg={data.get('msg', '')[:200]}",
+            response=response,
+        )
+
+
+def send_feishu_document_link(
+    webhook_url: str,
+    *,
+    title: str,
+    doc_url: str,
+    paper_count: int | None = None,
+    report_name: str | None = None,
+) -> None:
+    """向群聊发送知识库文档链接（不发送全文）。"""
+    lines = [
+        "📚 本周文献周报已发布到知识库",
+        f"标题：{title}",
+        f"链接：{doc_url}",
+    ]
+    if paper_count is not None:
+        lines.append(f"共 {paper_count} 篇论文")
+    if report_name:
+        lines.append(f"源文件：{report_name}")
+    send_feishu_webhook_text(webhook_url, "\n".join(lines))
+
+
 def notify_feishu(report_path, paper_count, report_text=None):
     webhook_url = os.getenv("FEISHU_WEBHOOK_URL")
 
