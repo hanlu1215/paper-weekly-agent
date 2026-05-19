@@ -48,6 +48,21 @@ jobs:
             git push
           fi
 
+      - name: Validate Feishu wiki secrets
+        if: success()
+        env:
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_WIKI_SPACE_ID: ${{ secrets.FEISHU_WIKI_SPACE_ID }}
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+        run: |
+          missing=0
+          [ -z "$FEISHU_APP_ID" ] && echo "::error::缺少 Secret: FEISHU_APP_ID" && missing=1
+          [ -z "$FEISHU_APP_SECRET" ] && echo "::error::缺少 Secret: FEISHU_APP_SECRET" && missing=1
+          [ -z "$FEISHU_WIKI_SPACE_ID" ] && echo "::error::缺少 Secret: FEISHU_WIKI_SPACE_ID（知识库 space_id，见 README）" && missing=1
+          [ -z "$FEISHU_WEBHOOK_URL" ] && echo "::error::缺少 Secret: FEISHU_WEBHOOK_URL" && missing=1
+          exit $missing
+
       - name: Send report to Feishu
         if: success()
         env:

@@ -9,7 +9,7 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
-from feishu_wiki import publish_report_file_to_wiki, wiki_configured
+from feishu_wiki import publish_report_file_to_wiki, validate_wiki_config, wiki_configured
 from notify_feishu import send_feishu_document_link, send_feishu_text_chunks
 
 DEFAULT_OUTPUT_DIR = Path("output")
@@ -32,6 +32,8 @@ def _resolve_notify_mode() -> str:
     mode = os.getenv("FEISHU_NOTIFY_MODE", "auto").strip().lower()
     if mode == "auto":
         return "wiki_link" if wiki_configured() else "markdown"
+    if mode == "wiki_link" and not wiki_configured():
+        validate_wiki_config()  # 抛出明确说明，避免 spaces//nodes 的 404
     return mode
 
 

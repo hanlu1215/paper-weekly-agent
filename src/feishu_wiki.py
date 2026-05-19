@@ -8,12 +8,49 @@ from typing import Any
 from feishu_client import FeishuAPIError, feishu_request, _env_str
 
 
+def _normalize_space_id(raw: str) -> str:
+    """支持只填数字 id，或粘贴完整知识库 URL。"""
+    text = raw.strip()
+    if not text:
+        return ""
+    if "/wiki/space/" in text:
+        tail = text.split("/wiki/space/", 1)[1]
+        return tail.split("/")[0].split("?")[0].strip()
+    return text
+
+
+def get_wiki_space_id() -> str:
+    return _normalize_space_id(_env_str("FEISHU_WIKI_SPACE_ID"))
+
+
 def wiki_configured() -> bool:
     return bool(
         _env_str("FEISHU_APP_ID")
         and _env_str("FEISHU_APP_SECRET")
-        and _env_str("FEISHU_WIKI_SPACE_ID")
+        and get_wiki_space_id()
     )
+
+
+def validate_wiki_config() -> None:
+    """配置不全时抛出明确错误（不泄露密钥）。"""
+    missing = []
+    if not _env_str("FEISHU_APP_ID"):
+        missing.append("FEISHU_APP_ID")
+    if not _env_str("FEISHU_APP_SECRET"):
+        missing.append("FEISHU_APP_SECRET")
+    if not get_wiki_space_id():
+        missing.append("FEISHU_WIKI_SPACE_ID")
+
+    if missing:
+        raise FeishuAPIError(
+            "飞书知识库配置不完整，缺少环境变量："
+            + ", ".join(missing)
+            + "。\n"
+            "请在 GitHub → Settings → Secrets → Actions 添加 FEISHU_WIKI_SPACE_ID。\n"
+            "获取方式：浏览器打开目标知识库，地址栏类似\n"
+            "  https://xxx.feishu.cn/wiki/space/6704147935988285963/...\n"
+            "其中数字 6704147935988285963 即为 space_id（可只填数字，也可粘贴整段 URL）。"
+        )
 
 
 def _title_from_markdown(content: str, fallback: str) -> str:
@@ -34,7 +71,8 @@ def _wiki_document_url(node_token: str) -> str:
 
 
 def _create_wiki_docx_node(title: str) -> dict[str, Any]:
-    space_id = _env_str("FEISHU_WIKI_SPACE_ID")
+    validate_wiki_config()
+    space_id = get_wiki_space_id()
     body: dict[str, Any] = {
         "obj_type": "docx",
         "node_type": "origin",

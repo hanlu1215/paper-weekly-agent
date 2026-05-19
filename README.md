@@ -169,7 +169,7 @@ FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
 3. **版本管理与发布** → 创建并发布版本，让管理员审批。
 4. 把应用 **添加为目标知识库成员/管理员**（否则 `131006 permission denied`）。
 5. 记录 **App ID**、**App Secret** → `FEISHU_APP_ID` / `FEISHU_APP_SECRET`。
-6. 打开目标知识库，从浏览器地址栏获取 `space_id`（`/wiki/space/{space_id}/...`）→ `FEISHU_WIKI_SPACE_ID`。
+6. 打开目标知识库，从浏览器地址栏获取 `space_id`（`/wiki/space/{space_id}/...`）→ GitHub Secret **`FEISHU_WIKI_SPACE_ID`**（只填数字即可，例如 `6704147935988285963`；未配置会出现 `spaces//nodes` 404）。
 7. 配置 `FEISHU_WIKI_BASE_URL` 为你的租户域名（浏览器打开知识库时的域名，如 `https://xxx.feishu.cn`）。
 8. （可选）在某个目录下新建文档时，复制该目录节点 URL 中的 `node_token` → `FEISHU_WIKI_PARENT_NODE_TOKEN`。
 
