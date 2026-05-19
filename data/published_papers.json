@@ -25,6 +25,31 @@
       "title": "",
       "arxiv_url": "https://arxiv.org/abs/2605.18727",
       "first_published_on": "imported"
+    },
+    "2605.18722": {
+      "title": "Dexora: Open-source VLA for High-DoF Bimanual Dexterity",
+      "arxiv_url": "https://arxiv.org/abs/2605.18722v1",
+      "first_published_on": "2026-05-19"
+    },
+    "2605.18611": {
+      "title": "Unified Walking, Running, and Recovery for Humanoids via State-Dependent Adversarial Motion Priors",
+      "arxiv_url": "https://arxiv.org/abs/2605.18611v1",
+      "first_published_on": "2026-05-19"
+    },
+    "2605.18601": {
+      "title": "Incantation: Natural Language as the Action Interface for Multi-Entity Video World Models",
+      "arxiv_url": "https://arxiv.org/abs/2605.18601v1",
+      "first_published_on": "2026-05-19"
+    },
+    "2605.18593": {
+      "title": "Not What You Asked For: Typographic Attacks in Household Robot Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2605.18593v1",
+      "first_published_on": "2026-05-19"
+    },
+    "2605.18556": {
+      "title": "Key-Gram: Extensible World Knowledge for Embodied Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2605.18556v1",
+      "first_published_on": "2026-05-19"
     }
   }
 }
