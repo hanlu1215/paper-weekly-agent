@@ -1,4 +1,4 @@
-name: Weekly Paper Agent
+name: Daily Paper Agent
 
 on:
   schedule:

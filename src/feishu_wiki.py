@@ -233,7 +233,7 @@ def _insert_blocks(document_id: str, convert_data: dict[str, Any]) -> None:
 
 
 def publish_markdown_to_wiki(markdown: str, *, title: str | None = None) -> str:
-    doc_title = title or "文献周报"
+    doc_title = title or "文献每日速递"
     node = _create_wiki_docx_node(doc_title)
     document_id = node["obj_token"]
     node_token = node["node_token"]

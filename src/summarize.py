@@ -33,7 +33,7 @@ def _env_float(name: str, default: float) -> float:
 def _build_deepseek_messages(paper):
     authors = ", ".join(paper["authors"])
     categories = ", ".join(paper.get("categories", [])) or "N/A"
-    user_content = f"""请阅读下面这篇 arXiv 论文信息，并用中文生成一份适合行业文献周报的 AI 总结。
+    user_content = f"""请阅读下面这篇 arXiv 论文信息，并用中文生成一份适合「文献每日速递」的 AI 总结。
 
 标题：{paper["title"]}
 作者：{authors}
@@ -132,4 +132,4 @@ def summarize_paper(paper):
     if summary:
         return summary
 
-    return f"### 原文摘要\n\n{paper['summary']}"
+    return paper["summary"]

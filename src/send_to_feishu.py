@@ -62,7 +62,7 @@ def send_report_as_markdown(report_path: Path, chunk_size: int) -> None:
 
     report_text = report_path.read_text(encoding="utf-8")
     header = (
-        f"📚 文献周报已更新\n"
+        f"📚 文献每日速递已更新\n"
         f"文件：{report_path.name}\n"
         f"{'=' * 40}\n\n"
     )

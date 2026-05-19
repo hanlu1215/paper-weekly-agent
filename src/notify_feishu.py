@@ -88,7 +88,7 @@ def send_feishu_document_link(
 ) -> None:
     """向群聊发送知识库文档链接（不发送全文）。"""
     lines = [
-        "📚 本周文献周报已发布到知识库",
+        "📚 文献每日速递已发布到知识库",
         f"标题：{title}",
         f"链接：{doc_url}",
     ]
@@ -109,7 +109,7 @@ def notify_feishu(report_path, paper_count, report_text=None):
     path_label = report_path if isinstance(report_path, str) else str(report_path)
 
     header = (
-        f"本次文献周报已生成。\n"
+        f"本次文献每日速递已生成。\n"
         f"共筛选论文：{paper_count} 篇\n"
         f"文件：{path_label}\n\n"
     )

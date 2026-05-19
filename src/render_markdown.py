@@ -11,10 +11,15 @@ def _render_paper_section(idx: int, paper: dict, summary: str) -> list[str]:
     lines.append(f"- PDF 链接：{paper['pdf_url']}\n")
     if paper.get("categories"):
         lines.append(f"- 分类：{', '.join(paper['categories'])}\n")
-    lines.append("\n### 摘要\n")
+    lines.append("\n")
     lines.append(summary)
     lines.append("\n---\n")
     return lines
+
+
+def daily_report_title(today: datetime.date | None = None) -> str:
+    today = today or datetime.date.today()
+    return f"{today.isoformat()}-文献每日速递"
 
 
 def _daily_report_path(today: datetime.date | None = None) -> Path:
@@ -35,7 +40,7 @@ def render_daily_report(papers_with_summaries, *, skipped_duplicates: int = 0) -
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     lines = [
-        f"# {today} 文献日报（新增）\n",
+        f"# {daily_report_title(today)}\n",
         f"> 生成时间：{today}\n",
         "---\n",
     ]
@@ -61,7 +66,7 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
         return None
 
     today = datetime.date.today()
-    year, week, _ = today.isocalendar()
+    _, week, _ = today.isocalendar()
     output_path = _weekly_report_path(today)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -71,10 +76,9 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
         lines = [existing.rstrip(), "", f"\n> 追加日期：{today}\n"]
     else:
         next_idx = 1
-        title = f"{year}年第{week}周 AI/机器人/具身智能文献周报"
         lines = [
-            f"# {title}\n",
-            f"> 生成日期：{today}\n",
+            f"# {daily_report_title(today)}\n",
+            f"> 第 {week} 周累计 · 生成日期：{today}\n",
             "---\n",
             "本周累计文献（按日追加）：\n",
         ]
