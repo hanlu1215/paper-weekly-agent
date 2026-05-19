@@ -9,7 +9,7 @@ from feishu_client import FeishuAPIError, feishu_request, _env_str
 
 
 def _normalize_space_id(raw: str) -> str:
-    """支持只填数字 id，或粘贴完整知识库 URL。"""
+    """从知识库空间 URL 提取 space_id（纯数字）。"""
     text = raw.strip()
     if not text:
         return ""
@@ -19,8 +19,48 @@ def _normalize_space_id(raw: str) -> str:
     return text
 
 
+def _extract_node_token(raw: str) -> str:
+    """从知识库页面 URL（/wiki/{node_token}）或 token 字符串提取 node_token。"""
+    text = raw.strip()
+    if not text:
+        return ""
+    if "/wiki/" in text and "/wiki/space/" not in text:
+        tail = text.split("/wiki/", 1)[1]
+        return tail.split("/")[0].split("?")[0].strip()
+    return text
+
+
+def _resolve_space_id_via_node(node_token: str) -> str:
+    """通过节点 token 调用飞书 API 查询所属 space_id。"""
+    data = feishu_request(
+        "GET",
+        "/wiki/v2/spaces/get_node",
+        params={"token": node_token},
+    )
+    node = data.get("node") or {}
+    space_id = str(node.get("space_id") or "").strip()
+    if not space_id:
+        raise FeishuAPIError(
+            f"无法从节点 {node_token[:8]}... 解析 space_id，请确认应用已加入该知识库。"
+        )
+    return space_id
+
+
 def get_wiki_space_id() -> str:
-    return _normalize_space_id(_env_str("FEISHU_WIKI_SPACE_ID"))
+    raw = _env_str("FEISHU_WIKI_SPACE_ID")
+    if not raw:
+        return ""
+
+    direct = _normalize_space_id(raw)
+    if direct.isdigit():
+        return direct
+
+    # 用户粘贴了页面链接（如 /wiki/CtA5wUUV2i...）时，用 API 反查 space_id
+    node_token = _extract_node_token(raw)
+    if node_token and _env_str("FEISHU_APP_ID") and _env_str("FEISHU_APP_SECRET"):
+        return _resolve_space_id_via_node(node_token)
+
+    return direct
 
 
 def wiki_configured() -> bool:
@@ -47,9 +87,10 @@ def validate_wiki_config() -> None:
             + ", ".join(missing)
             + "。\n"
             "请在 GitHub → Settings → Secrets → Actions 添加 FEISHU_WIKI_SPACE_ID。\n"
-            "获取方式：浏览器打开目标知识库，地址栏类似\n"
-            "  https://xxx.feishu.cn/wiki/space/6704147935988285963/...\n"
-            "其中数字 6704147935988285963 即为 space_id（可只填数字，也可粘贴整段 URL）。"
+            "获取方式（任选其一）：\n"
+            "  1) 空间 URL：.../wiki/space/6704147935988285963/... → 填数字 space_id\n"
+            "  2) 目录 URL：.../wiki/CtA5wUUV2i... → 可粘贴整段链接（需已配置 APP_ID/SECRET）\n"
+            "  3) 将目录 node_token 填到 FEISHU_WIKI_PARENT_NODE_TOKEN 指定创建位置。"
         )
 
 
