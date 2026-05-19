@@ -2,36 +2,48 @@
 
 import copy
 import os
+import re
 from pathlib import Path
 from typing import Any
 
 from feishu_client import FeishuAPIError, feishu_request, _env_str
 
+_SPACE_ID_RE = re.compile(r"^\d{10,25}$")
+
 
 def _normalize_space_id(raw: str) -> str:
-    """从知识库空间 URL 提取 space_id（纯数字）。"""
+    """从知识库 URL 提取 space_id（纯数字）。"""
     text = raw.strip()
     if not text:
         return ""
-    if "/wiki/space/" in text:
-        tail = text.split("/wiki/space/", 1)[1]
-        return tail.split("/")[0].split("?")[0].strip()
-    return text
+
+    for marker in ("/wiki/space/", "/wiki/settings/"):
+        if marker in text:
+            tail = text.split(marker, 1)[1]
+            candidate = tail.split("/")[0].split("?")[0].strip()
+            if _SPACE_ID_RE.match(candidate):
+                return candidate
+
+    if _SPACE_ID_RE.match(text):
+        return text
+
+    return ""
 
 
 def _extract_node_token(raw: str) -> str:
-    """从知识库页面 URL（/wiki/{node_token}）或 token 字符串提取 node_token。"""
+    """从 /wiki/{node_token} 链接或 token 字符串提取 node_token。"""
     text = raw.strip()
     if not text:
         return ""
-    if "/wiki/" in text and "/wiki/space/" not in text:
+    if "/wiki/" in text and "/wiki/space/" not in text and "/wiki/settings/" not in text:
         tail = text.split("/wiki/", 1)[1]
         return tail.split("/")[0].split("?")[0].strip()
+    if _SPACE_ID_RE.match(text):
+        return ""
     return text
 
 
 def _resolve_space_id_via_node(node_token: str) -> str:
-    """通过节点 token 调用飞书 API 查询所属 space_id。"""
     data = feishu_request(
         "GET",
         "/wiki/v2/spaces/get_node",
@@ -39,59 +51,102 @@ def _resolve_space_id_via_node(node_token: str) -> str:
     )
     node = data.get("node") or {}
     space_id = str(node.get("space_id") or "").strip()
-    if not space_id:
+    if not _SPACE_ID_RE.match(space_id):
         raise FeishuAPIError(
-            f"无法从节点 {node_token[:8]}... 解析 space_id，请确认应用已加入该知识库。"
+            f"节点 {node_token[:12]}... 返回的 space_id 无效，请确认应用已加入该知识库。"
         )
     return space_id
 
 
-def get_wiki_space_id() -> str:
-    raw = _env_str("FEISHU_WIKI_SPACE_ID")
+def _verify_space_exists(space_id: str) -> None:
+    feishu_request("GET", f"/wiki/v2/spaces/{space_id}")
+
+
+def get_parent_node_token() -> str:
+    raw = _env_str("FEISHU_WIKI_PARENT_NODE_TOKEN")
     if not raw:
         return ""
-
-    direct = _normalize_space_id(raw)
-    if direct.isdigit():
-        return direct
-
-    # 用户粘贴了页面链接（如 /wiki/CtA5wUUV2i...）时，用 API 反查 space_id
-    node_token = _extract_node_token(raw)
-    if node_token and _env_str("FEISHU_APP_ID") and _env_str("FEISHU_APP_SECRET"):
-        return _resolve_space_id_via_node(node_token)
-
-    return direct
+    return _extract_node_token(raw) or raw
 
 
-def wiki_configured() -> bool:
-    return bool(
-        _env_str("FEISHU_APP_ID")
-        and _env_str("FEISHU_APP_SECRET")
-        and get_wiki_space_id()
+def get_wiki_space_id() -> str:
+    """解析并校验 space_id（必须是纯数字，不能误用 node_token）。"""
+    candidates: list[str] = []
+
+    for key in ("FEISHU_WIKI_SPACE_ID",):
+        raw = _env_str(key)
+        if not raw:
+            continue
+        numeric = _normalize_space_id(raw)
+        if numeric:
+            candidates.append(numeric)
+            continue
+        node_token = _extract_node_token(raw)
+        if node_token:
+            candidates.append(f"node:{node_token}")
+
+    parent = get_parent_node_token()
+    if parent:
+        candidates.append(f"node:{parent}")
+
+    if not candidates:
+        return ""
+
+    last_error = FeishuAPIError("未找到可用的 space_id 配置")
+
+    for item in candidates:
+        if item.startswith("node:"):
+            if not (_env_str("FEISHU_APP_ID") and _env_str("FEISHU_APP_SECRET")):
+                continue
+            space_id = _resolve_space_id_via_node(item[5:])
+        else:
+            space_id = item
+
+        try:
+            _verify_space_exists(space_id)
+            return space_id
+        except FeishuAPIError as err:
+            last_error = err
+            continue
+
+    raise FeishuAPIError(
+        "无法解析有效的 FEISHU_WIKI_SPACE_ID。\n"
+        f"最后一次错误：{last_error}\n"
+        "请任选一种配置方式：\n"
+        "  1) 知识库设置页 URL：.../wiki/settings/数字/ → Secret 只填数字\n"
+        "  2) 目录页 URL：.../wiki/CtA5wUUV2i... → 粘贴整段链接（需 APP_ID/SECRET）\n"
+        "  3) FEISHU_WIKI_PARENT_NODE_TOKEN 填目录 node_token，SPACE_ID 可留空由程序反查\n"
+        "注意：不要把 node_token 当成 space_id 直接填数字以外的字符串。"
     )
 
 
+def wiki_configured() -> bool:
+    try:
+        return bool(
+            _env_str("FEISHU_APP_ID")
+            and _env_str("FEISHU_APP_SECRET")
+            and get_wiki_space_id()
+        )
+    except FeishuAPIError:
+        return False
+
+
 def validate_wiki_config() -> None:
-    """配置不全时抛出明确错误（不泄露密钥）。"""
     missing = []
     if not _env_str("FEISHU_APP_ID"):
         missing.append("FEISHU_APP_ID")
     if not _env_str("FEISHU_APP_SECRET"):
         missing.append("FEISHU_APP_SECRET")
-    if not get_wiki_space_id():
-        missing.append("FEISHU_WIKI_SPACE_ID")
+    if not (_env_str("FEISHU_WIKI_SPACE_ID") or get_parent_node_token()):
+        missing.append("FEISHU_WIKI_SPACE_ID 或 FEISHU_WIKI_PARENT_NODE_TOKEN")
 
     if missing:
         raise FeishuAPIError(
-            "飞书知识库配置不完整，缺少环境变量："
+            "飞书知识库配置不完整，缺少："
             + ", ".join(missing)
-            + "。\n"
-            "请在 GitHub → Settings → Secrets → Actions 添加 FEISHU_WIKI_SPACE_ID。\n"
-            "获取方式（任选其一）：\n"
-            "  1) 空间 URL：.../wiki/space/6704147935988285963/... → 填数字 space_id\n"
-            "  2) 目录 URL：.../wiki/CtA5wUUV2i... → 可粘贴整段链接（需已配置 APP_ID/SECRET）\n"
-            "  3) 将目录 node_token 填到 FEISHU_WIKI_PARENT_NODE_TOKEN 指定创建位置。"
         )
+
+    get_wiki_space_id()
 
 
 def _title_from_markdown(content: str, fallback: str) -> str:
@@ -103,8 +158,7 @@ def _title_from_markdown(content: str, fallback: str) -> str:
 
 
 def _wiki_base_url() -> str:
-    base = _env_str("FEISHU_WIKI_BASE_URL", "https://feishu.cn").rstrip("/")
-    return base
+    return _env_str("FEISHU_WIKI_BASE_URL", "https://feishu.cn").rstrip("/")
 
 
 def _wiki_document_url(node_token: str) -> str:
@@ -119,7 +173,7 @@ def _create_wiki_docx_node(title: str) -> dict[str, Any]:
         "node_type": "origin",
         "title": title,
     }
-    parent = _env_str("FEISHU_WIKI_PARENT_NODE_TOKEN")
+    parent = get_parent_node_token()
     if parent:
         body["parent_node_token"] = parent
 
@@ -179,9 +233,6 @@ def _insert_blocks(document_id: str, convert_data: dict[str, Any]) -> None:
 
 
 def publish_markdown_to_wiki(markdown: str, *, title: str | None = None) -> str:
-    """
-    在知识库新建 docx 文档并写入 Markdown，返回 wiki 链接。
-    """
     doc_title = title or "文献周报"
     node = _create_wiki_docx_node(doc_title)
     document_id = node["obj_token"]
@@ -194,7 +245,6 @@ def publish_markdown_to_wiki(markdown: str, *, title: str | None = None) -> str:
 
 
 def publish_report_file_to_wiki(report_path: Path) -> tuple[str, str]:
-    """发布本地周报文件，返回 (标题, wiki_url)。"""
     content = report_path.read_text(encoding="utf-8")
     title = _title_from_markdown(content, report_path.stem)
     url = publish_markdown_to_wiki(content, title=title)

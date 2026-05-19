@@ -39,11 +39,15 @@ def get_tenant_access_token() -> str:
         json={"app_id": app_id, "app_secret": app_secret},
         timeout=30,
     )
-    response.raise_for_status()
-    payload = response.json()
-    if payload.get("code") != 0:
+    try:
+        payload = response.json()
+    except ValueError:
+        payload = {}
+
+    if response.status_code >= 400 or payload.get("code") not in (None, 0):
         raise FeishuAPIError(
-            f"获取 tenant_access_token 失败：code={payload.get('code')} msg={payload.get('msg', '')[:200]}"
+            "获取 tenant_access_token 失败："
+            f"HTTP {response.status_code} code={payload.get('code')} msg={payload.get('msg', '')[:200]}"
         )
 
     token = payload["tenant_access_token"]
@@ -70,11 +74,23 @@ def feishu_request(
         json=json_body,
         timeout=90,
     )
-    response.raise_for_status()
-    payload = response.json()
+
+    try:
+        payload = response.json()
+    except ValueError:
+        payload = {}
+
+    if response.status_code >= 400:
+        raise FeishuAPIError(
+            f"飞书 HTTP {response.status_code} {method} {path}："
+            f"code={payload.get('code')} msg={payload.get('msg', response.text[:200])}",
+            code=payload.get("code"),
+            response=response,
+        )
+
     if payload.get("code") != 0:
         raise FeishuAPIError(
-            f"飞书 API 失败 {path}：code={payload.get('code')} msg={payload.get('msg', '')[:300]}",
+            f"飞书 API 失败 {method} {path}：code={payload.get('code')} msg={payload.get('msg', '')[:300]}",
             code=payload.get("code"),
             response=response,
         )
