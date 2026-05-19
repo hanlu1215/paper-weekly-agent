@@ -2,13 +2,13 @@
 
 每周自动从 arXiv 抓取 AI / 机器人 / 具身智能相关论文，调用 DeepSeek 生成中文周报（Markdown），并可选推送到飞书群。
 
-支持 **本地手动运行** 与 **GitHub Actions 每周一自动运行**（生成报告 → 提交到仓库 → 飞书通知）。
+支持 **本地手动运行** 与 **GitHub Actions 每天自动运行**（生成报告 → 提交到仓库 → 飞书通知）。
 
 ## 项目结构
 
 ```
 paper-weekly-agent/
-├── .github/workflows/weekly-paper-agent.yml  # 每周自动化
+├── .github/workflows/weekly-paper-agent.yml  # 定时自动化（每天 09:00 北京时间）
 ├── config/
 │   ├── keywords.yaml           # arXiv 检索关键词
 │   └── deepseek.env.example    # DeepSeek 配置模板（无真实密钥）
@@ -111,7 +111,7 @@ FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
 
 ### 运行逻辑
 
-1. 每周一 **UTC 00:00**（北京时间周一 **08:00**）定时触发，或手动 `workflow_dispatch`。
+1. 每天 **UTC 01:00**（北京时间 **09:00**）定时触发，或手动 `workflow_dispatch`。
 2. 安装依赖，从 Secrets 注入环境变量，执行 `python src/main.py`（`SKIP_FEISHU_NOTIFY=true`）。
 3. 若 `output/*.md` 有变更，由 `github-actions[bot]` 提交并 push。
 4. 执行 `python src/send_to_feishu.py`：在知识库新建文档、写入 Markdown，并向群里发送文档链接。
@@ -175,7 +175,7 @@ FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
 
 ### 3. 推送效果
 
-- 每周在知识库 **新建一篇文档**，内容为周报 Markdown。
+- 每次运行在知识库 **新建一篇文档**，内容为周报 Markdown。
 - 群里收到一条消息，含 **标题 + 知识库链接**（不再发送全文）。
 
 **注意：** 勿在日志、Issue、README 或 Git 中粘贴 Webhook、App Secret。
