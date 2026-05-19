@@ -39,23 +39,31 @@ def _save_raw(data: dict) -> None:
     )
 
 
-def bootstrap_from_output_markdown(output_dir: Path = Path("output")) -> int:
+def bootstrap_from_output_markdown(*search_dirs: Path) -> int:
     """从历史 Markdown 回填已发布记录（仅当 registry 为空时）。"""
     data = _load_raw()
     if data["papers"]:
         return 0
 
+    dirs = search_dirs or (Path("daily_reports"), Path("weekly_reports"), Path("output"))
     added = 0
-    for md_path in sorted(output_dir.glob("*.md")):
-        text = md_path.read_text(encoding="utf-8")
-        for arxiv_id in ARXIV_URL_IN_MD_RE.findall(text):
-            if arxiv_id not in data["papers"]:
-                data["papers"][arxiv_id] = {
-                    "title": "",
-                    "arxiv_url": f"https://arxiv.org/abs/{arxiv_id}",
-                    "first_published_on": "imported",
-                }
-                added += 1
+    seen_paths: set[Path] = set()
+    for output_dir in dirs:
+        if not output_dir.is_dir():
+            continue
+        for md_path in sorted(output_dir.glob("*.md")):
+            if md_path in seen_paths:
+                continue
+            seen_paths.add(md_path)
+            text = md_path.read_text(encoding="utf-8")
+            for arxiv_id in ARXIV_URL_IN_MD_RE.findall(text):
+                if arxiv_id not in data["papers"]:
+                    data["papers"][arxiv_id] = {
+                        "title": "",
+                        "arxiv_url": f"https://arxiv.org/abs/{arxiv_id}",
+                        "first_published_on": "imported",
+                    }
+                    added += 1
 
     if added:
         _save_raw(data)

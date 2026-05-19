@@ -10,10 +10,18 @@ venv/
 .DS_Store
 .vscode/
 
-# 周报 Markdown 需要提交到仓库；仅忽略 output 下非 .md 文件（当前无其他类型）
+# 历史 output/ 保留只读，新内容写入 daily_reports/ 与 weekly_reports/
 output/*
 !output/
 !output/*.md
+
+daily_reports/*
+!daily_reports/
+!daily_reports/*.md
+
+weekly_reports/*
+!weekly_reports/
+!weekly_reports/*.md
 
 # 已发布文献 registry 需要提交，供每日去重
 data/*

@@ -39,8 +39,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mkdir -p output data
-          git add output/*.md data/published_papers.json 2>/dev/null || true
+          mkdir -p daily_reports weekly_reports data
+          git add daily_reports/*.md weekly_reports/*.md data/published_papers.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No new or updated report to commit."
           else
@@ -80,13 +80,13 @@ jobs:
           FEISHU_WIKI_BASE_URL: ${{ secrets.FEISHU_WIKI_BASE_URL }}
           FEISHU_NOTIFY_MODE: wiki_link
         run: |
-          REPORT="output/$(date -u +%Y-%m-%d)-paper-daily.md"
-          if [ ! -f "$REPORT" ]; then
-            echo "未找到今日日报 $REPORT，跳过飞书推送。"
+          LATEST=$(ls -t daily_reports/*-文献每日速递*.md 2>/dev/null | head -1 || true)
+          if [ -z "$LATEST" ]; then
+            echo "daily_reports/ 下无速递文件，跳过飞书推送。"
             exit 0
           fi
-          if grep -q "今日无新增文献" "$REPORT"; then
+          if grep -q "今日无新增文献" "$LATEST"; then
             echo "今日无新增文献，跳过飞书推送。"
             exit 0
           fi
-          python src/send_to_feishu.py "$REPORT"
+          python src/send_to_feishu.py "$LATEST"

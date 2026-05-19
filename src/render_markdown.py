@@ -1,6 +1,10 @@
 import datetime
 from pathlib import Path
 
+# 每日速递单独目录，不覆盖 output/ 下历史文件
+DAILY_REPORTS_DIR = Path("daily_reports")
+WEEKLY_REPORTS_DIR = Path("weekly_reports")
+
 
 def _render_paper_section(idx: int, paper: dict, summary: str) -> list[str]:
     lines = []
@@ -22,26 +26,47 @@ def daily_report_title(today: datetime.date | None = None) -> str:
     return f"{today.isoformat()}-文献每日速递"
 
 
-def _daily_report_path(today: datetime.date | None = None) -> Path:
+def allocate_daily_report_path(today: datetime.date | None = None) -> Path:
+    """
+    在 daily_reports/ 下分配当日文件路径；若已存在则递增序号，避免覆盖。
+    例如：2026-05-19-文献每日速递.md → 2026-05-19-文献每日速递-02.md
+    """
     today = today or datetime.date.today()
-    return Path("output") / f"{today.isoformat()}-paper-daily.md"
+    DAILY_REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    date_str = today.isoformat()
+    first = DAILY_REPORTS_DIR / f"{date_str}-文献每日速递.md"
+    if not first.exists():
+        return first
+    index = 2
+    while True:
+        candidate = DAILY_REPORTS_DIR / f"{date_str}-文献每日速递-{index:02d}.md"
+        if not candidate.exists():
+            return candidate
+        index += 1
 
 
 def _weekly_report_path(today: datetime.date | None = None) -> Path:
     today = today or datetime.date.today()
     year, week, _ = today.isocalendar()
-    return Path("output") / f"{year}-W{week:02d}-paper-weekly.md"
+    WEEKLY_REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    return WEEKLY_REPORTS_DIR / f"{year}-W{week:02d}-文献每日速递-累计.md"
 
 
-def render_daily_report(papers_with_summaries, *, skipped_duplicates: int = 0) -> Path:
-    """生成当日日报（仅包含本次新增文献）。"""
+def render_daily_report(
+    papers_with_summaries,
+    *,
+    skipped_duplicates: int = 0,
+    output_path: Path | None = None,
+) -> Path:
+    """生成当日速递（仅包含本次新增文献），写入 daily_reports/。"""
     today = datetime.date.today()
-    output_path = _daily_report_path(today)
+    output_path = output_path or allocate_daily_report_path(today)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     lines = [
         f"# {daily_report_title(today)}\n",
         f"> 生成时间：{today}\n",
+        f"> 存档文件：{output_path.name}\n",
         "---\n",
     ]
 
@@ -61,14 +86,13 @@ def render_daily_report(papers_with_summaries, *, skipped_duplicates: int = 0) -
 
 
 def append_to_weekly_report(papers_with_summaries) -> Path | None:
-    """将新增文献追加到当周周报（不覆盖既有内容）。"""
+    """将新增文献追加到当周累计文件（weekly_reports/，只追加不覆盖）。"""
     if not papers_with_summaries:
         return None
 
     today = datetime.date.today()
     _, week, _ = today.isocalendar()
     output_path = _weekly_report_path(today)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     if output_path.exists():
         existing = output_path.read_text(encoding="utf-8")
@@ -92,7 +116,7 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
 
 
 def render_markdown_report(papers_with_summaries, *, skipped_duplicates: int = 0) -> Path:
-    """生成日报，并追加到当周周报。"""
+    """生成每日速递存档，并追加到当周累计。"""
     daily_path = render_daily_report(
         papers_with_summaries,
         skipped_duplicates=skipped_duplicates,

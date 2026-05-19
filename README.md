@@ -12,7 +12,9 @@ paper-weekly-agent/
 ├── config/
 │   ├── keywords.yaml           # arXiv 检索关键词
 │   └── deepseek.env.example    # DeepSeek 配置模板（无真实密钥）
-├── output/                     # 生成的周报 Markdown（会提交到 Git）
+├── daily_reports/              # 每日速递存档（一天一个文件，不覆盖旧文件）
+├── weekly_reports/             # 当周文献累计（按日追加）
+├── output/                     # 历史存档（只读保留，新内容不再写入）
 ├── src/
 │   ├── main.py                 # 主流程入口
 │   ├── fetch_arxiv.py          # arXiv 抓取与筛选
@@ -54,7 +56,7 @@ cp config/deepseek.env.example config/deepseek.env
 python src/main.py
 ```
 
-流程：读取 `config/keywords.yaml` → 抓取 arXiv → 去重 → 筛选近 N 天 → DeepSeek 总结（最多 M 篇）→ 写入 `output/` → 飞书预览推送。
+流程：读取 `config/keywords.yaml` → 抓取 arXiv → 去重 → 筛选近 N 天 → DeepSeek 总结（最多 M 篇）→ 写入 `daily_reports/` → 飞书预览推送。
 
 发布周报到飞书（**默认**：在知识库新建文档并往群里发链接）：
 
@@ -93,12 +95,14 @@ FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
 
 ## 输出文件
 
-- 目录：`output/`
-- **日报**（每日新增、不重复）：`YYYY-MM-DD-paper-daily.md`
-- **周报**（当周累计追加）：`{年}-W{周}-paper-weekly.md`
-- **已发布记录**（跨日去重）：`data/published_papers.json`（按 arXiv ID 记录，已发过的不会再次总结/推送）
+| 目录 | 说明 | 示例文件名 |
+|------|------|------------|
+| `daily_reports/` | **每日速递**（每天新建，不覆盖 `output/` 旧文件；同日多次运行会加 `-02` 后缀） | `2026-05-19-文献每日速递.md` |
+| `weekly_reports/` | **当周累计**（只追加） | `2026-W21-文献每日速递-累计.md` |
+| `output/` | 早期历史存档 | 保留不动 |
+| `data/published_papers.json` | 已发布 arXiv ID（跨日去重） | — |
 
-该目录下的 `.md` 与 `data/published_papers.json` 会纳入 Git 版本管理（`.env` 等仍被忽略）。
+`daily_reports/`、`weekly_reports/` 与 `data/published_papers.json` 会由 GitHub Actions 自动提交。
 
 ## GitHub Actions 自动化
 
@@ -114,7 +118,7 @@ FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
 
 1. 每天 **UTC 01:00**（北京时间 **09:00**）定时触发，或手动 `workflow_dispatch`。
 2. 安装依赖，从 Secrets 注入环境变量，执行 `python src/main.py`（`SKIP_FEISHU_NOTIFY=true`）。
-3. 若 `output/*.md` 有变更，由 `github-actions[bot]` 提交并 push。
+3. 若 `daily_reports/` 或 `weekly_reports/` 有变更，由 `github-actions[bot]` 提交并 push。
 4. 执行 `python src/send_to_feishu.py`：在知识库新建文档、写入 Markdown，并向群里发送文档链接。
 
 ### GitHub Secrets

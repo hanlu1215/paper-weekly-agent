@@ -13,20 +13,28 @@ from dotenv import load_dotenv
 from feishu_wiki import publish_report_file_to_wiki, validate_wiki_config, wiki_configured
 from notify_feishu import send_feishu_document_link, send_feishu_text_chunks
 
-DEFAULT_OUTPUT_DIR = Path("output")
+DEFAULT_REPORTS_DIR = Path("daily_reports")
 DEFAULT_CHUNK_SIZE = 3500
 
 
-def find_latest_report(output_dir: Path) -> Path | None:
-    today_name = f"{datetime.date.today().isoformat()}-paper-daily.md"
-    today_path = output_dir / today_name
-    if today_path.is_file():
-        return today_path
-    reports = sorted(output_dir.glob("*-paper-daily.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+def find_latest_report(reports_dir: Path = DEFAULT_REPORTS_DIR) -> Path | None:
+    """优先取 daily_reports/ 下最新一期每日速递。"""
+    if not reports_dir.is_dir():
+        return None
+    reports = sorted(
+        reports_dir.glob("*-文献每日速递*.md"),
+        key=lambda p: p.stat().st_mtime,
+        reverse=True,
+    )
     if reports:
         return reports[0]
-    reports = sorted(output_dir.glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
-    return reports[0] if reports else None
+    # 兼容旧目录 output/
+    legacy = Path("output")
+    if legacy.is_dir():
+        old = sorted(legacy.glob("*-paper-daily.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+        if old:
+            return old[0]
+    return None
 
 
 def _get_webhook_url() -> str | None:
@@ -113,13 +121,13 @@ def main():
         "report",
         nargs="?",
         type=Path,
-        help="周报 .md 路径；省略则自动选取 output/ 下最新文件",
+        help="每日速递 .md 路径；省略则自动选取 daily_reports/ 下最新文件",
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=DEFAULT_OUTPUT_DIR,
-        help=f"自动查找目录（默认 {DEFAULT_OUTPUT_DIR}）",
+        default=DEFAULT_REPORTS_DIR,
+        help=f"自动查找目录（默认 {DEFAULT_REPORTS_DIR}）",
     )
     parser.add_argument(
         "--chunk-size",
