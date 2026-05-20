@@ -90,7 +90,6 @@ git pull origin main
 - `src/summarize.py` — AI 总结的提示词与格式  
 - `src/notify_feishu.py` — 飞书群消息文案  
 - `src/render_markdown.py` — 日报 Markdown 版式  
-- `src/published_history.py` — 跨日去重规则  
 - `.github/workflows/weekly-paper-agent.yml` — 定时、依赖、CI 步骤  
 
 ### 第四步：配置 GitHub Actions Secrets（必做）
@@ -182,10 +181,10 @@ git pull origin main
 定时 / 手动触发 (GitHub Actions)
         │
         ▼
-  python src/main.py          ← 多源抓论文、去重、DeepSeek 总结、写 daily_reports/
+  python src/main.py          ← 多源抓论文、筛选近期论文、DeepSeek 总结、写 daily_reports/
         │
         ▼
-  git commit & push           ← 把日报、周报累计、published_papers.json 推回仓库
+  git commit & push           ← 把日报、周报累计推回仓库
         │
         ▼
   python src/send_to_feishu.py ← 知识库建文档 + 群消息（标题、中文题目列表、链接）
@@ -194,10 +193,11 @@ git pull origin main
   python src/send_to_wechat_mp.py ← 上传公众号图文素材 + 群发给全部用户
 ```
 
-**去重规则（新人常问）：**
+**重复推送规则（新人常问）：**
 
-- **同一天**跑多次：可以再次推送**相同**论文，当天的 `YYYY-MM-DD-文献每日速递.md` 会被**覆盖**  
-- **隔天**：已在 `data/published_papers.json` 里记录过的 arXiv ID **不会再推**  
+- 当前不做发布历史去重，也不按标题去重；每次运行都会基于当次抓取结果生成日报。
+- 同一天多次运行会覆盖当天的 `YYYY-MM-DD-文献每日速递.md`，但飞书/公众号会按当次结果再次推送。
+- 周累计文件按运行追加，可能保留重复论文，便于完整记录每次推送结果。
 
 **群消息大致长这样：**
 
@@ -223,18 +223,15 @@ paper-weekly-agent/
 │   └── deepseek.env              # 本地真实配置（已在 .gitignore）
 ├── daily_reports/                # 每日速递 Markdown（Actions 会提交到 GitHub）
 │   └── README.md
-├── weekly_reports/               # 当周文献累计（按篇追加，跨日去重）
-├── data/
-│   └── published_papers.json     # 已推送 arXiv ID（跨日去重依据）
+├── weekly_reports/               # 当周文献累计（按运行追加）
 ├── src/
 │   ├── main.py                   # 主流程入口
-│   ├── fetch_arxiv.py            # arXiv 抓取、筛选、去重
+│   ├── fetch_arxiv.py            # arXiv 抓取、近期筛选
 │   ├── fetch_semantic_scholar.py # Semantic Scholar 抓取
 │   ├── fetch_openreview.py       # OpenReview 抓取
 │   ├── fetch_ieee_xplore.py      # IEEE Xplore 抓取（需 API Key）
 │   ├── summarize.py              # DeepSeek 中文总结 + 中文标题
 │   ├── render_markdown.py        # 生成 / 覆盖当日日报、追加周报
-│   ├── published_history.py      # 发布记录与跨日去重
 │   ├── notify_feishu.py          # 飞书 Webhook 文本消息
 │   ├── feishu_client.py          # 飞书 API 鉴权
 │   ├── feishu_wiki.py            # 知识库创建文档、写入 Markdown
@@ -256,7 +253,6 @@ paper-weekly-agent/
 | `config/keywords.yaml` | 你 / Cursor | 决定「搜什么」 |
 | `daily_reports/*.md` | Actions → GitHub | 每天一期速递正文 |
 | `weekly_reports/*-累计.md` | Actions | 本周迄今所有篇目 |
-| `data/published_papers.json` | 主流程 | 防止隔天重复推送 |
 | `.github/workflows/weekly-paper-agent.yml` | GitHub | 定时与自动化编排 |
 | `.env` / `config/deepseek.env` | 仅本地 | 本地试跑时用，**不要 push** |
 

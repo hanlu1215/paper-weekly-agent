@@ -5,15 +5,12 @@ from dotenv import load_dotenv
 
 from fetch_arxiv import fetch_arxiv_papers
 from fetch_arxiv import filter_recent_papers
-from fetch_arxiv import deduplicate_papers
 from fetch_ieee_xplore import fetch_ieee_xplore_papers
 from fetch_openreview import fetch_openreview_papers
 from fetch_semantic_scholar import fetch_semantic_scholar_papers
 from summarize import summarize_paper
 from render_markdown import render_markdown_report
 from notify_feishu import notify_feishu
-from published_history import filter_unpublished
-from published_history import mark_as_published
 
 
 DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 5
@@ -67,17 +64,9 @@ def main():
 
     print(f"\n多源原始抓取论文总数：{len(papers)}", flush=True)
 
-    print("\n正在按标题去重...", flush=True)
-    papers = deduplicate_papers(papers)
-    print(f"去重后论文数量：{len(papers)}", flush=True)
-
     print(f"\n正在筛选最近 {recent_days} 天论文...", flush=True)
     recent_papers = filter_recent_papers(papers, days=recent_days)
     print(f"最近 {recent_days} 天相关论文数量：{len(recent_papers)}", flush=True)
-
-    print("\n正在排除往日已发布文献（同日可重复）...", flush=True)
-    recent_papers, skipped_duplicates = filter_unpublished(recent_papers)
-    print(f"排除往日已发布后剩余：{len(recent_papers)} 篇（跳过 {skipped_duplicates} 篇）", flush=True)
 
     recent_papers = recent_papers[:max_papers_to_summarize]
     print(f"本次最多总结论文数量：{len(recent_papers)}", flush=True)
@@ -100,13 +89,8 @@ def main():
     print("\n正在生成 Markdown 报告...", flush=True)
     report_path = render_markdown_report(
         papers_with_summaries,
-        skipped_duplicates=skipped_duplicates,
     )
     print(f"Markdown 日报已生成：{report_path}", flush=True)
-
-    if papers_with_summaries:
-        mark_as_published([item["paper"] for item in papers_with_summaries])
-        print(f"已记录 {len(papers_with_summaries)} 篇到发布历史（data/published_papers.json）。", flush=True)
 
     report_text = report_path.read_text(encoding="utf-8")
 

@@ -15,4 +15,3 @@ while IFS= read -r -d '' f; do
 done < <(git ls-files -z 'daily_reports/*.md' 'weekly_reports/*.md' 2>/dev/null || true)
 
 echo "已清理本地报告 Markdown（GitHub 远端未改动）。"
-echo "去重 registry：data/published_papers.json（可与远端同步：git checkout origin/main -- data/published_papers.json）"

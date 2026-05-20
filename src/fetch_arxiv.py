@@ -1,6 +1,5 @@
 import datetime
 import os
-import re
 import time
 import urllib.parse
 
@@ -14,7 +13,6 @@ DEFAULT_COOLDOWN_AFTER_FAIL = 12
 DEFAULT_TOTAL_FETCH_SECONDS = 240
 # 关键词较多时，合并 OR 查询易超时且易触发 429，直接逐个查更稳
 BULK_QUERY_MAX_KEYWORDS = 4
-_WHITESPACE_RE = re.compile(r"\s+")
 
 
 def _env_int(name: str, default: int) -> int:
@@ -223,9 +221,9 @@ def fetch_arxiv_papers(keywords, max_results=50):
 def _parse_published_time(published: str):
     """解析 arXiv 发布时间（兼容 Z 后缀与 +00:00 等 ISO 格式）。"""
     text = published.strip()
-    if re.fullmatch(r"\d{4}", text):
+    if len(text) == 4 and text.isdigit():
         text = f"{text}-01-01"
-    elif re.fullmatch(r"\d{4}-\d{2}", text):
+    elif len(text) == 7 and text[:4].isdigit() and text[4] == "-" and text[5:].isdigit():
         text = f"{text}-01"
     if text.endswith("Z"):
         text = text[:-1] + "+00:00"
@@ -262,34 +260,3 @@ def filter_recent_papers(papers, days=7):
 
     return recent
 
-
-def deduplicate_papers(papers):
-    seen = set()
-    unique_papers = []
-
-    for paper in papers:
-        keys = _dedup_keys(paper)
-        if keys.isdisjoint(seen):
-            seen.update(keys)
-            unique_papers.append(paper)
-
-    return unique_papers
-
-
-def _normalize_title(title: str) -> str:
-    return _WHITESPACE_RE.sub(" ", title).strip().lower()
-
-
-def _dedup_keys(paper: dict) -> set[str]:
-    keys = set()
-    title = _normalize_title(paper.get("title", ""))
-    if title:
-        keys.add(f"title:{title}")
-    doi = str(paper.get("doi") or "").strip().lower()
-    if doi:
-        keys.add(f"doi:{doi}")
-    arxiv_id = str(paper.get("external_id") or "").strip().lower()
-    if (paper.get("source") or "").lower() == "arxiv" and arxiv_id:
-        normalized_arxiv_id = re.sub(r"v\d+$", "", arxiv_id)
-        keys.add(f"arxiv:{normalized_arxiv_id}")
-    return keys

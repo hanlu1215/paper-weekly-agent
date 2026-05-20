@@ -15,7 +15,3 @@ daily_reports/*-文献每日速递*.md
 weekly_reports/*.md
 !daily_reports/README.md
 
-# 已发布文献 registry 需要提交，供每日去重
-data/*
-!data/
-!data/published_papers.json
