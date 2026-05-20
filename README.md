@@ -133,6 +133,8 @@ git pull origin main
 | `WECHAT_CLOUD_DIGEST` | 公众号文章摘要；不填则自动取前 3 篇标题 | 自动生成 |
 | `WECHAT_CLOUD_CONTENT_SOURCE_URL` | 公众号“阅读原文”链接 | 自动指向 GitHub 日报 |
 | `WECHAT_CLOUD_COVER_IMAGE` | 公众号封面图路径 | `02.png` |
+| `WECHAT_CLOUD_THUMB_MEDIA_ID` | 已上传的封面 `media_id`；配置后不再在请求里传大图 | 空（自动压缩封面后上传） |
+| `WECHAT_CLOUD_HTTP_TIMEOUT` | 调用云托管 HTTP 读超时（秒） | `180` |
 
 配好后：
 

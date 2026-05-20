@@ -10,6 +10,7 @@ import requests
 from dotenv import load_dotenv
 
 from markdown_to_wechat import extract_digest, extract_title, markdown_to_wechat_html
+from wechat_cover import compress_cover_image
 
 DEFAULT_REPORTS_DIR = Path("daily_reports")
 DEFAULT_COVER_IMAGE = Path("02.png")
@@ -43,20 +44,33 @@ def build_payload(report_path: Path) -> dict:
     title = os.getenv("WECHAT_CLOUD_TITLE", "").strip() or extract_title(markdown, report_path.stem)
     digest = os.getenv("WECHAT_CLOUD_DIGEST", "").strip() or extract_digest(markdown)
     author = os.getenv("WECHAT_CLOUD_AUTHOR", "").strip() or "Paper Weekly Agent"
-    cover_path = Path(os.getenv("WECHAT_CLOUD_COVER_IMAGE", "").strip() or DEFAULT_COVER_IMAGE)
-    if not cover_path.is_file():
-        raise FileNotFoundError(f"公众号封面图不存在：{cover_path}")
 
-    return {
+    payload: dict = {
         "title": title[:64],
         "digest": digest[:120],
         "author": author[:64],
         "content": markdown_to_wechat_html(markdown),
         "content_source_url": github_report_url(report_path),
-        "cover_filename": cover_path.name,
-        "cover_content_type": _content_type(cover_path),
-        "cover_image_base64": base64.b64encode(cover_path.read_bytes()).decode("ascii"),
     }
+
+    thumb_media_id = os.getenv("WECHAT_CLOUD_THUMB_MEDIA_ID", "").strip()
+    if thumb_media_id:
+        payload["thumb_media_id"] = thumb_media_id
+        return payload
+
+    cover_path = Path(os.getenv("WECHAT_CLOUD_COVER_IMAGE", "").strip() or DEFAULT_COVER_IMAGE)
+    if not cover_path.is_file():
+        raise FileNotFoundError(f"公众号封面图不存在：{cover_path}")
+
+    cover_bytes, cover_name, cover_type = compress_cover_image(cover_path)
+    payload.update(
+        {
+            "cover_filename": cover_name,
+            "cover_content_type": cover_type,
+            "cover_image_base64": base64.b64encode(cover_bytes).decode("ascii"),
+        }
+    )
+    return payload
 
 
 def publish_to_wechat_cloud(report_path: Path) -> None:
@@ -68,12 +82,19 @@ def publish_to_wechat_cloud(report_path: Path) -> None:
 
     payload = build_payload(report_path)
     payload["token"] = token
-    print(f"正在发送公众号文章到微信云托管：{payload['title']}", flush=True)
+    cover_kb = len(payload.get("cover_image_base64", "")) // 1024
+    content_kb = len(payload.get("content", "")) // 1024
+    print(
+        f"正在发送公众号文章到微信云托管：{payload['title']}"
+        f"（正文约 {content_kb}KB，封面约 {cover_kb}KB）",
+        flush=True,
+    )
+    timeout = float(os.getenv("WECHAT_CLOUD_HTTP_TIMEOUT", "180"))
     response = requests.post(
         url,
         json=payload,
         headers={"Authorization": f"Bearer {token}"},
-        timeout=90,
+        timeout=(30, timeout),
     )
     try:
         data = response.json()

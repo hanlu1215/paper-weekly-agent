@@ -49,12 +49,16 @@ def _verify_token(request, payload: dict[str, Any]) -> None:
 
 
 def _article_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
-    required = ("title", "content", "cover_image_base64")
+    required = ("title", "content")
     missing = [key for key in required if not str(payload.get(key) or "").strip()]
     if missing:
         raise PublishError(f"missing_fields: {', '.join(missing)}")
 
-    thumb_media_id = _upload_cover(payload)
+    thumb_media_id = str(payload.get("thumb_media_id") or "").strip()
+    if not thumb_media_id:
+        if not str(payload.get("cover_image_base64") or "").strip():
+            raise PublishError("missing_fields: thumb_media_id or cover_image_base64")
+        thumb_media_id = _upload_cover(payload)
     return {
         "thumb_media_id": thumb_media_id,
         "author": str(payload.get("author") or "Paper Weekly Agent")[:64],

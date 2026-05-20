@@ -23,6 +23,8 @@ sys.path.insert(0, str(ROOT / "src"))
 load_dotenv(ROOT / ".env")
 load_dotenv(ROOT / "config" / "deepseek.env", override=True)
 
+import requests
+
 from send_to_wechat_cloud import publish_to_wechat_cloud  # noqa: E402
 
 DEFAULT_REPORT = ROOT / "daily_reports" / "2026-05-20-文献每日速递.md"
@@ -51,7 +53,7 @@ def main() -> int:
         publish_to_wechat_cloud(report_path)
         print("测试完成。")
         return 0
-    except (FileNotFoundError, RuntimeError) as exc:
+    except (FileNotFoundError, RuntimeError, requests.RequestException) as exc:
         print(f"发布失败：{exc}", file=sys.stderr)
         return 1
 
