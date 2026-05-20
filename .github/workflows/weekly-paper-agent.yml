@@ -11,48 +11,19 @@ permissions:
 
 jobs:
   run-paper-agent:
-    runs-on: [self-hosted, Linux, X64]
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Configure Git network
-        run: |
-          git config --global http.version HTTP/1.1
-          git config --global http.lowSpeedLimit 0
-          git config --global http.lowSpeedTime 999999
-
       - name: Checkout repository
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          checkout_with_retry() {
-            local attempt=1
-            local delay=10
-            while true; do
-              if timeout 120s git -c http.version=HTTP/1.1 fetch --progress --depth=1 --no-tags origin "+${GITHUB_REF}:refs/remotes/origin/${GITHUB_REF_NAME}"; then
-                return 0
-              fi
-              if [ "$attempt" -ge 5 ]; then
-                echo "git fetch failed after $attempt attempts."
-                return 1
-              fi
-              echo "git fetch failed; retrying in ${delay}s (attempt $attempt/5)..."
-              sleep "$delay"
-              attempt=$((attempt + 1))
-              delay=$((delay * 2))
-            done
-          }
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
 
-          mkdir -p "$GITHUB_WORKSPACE"
-          cd "$GITHUB_WORKSPACE"
-          shopt -s dotglob nullglob
-          rm -rf -- *
-          shopt -u dotglob nullglob
-          git init
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          checkout_with_retry
-          git checkout --force -B "$GITHUB_REF_NAME" "refs/remotes/origin/$GITHUB_REF_NAME"
-          git branch --set-upstream-to="origin/$GITHUB_REF_NAME" "$GITHUB_REF_NAME" || true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
@@ -157,13 +128,12 @@ jobs:
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPO_BRANCH: ${{ github.ref_name }}
-          WECHAT_MP_APP_ID: ${{ secrets.WECHAT_MP_APP_ID }}
-          WECHAT_MP_APP_SECRET: ${{ secrets.WECHAT_MP_APP_SECRET }}
-          WECHAT_MP_THUMB_MEDIA_ID: ${{ secrets.WECHAT_MP_THUMB_MEDIA_ID }}
-          WECHAT_MP_COVER_IMAGE: ${{ vars.WECHAT_MP_COVER_IMAGE }}
-          WECHAT_MP_AUTHOR: ${{ vars.WECHAT_MP_AUTHOR }}
-          WECHAT_MP_DIGEST: ${{ vars.WECHAT_MP_DIGEST }}
-          WECHAT_MP_CONTENT_SOURCE_URL: ${{ vars.WECHAT_MP_CONTENT_SOURCE_URL }}
+          WECHAT_CLOUD_PUBLISH_URL: ${{ secrets.WECHAT_CLOUD_PUBLISH_URL }}
+          WECHAT_CLOUD_PUBLISH_TOKEN: ${{ secrets.WECHAT_CLOUD_PUBLISH_TOKEN }}
+          WECHAT_CLOUD_COVER_IMAGE: ${{ vars.WECHAT_CLOUD_COVER_IMAGE }}
+          WECHAT_CLOUD_AUTHOR: ${{ vars.WECHAT_CLOUD_AUTHOR }}
+          WECHAT_CLOUD_DIGEST: ${{ vars.WECHAT_CLOUD_DIGEST }}
+          WECHAT_CLOUD_CONTENT_SOURCE_URL: ${{ vars.WECHAT_CLOUD_CONTENT_SOURCE_URL }}
         run: |
           LATEST=$(ls -t daily_reports/*-文献每日速递*.md 2>/dev/null | head -1 || true)
           if [ -z "$LATEST" ]; then
@@ -174,5 +144,4 @@ jobs:
             echo "今日无新增文献，跳过公众号群发。"
             exit 0
           fi
-          echo "GitHub Actions public IP: $(curl -fsS https://api.ipify.org || true)"
-          python3 src/send_to_wechat_mp.py "$LATEST"
+          python3 src/send_to_wechat_cloud.py "$LATEST"
