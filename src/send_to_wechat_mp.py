@@ -123,6 +123,14 @@ def main() -> int:
         send_report_to_wechat(report_path)
         return 0
     except (FileNotFoundError, WeChatMPError) as exc:
+        if isinstance(exc, WeChatMPError) and exc.is_ip_whitelist_error:
+            print(f"微信公众号群发被微信 IP 白名单拦截：{exc}", file=sys.stderr)
+            print(
+                "请到 微信公众平台 → 设置与开发 → 基本配置 → IP白名单 添加日志中显示的 GitHub Actions 公网 IP，"
+                "或改用固定 IP 的 self-hosted runner / 中转服务。已跳过公众号群发，避免影响日报与飞书流程。",
+                file=sys.stderr,
+            )
+            return 0
         print(f"微信公众号群发失败：{exc}", file=sys.stderr)
         return 1
 

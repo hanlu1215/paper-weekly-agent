@@ -170,7 +170,7 @@ git pull origin main
 
 注意：
 
-- 公众号接口通常要求配置 **IP 白名单**；GitHub Actions 出口 IP 不固定，若微信返回 `invalid ip`，需要改用固定 IP 的 self-hosted runner 或中转服务。
+- 公众号接口通常要求配置 **IP 白名单**；GitHub Actions 出口 IP 不固定。workflow 会在公众号步骤打印当前公网 IP，若微信返回 `invalid ip` / `40164`，可先把该 IP 加入白名单临时验证；长期稳定群发建议改用固定 IP 的 self-hosted runner 或中转服务。
 - 当前实现会直接调用微信“群发给全部用户”接口；请先确认公众号类型、认证状态和当日群发配额满足要求。
 - `WECHAT_MP_APP_ID` / `WECHAT_MP_APP_SECRET` 未配齐时，程序会自动跳过公众号群发，不影响 GitHub 存档和飞书推送。
 

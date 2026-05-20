@@ -10,7 +10,13 @@ WECHAT_API_BASE = "https://api.weixin.qq.com"
 
 
 class WeChatMPError(RuntimeError):
-    pass
+    def __init__(self, message: str, *, errcode: int | None = None):
+        super().__init__(message)
+        self.errcode = errcode
+
+    @property
+    def is_ip_whitelist_error(self) -> bool:
+        return self.errcode == 40164 or "invalid ip" in str(self).lower()
 
 
 def _env_str(name: str, default: str = "") -> str:
@@ -45,7 +51,8 @@ def get_access_token() -> str:
     payload = _json_or_error(response)
     if payload.get("errcode"):
         raise WeChatMPError(
-            f"获取微信 access_token 失败：errcode={payload.get('errcode')} errmsg={payload.get('errmsg', '')}"
+            f"获取微信 access_token 失败：errcode={payload.get('errcode')} errmsg={payload.get('errmsg', '')}",
+            errcode=payload.get("errcode"),
         )
     token = payload.get("access_token")
     if not token:
@@ -81,7 +88,8 @@ def upload_image_material(access_token: str, image_path: Path) -> str:
     errcode = payload.get("errcode", 0)
     if errcode not in (0, None):
         raise WeChatMPError(
-            f"上传微信封面图失败：errcode={errcode} errmsg={payload.get('errmsg', '')}"
+            f"上传微信封面图失败：errcode={errcode} errmsg={payload.get('errmsg', '')}",
+            errcode=errcode,
         )
     media_id = payload.get("media_id")
     if not media_id:
@@ -113,7 +121,8 @@ def _wechat_post(path: str, *, access_token: str, json_body: dict[str, Any]) -> 
     errcode = payload.get("errcode", 0)
     if errcode not in (0, None):
         raise WeChatMPError(
-            f"微信接口失败 {path}：errcode={errcode} errmsg={payload.get('errmsg', '')}"
+            f"微信接口失败 {path}：errcode={errcode} errmsg={payload.get('errmsg', '')}",
+            errcode=errcode,
         )
     return payload
 
@@ -127,6 +136,7 @@ def _json_or_error(response: requests.Response) -> dict[str, Any]:
     if response.status_code >= 400:
         raise WeChatMPError(
             f"微信接口 HTTP {response.status_code}：errcode={payload.get('errcode')} "
-            f"errmsg={payload.get('errmsg', response.text[:200])}"
+            f"errmsg={payload.get('errmsg', response.text[:200])}",
+            errcode=payload.get("errcode"),
         )
     return payload

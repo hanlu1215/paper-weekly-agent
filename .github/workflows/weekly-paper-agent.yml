@@ -126,4 +126,5 @@ jobs:
             echo "今日无新增文献，跳过公众号群发。"
             exit 0
           fi
+          echo "GitHub Actions public IP: $(curl -fsS https://api.ipify.org || true)"
           python src/send_to_wechat_mp.py "$LATEST"
