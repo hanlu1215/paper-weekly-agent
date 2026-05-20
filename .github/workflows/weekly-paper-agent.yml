@@ -19,15 +19,10 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements.txt
 
       - name: Run paper agent
         env:
@@ -44,7 +39,7 @@ jobs:
           OPENREVIEW_TOTAL_TIMEOUT_SECONDS: "120"
           IEEE_XPLORE_TOTAL_TIMEOUT_SECONDS: "120"
           DEEPSEEK_TIMEOUT: "60"
-        run: python -u src/main.py
+        run: python3 -u src/main.py
 
       - name: Commit and push weekly report
         run: |
@@ -78,7 +73,7 @@ jobs:
           fi
           [ -z "$FEISHU_WEBHOOK_URL" ] && echo "::error::缺少 Secret: FEISHU_WEBHOOK_URL" && missing=1
           if [ "$missing" -ne 0 ]; then exit 1; fi
-          python scripts/verify_feishu_wiki.py
+          python3 scripts/verify_feishu_wiki.py
 
       - name: Send report to Feishu
         if: success()
@@ -102,7 +97,7 @@ jobs:
             echo "今日无新增文献，跳过飞书推送。"
             exit 0
           fi
-          python src/send_to_feishu.py "$LATEST"
+          python3 src/send_to_feishu.py "$LATEST"
 
       - name: Send report to WeChat Official Account
         if: success()
@@ -127,4 +122,4 @@ jobs:
             exit 0
           fi
           echo "GitHub Actions public IP: $(curl -fsS https://api.ipify.org || true)"
-          python src/send_to_wechat_mp.py "$LATEST"
+          python3 src/send_to_wechat_mp.py "$LATEST"
