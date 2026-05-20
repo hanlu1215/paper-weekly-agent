@@ -61,11 +61,11 @@ def _article_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
         thumb_media_id = _upload_cover(payload)
     return {
         "thumb_media_id": thumb_media_id,
-        "author": str(payload.get("author") or "Paper Weekly Agent")[:64],
-        "title": str(payload["title"])[:64],
-        "content_source_url": str(payload.get("content_source_url") or ""),
+        "author": str(payload.get("author") or "Paper Weekly")[:16],
+        "title": str(payload["title"])[:32],
+        "content_source_url": str(payload.get("content_source_url") or "")[:1024],
         "content": str(payload["content"]),
-        "digest": str(payload.get("digest") or "")[:120],
+        "digest": str(payload.get("digest") or ""),
         "show_cover_pic": 0,
         "need_open_comment": 0,
         "only_fans_can_comment": 0,

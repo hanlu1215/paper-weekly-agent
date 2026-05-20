@@ -11,6 +11,14 @@ from dotenv import load_dotenv
 
 from markdown_to_wechat import extract_digest, extract_title, markdown_to_wechat_html
 from wechat_cover import compress_cover_image
+from wechat_limits import (
+    WECHAT_AUTHOR_MAX_CHARS,
+    WECHAT_CONTENT_SOURCE_URL_MAX_BYTES,
+    WECHAT_DIGEST_MAX_BYTES,
+    WECHAT_TITLE_MAX_CHARS,
+    truncate_chars,
+    truncate_utf8_bytes,
+)
 
 DEFAULT_REPORTS_DIR = Path("daily_reports")
 DEFAULT_COVER_IMAGE = Path("02.png")
@@ -43,14 +51,18 @@ def build_payload(report_path: Path) -> dict:
     markdown = report_path.read_text(encoding="utf-8")
     title = os.getenv("WECHAT_CLOUD_TITLE", "").strip() or extract_title(markdown, report_path.stem)
     digest = os.getenv("WECHAT_CLOUD_DIGEST", "").strip() or extract_digest(markdown)
-    author = os.getenv("WECHAT_CLOUD_AUTHOR", "").strip() or "Paper Weekly Agent"
+    author = os.getenv("WECHAT_CLOUD_AUTHOR", "").strip() or "Paper Weekly"
 
+    source_url = truncate_utf8_bytes(
+        github_report_url(report_path),
+        WECHAT_CONTENT_SOURCE_URL_MAX_BYTES,
+    )
     payload: dict = {
-        "title": title[:64],
-        "digest": digest[:120],
-        "author": author[:64],
+        "title": truncate_chars(title, WECHAT_TITLE_MAX_CHARS),
+        "digest": truncate_utf8_bytes(digest, WECHAT_DIGEST_MAX_BYTES),
+        "author": truncate_chars(author, WECHAT_AUTHOR_MAX_CHARS),
         "content": markdown_to_wechat_html(markdown),
-        "content_source_url": github_report_url(report_path),
+        "content_source_url": source_url,
     }
 
     thumb_media_id = os.getenv("WECHAT_CLOUD_THUMB_MEDIA_ID", "").strip()

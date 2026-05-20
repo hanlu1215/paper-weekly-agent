@@ -83,15 +83,15 @@ def extract_title(markdown: str, fallback: str) -> str:
     for line in markdown.splitlines():
         stripped = line.strip()
         if stripped.startswith("# "):
-            return _plain(stripped[2:])[:64]
-    return fallback[:64]
+            return _plain(stripped[2:])[:32]
+    return fallback[:32]
 
 
 def extract_digest(markdown: str, fallback: str = "今日文献每日速递") -> str:
     titles = re.findall(r"^## \d+\.\s+(.+?)\s*$", markdown, re.MULTILINE)
     if titles:
-        digest = "；".join(_plain(title) for title in titles[:3])
-        return digest[:120]
+        digest = "；".join(_plain(title) for title in titles[:2])
+        return digest
     for line in markdown.splitlines():
         stripped = _plain(line.strip())
         if stripped and not stripped.startswith("#") and stripped != "---":

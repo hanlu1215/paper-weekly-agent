@@ -58,7 +58,7 @@ def build_article(report_path: Path, thumb_media_id: str) -> dict:
     markdown = report_path.read_text(encoding="utf-8")
     title = os.getenv("WECHAT_MP_TITLE", "").strip() or extract_title(markdown, report_path.stem)
     digest = os.getenv("WECHAT_MP_DIGEST", "").strip() or extract_digest(markdown)
-    author = os.getenv("WECHAT_MP_AUTHOR", "").strip() or "Paper Weekly Agent"
+    author = os.getenv("WECHAT_MP_AUTHOR", "").strip() or "Paper Weekly"
 
     return {
         "thumb_media_id": thumb_media_id,
