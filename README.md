@@ -26,11 +26,11 @@ git pull origin main
 
 ## 这个仓库是做什么的？
 
-一句话：**每天自动从 arXiv 找论文 → 用 AI 写成中文速递 → 存进你的 GitHub → 推送到飞书群和知识库。**
+一句话：**每天自动从 arXiv / Semantic Scholar / OpenReview / IEEE Xplore 找论文 → 用 AI 写成中文速递 → 存进你的 GitHub → 推送到飞书群和知识库。**
 
 更具体一点，每天（默认北京时间 **09:00**）会发生这些事：
 
-1. 按你设定的**关键词**在 arXiv 检索相关论文  
+1. 按你设定的**关键词**在 arXiv、Semantic Scholar、OpenReview、IEEE Xplore 检索相关论文  
 2. 筛掉太久远的、以及**往日已经推过**的（同一天可以重复推，隔天不重复）  
 3. 用 **DeepSeek** 为每篇生成中文总结（含中文标题）  
 4. 写成 Markdown，保存到仓库的 `daily_reports/`（同一天多次运行会**覆盖**当日那一个文件，不会堆出一堆 `-02.md`）  
@@ -42,7 +42,7 @@ git pull origin main
 - **飞书里的可读版本**（适合手机点开）  
 - **群里的提醒**（不用自己每天刷 arXiv）  
 
-默认关注方向包括：具身智能、机器人操作、VLA、扩散策略、世界模型、端到端自动驾驶等（见 `config/keywords.yaml`），你完全可以改成自己的研究方向。
+默认关注方向包括：灵巧手、机械臂控制、VLA、LLM for robotics、强化学习、世界模型、视觉触觉感知等（见 `config/keywords.yaml`），你完全可以改成自己的研究方向。
 
 ---
 
@@ -99,13 +99,15 @@ git pull origin main
 
 | Secret 名称 | 是否建议填 | 作用 |
 |-------------|-----------|------|
-| `DEEPSEEK_API_KEY` | 强烈建议 | 生成中文总结；不填则退回 arXiv 英文摘要 |
+| `DEEPSEEK_API_KEY` | 强烈建议 | 生成中文总结；不填则退回论文原始摘要 |
 | `FEISHU_WEBHOOK_URL` | 强烈建议 | 群机器人 Webhook，用来发链接通知 |
 | `FEISHU_APP_ID` | 知识库模式需要 | 飞书企业自建应用 |
 | `FEISHU_APP_SECRET` | 知识库模式需要 | 同上 |
 | `FEISHU_WIKI_SPACE_ID` | 知识库模式需要 | 目标知识库 space_id（纯数字） |
 | `FEISHU_WIKI_BASE_URL` | 建议 | 租户域名，如 `https://my.feishu.cn` |
 | `FEISHU_WIKI_PARENT_NODE_TOKEN` | 可选 | 文档建在哪个目录下 |
+| `SEMANTIC_SCHOLAR_API_KEY` | 可选 | 提高 Semantic Scholar API 限额；不填也会尝试公开接口 |
+| `IEEE_XPLORE_API_KEY` | IEEE 检索需要 | 启用 IEEE Xplore 检索；不填则自动跳过 IEEE |
 
 可选 Secret（不填则用默认值）：
 
@@ -120,6 +122,10 @@ git pull origin main
 |----------|------|------|
 | `MAX_PAPERS_TO_SUMMARIZE` | 每天最多总结几篇 | `5` |
 | `RECENT_DAYS` | 只考虑近 N 天内的论文 | `7` |
+| `MAX_RESULTS_PER_SOURCE` | 每个来源最多抓取多少候选论文 | `30` |
+| `ENABLE_SEMANTIC_SCHOLAR` | 是否启用 Semantic Scholar | `true` |
+| `ENABLE_OPENREVIEW` | 是否启用 OpenReview | `true` |
+| `ENABLE_IEEE_XPLORE` | 是否启用 IEEE Xplore（仍需 API Key） | `true` |
 
 配好后：
 
@@ -149,7 +155,7 @@ git pull origin main
 定时 / 手动触发 (GitHub Actions)
         │
         ▼
-  python src/main.py          ← 抓 arXiv、去重、DeepSeek 总结、写 daily_reports/
+  python src/main.py          ← 多源抓论文、去重、DeepSeek 总结、写 daily_reports/
         │
         ▼
   git commit & push           ← 把日报、周报累计、published_papers.json 推回仓库
@@ -193,6 +199,9 @@ paper-weekly-agent/
 ├── src/
 │   ├── main.py                   # 主流程入口
 │   ├── fetch_arxiv.py            # arXiv 抓取、筛选、去重
+│   ├── fetch_semantic_scholar.py # Semantic Scholar 抓取
+│   ├── fetch_openreview.py       # OpenReview 抓取
+│   ├── fetch_ieee_xplore.py      # IEEE Xplore 抓取（需 API Key）
 │   ├── summarize.py              # DeepSeek 中文总结 + 中文标题
 │   ├── render_markdown.py        # 生成 / 覆盖当日日报、追加周报
 │   ├── published_history.py      # 发布记录与跨日去重

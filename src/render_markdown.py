@@ -2,7 +2,7 @@ import datetime
 import re
 from pathlib import Path
 
-from published_history import extract_arxiv_id
+from published_history import extract_paper_key
 
 DAILY_REPORTS_DIR = Path("daily_reports")
 WEEKLY_REPORTS_DIR = Path("weekly_reports")
@@ -10,6 +10,7 @@ _ARXIV_IN_MD_RE = re.compile(
     r"https://arxiv\.org/abs/(\d{4}\.\d{4,5})(?:v\d+)?",
     re.I,
 )
+_LINK_IN_MD_RE = re.compile(r"^- 论文链接：(.+?)\s*$", re.MULTILINE)
 
 
 def _render_paper_section(
@@ -20,11 +21,17 @@ def _render_paper_section(
 ) -> list[str]:
     lines = []
     display_title = (title_zh or paper["title"]).strip()
+    source = paper.get("source") or "未知来源"
+    paper_url = paper.get("url") or paper.get("arxiv_url") or ""
+    pdf_url = paper.get("pdf_url") or ""
     lines.append(f"\n## {idx}. {display_title}\n")
     lines.append(f"- 作者：{', '.join(paper['authors'])}\n")
+    lines.append(f"- 来源：{source}\n")
     lines.append(f"- 发布时间：{paper['published']}\n")
-    lines.append(f"- arXiv 链接：{paper['arxiv_url']}\n")
-    lines.append(f"- PDF 链接：{paper['pdf_url']}\n")
+    if paper_url:
+        lines.append(f"- 论文链接：{paper_url}\n")
+    if pdf_url:
+        lines.append(f"- PDF 链接：{pdf_url}\n")
     if paper.get("categories"):
         lines.append(f"- 分类：{', '.join(paper['categories'])}\n")
     lines.append("\n")
@@ -53,6 +60,10 @@ def _remove_legacy_same_day_suffix_files(date_str: str) -> None:
 
 def _arxiv_ids_in_markdown(text: str) -> set[str]:
     return set(_ARXIV_IN_MD_RE.findall(text))
+
+
+def _links_in_markdown(text: str) -> set[str]:
+    return {match.strip() for match in _LINK_IN_MD_RE.findall(text)}
 
 
 def _weekly_report_path(today: datetime.date | None = None) -> Path:
@@ -113,9 +124,11 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
     output_path = _weekly_report_path(today)
 
     existing_ids: set[str] = set()
+    existing_links: set[str] = set()
     if output_path.exists():
         existing = output_path.read_text(encoding="utf-8")
         existing_ids = _arxiv_ids_in_markdown(existing)
+        existing_links = _links_in_markdown(existing)
         next_idx = existing.count("\n## ") + 1
         lines = [existing.rstrip(), "", f"\n> 追加日期：{today}\n"]
     else:
@@ -129,17 +142,22 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
 
     added = 0
     for item in papers_with_summaries:
-        arxiv_id = extract_arxiv_id(item["paper"])
-        if arxiv_id and arxiv_id in existing_ids:
+        paper = item["paper"]
+        paper_key = extract_paper_key(paper)
+        paper_url = paper.get("url") or paper.get("arxiv_url") or ""
+        legacy_arxiv_id = paper_key.removeprefix("arxiv:") if paper_key.startswith("arxiv:") else ""
+        if (legacy_arxiv_id and legacy_arxiv_id in existing_ids) or (paper_url and paper_url in existing_links):
             continue
         lines.extend(
             _render_paper_section(
                 next_idx,
-                item["paper"],
+                paper,
                 item["summary"],
                 item.get("title_zh", ""),
             )
         )
+        if paper_url:
+            existing_links.add(paper_url)
         next_idx += 1
         added += 1
 

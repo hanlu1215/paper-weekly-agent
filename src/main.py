@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 from fetch_arxiv import fetch_arxiv_papers
 from fetch_arxiv import filter_recent_papers
 from fetch_arxiv import deduplicate_papers
+from fetch_ieee_xplore import fetch_ieee_xplore_papers
+from fetch_openreview import fetch_openreview_papers
+from fetch_semantic_scholar import fetch_semantic_scholar_papers
 from summarize import summarize_paper
 from render_markdown import render_markdown_report
 from notify_feishu import notify_feishu
@@ -15,6 +18,7 @@ from published_history import mark_as_published
 
 DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 5
 DEFAULT_RECENT_DAYS = 7
+DEFAULT_MAX_RESULTS_PER_SOURCE = 30
 
 
 def _env_int(name: str, default: int) -> int:
@@ -36,6 +40,7 @@ def main():
     load_dotenv("config/deepseek.env", override=True)
     max_papers_to_summarize = _env_int("MAX_PAPERS_TO_SUMMARIZE", DEFAULT_MAX_PAPERS_TO_SUMMARIZE)
     recent_days = _env_int("RECENT_DAYS", DEFAULT_RECENT_DAYS)
+    max_results_per_source = _env_int("MAX_RESULTS_PER_SOURCE", DEFAULT_MAX_RESULTS_PER_SOURCE)
 
     print("=" * 60, flush=True)
     print("Paper Weekly Agent 启动", flush=True)
@@ -47,9 +52,20 @@ def main():
     for kw in keywords:
         print(f"  - {kw}", flush=True)
 
-    print("\n正在抓取 arXiv 论文...", flush=True)
-    papers = fetch_arxiv_papers(keywords, max_results=50)
-    print(f"原始抓取论文数量：{len(papers)}", flush=True)
+    papers = []
+    source_fetchers = [
+        ("arXiv", fetch_arxiv_papers),
+        ("Semantic Scholar", fetch_semantic_scholar_papers),
+        ("OpenReview", fetch_openreview_papers),
+        ("IEEE Xplore", fetch_ieee_xplore_papers),
+    ]
+    for source_name, fetcher in source_fetchers:
+        print(f"\n正在抓取 {source_name} 论文...", flush=True)
+        source_papers = fetcher(keywords, max_results=max_results_per_source)
+        print(f"{source_name} 原始抓取论文数量：{len(source_papers)}", flush=True)
+        papers.extend(source_papers)
+
+    print(f"\n多源原始抓取论文总数：{len(papers)}", flush=True)
 
     print("\n正在按标题去重...", flush=True)
     papers = deduplicate_papers(papers)

@@ -32,11 +32,17 @@ jobs:
       - name: Run paper agent
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          IEEE_XPLORE_API_KEY: ${{ secrets.IEEE_XPLORE_API_KEY }}
           SKIP_FEISHU_NOTIFY: "true"
           PYTHONUNBUFFERED: "1"
+          MAX_RESULTS_PER_SOURCE: "30"
           ARXIV_REQUEST_TIMEOUT: "20"
           ARXIV_MAX_RETRIES: "2"
           ARXIV_TOTAL_TIMEOUT_SECONDS: "180"
+          SEMANTIC_SCHOLAR_TOTAL_TIMEOUT_SECONDS: "120"
+          OPENREVIEW_TOTAL_TIMEOUT_SECONDS: "120"
+          IEEE_XPLORE_TOTAL_TIMEOUT_SECONDS: "120"
           DEEPSEEK_TIMEOUT: "60"
         run: python -u src/main.py
 

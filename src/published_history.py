@@ -1,5 +1,6 @@
-"""记录已发布文献：同日多次运行可重复推送，跨日不重复推送同一篇 arXiv 论文。"""
+"""记录已发布文献：同日多次运行可重复推送，跨日不重复推送同一篇论文。"""
 
+import hashlib
 import json
 import re
 from datetime import date
@@ -14,9 +15,36 @@ ARXIV_URL_IN_MD_RE = re.compile(
 
 
 def extract_arxiv_id(paper: dict) -> str | None:
-    url = paper.get("arxiv_url") or ""
+    url = paper.get("arxiv_url") or paper.get("url") or ""
     match = ARXIV_ID_RE.search(url)
     return match.group(1) if match else None
+
+
+def _normalize_arxiv_id(arxiv_id: str) -> str:
+    return re.sub(r"v\d+$", "", arxiv_id.strip(), flags=re.I)
+
+
+def _title_fingerprint(title: str) -> str:
+    normalized = re.sub(r"\s+", " ", title).strip().lower()
+    digest = hashlib.sha1(normalized.encode("utf-8")).hexdigest()[:16]
+    return f"title:{digest}"
+
+
+def extract_paper_key(paper: dict) -> str:
+    arxiv_id = extract_arxiv_id(paper)
+    if arxiv_id:
+        return f"arxiv:{_normalize_arxiv_id(arxiv_id)}"
+
+    doi = str(paper.get("doi") or "").strip().lower()
+    if doi:
+        return f"doi:{doi}"
+
+    source = re.sub(r"\s+", "-", str(paper.get("source") or "unknown").strip().lower())
+    external_id = str(paper.get("external_id") or "").strip()
+    if external_id:
+        return f"{source}:{external_id}"
+
+    return _title_fingerprint(str(paper.get("title") or ""))
 
 
 def _load_raw() -> dict:
@@ -57,10 +85,14 @@ def bootstrap_from_report_markdown(*search_dirs: Path) -> int:
             seen_paths.add(md_path)
             text = md_path.read_text(encoding="utf-8")
             for arxiv_id in ARXIV_URL_IN_MD_RE.findall(text):
-                if arxiv_id not in data["papers"]:
-                    data["papers"][arxiv_id] = {
+                key = f"arxiv:{_normalize_arxiv_id(arxiv_id)}"
+                legacy_key = _normalize_arxiv_id(arxiv_id)
+                if key not in data["papers"] and legacy_key not in data["papers"]:
+                    data["papers"][key] = {
                         "title": "",
+                        "url": f"https://arxiv.org/abs/{arxiv_id}",
                         "arxiv_url": f"https://arxiv.org/abs/{arxiv_id}",
+                        "source": "arXiv",
                         "first_published_on": "imported",
                     }
                     added += 1
@@ -93,8 +125,16 @@ def filter_unpublished(
     fresh = []
     skipped = 0
     for paper in papers:
-        arxiv_id = extract_arxiv_id(paper)
-        if arxiv_id and arxiv_id in published and _is_blocked_on_day(published[arxiv_id], today):
+        paper_key = extract_paper_key(paper)
+        legacy_arxiv_id = extract_arxiv_id(paper)
+        legacy_arxiv_id = _normalize_arxiv_id(legacy_arxiv_id) if legacy_arxiv_id else None
+        published_key = None
+        if paper_key in published:
+            published_key = paper_key
+        elif legacy_arxiv_id and legacy_arxiv_id in published:
+            published_key = legacy_arxiv_id
+
+        if published_key and _is_blocked_on_day(published[published_key], today):
             skipped += 1
             continue
         fresh.append(paper)
@@ -112,19 +152,28 @@ def mark_as_published(
     day = today.isoformat()
     data = _load_raw()
     for paper in papers:
-        arxiv_id = extract_arxiv_id(paper)
-        if not arxiv_id:
-            continue
-        existing = data["papers"].get(arxiv_id)
+        paper_key = extract_paper_key(paper)
+        legacy_arxiv_id = extract_arxiv_id(paper)
+        legacy_arxiv_id = _normalize_arxiv_id(legacy_arxiv_id) if legacy_arxiv_id else None
+        existing_key = paper_key
+        if legacy_arxiv_id and legacy_arxiv_id in data["papers"]:
+            existing_key = legacy_arxiv_id
+
+        existing = data["papers"].get(existing_key)
         if existing and existing.get("first_published_on") == day:
             existing["title"] = paper.get("title", "")
+            existing["url"] = paper.get("url") or paper.get("arxiv_url", "")
             existing["arxiv_url"] = paper.get("arxiv_url", "")
+            existing["source"] = paper.get("source", "")
             continue
         if existing and _is_blocked_on_day(existing, today):
             continue
-        data["papers"][arxiv_id] = {
+        data["papers"][paper_key] = {
             "title": paper.get("title", ""),
+            "url": paper.get("url") or paper.get("arxiv_url", ""),
             "arxiv_url": paper.get("arxiv_url", ""),
+            "source": paper.get("source", ""),
+            "doi": paper.get("doi", ""),
             "first_published_on": day,
         }
     _save_raw(data)

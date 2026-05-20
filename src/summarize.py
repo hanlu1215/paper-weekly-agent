@@ -41,13 +41,16 @@ def _env_float(name: str, default: float) -> float:
 def _build_deepseek_messages(paper):
     authors = ", ".join(paper["authors"])
     categories = ", ".join(paper.get("categories", [])) or "N/A"
-    user_content = f"""请阅读下面这篇 arXiv 论文信息，并用中文生成一份适合「文献每日速递」的 AI 总结。
+    source = paper.get("source") or "未知来源"
+    paper_url = paper.get("url") or paper.get("arxiv_url") or ""
+    user_content = f"""请阅读下面这篇论文信息，并用中文生成一份适合「文献每日速递」的 AI 总结。
 
 标题：{paper["title"]}
 作者：{authors}
+来源：{source}
 分类：{categories}
 发布时间：{paper["published"]}
-arXiv 链接：{paper["arxiv_url"]}
+论文链接：{paper_url}
 原始摘要：
 {paper["summary"]}
 

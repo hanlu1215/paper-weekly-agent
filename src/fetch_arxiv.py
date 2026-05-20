@@ -1,5 +1,6 @@
 import datetime
 import os
+import re
 import time
 import urllib.parse
 
@@ -13,6 +14,7 @@ DEFAULT_COOLDOWN_AFTER_FAIL = 12
 DEFAULT_TOTAL_FETCH_SECONDS = 240
 # 关键词较多时，合并 OR 查询易超时且易触发 429，直接逐个查更稳
 BULK_QUERY_MAX_KEYWORDS = 4
+_WHITESPACE_RE = re.compile(r"\s+")
 
 
 def _env_int(name: str, default: int) -> int:
@@ -49,14 +51,20 @@ def _build_arxiv_url(query: str, max_results: int) -> str:
 
 
 def _paper_from_entry(entry) -> dict:
+    arxiv_url = entry.link
+    arxiv_id = arxiv_url.rstrip("/").split("/")[-1]
     return {
         "title": entry.title.replace("\n", " ").strip(),
         "authors": [author.name for author in entry.authors],
         "summary": entry.summary.replace("\n", " ").strip(),
         "published": entry.published,
         "updated": entry.updated,
-        "arxiv_url": entry.link,
-        "pdf_url": entry.link.replace("/abs/", "/pdf/") + ".pdf",
+        "url": arxiv_url,
+        "arxiv_url": arxiv_url,
+        "pdf_url": arxiv_url.replace("/abs/", "/pdf/") + ".pdf",
+        "source": "arXiv",
+        "external_id": arxiv_id,
+        "doi": "",
         "categories": [tag.term for tag in entry.tags] if hasattr(entry, "tags") else [],
     }
 
@@ -215,9 +223,25 @@ def fetch_arxiv_papers(keywords, max_results=50):
 def _parse_published_time(published: str):
     """解析 arXiv 发布时间（兼容 Z 后缀与 +00:00 等 ISO 格式）。"""
     text = published.strip()
+    if re.fullmatch(r"\d{4}", text):
+        text = f"{text}-01-01"
+    elif re.fullmatch(r"\d{4}-\d{2}", text):
+        text = f"{text}-01"
     if text.endswith("Z"):
         text = text[:-1] + "+00:00"
-    dt = datetime.datetime.fromisoformat(text)
+
+    dt = None
+    try:
+        dt = datetime.datetime.fromisoformat(text)
+    except ValueError:
+        for fmt in ("%d %B %Y", "%B %d, %Y", "%b %d, %Y"):
+            try:
+                dt = datetime.datetime.strptime(text, fmt)
+                break
+            except ValueError:
+                continue
+    if dt is None:
+        raise ValueError(f"无法解析发布时间：{published}")
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=datetime.timezone.utc)
     return dt.astimezone(datetime.timezone.utc)
@@ -244,9 +268,28 @@ def deduplicate_papers(papers):
     unique_papers = []
 
     for paper in papers:
-        title_key = paper["title"].lower().strip()
-        if title_key not in seen:
-            seen.add(title_key)
+        keys = _dedup_keys(paper)
+        if keys.isdisjoint(seen):
+            seen.update(keys)
             unique_papers.append(paper)
 
     return unique_papers
+
+
+def _normalize_title(title: str) -> str:
+    return _WHITESPACE_RE.sub(" ", title).strip().lower()
+
+
+def _dedup_keys(paper: dict) -> set[str]:
+    keys = set()
+    title = _normalize_title(paper.get("title", ""))
+    if title:
+        keys.add(f"title:{title}")
+    doi = str(paper.get("doi") or "").strip().lower()
+    if doi:
+        keys.add(f"doi:{doi}")
+    arxiv_id = str(paper.get("external_id") or "").strip().lower()
+    if (paper.get("source") or "").lower() == "arxiv" and arxiv_id:
+        normalized_arxiv_id = re.sub(r"v\d+$", "", arxiv_id)
+        keys.add(f"arxiv:{normalized_arxiv_id}")
+    return keys
