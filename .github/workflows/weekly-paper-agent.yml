@@ -21,10 +21,37 @@ jobs:
           git config --global http.lowSpeedTime 999999
 
       - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-          fetch-depth: 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          checkout_with_retry() {
+            local attempt=1
+            local delay=10
+            while true; do
+              if git -c http.version=HTTP/1.1 fetch --depth=1 --no-tags origin "$GITHUB_SHA"; then
+                return 0
+              fi
+              if [ "$attempt" -ge 5 ]; then
+                echo "git fetch failed after $attempt attempts."
+                return 1
+              fi
+              echo "git fetch failed; retrying in ${delay}s (attempt $attempt/5)..."
+              sleep "$delay"
+              attempt=$((attempt + 1))
+              delay=$((delay * 2))
+            done
+          }
+
+          mkdir -p "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          shopt -s dotglob nullglob
+          rm -rf -- *
+          shopt -u dotglob nullglob
+          git init
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          checkout_with_retry
+          git checkout --force -B "$GITHUB_REF_NAME" FETCH_HEAD
 
       - name: Install dependencies
         run: |
