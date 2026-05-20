@@ -126,7 +126,7 @@ git pull origin main
 | Variable | 含义 | 默认 |
 |----------|------|------|
 | `MAX_PAPERS_TO_SUMMARIZE` | 每天最多总结几篇 | `5` |
-| `RECENT_DAYS` | 只考虑近 N 天内的论文 | `7` |
+| `RECENT_DAYS` | 只考虑近 N 天内的论文 | `30` |
 | `MAX_RESULTS_PER_SOURCE` | 每个来源最多抓取多少候选论文 | `30` |
 | `ENABLE_SEMANTIC_SCHOLAR` | 是否启用 Semantic Scholar | `true` |
 | `ENABLE_OPENREVIEW` | 是否启用 OpenReview | `true` |

@@ -17,7 +17,7 @@ from published_history import mark_as_published
 
 
 DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 5
-DEFAULT_RECENT_DAYS = 7
+DEFAULT_RECENT_DAYS = 30
 DEFAULT_MAX_RESULTS_PER_SOURCE = 30
 
 
