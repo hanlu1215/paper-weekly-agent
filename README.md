@@ -26,7 +26,7 @@ git pull origin main
 
 ## 这个仓库是做什么的？
 
-一句话：**每天自动从 arXiv / Semantic Scholar / OpenReview / IEEE Xplore 找论文 → 用 AI 写成中文速递 → 存进你的 GitHub → 推送到飞书群和知识库。**
+一句话：**每天自动从 arXiv / Semantic Scholar / OpenReview / IEEE Xplore 找论文 → 用 AI 写成中文速递 → 存进你的 GitHub → 推送到飞书群、知识库和微信公众号。**
 
 更具体一点，每天（默认北京时间 **09:00**）会发生这些事：
 
@@ -35,12 +35,14 @@ git pull origin main
 3. 用 **DeepSeek** 为每篇生成中文总结（含中文标题）  
 4. 写成 Markdown，保存到仓库的 `daily_reports/`（同一天多次运行会**覆盖**当日那一个文件，不会堆出一堆 `-02.md`）  
 5. 在飞书**知识库**新建一篇文档，并在群里发一条消息：标题、各篇中文题目、链接、往期 GitHub 存档地址  
+6. 若配置了微信公众号密钥与封面素材，将日报自动群发为公众号图文  
 
 你得到的是：
 
 - **GitHub 上的永久存档**（按日期命名的 `.md`，方便回溯）  
 - **飞书里的可读版本**（适合手机点开）  
 - **群里的提醒**（不用自己每天刷 arXiv）  
+- **公众号每日推文**（配置后自动群发给关注用户）  
 
 默认关注方向包括：灵巧手、机械臂控制、VLA、LLM for robotics、强化学习、世界模型、视觉触觉感知等（见 `config/keywords.yaml`），你完全可以改成自己的研究方向。
 
@@ -108,6 +110,9 @@ git pull origin main
 | `FEISHU_WIKI_PARENT_NODE_TOKEN` | 可选 | 文档建在哪个目录下 |
 | `SEMANTIC_SCHOLAR_API_KEY` | 可选 | 提高 Semantic Scholar API 限额；不填也会尝试公开接口 |
 | `IEEE_XPLORE_API_KEY` | IEEE 检索需要 | 启用 IEEE Xplore 检索；不填则自动跳过 IEEE |
+| `WECHAT_MP_APP_ID` | 公众号群发需要 | 微信公众号 AppID |
+| `WECHAT_MP_APP_SECRET` | 公众号群发需要 | 微信公众号 AppSecret |
+| `WECHAT_MP_THUMB_MEDIA_ID` | 公众号群发需要 | 公众号图文封面素材 media_id |
 
 可选 Secret（不填则用默认值）：
 
@@ -126,6 +131,9 @@ git pull origin main
 | `ENABLE_SEMANTIC_SCHOLAR` | 是否启用 Semantic Scholar | `true` |
 | `ENABLE_OPENREVIEW` | 是否启用 OpenReview | `true` |
 | `ENABLE_IEEE_XPLORE` | 是否启用 IEEE Xplore（仍需 API Key） | `true` |
+| `WECHAT_MP_AUTHOR` | 公众号文章作者 | `Paper Weekly Agent` |
+| `WECHAT_MP_DIGEST` | 公众号文章摘要；不填则自动取前 3 篇标题 | 自动生成 |
+| `WECHAT_MP_CONTENT_SOURCE_URL` | 公众号“阅读原文”链接 | 自动指向 GitHub 日报 |
 
 配好后：
 
@@ -147,6 +155,24 @@ git pull origin main
 
 更细的权限与 space_id 获取方式，可在 Cursor 里问：「根据 README 帮我逐步配置飞书知识库」。
 
+### 第六步：配好微信公众号自动群发（可选）
+
+公众号群发需要在 **公众号后台 → 设置与开发 → 基本配置** 获取 `AppID` / `AppSecret`，并准备一个已上传到公众号素材库的封面图 `media_id`。
+
+需要填入 GitHub Actions Secrets：
+
+| Secret | 作用 |
+|--------|------|
+| `WECHAT_MP_APP_ID` | 微信公众号 AppID |
+| `WECHAT_MP_APP_SECRET` | 微信公众号 AppSecret |
+| `WECHAT_MP_THUMB_MEDIA_ID` | 公众号图文封面素材 media_id |
+
+注意：
+
+- 公众号接口通常要求配置 **IP 白名单**；GitHub Actions 出口 IP 不固定，若微信返回 `invalid ip`，需要改用固定 IP 的 self-hosted runner 或中转服务。
+- 当前实现会直接调用微信“群发给全部用户”接口；请先确认公众号类型、认证状态和当日群发配额满足要求。
+- 三个 Secret 未配齐时，程序会自动跳过公众号群发，不影响 GitHub 存档和飞书推送。
+
 ---
 
 ## 每天自动跑的时候，仓库里会发生什么？
@@ -162,6 +188,9 @@ git pull origin main
         │
         ▼
   python src/send_to_feishu.py ← 知识库建文档 + 群消息（标题、中文题目列表、链接）
+        │
+        ▼
+  python src/send_to_wechat_mp.py ← 上传公众号图文素材 + 群发给全部用户
 ```
 
 **去重规则（新人常问）：**
@@ -208,7 +237,10 @@ paper-weekly-agent/
 │   ├── notify_feishu.py          # 飞书 Webhook 文本消息
 │   ├── feishu_client.py          # 飞书 API 鉴权
 │   ├── feishu_wiki.py            # 知识库创建文档、写入 Markdown
-│   └── send_to_feishu.py         # 单独发布到飞书（CI 第二步调用）
+│   ├── send_to_feishu.py         # 单独发布到飞书（CI 第二步调用）
+│   ├── wechat_mp_client.py       # 微信公众号 API 客户端
+│   ├── markdown_to_wechat.py     # 日报 Markdown 转公众号 HTML
+│   └── send_to_wechat_mp.py      # 自动群发到微信公众号
 ├── scripts/
 │   ├── verify_feishu_wiki.py     # CI 里校验飞书配置
 │   ├── run-local.sh              # 可选：本地一键试跑

@@ -103,3 +103,26 @@ jobs:
             exit 0
           fi
           python src/send_to_feishu.py "$LATEST"
+
+      - name: Send report to WeChat Official Account
+        if: success()
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPO_BRANCH: ${{ github.ref_name }}
+          WECHAT_MP_APP_ID: ${{ secrets.WECHAT_MP_APP_ID }}
+          WECHAT_MP_APP_SECRET: ${{ secrets.WECHAT_MP_APP_SECRET }}
+          WECHAT_MP_THUMB_MEDIA_ID: ${{ secrets.WECHAT_MP_THUMB_MEDIA_ID }}
+          WECHAT_MP_AUTHOR: ${{ vars.WECHAT_MP_AUTHOR }}
+          WECHAT_MP_DIGEST: ${{ vars.WECHAT_MP_DIGEST }}
+          WECHAT_MP_CONTENT_SOURCE_URL: ${{ vars.WECHAT_MP_CONTENT_SOURCE_URL }}
+        run: |
+          LATEST=$(ls -t daily_reports/*-文献每日速递*.md 2>/dev/null | head -1 || true)
+          if [ -z "$LATEST" ]; then
+            echo "daily_reports/ 下无速递文件，跳过公众号群发。"
+            exit 0
+          fi
+          if grep -q "今日无新增文献" "$LATEST"; then
+            echo "今日无新增文献，跳过公众号群发。"
+            exit 0
+          fi
+          python src/send_to_wechat_mp.py "$LATEST"
