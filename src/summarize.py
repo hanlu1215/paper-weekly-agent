@@ -1,5 +1,6 @@
 import os
 import re
+import time
 
 import requests
 
@@ -13,6 +14,7 @@ DEFAULT_DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 DEFAULT_DEEPSEEK_MODEL = "deepseek-v4-pro"
 DEFAULT_DEEPSEEK_MAX_TOKENS = 1400
 DEFAULT_DEEPSEEK_TEMPERATURE = 0.2
+DEFAULT_DEEPSEEK_TIMEOUT = 60
 
 
 def _env_str(name: str, default: str) -> str:
@@ -108,6 +110,7 @@ def _call_deepseek(paper):
     model = _env_str("DEEPSEEK_MODEL", DEFAULT_DEEPSEEK_MODEL)
     max_tokens = _env_int("DEEPSEEK_MAX_TOKENS", DEFAULT_DEEPSEEK_MAX_TOKENS)
     temperature = _env_float("DEEPSEEK_TEMPERATURE", DEFAULT_DEEPSEEK_TEMPERATURE)
+    timeout = _env_float("DEEPSEEK_TIMEOUT", DEFAULT_DEEPSEEK_TIMEOUT)
 
     payload = {
         "model": model,
@@ -116,6 +119,8 @@ def _call_deepseek(paper):
         "max_tokens": max_tokens,
     }
 
+    print(f"正在请求 DeepSeek（model={model}, timeout={timeout:g}s）...", flush=True)
+    started_at = time.monotonic()
     response = requests.post(
         f"{base_url}/chat/completions",
         headers={
@@ -123,10 +128,12 @@ def _call_deepseek(paper):
             "Content-Type": "application/json",
         },
         json=payload,
-        timeout=90,
+        timeout=timeout,
     )
     response.raise_for_status()
     data = response.json()
+    elapsed = time.monotonic() - started_at
+    print(f"DeepSeek 响应完成，用时 {elapsed:.1f}s。", flush=True)
 
     return data["choices"][0]["message"]["content"].strip()
 

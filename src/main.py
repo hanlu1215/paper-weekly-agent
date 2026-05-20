@@ -37,34 +37,34 @@ def main():
     max_papers_to_summarize = _env_int("MAX_PAPERS_TO_SUMMARIZE", DEFAULT_MAX_PAPERS_TO_SUMMARIZE)
     recent_days = _env_int("RECENT_DAYS", DEFAULT_RECENT_DAYS)
 
-    print("=" * 60)
-    print("Paper Weekly Agent 启动")
-    print("=" * 60)
+    print("=" * 60, flush=True)
+    print("Paper Weekly Agent 启动", flush=True)
+    print("=" * 60, flush=True)
 
-    print("正在读取关键词...")
+    print("正在读取关键词...", flush=True)
     keywords = load_keywords()
 
     for kw in keywords:
-        print(f"  - {kw}")
+        print(f"  - {kw}", flush=True)
 
-    print("\n正在抓取 arXiv 论文...")
+    print("\n正在抓取 arXiv 论文...", flush=True)
     papers = fetch_arxiv_papers(keywords, max_results=50)
-    print(f"原始抓取论文数量：{len(papers)}")
+    print(f"原始抓取论文数量：{len(papers)}", flush=True)
 
-    print("\n正在按标题去重...")
+    print("\n正在按标题去重...", flush=True)
     papers = deduplicate_papers(papers)
-    print(f"去重后论文数量：{len(papers)}")
+    print(f"去重后论文数量：{len(papers)}", flush=True)
 
-    print(f"\n正在筛选最近 {recent_days} 天论文...")
+    print(f"\n正在筛选最近 {recent_days} 天论文...", flush=True)
     recent_papers = filter_recent_papers(papers, days=recent_days)
-    print(f"最近 {recent_days} 天相关论文数量：{len(recent_papers)}")
+    print(f"最近 {recent_days} 天相关论文数量：{len(recent_papers)}", flush=True)
 
-    print("\n正在排除往日已发布文献（同日可重复）...")
+    print("\n正在排除往日已发布文献（同日可重复）...", flush=True)
     recent_papers, skipped_duplicates = filter_unpublished(recent_papers)
-    print(f"排除往日已发布后剩余：{len(recent_papers)} 篇（跳过 {skipped_duplicates} 篇）")
+    print(f"排除往日已发布后剩余：{len(recent_papers)} 篇（跳过 {skipped_duplicates} 篇）", flush=True)
 
     recent_papers = recent_papers[:max_papers_to_summarize]
-    print(f"本次最多总结论文数量：{len(recent_papers)}")
+    print(f"本次最多总结论文数量：{len(recent_papers)}", flush=True)
 
     papers_with_summaries = []
 
@@ -81,29 +81,29 @@ def main():
             "title_zh": title_zh,
         })
 
-    print("\n正在生成 Markdown 报告...")
+    print("\n正在生成 Markdown 报告...", flush=True)
     report_path = render_markdown_report(
         papers_with_summaries,
         skipped_duplicates=skipped_duplicates,
     )
-    print(f"Markdown 日报已生成：{report_path}")
+    print(f"Markdown 日报已生成：{report_path}", flush=True)
 
     if papers_with_summaries:
         mark_as_published([item["paper"] for item in papers_with_summaries])
-        print(f"已记录 {len(papers_with_summaries)} 篇到发布历史（data/published_papers.json）。")
+        print(f"已记录 {len(papers_with_summaries)} 篇到发布历史（data/published_papers.json）。", flush=True)
 
     report_text = report_path.read_text(encoding="utf-8")
 
     if os.getenv("SKIP_FEISHU_NOTIFY", "").lower() in ("1", "true", "yes"):
-        print("\n已设置 SKIP_FEISHU_NOTIFY，跳过飞书推送（由 CI 在提交后单独发送）。")
+        print("\n已设置 SKIP_FEISHU_NOTIFY，跳过飞书推送（由 CI 在提交后单独发送）。", flush=True)
     elif not papers_with_summaries:
-        print("\n今日无新增文献，跳过飞书推送。")
+        print("\n今日无新增文献，跳过飞书推送。", flush=True)
     else:
-        print("\n正在推送飞书通知...")
+        print("\n正在推送飞书通知...", flush=True)
         notify_feishu(report_path, len(papers_with_summaries), report_text=report_text)
 
-    print("\n任务完成。")
-    print("=" * 60)
+    print("\n任务完成。", flush=True)
+    print("=" * 60, flush=True)
 
 
 if __name__ == "__main__":

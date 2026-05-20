@@ -68,6 +68,10 @@ def _parse_arxiv_url(url: str, *, label: str = "") -> tuple[feedparser.FeedParse
     session.trust_env = False
 
     for attempt in range(1, max_retries + 1):
+        print(
+            f"arXiv 请求开始（{label or 'query'}，第 {attempt}/{max_retries} 次，timeout={timeout}s）...",
+            flush=True,
+        )
         try:
             response = session.get(
                 url,
@@ -79,7 +83,8 @@ def _parse_arxiv_url(url: str, *, label: str = "") -> tuple[feedparser.FeedParse
             if attempt < max_retries:
                 print(
                     f"arXiv 网络异常（{label or 'query'}）：{e}；"
-                    f"{wait}s 后重试 ({attempt}/{max_retries})…"
+                    f"{wait}s 后重试 ({attempt}/{max_retries})…",
+                    flush=True,
                 )
                 time.sleep(wait)
                 continue
@@ -90,7 +95,8 @@ def _parse_arxiv_url(url: str, *, label: str = "") -> tuple[feedparser.FeedParse
             if attempt < max_retries:
                 print(
                     f"arXiv 429 请求过频（{label or 'query'}）；"
-                    f"{wait}s 后重试 ({attempt}/{max_retries})…"
+                    f"{wait}s 后重试 ({attempt}/{max_retries})…",
+                    flush=True,
                 )
                 time.sleep(wait)
                 continue
@@ -101,13 +107,18 @@ def _parse_arxiv_url(url: str, *, label: str = "") -> tuple[feedparser.FeedParse
             if attempt < max_retries:
                 print(
                     f"arXiv 服务端 {response.status_code}（{label or 'query'}）；"
-                    f"{wait}s 后重试 ({attempt}/{max_retries})…"
+                    f"{wait}s 后重试 ({attempt}/{max_retries})…",
+                    flush=True,
                 )
                 time.sleep(wait)
                 continue
             response.raise_for_status()
 
         response.raise_for_status()
+        print(
+            f"arXiv 请求完成（{label or 'query'}，HTTP {response.status_code}）。",
+            flush=True,
+        )
         return feedparser.parse(response.text), response.status_code
 
     return feedparser.parse(""), 429
@@ -139,25 +150,27 @@ def _fetch_by_keywords(
     delay = _env_float("ARXIV_KEYWORD_DELAY", DEFAULT_KEYWORD_DELAY)
     cooldown = _env_float("ARXIV_COOLDOWN_SECONDS", DEFAULT_COOLDOWN_AFTER_FAIL)
 
-    print(f"按关键词逐个查询 arXiv（{reason}）…")
+    print(f"按关键词逐个查询 arXiv（{reason}）…", flush=True)
     if cooldown > 0:
-        print(f"等待 {cooldown:.0f}s，避免触发频率限制…")
+        print(f"等待 {cooldown:.0f}s，避免触发频率限制…", flush=True)
         time.sleep(cooldown)
 
     for index, keyword in enumerate(keywords):
         if index > 0:
+            print(f"等待 {delay:.1f}s 后查询下一个关键词…", flush=True)
             time.sleep(delay)
 
         query = f'all:"{keyword}"'
         label = f"关键词「{keyword}」"
+        print(f"开始查询 {label} ({index + 1}/{len(keywords)})。", flush=True)
         try:
             feed, status = _parse_arxiv_url(_build_arxiv_url(query, per_keyword_limit), label=label)
         except requests.RequestException as e:
-            print(f"{label} 网络失败，已跳过：{e}")
+            print(f"{label} 网络失败，已跳过：{e}", flush=True)
             continue
 
         if status == 429:
-            print(f"{label} 在多次重试后仍返回 429，已跳过。")
+            print(f"{label} 在多次重试后仍返回 429，已跳过。", flush=True)
             continue
 
         papers.extend(_entries_from_feed(feed, label))
