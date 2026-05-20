@@ -28,7 +28,7 @@ jobs:
             local attempt=1
             local delay=10
             while true; do
-              if git -c http.version=HTTP/1.1 fetch --depth=1 --no-tags origin "$GITHUB_SHA"; then
+              if timeout 120s git -c http.version=HTTP/1.1 fetch --progress --depth=1 --no-tags origin "+${GITHUB_REF}:refs/remotes/origin/${GITHUB_REF_NAME}"; then
                 return 0
               fi
               if [ "$attempt" -ge 5 ]; then
@@ -51,7 +51,7 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           checkout_with_retry
-          git checkout --force -B "$GITHUB_REF_NAME" FETCH_HEAD
+          git checkout --force -B "$GITHUB_REF_NAME" "refs/remotes/origin/$GITHUB_REF_NAME"
           git branch --set-upstream-to="origin/$GITHUB_REF_NAME" "$GITHUB_REF_NAME" || true
 
       - name: Install dependencies
