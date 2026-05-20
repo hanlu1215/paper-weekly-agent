@@ -112,6 +112,7 @@ jobs:
           WECHAT_MP_APP_ID: ${{ secrets.WECHAT_MP_APP_ID }}
           WECHAT_MP_APP_SECRET: ${{ secrets.WECHAT_MP_APP_SECRET }}
           WECHAT_MP_THUMB_MEDIA_ID: ${{ secrets.WECHAT_MP_THUMB_MEDIA_ID }}
+          WECHAT_MP_COVER_IMAGE: ${{ vars.WECHAT_MP_COVER_IMAGE }}
           WECHAT_MP_AUTHOR: ${{ vars.WECHAT_MP_AUTHOR }}
           WECHAT_MP_DIGEST: ${{ vars.WECHAT_MP_DIGEST }}
           WECHAT_MP_CONTENT_SOURCE_URL: ${{ vars.WECHAT_MP_CONTENT_SOURCE_URL }}

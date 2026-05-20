@@ -112,7 +112,7 @@ git pull origin main
 | `IEEE_XPLORE_API_KEY` | IEEE 检索需要 | 启用 IEEE Xplore 检索；不填则自动跳过 IEEE |
 | `WECHAT_MP_APP_ID` | 公众号群发需要 | 微信公众号 AppID |
 | `WECHAT_MP_APP_SECRET` | 公众号群发需要 | 微信公众号 AppSecret |
-| `WECHAT_MP_THUMB_MEDIA_ID` | 公众号群发需要 | 公众号图文封面素材 media_id |
+| `WECHAT_MP_THUMB_MEDIA_ID` | 可选 | 公众号图文封面素材 media_id；不填则自动上传仓库根目录 `02.png` |
 
 可选 Secret（不填则用默认值）：
 
@@ -134,6 +134,7 @@ git pull origin main
 | `WECHAT_MP_AUTHOR` | 公众号文章作者 | `Paper Weekly Agent` |
 | `WECHAT_MP_DIGEST` | 公众号文章摘要；不填则自动取前 3 篇标题 | 自动生成 |
 | `WECHAT_MP_CONTENT_SOURCE_URL` | 公众号“阅读原文”链接 | 自动指向 GitHub 日报 |
+| `WECHAT_MP_COVER_IMAGE` | 公众号封面图路径 | `02.png` |
 
 配好后：
 
@@ -157,7 +158,7 @@ git pull origin main
 
 ### 第六步：配好微信公众号自动群发（可选）
 
-公众号群发需要在 **公众号后台 → 设置与开发 → 基本配置** 获取 `AppID` / `AppSecret`，并准备一个已上传到公众号素材库的封面图 `media_id`。
+公众号群发需要在 **公众号后台 → 设置与开发 → 基本配置** 获取 `AppID` / `AppSecret`。封面图默认使用仓库根目录的 `02.png` 自动上传，也可以手动配置已有素材的 `WECHAT_MP_THUMB_MEDIA_ID`。
 
 需要填入 GitHub Actions Secrets：
 
@@ -165,13 +166,13 @@ git pull origin main
 |--------|------|
 | `WECHAT_MP_APP_ID` | 微信公众号 AppID |
 | `WECHAT_MP_APP_SECRET` | 微信公众号 AppSecret |
-| `WECHAT_MP_THUMB_MEDIA_ID` | 公众号图文封面素材 media_id |
+| `WECHAT_MP_THUMB_MEDIA_ID` | 可选；公众号图文封面素材 media_id，不填则自动上传 `02.png` |
 
 注意：
 
 - 公众号接口通常要求配置 **IP 白名单**；GitHub Actions 出口 IP 不固定，若微信返回 `invalid ip`，需要改用固定 IP 的 self-hosted runner 或中转服务。
 - 当前实现会直接调用微信“群发给全部用户”接口；请先确认公众号类型、认证状态和当日群发配额满足要求。
-- 三个 Secret 未配齐时，程序会自动跳过公众号群发，不影响 GitHub 存档和飞书推送。
+- `WECHAT_MP_APP_ID` / `WECHAT_MP_APP_SECRET` 未配齐时，程序会自动跳过公众号群发，不影响 GitHub 存档和飞书推送。
 
 ---
 

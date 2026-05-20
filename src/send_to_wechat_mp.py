@@ -12,11 +12,13 @@ from wechat_mp_client import (
     WeChatMPError,
     get_access_token,
     mass_send_news_to_all,
+    upload_image_material,
     upload_news,
     wechat_configured,
 )
 
 DEFAULT_REPORTS_DIR = Path("daily_reports")
+DEFAULT_COVER_IMAGE = Path("02.png")
 
 
 def find_latest_report(reports_dir: Path = DEFAULT_REPORTS_DIR) -> Path | None:
@@ -42,14 +44,21 @@ def github_report_url(report_path: Path) -> str:
     return ""
 
 
-def build_article(report_path: Path) -> dict:
+def resolve_thumb_media_id(access_token: str) -> str:
+    configured = os.getenv("WECHAT_MP_THUMB_MEDIA_ID", "").strip()
+    if configured:
+        return configured
+
+    cover_path = Path(os.getenv("WECHAT_MP_COVER_IMAGE", "").strip() or DEFAULT_COVER_IMAGE)
+    print(f"未配置 WECHAT_MP_THUMB_MEDIA_ID，自动上传封面图：{cover_path}", flush=True)
+    return upload_image_material(access_token, cover_path)
+
+
+def build_article(report_path: Path, thumb_media_id: str) -> dict:
     markdown = report_path.read_text(encoding="utf-8")
     title = os.getenv("WECHAT_MP_TITLE", "").strip() or extract_title(markdown, report_path.stem)
     digest = os.getenv("WECHAT_MP_DIGEST", "").strip() or extract_digest(markdown)
     author = os.getenv("WECHAT_MP_AUTHOR", "").strip() or "Paper Weekly Agent"
-    thumb_media_id = os.getenv("WECHAT_MP_THUMB_MEDIA_ID", "").strip()
-    if not thumb_media_id:
-        raise WeChatMPError("未配置 WECHAT_MP_THUMB_MEDIA_ID，无法群发公众号图文。")
 
     return {
         "thumb_media_id": thumb_media_id,
@@ -70,14 +79,15 @@ def send_report_to_wechat(report_path: Path) -> None:
 
     if not wechat_configured():
         print(
-            "未完整配置 WECHAT_MP_APP_ID / WECHAT_MP_APP_SECRET / WECHAT_MP_THUMB_MEDIA_ID，跳过公众号群发。",
+            "未完整配置 WECHAT_MP_APP_ID / WECHAT_MP_APP_SECRET，跳过公众号群发。",
             flush=True,
         )
         return
 
-    article = build_article(report_path)
-    print(f"正在上传微信公众号图文素材：{article['title']}", flush=True)
     token = get_access_token()
+    thumb_media_id = resolve_thumb_media_id(token)
+    article = build_article(report_path, thumb_media_id)
+    print(f"正在上传微信公众号图文素材：{article['title']}", flush=True)
     media_id = upload_news(token, article)
     print("微信公众号图文素材上传成功，正在群发给全部用户...", flush=True)
     result = mass_send_news_to_all(token, media_id)

@@ -1,6 +1,7 @@
 """微信公众号接口客户端：获取 token、上传图文素材、群发图文。"""
 
 import os
+from pathlib import Path
 from typing import Any
 
 import requests
@@ -23,7 +24,6 @@ def wechat_configured() -> bool:
     return bool(
         _env_str("WECHAT_MP_APP_ID")
         and _env_str("WECHAT_MP_APP_SECRET")
-        and _env_str("WECHAT_MP_THUMB_MEDIA_ID")
     )
 
 
@@ -63,6 +63,29 @@ def upload_news(access_token: str, article: dict[str, Any]) -> str:
     media_id = data.get("media_id")
     if not media_id:
         raise WeChatMPError("上传微信图文素材失败：响应中缺少 media_id。")
+    return media_id
+
+
+def upload_image_material(access_token: str, image_path: Path) -> str:
+    if not image_path.is_file():
+        raise WeChatMPError(f"微信公众号封面图不存在：{image_path}")
+
+    with image_path.open("rb") as image_file:
+        response = requests.post(
+            f"{WECHAT_API_BASE}/cgi-bin/material/add_material",
+            params={"access_token": access_token, "type": "image"},
+            files={"media": (image_path.name, image_file, "image/png")},
+            timeout=60,
+        )
+    payload = _json_or_error(response)
+    errcode = payload.get("errcode", 0)
+    if errcode not in (0, None):
+        raise WeChatMPError(
+            f"上传微信封面图失败：errcode={errcode} errmsg={payload.get('errmsg', '')}"
+        )
+    media_id = payload.get("media_id")
+    if not media_id:
+        raise WeChatMPError("上传微信封面图失败：响应中缺少 media_id。")
     return media_id
 
 
