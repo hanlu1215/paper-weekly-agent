@@ -7,12 +7,13 @@ import feedparser
 import requests
 
 DEFAULT_TIMEOUT = 60
+DEFAULT_CONNECT_TIMEOUT = 15
 DEFAULT_MAX_RETRIES = 4
-DEFAULT_KEYWORD_DELAY = 3.5
-DEFAULT_COOLDOWN_AFTER_FAIL = 12
-DEFAULT_TOTAL_FETCH_SECONDS = 240
-# 关键词较多时，合并 OR 查询易超时且易触发 429，直接逐个查更稳
-BULK_QUERY_MAX_KEYWORDS = 4
+DEFAULT_KEYWORD_DELAY = 5.0
+DEFAULT_COOLDOWN_AFTER_FAIL = 3
+DEFAULT_TOTAL_FETCH_SECONDS = 600
+# 合并 OR 查询易触发 429；默认禁用，始终按关键词逐个查询
+BULK_QUERY_MAX_KEYWORDS = 0
 
 
 def _env_int(name: str, default: int) -> int:
@@ -37,7 +38,8 @@ def _user_agent() -> str:
 
 
 def _build_arxiv_url(query: str, max_results: int) -> str:
-    encoded_query = urllib.parse.quote(query)
+    # 使用 quote_plus，与 arXiv API 文档一致（空格 → +）
+    encoded_query = urllib.parse.quote_plus(query, safe="():\"")
     return (
         "https://export.arxiv.org/api/query?"
         f"search_query={encoded_query}"
@@ -46,6 +48,41 @@ def _build_arxiv_url(query: str, max_results: int) -> str:
         f"&sortBy=submittedDate"
         f"&sortOrder=descending"
     )
+
+
+def _request_timeouts() -> tuple[float, float]:
+    read_timeout = _env_float("ARXIV_REQUEST_TIMEOUT", DEFAULT_TIMEOUT)
+    connect_timeout = _env_float("ARXIV_CONNECT_TIMEOUT", DEFAULT_CONNECT_TIMEOUT)
+    return (connect_timeout, read_timeout)
+
+
+def _retry_after_seconds(response: requests.Response | None) -> int | None:
+    if response is None:
+        return None
+    raw = response.headers.get("Retry-After", "").strip()
+    if not raw:
+        return None
+    try:
+        return max(1, int(raw))
+    except ValueError:
+        return None
+
+
+def _dedupe_papers(papers: list[dict]) -> list[dict]:
+    seen: set[str] = set()
+    unique: list[dict] = []
+    for paper in papers:
+        key = (
+            paper.get("external_id")
+            or paper.get("arxiv_url")
+            or paper.get("url")
+            or paper.get("title")
+        )
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        unique.append(paper)
+    return unique
 
 
 def _paper_from_entry(entry) -> dict:
@@ -69,24 +106,26 @@ def _paper_from_entry(entry) -> dict:
 
 def _parse_arxiv_url(url: str, *, label: str = "") -> tuple[feedparser.FeedParserDict, int | None]:
     """请求 arXiv API，对 429 / 超时 / 5xx 自动退避重试。"""
-    timeout = _env_int("ARXIV_REQUEST_TIMEOUT", DEFAULT_TIMEOUT)
+    timeouts = _request_timeouts()
     max_retries = _env_int("ARXIV_MAX_RETRIES", DEFAULT_MAX_RETRIES)
     session = requests.Session()
     session.trust_env = False
 
     for attempt in range(1, max_retries + 1):
         print(
-            f"arXiv 请求开始（{label or 'query'}，第 {attempt}/{max_retries} 次，timeout={timeout}s）...",
+            f"arXiv 请求开始（{label or 'query'}，第 {attempt}/{max_retries} 次，"
+            f"timeout={timeouts[1]}s）...",
             flush=True,
         )
+        response: requests.Response | None = None
         try:
             response = session.get(
                 url,
                 headers={"User-Agent": _user_agent()},
-                timeout=timeout,
+                timeout=timeouts,
             )
         except requests.RequestException as e:
-            wait = min(60, 8 * attempt)
+            wait = min(90, 10 * attempt)
             if attempt < max_retries:
                 print(
                     f"arXiv 网络异常（{label or 'query'}）：{e}；"
@@ -98,7 +137,8 @@ def _parse_arxiv_url(url: str, *, label: str = "") -> tuple[feedparser.FeedParse
             raise
 
         if response.status_code == 429:
-            wait = min(90, 15 * attempt)
+            retry_after = _retry_after_seconds(response)
+            wait = retry_after or min(120, 20 * attempt)
             if attempt < max_retries:
                 print(
                     f"arXiv 429 请求过频（{label or 'query'}）；"
@@ -154,10 +194,12 @@ def _fetch_by_keywords(
 ) -> list[dict]:
     papers: list[dict] = []
     per_keyword_limit = max(3, max_results // max(1, len(keywords)))
-    delay = _env_float("ARXIV_KEYWORD_DELAY", DEFAULT_KEYWORD_DELAY)
+    base_delay = _env_float("ARXIV_KEYWORD_DELAY", DEFAULT_KEYWORD_DELAY)
+    inter_keyword_delay = base_delay
     cooldown = _env_float("ARXIV_COOLDOWN_SECONDS", DEFAULT_COOLDOWN_AFTER_FAIL)
     total_budget = _env_float("ARXIV_TOTAL_TIMEOUT_SECONDS", DEFAULT_TOTAL_FETCH_SECONDS)
     started_at = time.monotonic()
+    failed_keywords: list[str] = []
 
     print(f"按关键词逐个查询 arXiv（{reason}）…", flush=True)
     if cooldown > 0:
@@ -168,14 +210,15 @@ def _fetch_by_keywords(
         elapsed = time.monotonic() - started_at
         if total_budget > 0 and elapsed >= total_budget:
             print(
-                f"arXiv 查询已用 {elapsed:.1f}s，达到总耗时上限 {total_budget:g}s，停止继续查询关键词。",
+                f"arXiv 查询已用 {elapsed:.1f}s，达到总耗时上限 {total_budget:g}s，"
+                f"停止继续查询关键词（已收集 {len(papers)} 篇）。",
                 flush=True,
             )
             break
 
-        if index > 0:
-            print(f"等待 {delay:.1f}s 后查询下一个关键词…", flush=True)
-            time.sleep(delay)
+        if index > 0 and inter_keyword_delay > 0:
+            print(f"等待 {inter_keyword_delay:.1f}s 后查询下一个关键词…", flush=True)
+            time.sleep(inter_keyword_delay)
 
         query = f'all:"{keyword}"'
         label = f"关键词「{keyword}」"
@@ -184,15 +227,29 @@ def _fetch_by_keywords(
             feed, status = _parse_arxiv_url(_build_arxiv_url(query, per_keyword_limit), label=label)
         except requests.RequestException as e:
             print(f"{label} 网络失败，已跳过：{e}", flush=True)
+            failed_keywords.append(keyword)
+            inter_keyword_delay = min(30.0, inter_keyword_delay + base_delay)
             continue
 
         if status == 429:
             print(f"{label} 在多次重试后仍返回 429，已跳过。", flush=True)
+            failed_keywords.append(keyword)
+            inter_keyword_delay = min(30.0, inter_keyword_delay + base_delay * 2)
             continue
 
-        papers.extend(_entries_from_feed(feed, label))
+        batch = _entries_from_feed(feed, label)
+        papers.extend(batch)
+        if batch:
+            inter_keyword_delay = base_delay
 
-    return papers
+    if failed_keywords:
+        print(
+            f"arXiv 有 {len(failed_keywords)} 个关键词未成功：{', '.join(failed_keywords[:5])}"
+            f"{'…' if len(failed_keywords) > 5 else ''}",
+            flush=True,
+        )
+
+    return _dedupe_papers(papers)
 
 
 def fetch_arxiv_papers(keywords, max_results=50):
@@ -209,11 +266,11 @@ def fetch_arxiv_papers(keywords, max_results=50):
                 label="合并查询",
             )
             if status != 429 and feed.entries:
-                return _entries_from_feed(feed, "合并查询")
+                return _dedupe_papers(_entries_from_feed(feed, "合并查询"))
             if status == 429:
-                print("合并查询触发 429，改为按关键词逐个查询。")
+                print("合并查询触发 429，改为按关键词逐个查询。", flush=True)
         except requests.RequestException as e:
-            print(f"arXiv 合并查询失败，改为按关键词逐个查询：{e}")
+            print(f"arXiv 合并查询失败，改为按关键词逐个查询：{e}", flush=True)
 
     return _fetch_by_keywords(keywords, max_results, reason=f"共 {len(keywords)} 个关键词")
 
