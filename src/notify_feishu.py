@@ -109,11 +109,12 @@ def send_feishu_document_link(
 ) -> None:
     """向群聊发送知识库文档链接（不发送全文）。"""
     lines = [
-        "📚 本日文献周报已发布到知识库",
+        "本日文献周报已发布到知识库",
         f"标题：{title}",
     ]
     if paper_titles:
-        lines.extend(paper_titles)
+        for idx, paper_title in enumerate(paper_titles, start=1):
+            lines.append(f"{idx}. {paper_title}")
     lines.append(f"详情看链接：{doc_url}")
     history_url = archive_url or get_github_daily_reports_url()
     if history_url:

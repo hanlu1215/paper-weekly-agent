@@ -1,9 +1,10 @@
 """发布周报到飞书：默认写入知识库并推送文档链接；可回退为全文推送。"""
 
 import argparse
-import datetime
 import os
+import re
 import sys
+from datetime import date
 from pathlib import Path
 
 import requests
@@ -15,23 +16,49 @@ from notify_feishu import (
     send_feishu_document_link,
     send_feishu_text_chunks,
 )
+from render_markdown import daily_report_path
+from report_date import report_today
 
 DEFAULT_REPORTS_DIR = Path("daily_reports")
 DEFAULT_CHUNK_SIZE = 3500
 
 
+def _date_from_report_filename(path: Path) -> date | None:
+    match = re.match(r"(\d{4}-\d{2}-\d{2})-文献每日速递(?:-\d+)?\.md$", path.name)
+    if not match:
+        return None
+    try:
+        return date.fromisoformat(match.group(1))
+    except ValueError:
+        return None
+
+
 def find_latest_report(reports_dir: Path = DEFAULT_REPORTS_DIR) -> Path | None:
-    """优先取 daily_reports/ 下最新一期每日速递。"""
+    """优先当日（配置时区）速递，否则取文件名日期最新的一期。"""
     if not reports_dir.is_dir():
         return None
-    reports = sorted(
-        reports_dir.glob("*-文献每日速递*.md"),
-        key=lambda p: p.stat().st_mtime,
-        reverse=True,
-    )
-    if reports:
-        return reports[0]
-    return None
+
+    today_path = daily_report_path(report_today())
+    if today_path.is_file():
+        return today_path
+
+    reports = list(reports_dir.glob("*-文献每日速递*.md"))
+    if not reports:
+        return None
+
+    dated: list[tuple[date, Path]] = []
+    undated: list[Path] = []
+    for path in reports:
+        report_date = _date_from_report_filename(path)
+        if report_date:
+            dated.append((report_date, path))
+        else:
+            undated.append(path)
+
+    if dated:
+        return max(dated, key=lambda item: item[0])[1]
+
+    return max(undated, key=lambda p: p.stat().st_mtime)
 
 
 def _get_webhook_url() -> str | None:

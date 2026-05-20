@@ -12,6 +12,9 @@ permissions:
 jobs:
   run-paper-agent:
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+      REPORT_TIMEZONE: Asia/Shanghai
 
     steps:
       - name: Checkout repository
@@ -49,18 +52,31 @@ jobs:
 
       - name: Commit and push weekly report
         run: |
+          BRANCH="${GITHUB_REF_NAME:-main}"
+
+          sync_from_remote() {
+            git fetch origin "$BRANCH"
+            if git pull --rebase origin "$BRANCH"; then
+              return 0
+            fi
+            echo "Rebase failed, trying merge with origin/$BRANCH..."
+            git rebase --abort 2>/dev/null || true
+            git pull origin "$BRANCH" --no-edit
+          }
+
           push_with_retry() {
             local attempt=1
             local delay=10
             while true; do
-              if git push origin "HEAD:${GITHUB_REF_NAME:-main}"; then
+              sync_from_remote
+              if git push origin "HEAD:${BRANCH}"; then
                 return 0
               fi
               if [ "$attempt" -ge 5 ]; then
                 echo "git push failed after $attempt attempts."
                 return 1
               fi
-              echo "git push failed; retrying in ${delay}s (attempt $attempt/5)..."
+              echo "git push failed; pull and retry in ${delay}s (attempt $attempt/5)..."
               sleep "$delay"
               attempt=$((attempt + 1))
               delay=$((delay * 2))
@@ -74,7 +90,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No new or updated report to commit."
           else
-            git commit -m "chore: update paper report $(date -u +%Y-%m-%d)"
+            git commit -m "chore: update paper report $(date +%Y-%m-%d)"
             push_with_retry
           fi
 
@@ -112,9 +128,10 @@ jobs:
           FEISHU_WIKI_BASE_URL: ${{ secrets.FEISHU_WIKI_BASE_URL }}
           FEISHU_NOTIFY_MODE: wiki_link
         run: |
-          LATEST=$(ls -t daily_reports/*-文献每日速递*.md 2>/dev/null | head -1 || true)
-          if [ -z "$LATEST" ]; then
-            echo "daily_reports/ 下无速递文件，跳过飞书推送。"
+          TODAY=$(date +%Y-%m-%d)
+          LATEST="daily_reports/${TODAY}-文献每日速递.md"
+          if [ ! -f "$LATEST" ]; then
+            echo "未找到今日速递 ${LATEST}，跳过飞书推送。"
             exit 0
           fi
           if grep -q "今日无新增文献" "$LATEST"; then
