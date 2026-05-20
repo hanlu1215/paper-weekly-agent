@@ -1,6 +1,26 @@
 # Paper Weekly Agent · 文献每日速递
 
-> 写给第一次打开这个仓库的你：你不需要先成为 Python 专家，也不需要背一堆命令。把它变成**你自己的**自动读论文助手，核心路径是——**Fork 到 GitHub → 用 Cursor 打开 → 用对话改需求 → 填好 Actions Secrets**，剩下的交给云端每天跑。
+> 写给第一次打开这个仓库的你：你不需要先成为 Python 专家，也**不必在本地跑 Python**。推荐全程只改 **GitHub 上的代码**，用 **Actions** 执行；密钥只放在 **Actions Secrets**。
+
+---
+
+## 推荐工作流：只改 GitHub，不用本地跑代码
+
+| 做什么 | 在哪里做 |
+|--------|----------|
+| 改关键词、改代码、改 workflow | [GitHub 网页编辑器](https://github.com/peinengzhong/paper-weekly-agent) 或 Cursor 连仓库后 **只 commit/push，不跑 `python src/main.py`** |
+| 每天抓论文、写总结、推飞书 | **Actions → Daily Paper Agent**（定时或 Run workflow） |
+| 看往期日报 | 仓库 `daily_reports/` 目录（浏览器打开即可） |
+| 密钥 | **Settings → Secrets and variables → Actions** |
+
+**不建议：** 在本地安装 venv、配置 `.env`、手跑脚本（易遇到 arXiv 429，且与云端重复）。
+
+若本机仍 clone 了仓库，仅作浏览时可以定期：
+
+```bash
+git pull origin main
+./scripts/clean-local-reports.sh   # 删掉本地 .md，保留 GitHub 上的存档
+```
 
 ---
 
@@ -26,26 +46,28 @@
 
 ---
 
-## 推荐用法：Fork → Cursor → 对话定制 → 填 Secrets
-
-下面是你作为新人最该走的一条路。**不必**从「装 Python → 配 venv → 手敲脚本」开始；云端自动化才是主角，本地只是可选。
+## 上手：Fork → 在 GitHub 上改代码 → 填 Secrets → Run Actions
 
 ### 第一步：把仓库放到你自己的 GitHub
 
-1. 打开本仓库在 GitHub 上的页面，点击右上角 **Fork**，得到例如 `https://github.com/你的用户名/paper-weekly-agent`。  
-2. （可选）把仓库设为 **Private**，密钥只在你账号下，更安心。  
+1. 打开本仓库在 GitHub 上的页面，点击右上角 **Fork**。  
+2. （可选）设为 **Private**。  
 
-之后所有「每天自动跑」的逻辑，都发生在你 Fork 后的这份仓库里。
+之后所有自动化都在你 Fork 后的仓库里执行。
 
-### 第二步：用 Cursor 连接这个仓库
+### 第二步：在 GitHub 上直接改文件（或 Cursor 只负责 push）
 
-1. 安装 [Cursor](https://cursor.com)。  
-2. **File → Open Folder**，选择你本机 clone 下来的目录；或在 Cursor 里用 **Clone Repository** 填你的 Fork 地址。  
-3. 打开后，左侧能看到 `src/`、`config/`、`.github/workflows/` 等——这就是你接下来要「说话让 AI 改」的工作区。  
+**方式 A — 网页（最简单）**
 
-> **小提示：** 本地可以不保留历史 `.md` 报告（它们在 GitHub 上即可）。若 clone 后 pull 下来很多日报，可运行 `./scripts/clean-local-reports.sh` 只清本地正文，不影响远端。
+1. 打开仓库，进入要改的文件（如 `config/keywords.yaml`）。  
+2. 点铅笔图标 **Edit**，改完后 **Commit changes** 到 `main`。  
 
-### 第三步：用 Cursor 对话，按你的想法改功能
+**方式 B — Cursor 当编辑器，仍以 GitHub 为准**
+
+1. Cursor 打开仓库或 `github.dev` 在线工作区。  
+2. 用对话让 Agent 改代码，但**执行以 Actions 为准**；改完 push 到 `main`，不要在本地 `python src/main.py`。  
+
+### 第三步：用对话（Cursor / Copilot）描述你想改什么
 
 你不需要先读懂全部代码。在 Cursor 的 **Chat / Agent** 里，用自然语言描述目标即可，例如：
 
@@ -208,20 +230,9 @@ paper-weekly-agent/
 
 ---
 
-## 可选：在本地试跑一次
+## 关于本地 clone（可选、仅浏览）
 
-云端稳定后，偶尔想在改代码当下立刻看效果，可以：
-
-```bash
-cp .env.example .env
-cp config/deepseek.env.example config/deepseek.env
-# 编辑上述文件，填入与 Secrets 相同的密钥（勿提交）
-
-chmod +x scripts/run-local.sh
-./scripts/run-local.sh
-```
-
-本地生成的 `daily_reports/*.md` 默认被 `.gitignore` 忽略，避免误提交；**正式存档以 GitHub 上 Actions 提交为准**。
+本仓库**不依赖**你在本机跑 Python。若磁盘上仍有 clone，只需与 GitHub 同步浏览；报告正文在 GitHub 的 `daily_reports/` 查看即可。`scripts/run-local.sh` 仅作调试备用，日常使用请 **Actions → Run workflow**。
 
 ---
 
@@ -243,6 +254,9 @@ A：多半是 `FEISHU_WIKI_SPACE_ID` 填错，或应用未加入知识库成员�
 
 **Q：今天没新文献，还会发飞书吗？**  
 A：不会。日报里若是「今日无新增文献」，CI 会跳过飞书推送。
+
+**Q：本地 / Actions 日志里 arXiv 超时或 429，抓取 0 篇？**  
+A：这是 arXiv 官方 API 的**频率限制或网络慢**，不是关键词配错。12 个关键词合并查询很容易超时，紧接着连续请求又会触发 **429**。当前代码已对 429 自动退避重试，并在关键词较多时改为逐个查询。请隔 **5～10 分钟**再跑；仍失败可在 `.env` 里加大 `ARXIV_COOLDOWN_SECONDS=20`、`ARXIV_KEYWORD_DELAY=5`，或减少 `config/keywords.yaml` 里的关键词数量。GitHub Actions 机房网络有时比本地更稳，也可直接在 Actions 里 **Run workflow** 试一次。
 
 **Q：能和 Cursor 说什么来大改？**  
 A：例如换模型、改 cron 时区、增加邮件通知、改总结字数、增加微信公众号等——描述目标即可，由 Agent 改对应 `src/` 或 workflow。
