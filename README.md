@@ -172,7 +172,10 @@ git pull origin main
 - 当前云托管实现会通过草稿箱接口创建图文草稿，并调用发布接口提交发布；请先确认公众号类型、认证状态和发布配额满足要求。
 - `WECHAT_CLOUD_PUBLISH_URL` / `WECHAT_CLOUD_PUBLISH_TOKEN` 未配齐时，程序会自动跳过公众号群发，不影响 GitHub 存档和飞书推送。
 
-**只测公众号发布（跳过检索）：** 在已配置云托管 Secrets 或本地 `.env` 后，可将已有日报直接发到公众号：
+**只测公众号发布（跳过检索）：**
+
+- **GitHub 线上：** 仓库 → **Actions** → 左侧选 **Test WeChat Publish** → **Run workflow** → 可选修改 `report_path`（默认 `daily_reports/2026-05-20-文献每日速递.md`）→ **Run workflow**。需已配置 Secrets：`WECHAT_CLOUD_PUBLISH_URL`、`WECHAT_CLOUD_PUBLISH_TOKEN`。
+- **本地：** 在已配置云托管地址与 token 后执行：
 
 ```bash
 python3 scripts/test_wechat_publish.py
