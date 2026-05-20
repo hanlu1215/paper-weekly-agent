@@ -14,10 +14,17 @@ jobs:
     runs-on: [self-hosted, Linux, X64]
 
     steps:
+      - name: Configure Git network
+        run: |
+          git config --global http.version HTTP/1.1
+          git config --global http.lowSpeedLimit 0
+          git config --global http.lowSpeedTime 999999
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+          fetch-depth: 1
 
       - name: Install dependencies
         run: |
