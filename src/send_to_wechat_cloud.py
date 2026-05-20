@@ -14,9 +14,9 @@ from wechat_cover import compress_cover_image
 from wechat_limits import (
     WECHAT_AUTHOR_MAX_CHARS,
     WECHAT_CONTENT_SOURCE_URL_MAX_BYTES,
-    WECHAT_DIGEST_MAX_BYTES,
     WECHAT_TITLE_MAX_CHARS,
     truncate_chars,
+    truncate_digest,
     truncate_utf8_bytes,
 )
 
@@ -59,7 +59,7 @@ def build_payload(report_path: Path) -> dict:
     )
     payload: dict = {
         "title": truncate_chars(title, WECHAT_TITLE_MAX_CHARS),
-        "digest": truncate_utf8_bytes(digest, WECHAT_DIGEST_MAX_BYTES),
+        "digest": truncate_digest(digest),
         "author": truncate_chars(author, WECHAT_AUTHOR_MAX_CHARS),
         "content": markdown_to_wechat_html(markdown),
         "content_source_url": source_url,

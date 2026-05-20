@@ -59,17 +59,23 @@ def _article_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
         if not str(payload.get("cover_image_base64") or "").strip():
             raise PublishError("missing_fields: thumb_media_id or cover_image_base64")
         thumb_media_id = _upload_cover(payload)
-    return {
+    article: dict[str, Any] = {
+        "article_type": "news",
         "thumb_media_id": thumb_media_id,
         "author": str(payload.get("author") or "Paper Weekly")[:16],
         "title": str(payload["title"])[:32],
-        "content_source_url": str(payload.get("content_source_url") or "")[:1024],
         "content": str(payload["content"]),
-        "digest": str(payload.get("digest") or ""),
         "show_cover_pic": 0,
         "need_open_comment": 0,
         "only_fans_can_comment": 0,
     }
+    source_url = str(payload.get("content_source_url") or "").strip()[:1024]
+    if source_url:
+        article["content_source_url"] = source_url
+    digest = str(payload.get("digest") or "").strip()
+    if digest:
+        article["digest"] = digest[:54]
+    return article
 
 
 def _publish_article(article: dict[str, Any], payload: dict[str, Any]) -> dict[str, str]:

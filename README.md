@@ -129,8 +129,8 @@ git pull origin main
 | `ENABLE_SEMANTIC_SCHOLAR` | 是否启用 Semantic Scholar | `true` |
 | `ENABLE_OPENREVIEW` | 是否启用 OpenReview | `true` |
 | `ENABLE_IEEE_XPLORE` | 是否启用 IEEE Xplore（仍需 API Key） | `true` |
-| `WECHAT_CLOUD_AUTHOR` | 公众号文章作者 | `Paper Weekly Agent` |
-| `WECHAT_CLOUD_DIGEST` | 公众号文章摘要；不填则自动取前 3 篇标题 | 自动生成 |
+| `WECHAT_CLOUD_AUTHOR` | 公众号文章作者（不超过 16 字） | `Paper Weekly` |
+| `WECHAT_CLOUD_DIGEST` | 公众号摘要（约 54 字节内）；不填则取第一篇论文标题 | 自动生成 |
 | `WECHAT_CLOUD_CONTENT_SOURCE_URL` | 公众号“阅读原文”链接 | 自动指向 GitHub 日报 |
 | `WECHAT_CLOUD_COVER_IMAGE` | 公众号封面图路径 | `02.png` |
 | `WECHAT_CLOUD_THUMB_MEDIA_ID` | 已上传的封面 `media_id`；配置后不再在请求里传大图 | 空（自动压缩封面后上传） |
