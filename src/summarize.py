@@ -1,6 +1,12 @@
 import os
+import re
 
 import requests
+
+_CHINESE_TITLE_RE = re.compile(
+    r"^\*\*中文标题[：:]\*\*\s*(.+?)\s*$",
+    re.MULTILINE,
+)
 
 
 DEFAULT_DEEPSEEK_BASE_URL = "https://api.deepseek.com"
@@ -42,6 +48,9 @@ def _build_deepseek_messages(paper):
 arXiv 链接：{paper["arxiv_url"]}
 原始摘要：
 {paper["summary"]}
+
+输出最开头单独一行（必须在 ### AI 总结 之前）：
+**中文标题：** （将英文标题翻译为简洁准确的中文题目，不超过 40 字）
 
 请严格按以下 Markdown 结构输出，整体控制在 350-550 个中文字符：
 ### AI 总结
@@ -122,7 +131,17 @@ def _call_deepseek(paper):
     return data["choices"][0]["message"]["content"].strip()
 
 
-def summarize_paper(paper):
+def _extract_chinese_title(text: str) -> tuple[str, str]:
+    match = _CHINESE_TITLE_RE.search(text)
+    if not match:
+        return "", text
+    title_zh = match.group(1).strip()
+    cleaned = _CHINESE_TITLE_RE.sub("", text, count=1).lstrip("\n")
+    return title_zh, cleaned
+
+
+def summarize_paper(paper) -> tuple[str, str]:
+    """返回 (总结正文, 中文标题)；无 AI 总结时中文标题为空。"""
     try:
         summary = _call_deepseek(paper)
     except (requests.RequestException, KeyError, IndexError, ValueError) as e:
@@ -130,6 +149,7 @@ def summarize_paper(paper):
         summary = None
 
     if summary:
-        return summary
+        title_zh, summary = _extract_chinese_title(summary)
+        return summary, title_zh
 
-    return paper["summary"]
+    return paper["summary"], ""

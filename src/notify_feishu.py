@@ -1,4 +1,5 @@
 import os
+import re
 
 import requests
 
@@ -78,6 +79,12 @@ def send_feishu_webhook_text(webhook_url: str, text: str) -> None:
         )
 
 
+def extract_paper_titles_from_report(content: str) -> list[str]:
+    """从日报 Markdown 的 ## 小节标题提取文献题目（生成时已写入中文标题）。"""
+    titles = re.findall(r"^## \d+\.\s+(.+?)\s*$", content, re.MULTILINE)
+    return [title.strip() for title in titles]
+
+
 def get_github_daily_reports_url() -> str | None:
     """GitHub 仓库 daily_reports/ 目录链接（Actions 自动识别 GITHUB_REPOSITORY）。"""
     branch = os.getenv("GITHUB_REPO_BRANCH", "main").strip() or "main"
@@ -97,17 +104,17 @@ def send_feishu_document_link(
     *,
     title: str,
     doc_url: str,
-    paper_count: int | None = None,
+    paper_titles: list[str] | None = None,
     archive_url: str | None = None,
 ) -> None:
     """向群聊发送知识库文档链接（不发送全文）。"""
     lines = [
-        "📚 本周文献周报已发布到知识库",
+        "📚 本日文献周报已发布到知识库",
         f"标题：{title}",
-        f"链接：{doc_url}",
     ]
-    if paper_count is not None:
-        lines.append(f"共 {paper_count} 篇论文")
+    if paper_titles:
+        lines.extend(paper_titles)
+    lines.append(f"详情看链接：{doc_url}")
     history_url = archive_url or get_github_daily_reports_url()
     if history_url:
         lines.append(f"查看往期推送：{history_url}")

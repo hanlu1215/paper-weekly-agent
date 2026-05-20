@@ -1,216 +1,258 @@
-# Paper Weekly Agent
+# Paper Weekly Agent · 文献每日速递
 
-每天自动从 arXiv 抓取 AI / 机器人 / 具身智能相关论文，调用 DeepSeek 生成「文献每日速递」（Markdown），并推送到飞书群。
+> 写给第一次打开这个仓库的你：你不需要先成为 Python 专家，也不需要背一堆命令。把它变成**你自己的**自动读论文助手，核心路径是——**Fork 到 GitHub → 用 Cursor 打开 → 用对话改需求 → 填好 Actions Secrets**，剩下的交给云端每天跑。
 
-支持 **本地手动运行** 与 **GitHub Actions 每天 09:00（北京时间）自动运行**（抓取新文献 → 提交到仓库 → 飞书通知，已发布过的文献不会重复）。
+---
 
-## 项目结构
+## 这个仓库是做什么的？
+
+一句话：**每天自动从 arXiv 找论文 → 用 AI 写成中文速递 → 存进你的 GitHub → 推送到飞书群和知识库。**
+
+更具体一点，每天（默认北京时间 **09:00**）会发生这些事：
+
+1. 按你设定的**关键词**在 arXiv 检索相关论文  
+2. 筛掉太久远的、以及**往日已经推过**的（同一天可以重复推，隔天不重复）  
+3. 用 **DeepSeek** 为每篇生成中文总结（含中文标题）  
+4. 写成 Markdown，保存到仓库的 `daily_reports/`（同一天多次运行会**覆盖**当日那一个文件，不会堆出一堆 `-02.md`）  
+5. 在飞书**知识库**新建一篇文档，并在群里发一条消息：标题、各篇中文题目、链接、往期 GitHub 存档地址  
+
+你得到的是：
+
+- **GitHub 上的永久存档**（按日期命名的 `.md`，方便回溯）  
+- **飞书里的可读版本**（适合手机点开）  
+- **群里的提醒**（不用自己每天刷 arXiv）  
+
+默认关注方向包括：具身智能、机器人操作、VLA、扩散策略、世界模型、端到端自动驾驶等（见 `config/keywords.yaml`），你完全可以改成自己的研究方向。
+
+---
+
+## 推荐用法：Fork → Cursor → 对话定制 → 填 Secrets
+
+下面是你作为新人最该走的一条路。**不必**从「装 Python → 配 venv → 手敲脚本」开始；云端自动化才是主角，本地只是可选。
+
+### 第一步：把仓库放到你自己的 GitHub
+
+1. 打开本仓库在 GitHub 上的页面，点击右上角 **Fork**，得到例如 `https://github.com/你的用户名/paper-weekly-agent`。  
+2. （可选）把仓库设为 **Private**，密钥只在你账号下，更安心。  
+
+之后所有「每天自动跑」的逻辑，都发生在你 Fork 后的这份仓库里。
+
+### 第二步：用 Cursor 连接这个仓库
+
+1. 安装 [Cursor](https://cursor.com)。  
+2. **File → Open Folder**，选择你本机 clone 下来的目录；或在 Cursor 里用 **Clone Repository** 填你的 Fork 地址。  
+3. 打开后，左侧能看到 `src/`、`config/`、`.github/workflows/` 等——这就是你接下来要「说话让 AI 改」的工作区。  
+
+> **小提示：** 本地可以不保留历史 `.md` 报告（它们在 GitHub 上即可）。若 clone 后 pull 下来很多日报，可运行 `./scripts/clean-local-reports.sh` 只清本地正文，不影响远端。
+
+### 第三步：用 Cursor 对话，按你的想法改功能
+
+你不需要先读懂全部代码。在 Cursor 的 **Chat / Agent** 里，用自然语言描述目标即可，例如：
+
+| 你想做的事 | 可以对 Cursor 说 |
+|-----------|------------------|
+| 换检索领域 | 「把 `config/keywords.yaml` 改成关注大模型推理、RAG、Agent 的英文关键词」 |
+| 每天多推几篇 | 「把每天最多总结的篇数改成 8，并说明要改 workflow 还是环境变量」 |
+| 改推送文案 | 「飞书群消息里把『本日文献周报』改成『今日 AI 文献精选』」 |
+| 改总结结构 | 「DeepSeek 总结里增加『局限与未来工作』一小节」 |
+| 改运行时间 | 「把 GitHub Actions 改成每天北京时间 8:00 运行」 |
+| 只推链接、不建知识库 | 「说明如何设置 `FEISHU_NOTIFY_MODE=markdown`」 |
+
+改完后让 Cursor 帮你 **commit**；你 **push 到 GitHub**，Actions 就会按新逻辑运行。
+
+**适合改的文件（给 Cursor 指路径时有用）：**
+
+- `config/keywords.yaml` — 搜哪些词  
+- `src/summarize.py` — AI 总结的提示词与格式  
+- `src/notify_feishu.py` — 飞书群消息文案  
+- `src/render_markdown.py` — 日报 Markdown 版式  
+- `src/published_history.py` — 跨日去重规则  
+- `.github/workflows/weekly-paper-agent.yml` — 定时、依赖、CI 步骤  
+
+### 第四步：配置 GitHub Actions Secrets（必做）
+
+自动化跑在 GitHub 云端，**密钥只放在 Secrets 里**，不要写进代码或提交到 Git。
+
+路径：**你的仓库 → Settings → Secrets and variables → Actions → New repository secret**
+
+| Secret 名称 | 是否建议填 | 作用 |
+|-------------|-----------|------|
+| `DEEPSEEK_API_KEY` | 强烈建议 | 生成中文总结；不填则退回 arXiv 英文摘要 |
+| `FEISHU_WEBHOOK_URL` | 强烈建议 | 群机器人 Webhook，用来发链接通知 |
+| `FEISHU_APP_ID` | 知识库模式需要 | 飞书企业自建应用 |
+| `FEISHU_APP_SECRET` | 知识库模式需要 | 同上 |
+| `FEISHU_WIKI_SPACE_ID` | 知识库模式需要 | 目标知识库 space_id（纯数字） |
+| `FEISHU_WIKI_BASE_URL` | 建议 | 租户域名，如 `https://my.feishu.cn` |
+| `FEISHU_WIKI_PARENT_NODE_TOKEN` | 可选 | 文档建在哪个目录下 |
+
+可选 Secret（不填则用默认值）：
+
+| Secret | 默认行为 |
+|--------|----------|
+| `DEEPSEEK_BASE_URL` | `https://api.deepseek.com` |
+| `DEEPSEEK_MODEL` | `deepseek-v4-pro` |
+
+可选 **Variables**（非敏感，在 Actions → Variables 里设）：
+
+| Variable | 含义 | 默认 |
+|----------|------|------|
+| `MAX_PAPERS_TO_SUMMARIZE` | 每天最多总结几篇 | `5` |
+| `RECENT_DAYS` | 只考虑近 N 天内的论文 | `7` |
+
+配好后：
+
+1. 打开 **Actions** 页，确认 workflow **Daily Paper Agent** 已 **Enable**。  
+2. 点 **Run workflow** 手动跑一次，看是否绿勾、飞书是否收到消息。  
+3. 若定时没触发，检查 **Settings → Actions → General** 是否允许 Actions 与 scheduled workflows。  
+
+### 第五步：配好飞书（一次即可）
+
+需要两块能力，Secrets 里都要对应填好：
+
+1. **群机器人 Webhook**（发链接到群）  
+   - 飞书群 → 设置 → 群机器人 → 自定义机器人 → 复制 Webhook → 填入 `FEISHU_WEBHOOK_URL`  
+
+2. **企业自建应用**（在知识库创建文档）  
+   - [飞书开放平台](https://open.feishu.cn/app) 创建应用，开通 wiki / docx 相关权限并发布  
+   - 把应用加为目标**知识库成员**  
+   - 填写 `FEISHU_APP_ID`、`FEISHU_APP_SECRET`、`FEISHU_WIKI_SPACE_ID` 等  
+
+更细的权限与 space_id 获取方式，可在 Cursor 里问：「根据 README 帮我逐步配置飞书知识库」。
+
+---
+
+## 每天自动跑的时候，仓库里会发生什么？
+
+```
+定时 / 手动触发 (GitHub Actions)
+        │
+        ▼
+  python src/main.py          ← 抓 arXiv、去重、DeepSeek 总结、写 daily_reports/
+        │
+        ▼
+  git commit & push           ← 把日报、周报累计、published_papers.json 推回仓库
+        │
+        ▼
+  python src/send_to_feishu.py ← 知识库建文档 + 群消息（标题、中文题目列表、链接）
+```
+
+**去重规则（新人常问）：**
+
+- **同一天**跑多次：可以再次推送**相同**论文，当天的 `YYYY-MM-DD-文献每日速递.md` 会被**覆盖**  
+- **隔天**：已在 `data/published_papers.json` 里记录过的 arXiv ID **不会再推**  
+
+**群消息大致长这样：**
+
+```
+📚 本日文献周报已发布到知识库
+标题：2026-05-20-文献每日速递
+（各篇中文题目，一行一篇）
+详情看链接：https://my.feishu.cn/wiki/...
+查看往期推送：https://github.com/你的用户名/paper-weekly-agent/tree/main/daily_reports
+```
+
+---
+
+## 仓库目录一览
 
 ```
 paper-weekly-agent/
-├── .github/workflows/weekly-paper-agent.yml  # 定时自动化（每天 09:00 北京时间）
+├── .github/workflows/
+│   └── weekly-paper-agent.yml    # 定时任务：跑 main → 提交 → 飞书推送
 ├── config/
-│   ├── keywords.yaml           # arXiv 检索关键词
-│   └── deepseek.env.example    # DeepSeek 配置模板（无真实密钥）
-├── daily_reports/              # 每日速递存档（一天一个文件，不覆盖旧文件）
-├── weekly_reports/             # 当周文献累计（按日追加）
-├── output/                     # 历史存档（只读保留，新内容不再写入）
+│   ├── keywords.yaml             # arXiv 检索关键词（最常改）
+│   ├── deepseek.env.example      # DeepSeek 配置模板（本地用，勿提交密钥）
+│   └── deepseek.env              # 本地真实配置（已在 .gitignore）
+├── daily_reports/                # 每日速递 Markdown（Actions 会提交到 GitHub）
+│   └── README.md
+├── weekly_reports/               # 当周文献累计（按篇追加，跨日去重）
+├── output/                       # 早期历史存档（新内容不再写入这里）
+├── data/
+│   └── published_papers.json     # 已推送 arXiv ID（跨日去重依据）
 ├── src/
-│   ├── main.py                 # 主流程入口
-│   ├── fetch_arxiv.py          # arXiv 抓取与筛选
-│   ├── summarize.py            # DeepSeek 摘要
-│   ├── render_markdown.py      # 生成 Markdown
-│   ├── notify_feishu.py        # 飞书 Webhook 消息
-│   ├── feishu_client.py        # 飞书 API 鉴权
-│   ├── feishu_wiki.py          # 知识库建文档 + 写入 Markdown
-│   └── send_to_feishu.py       # 发布 CLI（CI / 手动）
-├── .env.example                # 环境变量模板
-└── requirements.txt
+│   ├── main.py                   # 主流程入口
+│   ├── fetch_arxiv.py            # arXiv 抓取、筛选、去重
+│   ├── summarize.py              # DeepSeek 中文总结 + 中文标题
+│   ├── render_markdown.py        # 生成 / 覆盖当日日报、追加周报
+│   ├── published_history.py      # 发布记录与跨日去重
+│   ├── notify_feishu.py          # 飞书 Webhook 文本消息
+│   ├── feishu_client.py          # 飞书 API 鉴权
+│   ├── feishu_wiki.py            # 知识库创建文档、写入 Markdown
+│   └── send_to_feishu.py         # 单独发布到飞书（CI 第二步调用）
+├── scripts/
+│   ├── verify_feishu_wiki.py     # CI 里校验飞书配置
+│   ├── run-local.sh              # 可选：本地一键试跑
+│   └── clean-local-reports.sh    # 可选：只删本地 md，不动 GitHub
+├── .env.example                  # 环境变量说明（本地或对照 Secrets）
+├── requirements.txt              # Python 依赖
+└── README.md                     # 你正在看的文件
 ```
 
-## 本地运行
+| 路径 | 谁在用 | 说明 |
+|------|--------|------|
+| `config/keywords.yaml` | 你 / Cursor | 决定「搜什么」 |
+| `daily_reports/*.md` | Actions → GitHub | 每天一期速递正文 |
+| `weekly_reports/*-累计.md` | Actions | 本周迄今所有篇目 |
+| `data/published_papers.json` | 主流程 | 防止隔天重复推送 |
+| `.github/workflows/weekly-paper-agent.yml` | GitHub | 定时与自动化编排 |
+| `.env` / `config/deepseek.env` | 仅本地 | 本地试跑时用，**不要 push** |
 
-### 1. 安装依赖
+---
 
-```bash
-cd paper-weekly-agent
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
+## 我想看往期推送、或手动补跑一天
 
-### 2. 配置环境变量
+- **往期 Markdown：** 浏览器打开  
+  `https://github.com/你的用户名/paper-weekly-agent/tree/main/daily_reports`  
+- **手动触发一次：** GitHub → **Actions** → **Daily Paper Agent** → **Run workflow**  
+- **只重发飞书、不重新抓论文：** 一般不需要；若 CI 里「提交」成功但飞书失败，可对 Cursor 说：「帮我只运行 send_to_feishu 的步骤」或查看 workflow 里最后一步的日志  
 
-复制模板并填写（**不要提交真实密钥**）：
+---
+
+## 可选：在本地试跑一次
+
+云端稳定后，偶尔想在改代码当下立刻看效果，可以：
 
 ```bash
 cp .env.example .env
 cp config/deepseek.env.example config/deepseek.env
+# 编辑上述文件，填入与 Secrets 相同的密钥（勿提交）
+
+chmod +x scripts/run-local.sh
+./scripts/run-local.sh
 ```
 
-编辑 `.env` 与 `config/deepseek.env`，填入本地密钥。
+本地生成的 `daily_reports/*.md` 默认被 `.gitignore` 忽略，避免误提交；**正式存档以 GitHub 上 Actions 提交为准**。
 
-### 3. 执行
+---
 
-```bash
-python src/main.py
-```
+## 安全提醒（请务必读）
 
-流程：读取 `config/keywords.yaml` → 抓取 arXiv → 去重 → 筛选近 N 天 → DeepSeek 总结（最多 M 篇）→ 写入 `daily_reports/` → 飞书预览推送。
+- **永远不要**把 Webhook、API Key、App Secret 写进代码、README、Issue 或 commit。  
+- 只使用 **GitHub Actions Secrets** 和本地 **`.env`**（已在 `.gitignore`）。  
+- 若密钥曾经误提交，立即在对应平台**轮换密钥**，并清理 Git 历史。  
 
-发布周报到飞书（**默认**：在知识库新建文档并往群里发链接）：
+---
 
-```bash
-python src/send_to_feishu.py
-python src/send_to_feishu.py output/2026-W21-paper-weekly.md
-```
+## 常见问题
 
-回退为向群里发送 Markdown 全文：
+**Q：定时任务没跑，只有手动 Run 才有记录？**  
+A：到 **Settings → Actions** 确认已启用 Actions 与 scheduled workflows；workflow 未被 Disable；`main` 分支上存在 workflow 文件。
 
-```bash
-FEISHU_NOTIFY_MODE=markdown python src/send_to_feishu.py
-```
+**Q：飞书 404 或 permission denied？**  
+A：多半是 `FEISHU_WIKI_SPACE_ID` 填错，或应用未加入知识库成员。用 Actions 日志里 `verify_feishu_wiki` 步骤的报错对照修改。
 
-## 环境变量
+**Q：今天没新文献，还会发飞书吗？**  
+A：不会。日报里若是「今日无新增文献」，CI 会跳过飞书推送。
 
-| 变量 | 必填 | 说明 |
-|------|------|------|
-| `DEEPSEEK_API_KEY` | 推荐 | DeepSeek API Key；未配置则回退为 arXiv 原文摘要 |
-| `FEISHU_WEBHOOK_URL` | wiki 模式推荐 | 群机器人 Webhook，用于发送文档链接 |
-| `FEISHU_NOTIFY_MODE` | 可选 | `auto`（默认）/ `wiki_link` / `markdown` |
-| `FEISHU_APP_ID` | wiki 模式必填 | 飞书企业自建应用 App ID |
-| `FEISHU_APP_SECRET` | wiki 模式必填 | 飞书企业自建应用 App Secret |
-| `FEISHU_WIKI_SPACE_ID` | wiki 模式必填 | 知识库 space_id |
-| `FEISHU_WIKI_PARENT_NODE_TOKEN` | 可选 | 父节点 token，不填则建在空间根目录 |
-| `FEISHU_WIKI_BASE_URL` | 推荐 | 租户域名，如 `https://your.feishu.cn` |
-| `DEEPSEEK_BASE_URL` | 可选 | 默认 `https://api.deepseek.com` |
-| `DEEPSEEK_MODEL` | 可选 | 默认 `deepseek-v4-pro` |
-| `DEEPSEEK_MAX_TOKENS` | 可选 | 默认 `1400` |
-| `DEEPSEEK_TEMPERATURE` | 可选 | 默认 `0.2` |
-| `MAX_PAPERS_TO_SUMMARIZE` | 可选 | 默认 `5` |
-| `RECENT_DAYS` | 可选 | 默认 `7` |
-| `SKIP_FEISHU_NOTIFY` | 可选 | 设为 `1`/`true` 时主流程不推送（供 CI 在提交后调用 `send_to_feishu.py`） |
+**Q：能和 Cursor 说什么来大改？**  
+A：例如换模型、改 cron 时区、增加邮件通知、改总结字数、增加微信公众号等——描述目标即可，由 Agent 改对应 `src/` 或 workflow。
 
-所有敏感项均通过 `os.getenv()` 读取，**不要**写入代码或 Markdown。
-
-## 输出文件
-
-| 目录 | 说明 | 示例文件名 |
-|------|------|------------|
-| `daily_reports/` | **每日速递**（每天新建，不覆盖 `output/` 旧文件；同日多次运行会加 `-02` 后缀） | `2026-05-19-文献每日速递.md` |
-| `weekly_reports/` | **当周累计**（只追加） | `2026-W21-文献每日速递-累计.md` |
-| `output/` | 早期历史存档 | 保留不动 |
-| `data/published_papers.json` | 已发布 arXiv ID（跨日去重） | — |
-
-`daily_reports/`、`weekly_reports/` 与 `data/published_papers.json` 会由 GitHub Actions 自动提交。
-
-## GitHub Actions 自动化
-
-### 启用
-
-1. 将本仓库推送到 GitHub（见下方「首次上传」）。
-2. 打开 **Settings → Secrets and variables → Actions**。
-3. 添加 [Secrets](#github-secrets)（及可选 [Variables](#github-variables-可选)）。
-4. 在 **Actions** 页确认 workflow **Weekly Paper Agent** 已启用。
-5. 可点击 **Run workflow** 手动触发测试。
-
-### 运行逻辑
-
-1. 每天 **UTC 01:00**（北京时间 **09:00**）定时触发，或手动 `workflow_dispatch`。
-2. 安装依赖，从 Secrets 注入环境变量，执行 `python src/main.py`（`SKIP_FEISHU_NOTIFY=true`）。
-3. 若 `daily_reports/` 或 `weekly_reports/` 有变更，由 `github-actions[bot]` 提交并 push。
-4. 执行 `python src/send_to_feishu.py`：在知识库新建文档、写入 Markdown，并向群里发送文档链接。
-
-### GitHub Secrets
-
-在 **Settings → Secrets and variables → Actions → New repository secret** 添加：
-
-| Secret | 必填 | 说明 |
-|--------|------|------|
-| `DEEPSEEK_API_KEY` | 推荐 | DeepSeek API Key |
-| `FEISHU_WEBHOOK_URL` | 推荐 | 群机器人 Webhook（发送文档链接） |
-| `FEISHU_APP_ID` | 推荐 | 飞书自建应用 App ID |
-| `FEISHU_APP_SECRET` | 推荐 | 飞书自建应用 App Secret |
-| `FEISHU_WIKI_SPACE_ID` | 推荐 | 目标知识库 space_id |
-| `FEISHU_WIKI_BASE_URL` | 推荐 | 租户域名，如 `https://your.feishu.cn` |
-
-可选：
-
-| Secret | 说明 |
-|--------|------|
-| `FEISHU_WIKI_PARENT_NODE_TOKEN` | 知识库父目录节点 token |
-
-可选（不配置则使用代码内默认值）：
-
-| Secret | 说明 |
-|--------|------|
-| `DEEPSEEK_BASE_URL` | API 基地址 |
-| `DEEPSEEK_MODEL` | 模型名称 |
-
-### GitHub Variables（可选）
-
-在 **Variables** 标签页可设置（非敏感）：
-
-| Variable | 示例 | 说明 |
-|----------|------|------|
-| `MAX_PAPERS_TO_SUMMARIZE` | `5` | 每天最多总结篇数 |
-| `RECENT_DAYS` | `7` | 仅保留近 N 天论文 |
-
-## 飞书配置（知识库 + 群链接）
-
-### 1. 群机器人 Webhook（发链接到群）
-
-1. 飞书群 → **设置** → **群机器人** → **自定义机器人**。
-2. 复制 **Webhook**，填入 `FEISHU_WEBHOOK_URL`。
-3. **不要**开启「签名校验」（当前代码未实现）。
-
-### 2. 企业自建应用（创建知识库文档）
-
-1. 打开 [飞书开放平台](https://open.feishu.cn/app) → **创建企业自建应用**。
-2. 在 **权限管理** 中开通（至少）：
-   - `wiki:wiki` 或 `wiki:node:create`（知识库）
-   - `docx:document` 相关写权限
-   - `docx:document.block:convert`（Markdown 转文档块）
-3. **版本管理与发布** → 创建并发布版本，让管理员审批。
-4. 把应用 **添加为目标知识库成员/管理员**（否则 `131006 permission denied`）。
-5. 记录 **App ID**、**App Secret** → `FEISHU_APP_ID` / `FEISHU_APP_SECRET`。
-6. 配置 **`FEISHU_WIKI_SPACE_ID`**（任选一种写法）：
-   - **推荐**：打开知识库**首页/设置**，地址栏含 `/wiki/space/一串数字/`，只填该数字；
-   - **或**：直接粘贴某个目录链接（如 `https://my.feishu.cn/wiki/CtA5wUUV2i...`），程序会用 API 自动查出 `space_id`（需已配置 `FEISHU_APP_ID` / `SECRET`）。
-7. 配置 `FEISHU_WIKI_BASE_URL` 为租户域名，例如 `https://my.feishu.cn`。
-8. （推荐）把目标目录链接填到 **`FEISHU_WIKI_PARENT_NODE_TOKEN`**，例如 `CtA5wUUV2iOYXRk2QzqcCN4inke`，周报会建在该目录下。
-
-### 3. 推送效果
-
-- 每次运行在知识库 **新建一篇文档**，内容为周报 Markdown。
-- 群里收到一条消息，含 **标题 + 知识库链接**（不再发送全文）。
-
-**注意：** 勿在日志、Issue、README 或 Git 中粘贴 Webhook、App Secret。
-
-## 安全说明
-
-- `.env`、`config/deepseek.env`、`*.env`（除 `*.env.example`）已在 `.gitignore` 中忽略。
-- 若曾误将密钥提交到 Git，请立即**轮换密钥**，并使用 [git filter-repo](https://github.com/newren/git-filter-repo) 或 GitHub Secret scanning 清理历史。
-- Actions 日志中不会 echo 密钥；请勿在 workflow 中打印 `secrets.*`。
-
-## 首次上传到 GitHub
-
-```bash
-cd paper-weekly-agent
-
-# 确认不会提交敏感文件
-git status
-git check-ignore -v .env config/deepseek.env
-
-git add .
-git commit -m "feat: weekly paper agent with GitHub Actions and Feishu notify"
-git branch -M main
-git remote add origin https://github.com/<你的用户名>/paper-weekly-agent.git
-git push -u origin main
-```
-
-推送后在 GitHub 配置 Secrets，并在 Actions 中手动运行一次验证。
+---
 
 ## 许可证
 
-按需自行添加 LICENSE。
+本仓库未强制附带开源协议；Fork 后你可自行添加 `LICENSE` 文件。
+
+---
+
+**下一步建议：** Fork → 填 Secrets → Actions 手动 Run 一次 → 在 Cursor 里说一句：「帮我把关键词改成我关注的 XXX 领域」。祝你每天都有值得读的论文送到眼前。

@@ -1,4 +1,4 @@
-"""记录已发布文献，避免每日重复推送同一篇 arXiv 论文。"""
+"""记录已发布文献：同日多次运行可重复推送，跨日不重复推送同一篇 arXiv 论文。"""
 
 import json
 import re
@@ -70,32 +70,57 @@ def bootstrap_from_output_markdown(*search_dirs: Path) -> int:
     return added
 
 
-def load_published_ids() -> set[str]:
+def _is_blocked_on_day(record: dict, today: date) -> bool:
+    """非今日已发布（含历史导入）的文献在筛选时跳过；今日已发布的可再次推送。"""
+    pub_day = str(record.get("first_published_on", "")).strip()
+    if not pub_day or pub_day == "imported":
+        return True
+    return pub_day != today.isoformat()
+
+
+def load_published_records() -> dict[str, dict]:
     bootstrap_from_output_markdown()
-    return set(_load_raw()["papers"].keys())
+    return _load_raw()["papers"]
 
 
-def filter_unpublished(papers: list[dict]) -> tuple[list[dict], int]:
-    published = load_published_ids()
+def filter_unpublished(
+    papers: list[dict],
+    *,
+    today: date | None = None,
+) -> tuple[list[dict], int]:
+    today = today or date.today()
+    published = load_published_records()
     fresh = []
     skipped = 0
     for paper in papers:
         arxiv_id = extract_arxiv_id(paper)
-        if arxiv_id and arxiv_id in published:
+        if arxiv_id and arxiv_id in published and _is_blocked_on_day(published[arxiv_id], today):
             skipped += 1
             continue
         fresh.append(paper)
     return fresh, skipped
 
 
-def mark_as_published(papers: list[dict], *, published_on: date | None = None) -> None:
+def mark_as_published(
+    papers: list[dict],
+    *,
+    published_on: date | None = None,
+) -> None:
     if not papers:
         return
-    day = (published_on or date.today()).isoformat()
+    today = published_on or date.today()
+    day = today.isoformat()
     data = _load_raw()
     for paper in papers:
         arxiv_id = extract_arxiv_id(paper)
         if not arxiv_id:
+            continue
+        existing = data["papers"].get(arxiv_id)
+        if existing and existing.get("first_published_on") == day:
+            existing["title"] = paper.get("title", "")
+            existing["arxiv_url"] = paper.get("arxiv_url", "")
+            continue
+        if existing and _is_blocked_on_day(existing, today):
             continue
         data["papers"][arxiv_id] = {
             "title": paper.get("title", ""),

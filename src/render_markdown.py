@@ -1,14 +1,27 @@
 import datetime
+import re
 from pathlib import Path
+
+from published_history import extract_arxiv_id
 
 # 每日速递单独目录，不覆盖 output/ 下历史文件
 DAILY_REPORTS_DIR = Path("daily_reports")
 WEEKLY_REPORTS_DIR = Path("weekly_reports")
+_ARXIV_IN_MD_RE = re.compile(
+    r"https://arxiv\.org/abs/(\d{4}\.\d{4,5})(?:v\d+)?",
+    re.I,
+)
 
 
-def _render_paper_section(idx: int, paper: dict, summary: str) -> list[str]:
+def _render_paper_section(
+    idx: int,
+    paper: dict,
+    summary: str,
+    title_zh: str = "",
+) -> list[str]:
     lines = []
-    lines.append(f"\n## {idx}. {paper['title']}\n")
+    display_title = (title_zh or paper["title"]).strip()
+    lines.append(f"\n## {idx}. {display_title}\n")
     lines.append(f"- 作者：{', '.join(paper['authors'])}\n")
     lines.append(f"- 发布时间：{paper['published']}\n")
     lines.append(f"- arXiv 链接：{paper['arxiv_url']}\n")
@@ -26,23 +39,21 @@ def daily_report_title(today: datetime.date | None = None) -> str:
     return f"{today.isoformat()}-文献每日速递"
 
 
-def allocate_daily_report_path(today: datetime.date | None = None) -> Path:
-    """
-    在 daily_reports/ 下分配当日文件路径；若已存在则递增序号，避免覆盖。
-    例如：2026-05-19-文献每日速递.md → 2026-05-19-文献每日速递-02.md
-    """
+def daily_report_path(today: datetime.date | None = None) -> Path:
+    """当日速递固定路径；同日多次运行覆盖同一文件，不在 GitHub 新增 -02 等副本。"""
     today = today or datetime.date.today()
     DAILY_REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    date_str = today.isoformat()
-    first = DAILY_REPORTS_DIR / f"{date_str}-文献每日速递.md"
-    if not first.exists():
-        return first
-    index = 2
-    while True:
-        candidate = DAILY_REPORTS_DIR / f"{date_str}-文献每日速递-{index:02d}.md"
-        if not candidate.exists():
-            return candidate
-        index += 1
+    return DAILY_REPORTS_DIR / f"{today.isoformat()}-文献每日速递.md"
+
+
+def _remove_legacy_same_day_suffix_files(date_str: str) -> None:
+    """删除旧版同日递增后缀文件（如 …-02.md），避免仓库残留多余条目。"""
+    for path in DAILY_REPORTS_DIR.glob(f"{date_str}-文献每日速递-*.md"):
+        path.unlink(missing_ok=True)
+
+
+def _arxiv_ids_in_markdown(text: str) -> set[str]:
+    return set(_ARXIV_IN_MD_RE.findall(text))
 
 
 def _weekly_report_path(today: datetime.date | None = None) -> Path:
@@ -60,8 +71,9 @@ def render_daily_report(
 ) -> Path:
     """生成当日速递（仅包含本次新增文献），写入 daily_reports/。"""
     today = datetime.date.today()
-    output_path = output_path or allocate_daily_report_path(today)
+    output_path = output_path or daily_report_path(today)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    _remove_legacy_same_day_suffix_files(today.isoformat())
 
     lines = [
         f"# {daily_report_title(today)}\n",
@@ -71,15 +83,22 @@ def render_daily_report(
     ]
 
     if not papers_with_summaries:
-        lines.append("今日无新增文献（与历史已发布记录重复或暂无匹配论文）。\n")
+        lines.append("今日无新增文献（与往日已发布记录重复或暂无匹配论文）。\n")
         if skipped_duplicates:
-            lines.append(f"\n> 已跳过 {skipped_duplicates} 篇此前已发布文献。\n")
+            lines.append(f"\n> 已跳过 {skipped_duplicates} 篇往日已发布文献。\n")
     else:
         lines.append(f"今日新增 {len(papers_with_summaries)} 篇。\n")
         if skipped_duplicates:
-            lines.append(f"> 已跳过 {skipped_duplicates} 篇此前已发布文献。\n")
+            lines.append(f"> 已跳过 {skipped_duplicates} 篇往日已发布文献。\n")
         for idx, item in enumerate(papers_with_summaries, start=1):
-            lines.extend(_render_paper_section(idx, item["paper"], item["summary"]))
+            lines.extend(
+                _render_paper_section(
+                    idx,
+                    item["paper"],
+                    item["summary"],
+                    item.get("title_zh", ""),
+                )
+            )
 
     output_path.write_text("\n".join(lines), encoding="utf-8")
     return output_path
@@ -94,8 +113,10 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
     _, week, _ = today.isocalendar()
     output_path = _weekly_report_path(today)
 
+    existing_ids: set[str] = set()
     if output_path.exists():
         existing = output_path.read_text(encoding="utf-8")
+        existing_ids = _arxiv_ids_in_markdown(existing)
         next_idx = existing.count("\n## ") + 1
         lines = [existing.rstrip(), "", f"\n> 追加日期：{today}\n"]
     else:
@@ -107,9 +128,24 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
             "本周累计文献（按日追加）：\n",
         ]
 
+    added = 0
     for item in papers_with_summaries:
-        lines.extend(_render_paper_section(next_idx, item["paper"], item["summary"]))
+        arxiv_id = extract_arxiv_id(item["paper"])
+        if arxiv_id and arxiv_id in existing_ids:
+            continue
+        lines.extend(
+            _render_paper_section(
+                next_idx,
+                item["paper"],
+                item["summary"],
+                item.get("title_zh", ""),
+            )
+        )
         next_idx += 1
+        added += 1
+
+    if added == 0:
+        return output_path if output_path.exists() else None
 
     output_path.write_text("\n".join(lines), encoding="utf-8")
     return output_path

@@ -3,7 +3,6 @@
 import argparse
 import datetime
 import os
-import re
 import sys
 from pathlib import Path
 
@@ -11,7 +10,11 @@ import requests
 from dotenv import load_dotenv
 
 from feishu_wiki import publish_report_file_to_wiki, validate_wiki_config, wiki_configured
-from notify_feishu import send_feishu_document_link, send_feishu_text_chunks
+from notify_feishu import (
+    extract_paper_titles_from_report,
+    send_feishu_document_link,
+    send_feishu_text_chunks,
+)
 
 DEFAULT_REPORTS_DIR = Path("daily_reports")
 DEFAULT_CHUNK_SIZE = 3500
@@ -53,15 +56,6 @@ def _resolve_notify_mode() -> str:
     return mode
 
 
-def _count_papers_in_report(content: str) -> int | None:
-    match = re.search(r"本次共筛选出\s*(\d+)\s*篇", content)
-    if match:
-        return int(match.group(1))
-    if "本次未检索到符合关键词的论文" in content:
-        return 0
-    return None
-
-
 def send_report_as_markdown(report_path: Path, chunk_size: int) -> None:
     webhook_url = _get_webhook_url()
     if not webhook_url:
@@ -86,13 +80,13 @@ def send_report_as_wiki_link(report_path: Path) -> None:
 
     title, doc_url = publish_report_file_to_wiki(report_path)
     content = report_path.read_text(encoding="utf-8")
-    paper_count = _count_papers_in_report(content)
+    paper_titles = extract_paper_titles_from_report(content)
 
     send_feishu_document_link(
         webhook_url,
         title=title,
         doc_url=doc_url,
-        paper_count=paper_count,
+        paper_titles=paper_titles,
     )
     print(f"知识库文档已创建：{doc_url}")
     print("飞书群聊已发送文档链接。")

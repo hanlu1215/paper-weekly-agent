@@ -59,9 +59,9 @@ def main():
     recent_papers = filter_recent_papers(papers, days=recent_days)
     print(f"最近 {recent_days} 天相关论文数量：{len(recent_papers)}")
 
-    print("\n正在排除历史已发布文献...")
+    print("\n正在排除往日已发布文献（同日可重复）...")
     recent_papers, skipped_duplicates = filter_unpublished(recent_papers)
-    print(f"排除已发布后剩余：{len(recent_papers)} 篇（跳过 {skipped_duplicates} 篇）")
+    print(f"排除往日已发布后剩余：{len(recent_papers)} 篇（跳过 {skipped_duplicates} 篇）")
 
     recent_papers = recent_papers[:max_papers_to_summarize]
     print(f"本次最多总结论文数量：{len(recent_papers)}")
@@ -72,12 +72,13 @@ def main():
         print("\n" + "-" * 60)
         print(f"正在处理第 {idx}/{len(recent_papers)} 篇", flush=True)
         print(paper["title"], flush=True)
-        summary = summarize_paper(paper)
+        summary, title_zh = summarize_paper(paper)
         print("摘要已生成。", flush=True)
 
         papers_with_summaries.append({
             "paper": paper,
-            "summary": summary
+            "summary": summary,
+            "title_zh": title_zh,
         })
 
     print("\n正在生成 Markdown 报告...")
