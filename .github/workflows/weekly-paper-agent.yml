@@ -43,6 +43,24 @@ jobs:
 
       - name: Commit and push weekly report
         run: |
+          push_with_retry() {
+            local attempt=1
+            local delay=10
+            while true; do
+              if git push; then
+                return 0
+              fi
+              if [ "$attempt" -ge 5 ]; then
+                echo "git push failed after $attempt attempts."
+                return 1
+              fi
+              echo "git push failed; retrying in ${delay}s (attempt $attempt/5)..."
+              sleep "$delay"
+              attempt=$((attempt + 1))
+              delay=$((delay * 2))
+            done
+          }
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p daily_reports weekly_reports
@@ -51,7 +69,7 @@ jobs:
             echo "No new or updated report to commit."
           else
             git commit -m "chore: update paper report $(date -u +%Y-%m-%d)"
-            git push
+            push_with_retry
           fi
 
       - name: Validate Feishu wiki secrets
