@@ -124,7 +124,7 @@ jobs:
           python3 src/send_to_feishu.py "$LATEST"
 
       - name: Send report to WeChat Official Account
-        if: success()
+        if: success() && github.ref == 'refs/heads/test'
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPO_BRANCH: ${{ github.ref_name }}
