@@ -168,8 +168,8 @@ git pull origin main
 注意：
 
 - 云托管服务代码在 `wechat_cloud/`，需部署到微信云托管。
-- 在微信云托管控制台开启「开放接口服务」，并配置接口白名单：`/cgi-bin/material/add_material`、`/cgi-bin/material/add_news`、`/cgi-bin/message/mass/sendall`。
-- 当前云托管实现会调用微信“群发给全部用户”接口；请先确认公众号类型、认证状态和当日群发配额满足要求。
+- 在微信云托管控制台开启「开放接口服务」，并配置接口白名单：`/cgi-bin/material/add_material`、`/cgi-bin/draft/add`、`/cgi-bin/freepublish/submit`。
+- 当前云托管实现会通过草稿箱接口创建图文草稿，并调用发布接口提交发布；请先确认公众号类型、认证状态和发布配额满足要求。
 - `WECHAT_CLOUD_PUBLISH_URL` / `WECHAT_CLOUD_PUBLISH_TOKEN` 未配齐时，程序会自动跳过公众号群发，不影响 GitHub 存档和飞书推送。
 
 ---

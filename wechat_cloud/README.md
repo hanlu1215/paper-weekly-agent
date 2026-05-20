@@ -23,8 +23,8 @@ GitHub Actions 将日报 HTML 和封面图发送到该接口；服务在微信�
 
 ```text
 /cgi-bin/material/add_material
-/cgi-bin/material/add_news
-/cgi-bin/message/mass/sendall
+/cgi-bin/draft/add
+/cgi-bin/freepublish/submit
 ```
 
 开启后需要重新部署服务版本才会生效。

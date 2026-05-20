@@ -85,7 +85,9 @@ def publish_to_wechat_cloud(report_path: Path) -> None:
 
     print(
         "微信云托管公众号群发已提交。"
-        f" media_id={data.get('media_id', '')} msg_id={data.get('msg_id', '')}",
+        f" media_id={data.get('media_id', '')}"
+        f" publish_id={data.get('publish_id', '')}"
+        f" msg_id={data.get('msg_id', '')}",
         flush=True,
     )
 

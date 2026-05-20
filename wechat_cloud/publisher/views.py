@@ -69,22 +69,18 @@ def _article_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
 
 def _publish_article(article: dict[str, Any], payload: dict[str, Any]) -> dict[str, str]:
-    news = _wechat_post_json("/cgi-bin/material/add_news", {"articles": [article]})
-    media_id = news.get("media_id")
+    draft = _wechat_post_json("/cgi-bin/draft/add", {"articles": [article]})
+    media_id = draft.get("media_id")
     if not media_id:
-        raise PublishError("add_news_missing_media_id")
+        raise PublishError("draft_add_missing_media_id")
 
     result = _wechat_post_json(
-        "/cgi-bin/message/mass/sendall",
-        {
-            "filter": {"is_to_all": True},
-            "mpnews": {"media_id": media_id},
-            "msgtype": "mpnews",
-            "send_ignore_reprint": int(payload.get("send_ignore_reprint", 0)),
-        },
+        "/cgi-bin/freepublish/submit",
+        {"media_id": media_id},
     )
-    msg_id = str(result.get("msg_id") or result.get("msg_data_id") or "")
-    return {"media_id": str(media_id), "msg_id": msg_id}
+    publish_id = str(result.get("publish_id") or "")
+    msg_data_id = str(result.get("msg_data_id") or "")
+    return {"media_id": str(media_id), "publish_id": publish_id, "msg_id": msg_data_id}
 
 
 def _upload_cover(payload: dict[str, Any]) -> str:
