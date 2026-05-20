@@ -50,6 +50,21 @@
       "title": "Key-Gram: Extensible World Knowledge for Embodied Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2605.18556v1",
       "first_published_on": "2026-05-19"
+    },
+    "2605.19104": {
+      "title": "Neural Operators for Design-Space Surrogate Modeling of Tendon-Actuated Continuum Robots",
+      "arxiv_url": "https://arxiv.org/abs/2605.19104v1",
+      "first_published_on": "2026-05-20"
+    },
+    "2605.17851": {
+      "title": "A Dexterous and Compliant Gripper With Soft Hydraulic Actuation for Microgravity Manipulation",
+      "arxiv_url": "https://arxiv.org/abs/2605.17851v1",
+      "first_published_on": "2026-05-20"
+    },
+    "2605.17556": {
+      "title": "Visual Sculpting: Visually-Aligned Planning Representations for Long-Horizon Robot Clay Sculpting",
+      "arxiv_url": "https://arxiv.org/abs/2605.17556v1",
+      "first_published_on": "2026-05-20"
     }
   }
 }
