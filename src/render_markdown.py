@@ -1,6 +1,8 @@
 import datetime
 from pathlib import Path
 
+from report_date import report_today
+
 DAILY_REPORTS_DIR = Path("daily_reports")
 WEEKLY_REPORTS_DIR = Path("weekly_reports")
 
@@ -33,13 +35,13 @@ def _render_paper_section(
 
 
 def daily_report_title(today: datetime.date | None = None) -> str:
-    today = today or datetime.date.today()
+    today = today or report_today()
     return f"{today.isoformat()}-文献每日速递"
 
 
 def daily_report_path(today: datetime.date | None = None) -> Path:
     """当日速递固定路径；同日多次运行覆盖同一文件，不在 GitHub 新增 -02 等副本。"""
-    today = today or datetime.date.today()
+    today = today or report_today()
     DAILY_REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     return DAILY_REPORTS_DIR / f"{today.isoformat()}-文献每日速递.md"
 
@@ -51,7 +53,7 @@ def _remove_legacy_same_day_suffix_files(date_str: str) -> None:
 
 
 def _weekly_report_path(today: datetime.date | None = None) -> Path:
-    today = today or datetime.date.today()
+    today = today or report_today()
     year, week, _ = today.isocalendar()
     WEEKLY_REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     return WEEKLY_REPORTS_DIR / f"{year}-W{week:02d}-文献每日速递-累计.md"
@@ -63,7 +65,7 @@ def render_daily_report(
     output_path: Path | None = None,
 ) -> Path:
     """生成当日速递（仅包含本次新增文献），写入 daily_reports/。"""
-    today = datetime.date.today()
+    today = report_today()
     output_path = output_path or daily_report_path(today)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     _remove_legacy_same_day_suffix_files(today.isoformat())
@@ -98,7 +100,7 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
     if not papers_with_summaries:
         return None
 
-    today = datetime.date.today()
+    today = report_today()
     _, week, _ = today.isocalendar()
     output_path = _weekly_report_path(today)
 
