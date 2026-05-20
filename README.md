@@ -2,6 +2,8 @@
 
 > 写给第一次打开这个仓库的你：你不需要先成为 Python 专家，也**不必在本地跑 Python**。推荐全程只改 **GitHub 上的代码**，用 **Actions** 执行；密钥只放在 **Actions Secrets**。
 
+**当前能力：** 多源检索论文 → DeepSeek 中文总结 → 写入 `daily_reports/` → **飞书知识库 + 群消息**。不包含微信公众号发布；历史 `test` 分支与 `wechat_cloud/` 已移除。
+
 ---
 
 ## 推荐工作流：只改 GitHub，不用本地跑代码
