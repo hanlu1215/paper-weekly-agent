@@ -172,6 +172,14 @@ git pull origin main
 - 当前云托管实现会通过草稿箱接口创建图文草稿，并调用发布接口提交发布；请先确认公众号类型、认证状态和发布配额满足要求。
 - `WECHAT_CLOUD_PUBLISH_URL` / `WECHAT_CLOUD_PUBLISH_TOKEN` 未配齐时，程序会自动跳过公众号群发，不影响 GitHub 存档和飞书推送。
 
+**只测公众号发布（跳过检索）：** 在已配置云托管 Secrets 或本地 `.env` 后，可将已有日报直接发到公众号：
+
+```bash
+python3 scripts/test_wechat_publish.py
+# 或指定其它 .md
+python3 scripts/test_wechat_publish.py daily_reports/2026-05-20-文献每日速递.md
+```
+
 ---
 
 ## 每天自动跑的时候，仓库里会发生什么？
@@ -242,6 +250,7 @@ paper-weekly-agent/
 ├── wechat_cloud/                 # 微信云托管 Django 中转服务
 ├── scripts/
 │   ├── verify_feishu_wiki.py     # CI 里校验飞书配置
+│   ├── test_wechat_publish.py    # 可选：只测公众号发布，跳过文献检索
 │   ├── run-local.sh              # 可选：本地一键试跑
 │   └── clean-local-reports.sh    # 可选：只删本地 md，不动 GitHub
 ├── .env.example                  # 环境变量说明（本地或对照 Secrets）
