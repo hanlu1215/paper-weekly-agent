@@ -10,6 +10,7 @@ DEFAULT_TIMEOUT = 60
 DEFAULT_MAX_RETRIES = 4
 DEFAULT_KEYWORD_DELAY = 3.5
 DEFAULT_COOLDOWN_AFTER_FAIL = 12
+DEFAULT_TOTAL_FETCH_SECONDS = 240
 # 关键词较多时，合并 OR 查询易超时且易触发 429，直接逐个查更稳
 BULK_QUERY_MAX_KEYWORDS = 4
 
@@ -149,6 +150,8 @@ def _fetch_by_keywords(
     per_keyword_limit = max(3, max_results // max(1, len(keywords)))
     delay = _env_float("ARXIV_KEYWORD_DELAY", DEFAULT_KEYWORD_DELAY)
     cooldown = _env_float("ARXIV_COOLDOWN_SECONDS", DEFAULT_COOLDOWN_AFTER_FAIL)
+    total_budget = _env_float("ARXIV_TOTAL_TIMEOUT_SECONDS", DEFAULT_TOTAL_FETCH_SECONDS)
+    started_at = time.monotonic()
 
     print(f"按关键词逐个查询 arXiv（{reason}）…", flush=True)
     if cooldown > 0:
@@ -156,6 +159,14 @@ def _fetch_by_keywords(
         time.sleep(cooldown)
 
     for index, keyword in enumerate(keywords):
+        elapsed = time.monotonic() - started_at
+        if total_budget > 0 and elapsed >= total_budget:
+            print(
+                f"arXiv 查询已用 {elapsed:.1f}s，达到总耗时上限 {total_budget:g}s，停止继续查询关键词。",
+                flush=True,
+            )
+            break
+
         if index > 0:
             print(f"等待 {delay:.1f}s 后查询下一个关键词…", flush=True)
             time.sleep(delay)
