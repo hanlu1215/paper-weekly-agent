@@ -33,7 +33,7 @@ git pull origin main
 更具体一点，每天（默认北京时间 **09:00**）会发生这些事：
 
 1. 按你设定的**关键词**在 arXiv、Semantic Scholar、OpenReview、IEEE Xplore 检索相关论文  
-2. 筛掉太久远的、以及**往日已经推过**的（同一天可以重复推，隔天不重复）  
+2. 只保留近 **`RECENT_DAYS`** 天内的论文（默认 30 天）；**不做**跨日标题去重，同一天多次运行会覆盖当日日报并再次推飞书  
 3. 用 **DeepSeek** 为每篇生成中文总结（含中文标题）  
 4. 写成 Markdown，保存到仓库的 `daily_reports/`（同一天多次运行会**覆盖**当日那一个文件，不会堆出一堆 `-02.md`）  
 5. 在飞书**知识库**新建一篇文档，并在群里发一条消息：标题、各篇中文题目、链接、往期 GitHub 存档地址  
@@ -107,6 +107,7 @@ git pull origin main
 | `FEISHU_WIKI_SPACE_ID` | 知识库模式需要 | 目标知识库 space_id（纯数字） |
 | `FEISHU_WIKI_BASE_URL` | 建议 | 租户域名，如 `https://my.feishu.cn` |
 | `FEISHU_WIKI_PARENT_NODE_TOKEN` | 可选 | 文档建在哪个目录下 |
+| `FEISHU_NOTIFY_MODE` | 可选 | `wiki_link`（默认，知识库链接）/ `markdown`（全文）/ `auto` |
 | `SEMANTIC_SCHOLAR_API_KEY` | 可选 | 提高 Semantic Scholar API 限额；不填也会尝试公开接口 |
 | `IEEE_XPLORE_API_KEY` | IEEE 检索需要 | 启用 IEEE Xplore 检索；不填则自动跳过 IEEE |
 
@@ -167,9 +168,10 @@ git pull origin main
 
 **重复推送规则（新人常问）：**
 
-- 当前不做发布历史去重，也不按标题去重；每次运行都会基于当次抓取结果生成日报。
-- 同一天多次运行会覆盖当天的 `YYYY-MM-DD-文献每日速递.md`，飞书会按当次结果再次推送。
-- 周累计文件按运行追加，可能保留重复论文，便于完整记录每次推送结果。
+- 不做「已推过论文」历史去重；每次运行按当次检索 + 近期天数筛选结果写日报。
+- 当日文件固定为 `YYYY-MM-DD-文献每日速递.md`，**同日多次运行会覆盖**，不会生成 `-02.md` 副本。
+- 飞书在 CI 提交成功后会再发一次（`main.py` 里设了 `SKIP_FEISHU_NOTIFY`，由 `send_to_feishu.py` 统一推送）。
+- `weekly_reports/` 按运行**追加**当周篇目，可能出现重复记录。
 
 **群消息大致长这样：**
 
@@ -231,7 +233,7 @@ paper-weekly-agent/
 
 - **往期 Markdown：** 浏览器打开  
   `https://github.com/你的用户名/paper-weekly-agent/tree/main/daily_reports`  
-- **手动触发一次：** GitHub → **Actions** → **Daily Paper Agent** → **Run workflow**  
+- **手动触发一次：** GitHub → **Actions** → 左侧 **Daily Paper Agent** → 右侧 **Run workflow**（分支 `main`）  
 - **只重发飞书、不重新抓论文：** 一般不需要；若 CI 里「提交」成功但飞书失败，可对 Cursor 说：「帮我只运行 send_to_feishu 的步骤」或查看 workflow 里最后一步的日志  
 
 ---
@@ -266,6 +268,21 @@ A：这是 arXiv 官方 API 的**频率限制或网络慢**，不是关键词配
 
 **Q：能和 Cursor 说什么来大改？**  
 A：例如换模型、改 cron 时区、增加邮件通知、改总结字数等——描述目标即可，由 Agent 改对应 `src/` 或 workflow。
+
+---
+
+## 开发与验证（维护者）
+
+在仓库根目录执行（已通过 **Python 3.11** 语法与导入检查）：
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 -m py_compile src/*.py scripts/*.py
+PYTHONPATH=src python3 -c "import main, send_to_feishu, feishu_wiki"
+python3 scripts/verify_feishu_wiki.py   # 需已配置 .env / config/deepseek.env 中的飞书 Secrets
+```
+
+CI 步骤顺序见 `.github/workflows/weekly-paper-agent.yml`：`main.py` → `git push` → `verify_feishu_wiki` → `send_to_feishu.py`。
 
 ---
 
