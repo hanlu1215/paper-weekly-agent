@@ -1,8 +1,8 @@
-# Paper Weekly Agent
+# 文献日报 Agent
 
 ## 用途
 
-每天按关键词从 arXiv、Semantic Scholar、OpenReview、IEEE Xplore 检索近期论文，用 DeepSeek 生成中文速递，写入 GitHub 的 `daily_reports/`，并推送到飞书知识库与群消息。
+每天按关键词从 arXiv、Semantic Scholar、OpenReview、IEEE Xplore 检索近期论文，用 DeepSeek 生成中文日报（每次最多 **20** 篇），写入 GitHub 的 `daily_reports/`，并推送到飞书知识库与群消息。
 
 ## 怎么使用
 
@@ -27,8 +27,8 @@
 ### 3. 运行
 
 1. **Actions** → 左侧 **Daily Paper Agent** → **Run workflow** → 分支选 **main** → Run。  
-2. 默认每天北京时间约 9:00 也会自动跑一次。  
-3. 日报在仓库 **daily_reports/**；飞书会收到知识库链接。  
+2. **每天北京时间 09:00** 会在 **main** 分支自动运行一次（生成日报并推送飞书）。  
+3. 日报在仓库 **daily_reports/**；飞书会收到知识库链接与文献列表。  
 
 若 **Commit and push** 失败并提示 `rejected (fetch first)`，重新 **Run workflow** 即可（已自动先拉取远程再推送）。
 

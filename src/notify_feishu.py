@@ -109,7 +109,7 @@ def send_feishu_document_link(
 ) -> None:
     """向群聊发送知识库文档链接（不发送全文）。"""
     lines = [
-        "本日文献周报已发布到知识库",
+        "本日文献日报已发布到知识库",
         f"标题：{title}",
     ]
     if paper_titles:

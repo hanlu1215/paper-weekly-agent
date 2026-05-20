@@ -2,9 +2,14 @@ name: Daily Paper Agent
 
 on:
   schedule:
-    # 每天 09:00（北京时间 UTC+8）= UTC 01:00
+    # 每天北京时间 09:00（UTC+8，无夏令时）= UTC 01:00；仅对仓库默认分支 main 触发
     - cron: "0 1 * * *"
   workflow_dispatch:
+
+# 定时任务仅在 main 上执行；避免并发重复推送
+concurrency:
+  group: daily-paper-agent-main
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -12,14 +17,17 @@ permissions:
 jobs:
   run-paper-agent:
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    timeout-minutes: 120
     env:
       TZ: Asia/Shanghai
       REPORT_TIMEZONE: Asia/Shanghai
 
     steps:
-      - name: Checkout repository
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: true
           fetch-depth: 0
 
@@ -40,6 +48,7 @@ jobs:
           IEEE_XPLORE_API_KEY: ${{ secrets.IEEE_XPLORE_API_KEY }}
           SKIP_FEISHU_NOTIFY: "true"
           PYTHONUNBUFFERED: "1"
+          MAX_PAPERS_TO_SUMMARIZE: "20"
           MAX_RESULTS_PER_SOURCE: "30"
           ARXIV_REQUEST_TIMEOUT: "60"
           ARXIV_MAX_RETRIES: "4"
@@ -50,12 +59,12 @@ jobs:
           SEMANTIC_SCHOLAR_TOTAL_TIMEOUT_SECONDS: "120"
           OPENREVIEW_TOTAL_TIMEOUT_SECONDS: "120"
           IEEE_XPLORE_TOTAL_TIMEOUT_SECONDS: "120"
-          DEEPSEEK_TIMEOUT: "60"
+          DEEPSEEK_TIMEOUT: "90"
         run: python3 -u src/main.py
 
-      - name: Commit and push weekly report
+      - name: Commit and push daily report to main
         run: |
-          BRANCH="${GITHUB_REF_NAME:-main}"
+          BRANCH="main"
 
           sync_from_remote() {
             git fetch origin "$BRANCH"
@@ -88,12 +97,12 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mkdir -p daily_reports weekly_reports
-          git add daily_reports/*.md weekly_reports/*.md 2>/dev/null || true
+          mkdir -p daily_reports daily_cumulative
+          git add daily_reports/*.md daily_cumulative/*.md 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "No new or updated report to commit."
+            echo "No new or updated daily report to commit."
           else
-            git commit -m "chore: update paper report $(date +%Y-%m-%d)"
+            git commit -m "chore: update daily paper report $(date +%Y-%m-%d)"
             push_with_retry
           fi
 
@@ -118,11 +127,11 @@ jobs:
           if [ "$missing" -ne 0 ]; then exit 1; fi
           python3 scripts/verify_feishu_wiki.py
 
-      - name: Send report to Feishu
+      - name: Send daily report to Feishu
         if: success()
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_REPO_BRANCH: ${{ github.ref_name }}
+          GITHUB_REPO_BRANCH: main
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
           FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
           FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
@@ -134,7 +143,7 @@ jobs:
           TODAY=$(date +%Y-%m-%d)
           LATEST="daily_reports/${TODAY}-文献每日速递.md"
           if [ ! -f "$LATEST" ]; then
-            echo "未找到今日速递 ${LATEST}，跳过飞书推送。"
+            echo "未找到今日日报 ${LATEST}，跳过飞书推送。"
             exit 0
           fi
           if grep -q "今日无新增文献" "$LATEST"; then

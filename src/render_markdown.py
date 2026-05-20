@@ -4,7 +4,7 @@ from pathlib import Path
 from report_date import report_today
 
 DAILY_REPORTS_DIR = Path("daily_reports")
-WEEKLY_REPORTS_DIR = Path("weekly_reports")
+DAILY_CUMULATIVE_DIR = Path("daily_cumulative")
 
 
 def _render_paper_section(
@@ -52,11 +52,10 @@ def _remove_legacy_same_day_suffix_files(date_str: str) -> None:
         path.unlink(missing_ok=True)
 
 
-def _weekly_report_path(today: datetime.date | None = None) -> Path:
+def _daily_cumulative_path(today: datetime.date | None = None) -> Path:
     today = today or report_today()
-    year, week, _ = today.isocalendar()
-    WEEKLY_REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    return WEEKLY_REPORTS_DIR / f"{year}-W{week:02d}-文献每日速递-累计.md"
+    DAILY_CUMULATIVE_DIR.mkdir(parents=True, exist_ok=True)
+    return DAILY_CUMULATIVE_DIR / f"{today.year}-{today.month:02d}-文献日报-累计.md"
 
 
 def render_daily_report(
@@ -95,14 +94,13 @@ def render_daily_report(
     return output_path
 
 
-def append_to_weekly_report(papers_with_summaries) -> Path | None:
-    """将新增文献追加到当周累计文件（weekly_reports/，只追加不覆盖）。"""
+def append_to_daily_cumulative(papers_with_summaries) -> Path | None:
+    """将新增文献追加到当月日报累计文件（daily_cumulative/，只追加不覆盖）。"""
     if not papers_with_summaries:
         return None
 
     today = report_today()
-    _, week, _ = today.isocalendar()
-    output_path = _weekly_report_path(today)
+    output_path = _daily_cumulative_path(today)
 
     if output_path.exists():
         existing = output_path.read_text(encoding="utf-8")
@@ -111,10 +109,10 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
     else:
         next_idx = 1
         lines = [
-            f"# {daily_report_title(today)}\n",
-            f"> 第 {week} 周累计 · 生成日期：{today}\n",
+            f"# {today.year}年{today.month}月文献日报累计\n",
+            f"> 生成日期：{today}\n",
             "---\n",
-            "本周累计文献（按日追加）：\n",
+            "本月日报累计文献（按日追加）：\n",
         ]
 
     added = 0
@@ -139,7 +137,7 @@ def append_to_weekly_report(papers_with_summaries) -> Path | None:
 
 
 def render_markdown_report(papers_with_summaries) -> Path:
-    """生成每日速递存档，并追加到当周累计。"""
+    """生成每日速递存档，并追加到当月日报累计。"""
     daily_path = render_daily_report(papers_with_summaries)
-    append_to_weekly_report(papers_with_summaries)
+    append_to_daily_cumulative(papers_with_summaries)
     return daily_path

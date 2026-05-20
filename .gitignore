@@ -12,6 +12,6 @@ venv/
 
 # 报告 Markdown 由 GitHub Actions 提交到远端；本地可不保留正文（见 scripts/clean-local-reports.sh）
 daily_reports/*-文献每日速递*.md
-weekly_reports/*.md
+daily_cumulative/*.md
 !daily_reports/README.md
 

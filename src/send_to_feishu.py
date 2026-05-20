@@ -1,4 +1,4 @@
-"""发布周报到飞书：默认写入知识库并推送文档链接；可回退为全文推送。"""
+"""发布日报到飞书：默认写入知识库并推送文档链接；可回退为全文推送。"""
 
 import argparse
 import os
@@ -115,7 +115,7 @@ def send_report_as_wiki_link(report_path: Path) -> None:
 
 def send_report_file(report_path: Path, chunk_size: int = DEFAULT_CHUNK_SIZE) -> None:
     if not report_path.is_file():
-        raise FileNotFoundError(f"周报文件不存在：{report_path}")
+        raise FileNotFoundError(f"日报文件不存在：{report_path}")
 
     mode = _resolve_notify_mode()
     if mode == "wiki_link":
@@ -130,7 +130,7 @@ def main():
     load_dotenv()
     load_dotenv("config/deepseek.env", override=True)
 
-    parser = argparse.ArgumentParser(description="发布周报到飞书（知识库链接或 Markdown 全文）")
+    parser = argparse.ArgumentParser(description="发布日报到飞书（知识库链接或 Markdown 全文）")
     parser.add_argument(
         "report",
         nargs="?",
@@ -164,7 +164,7 @@ def main():
     if report_path is None:
         report_path = find_latest_report(args.reports_dir)
         if report_path is None:
-            print(f"在 {args.reports_dir} 下未找到 .md 周报，跳过飞书推送。", file=sys.stderr)
+            print(f"在 {args.reports_dir} 下未找到 .md 日报，跳过飞书推送。", file=sys.stderr)
             sys.exit(0)
 
     try:

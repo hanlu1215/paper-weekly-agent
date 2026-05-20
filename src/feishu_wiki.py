@@ -1,4 +1,4 @@
-"""将周报 Markdown 发布到飞书知识库，并返回文档链接。"""
+"""将日报 Markdown 发布到飞书知识库，并返回文档链接。"""
 
 import copy
 import os
@@ -217,7 +217,7 @@ def _insert_blocks(document_id: str, convert_data: dict[str, Any]) -> None:
     descendants = _sanitize_blocks(blocks)
     if len(descendants) > 1000:
         raise FeishuAPIError(
-            f"转换块数量 {len(descendants)} 超过单次插入上限 1000，请缩短周报内容。"
+            f"转换块数量 {len(descendants)} 超过单次插入上限 1000，请缩短日报内容。"
         )
 
     feishu_request(
