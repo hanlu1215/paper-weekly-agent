@@ -65,7 +65,7 @@ def _article_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "author": str(payload.get("author") or "Paper Weekly")[:16],
         "title": str(payload["title"])[:32],
         "content": str(payload["content"]),
-        "show_cover_pic": 0,
+        "show_cover_pic": 1,
         "need_open_comment": 0,
         "only_fans_can_comment": 0,
     }

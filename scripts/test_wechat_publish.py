@@ -51,7 +51,7 @@ def main() -> int:
     print(f"=== 公众号发布测试（跳过检索）===\n文件：{report_path.relative_to(ROOT)}")
     try:
         publish_to_wechat_cloud(report_path)
-        print("测试完成。")
+        print("测试完成。若云托管返回 publish_id，请到公众平台「发表记录」查看推文。")
         return 0
     except (FileNotFoundError, RuntimeError, requests.RequestException) as exc:
         print(f"发布失败：{exc}", file=sys.stderr)

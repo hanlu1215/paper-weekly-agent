@@ -11,6 +11,13 @@ def markdown_to_wechat_html(markdown: str) -> str:
     sections: list[str] = [
         '<section style="font-size:16px;line-height:1.75;color:#222;">'
     ]
+    count = extract_paper_count(markdown)
+    if count is not None:
+        sections.append(
+            '<p style="margin:0 0 16px;color:#576b95;font-size:15px;">'
+            f"📚 今日新增 <strong>{count}</strong> 篇论文，以下为中文速递。"
+            "</p>"
+        )
     in_list = False
 
     def close_list() -> None:
@@ -87,7 +94,17 @@ def extract_title(markdown: str, fallback: str) -> str:
     return fallback[:32]
 
 
+def extract_paper_count(markdown: str) -> int | None:
+    match = re.search(r"今日新增\s*(\d+)\s*篇", markdown)
+    if match:
+        return int(match.group(1))
+    return len(re.findall(r"^## \d+\.\s+", markdown, re.MULTILINE)) or None
+
+
 def extract_digest(markdown: str, fallback: str = "今日文献速递") -> str:
+    count = extract_paper_count(markdown)
+    if count is not None:
+        return f"今日新增{count}篇 · 文献每日速递"
     titles = re.findall(r"^## \d+\.\s+(.+?)\s*$", markdown, re.MULTILINE)
     if titles:
         return _plain(titles[0])

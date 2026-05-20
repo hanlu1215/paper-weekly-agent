@@ -117,10 +117,15 @@ def publish_to_wechat_cloud(report_path: Path) -> None:
         raise RuntimeError(f"微信云托管发布失败：HTTP {response.status_code} {data}")
 
     print(
-        "微信云托管公众号群发已提交。"
+        "微信公众号图文推文已提交发布（草稿→发表）。"
         f" media_id={data.get('media_id', '')}"
         f" publish_id={data.get('publish_id', '')}"
         f" msg_id={data.get('msg_id', '')}",
+        flush=True,
+    )
+    print(
+        "请在微信公众平台 → 内容与互动 → 发表记录 查看进度；"
+        "成功后会在公众号主页以图文推文形式展示，关注者可在订阅号消息里看到。",
         flush=True,
     )
 

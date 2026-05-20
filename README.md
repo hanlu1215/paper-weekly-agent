@@ -156,9 +156,13 @@ git pull origin main
 
 更细的权限与 space_id 获取方式，可在 Cursor 里问：「根据 README 帮我逐步配置飞书知识库」。
 
-### 第六步：配好微信公众号自动群发（可选）
+### 第六步：配好微信公众号图文推文自动发布（可选）
 
-公众号群发改为通过 **微信云托管中转服务** 完成，GitHub Actions 不再直接调用微信接口，因此不需要配置 GitHub Actions IP 白名单。
+本仓库会把 `daily_reports/*.md` 转成 **公众号图文推文**（有封面、标题、正文 HTML，可在主页与订阅号消息里阅读），**不是**给粉丝发纯文本聊天消息。
+
+发布路径：GitHub Actions → 微信云托管 → `草稿箱新增` + `发布接口`，等同你在公众平台里「写图文并发表」。
+
+通过 **微信云托管中转** 完成，GitHub Actions 不需要配置 IP 白名单。
 
 需要填入 GitHub Actions Secrets：
 
@@ -171,8 +175,9 @@ git pull origin main
 
 - 云托管服务代码在 `wechat_cloud/`，需部署到微信云托管。
 - 在微信云托管控制台开启「开放接口服务」，并配置接口白名单：`/cgi-bin/material/add_material`、`/cgi-bin/draft/add`、`/cgi-bin/freepublish/submit`。
-- 当前云托管实现会通过草稿箱接口创建图文草稿，并调用发布接口提交发布；请先确认公众号类型、认证状态和发布配额满足要求。
-- `WECHAT_CLOUD_PUBLISH_URL` / `WECHAT_CLOUD_PUBLISH_TOKEN` 未配齐时，程序会自动跳过公众号群发，不影响 GitHub 存档和飞书推送。
+- 云托管会：上传封面 → 创建图文草稿 → 调用 `freepublish/submit` **发表**；请在公众平台确认账号已开通「发布」能力且有发表配额。
+- `WECHAT_CLOUD_PUBLISH_URL` / `WECHAT_CLOUD_PUBLISH_TOKEN` 未配齐时，会自动跳过公众号发布，不影响 GitHub 存档和飞书推送。
+- 发表成功后：在 [微信公众平台](https://mp.weixin.qq.com/) → **内容与互动 → 发表记录** 可查看；读者在公众号历史消息里看到的就是图文推文。
 
 **只测公众号发布（跳过检索）：**
 
@@ -202,7 +207,7 @@ python3 scripts/test_wechat_publish.py daily_reports/2026-05-20-文献每日速�
   python src/send_to_feishu.py ← 知识库建文档 + 群消息（标题、中文题目列表、链接）
         │
         ▼
-  python src/send_to_wechat_cloud.py ← POST 到微信云托管，由云托管群发公众号
+  python src/send_to_wechat_cloud.py ← POST 到微信云托管，发表为公众号图文推文
 ```
 
 **重复推送规则（新人常问）：**

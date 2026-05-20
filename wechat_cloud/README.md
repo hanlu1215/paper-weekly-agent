@@ -6,7 +6,7 @@
 POST /api/publish
 ```
 
-GitHub Actions 将日报 HTML 和封面图发送到该接口；服务在微信云托管环境内通过「开放接口服务」调用公众号接口完成图文群发，避免 GitHub Actions / self-hosted runner 的 IP 白名单问题。
+GitHub Actions 将日报 HTML 和封面图发送到该接口；服务在微信云托管环境内通过「开放接口服务」创建图文草稿并**发表**为公众号推文（`draft/add` + `freepublish/submit`），避免 GitHub Actions IP 白名单问题。
 
 ## 云托管环境变量
 
