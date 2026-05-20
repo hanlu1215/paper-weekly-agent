@@ -54,16 +54,44 @@
     "2605.19104": {
       "title": "Neural Operators for Design-Space Surrogate Modeling of Tendon-Actuated Continuum Robots",
       "arxiv_url": "https://arxiv.org/abs/2605.19104v1",
-      "first_published_on": "2026-05-20"
+      "first_published_on": "2026-05-20",
+      "url": "https://arxiv.org/abs/2605.19104v1",
+      "source": "arXiv"
     },
     "2605.17851": {
       "title": "A Dexterous and Compliant Gripper With Soft Hydraulic Actuation for Microgravity Manipulation",
       "arxiv_url": "https://arxiv.org/abs/2605.17851v1",
-      "first_published_on": "2026-05-20"
+      "first_published_on": "2026-05-20",
+      "url": "https://arxiv.org/abs/2605.17851v1",
+      "source": "arXiv"
     },
     "2605.17556": {
       "title": "Visual Sculpting: Visually-Aligned Planning Representations for Long-Horizon Robot Clay Sculpting",
       "arxiv_url": "https://arxiv.org/abs/2605.17556v1",
+      "first_published_on": "2026-05-20"
+    },
+    "arxiv:2605.16257": {
+      "title": "DexJoCo: A Benchmark and Toolkit for Task-Oriented Dexterous Manipulation on MuJoCo",
+      "url": "https://arxiv.org/abs/2605.16257v1",
+      "arxiv_url": "https://arxiv.org/abs/2605.16257v1",
+      "source": "arXiv",
+      "doi": "",
+      "first_published_on": "2026-05-20"
+    },
+    "arxiv:2605.16743": {
+      "title": "LACE: Latent Visual Representation for Cross-Embodiment Learning",
+      "url": "https://arxiv.org/abs/2605.16743v1",
+      "arxiv_url": "https://arxiv.org/abs/2605.16743v1",
+      "source": "arXiv",
+      "doi": "",
+      "first_published_on": "2026-05-20"
+    },
+    "arxiv:2605.15548": {
+      "title": "KaRMA: A Kinematic Metric for Fine Manipulation Ability in Robotic Hands",
+      "url": "https://arxiv.org/abs/2605.15548v1",
+      "arxiv_url": "https://arxiv.org/abs/2605.15548v1",
+      "source": "arXiv",
+      "doi": "",
       "first_published_on": "2026-05-20"
     }
   }
