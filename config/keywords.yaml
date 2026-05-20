@@ -1,13 +1,12 @@
 keywords:
-  - embodied intelligence
-  - robot manipulation
-  - dexterous manipulation
-  - vision-language-action
-  - diffusion policy
-  - flow matching
-  - world model
-  - sim2real
-  - autonomous driving
-  - end-to-end planning
+  - dexterous hand
   - robotic hand
-  - humanoid robot
+  - dexterous manipulation
+  - robot arm control
+  - manipulation policy
+  - vision tactile perception
+  - visuotactile sensing
+  - vision-language-action
+  - large language model robotics
+  - robot reinforcement learning
+  - world model robotics
