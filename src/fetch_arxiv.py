@@ -248,15 +248,30 @@ def _parse_published_time(published: str):
 def filter_recent_papers(papers, days=7):
     now = datetime.datetime.now(datetime.timezone.utc)
     recent = []
+    skipped_by_date = 0
+    kept_without_date_filter = 0
 
     for paper in papers:
+        if paper.get("skip_recent_filter"):
+            recent.append(paper)
+            kept_without_date_filter += 1
+            continue
+
         try:
             published_time = _parse_published_time(paper["published"])
         except (ValueError, TypeError):
+            skipped_by_date += 1
             continue
 
         if (now - published_time).days <= days:
             recent.append(paper)
+        else:
+            skipped_by_date += 1
+
+    if kept_without_date_filter:
+        print(f"其中 {kept_without_date_filter} 篇来源标记为跳过日期过滤，已保留。", flush=True)
+    if skipped_by_date:
+        print(f"因发布时间超过 {days} 天或无法解析，已过滤 {skipped_by_date} 篇。", flush=True)
 
     return recent
 

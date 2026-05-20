@@ -76,6 +76,7 @@ def _paper_from_note(note: dict) -> dict | None:
         "external_id": forum or title,
         "doi": "",
         "categories": categories,
+        "skip_recent_filter": True,
     }
 
 
