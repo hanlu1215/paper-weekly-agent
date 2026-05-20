@@ -31,12 +31,6 @@ def find_latest_report(reports_dir: Path = DEFAULT_REPORTS_DIR) -> Path | None:
     )
     if reports:
         return reports[0]
-    # 兼容旧目录 output/
-    legacy = Path("output")
-    if legacy.is_dir():
-        old = sorted(legacy.glob("*-paper-daily.md"), key=lambda p: p.stat().st_mtime, reverse=True)
-        if old:
-            return old[0]
     return None
 
 
@@ -117,8 +111,9 @@ def main():
         help="每日速递 .md 路径；省略则自动选取 daily_reports/ 下最新文件",
     )
     parser.add_argument(
-        "--output-dir",
+        "--reports-dir",
         type=Path,
+        dest="reports_dir",
         default=DEFAULT_REPORTS_DIR,
         help=f"自动查找目录（默认 {DEFAULT_REPORTS_DIR}）",
     )
@@ -140,9 +135,9 @@ def main():
 
     report_path = args.report
     if report_path is None:
-        report_path = find_latest_report(args.output_dir)
+        report_path = find_latest_report(args.reports_dir)
         if report_path is None:
-            print(f"在 {args.output_dir} 下未找到 .md 周报，跳过飞书推送。", file=sys.stderr)
+            print(f"在 {args.reports_dir} 下未找到 .md 周报，跳过飞书推送。", file=sys.stderr)
             sys.exit(0)
 
     try:

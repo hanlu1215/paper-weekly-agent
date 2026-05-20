@@ -39,19 +39,19 @@ def _save_raw(data: dict) -> None:
     )
 
 
-def bootstrap_from_output_markdown(*search_dirs: Path) -> int:
+def bootstrap_from_report_markdown(*search_dirs: Path) -> int:
     """从历史 Markdown 回填已发布记录（仅当 registry 为空时）。"""
     data = _load_raw()
     if data["papers"]:
         return 0
 
-    dirs = search_dirs or (Path("daily_reports"), Path("weekly_reports"), Path("output"))
+    dirs = search_dirs or (Path("daily_reports"), Path("weekly_reports"))
     added = 0
     seen_paths: set[Path] = set()
-    for output_dir in dirs:
-        if not output_dir.is_dir():
+    for report_dir in dirs:
+        if not report_dir.is_dir():
             continue
-        for md_path in sorted(output_dir.glob("*.md")):
+        for md_path in sorted(report_dir.glob("*.md")):
             if md_path in seen_paths:
                 continue
             seen_paths.add(md_path)
@@ -79,7 +79,7 @@ def _is_blocked_on_day(record: dict, today: date) -> bool:
 
 
 def load_published_records() -> dict[str, dict]:
-    bootstrap_from_output_markdown()
+    bootstrap_from_report_markdown()
     return _load_raw()["papers"]
 
 

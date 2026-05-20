@@ -188,7 +188,6 @@ paper-weekly-agent/
 ├── daily_reports/                # 每日速递 Markdown（Actions 会提交到 GitHub）
 │   └── README.md
 ├── weekly_reports/               # 当周文献累计（按篇追加，跨日去重）
-├── output/                       # 早期历史存档（新内容不再写入这里）
 ├── data/
 │   └── published_papers.json     # 已推送 arXiv ID（跨日去重依据）
 ├── src/

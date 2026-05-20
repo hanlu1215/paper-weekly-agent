@@ -4,7 +4,6 @@ from pathlib import Path
 
 from published_history import extract_arxiv_id
 
-# 每日速递单独目录，不覆盖 output/ 下历史文件
 DAILY_REPORTS_DIR = Path("daily_reports")
 WEEKLY_REPORTS_DIR = Path("weekly_reports")
 _ARXIV_IN_MD_RE = re.compile(
