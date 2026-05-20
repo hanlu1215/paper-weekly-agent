@@ -26,7 +26,7 @@ git pull origin main
 
 ## 这个仓库是做什么的？
 
-一句话：**每天自动从 arXiv / Semantic Scholar / OpenReview / IEEE Xplore 找论文 → 用 AI 写成中文速递 → 存进你的 GitHub → 推送到飞书群、知识库和微信公众号。**
+一句话：**每天自动从 arXiv / Semantic Scholar / OpenReview / IEEE Xplore 找论文 → 用 AI 写成中文速递 → 存进你的 GitHub → 推送到飞书群与知识库。**
 
 更具体一点，每天（默认北京时间 **09:00**）会发生这些事：
 
@@ -35,14 +35,12 @@ git pull origin main
 3. 用 **DeepSeek** 为每篇生成中文总结（含中文标题）  
 4. 写成 Markdown，保存到仓库的 `daily_reports/`（同一天多次运行会**覆盖**当日那一个文件，不会堆出一堆 `-02.md`）  
 5. 在飞书**知识库**新建一篇文档，并在群里发一条消息：标题、各篇中文题目、链接、往期 GitHub 存档地址  
-6. 若配置了微信云托管发布接口，将日报发送到云托管并由其自动群发为公众号图文  
 
 你得到的是：
 
 - **GitHub 上的永久存档**（按日期命名的 `.md`，方便回溯）  
 - **飞书里的可读版本**（适合手机点开）  
 - **群里的提醒**（不用自己每天刷 arXiv）  
-- **公众号每日推文**（配置后自动群发给关注用户）  
 
 默认关注方向包括：灵巧手、机械臂控制、VLA、LLM for robotics、强化学习、世界模型、视觉触觉感知等（见 `config/keywords.yaml`），你完全可以改成自己的研究方向。
 
@@ -109,8 +107,6 @@ git pull origin main
 | `FEISHU_WIKI_PARENT_NODE_TOKEN` | 可选 | 文档建在哪个目录下 |
 | `SEMANTIC_SCHOLAR_API_KEY` | 可选 | 提高 Semantic Scholar API 限额；不填也会尝试公开接口 |
 | `IEEE_XPLORE_API_KEY` | IEEE 检索需要 | 启用 IEEE Xplore 检索；不填则自动跳过 IEEE |
-| `WECHAT_CLOUD_PUBLISH_URL` | 公众号群发需要 | 微信云托管 `/api/publish` 公网地址 |
-| `WECHAT_CLOUD_PUBLISH_TOKEN` | 公众号群发需要 | GitHub 与云托管共享的调用密钥 |
 
 可选 Secret（不填则用默认值）：
 
@@ -129,12 +125,6 @@ git pull origin main
 | `ENABLE_SEMANTIC_SCHOLAR` | 是否启用 Semantic Scholar | `true` |
 | `ENABLE_OPENREVIEW` | 是否启用 OpenReview | `true` |
 | `ENABLE_IEEE_XPLORE` | 是否启用 IEEE Xplore（仍需 API Key） | `true` |
-| `WECHAT_CLOUD_AUTHOR` | 公众号文章作者（不超过 16 字） | `Paper Weekly` |
-| `WECHAT_CLOUD_DIGEST` | 公众号摘要（约 54 字节内）；不填则取第一篇论文标题 | 自动生成 |
-| `WECHAT_CLOUD_CONTENT_SOURCE_URL` | 公众号“阅读原文”链接 | 自动指向 GitHub 日报 |
-| `WECHAT_CLOUD_COVER_IMAGE` | 公众号封面图路径 | `02.png` |
-| `WECHAT_CLOUD_THUMB_MEDIA_ID` | 已上传的封面 `media_id`；配置后不再在请求里传大图 | 空（自动压缩封面后上传） |
-| `WECHAT_CLOUD_HTTP_TIMEOUT` | 调用云托管 HTTP 读超时（秒） | `180` |
 
 配好后：
 
@@ -156,40 +146,6 @@ git pull origin main
 
 更细的权限与 space_id 获取方式，可在 Cursor 里问：「根据 README 帮我逐步配置飞书知识库」。
 
-### 第六步：配好微信公众号图文推文自动发布（可选）
-
-本仓库会把 `daily_reports/*.md` 转成 **公众号图文推文**（有封面、标题、正文 HTML，可在主页与订阅号消息里阅读），**不是**给粉丝发纯文本聊天消息。
-
-发布路径：GitHub Actions → 微信云托管 → `草稿箱新增` + `发布接口`，等同你在公众平台里「写图文并发表」。
-
-通过 **微信云托管中转** 完成，GitHub Actions 不需要配置 IP 白名单。
-
-需要填入 GitHub Actions Secrets：
-
-| Secret | 作用 |
-|--------|------|
-| `WECHAT_CLOUD_PUBLISH_URL` | 例如 `https://django-0vlk-260259-8-1435176495.sh.run.tcloudbase.com/api/publish` |
-| `WECHAT_CLOUD_PUBLISH_TOKEN` | 你自定义的随机密钥；云托管服务需配置同一个值 |
-
-注意：
-
-- 云托管服务代码在 `wechat_cloud/`，需部署到微信云托管。
-- 在微信云托管控制台开启「开放接口服务」，并配置接口白名单：`/cgi-bin/material/add_material`、`/cgi-bin/draft/add`、`/cgi-bin/freepublish/submit`。
-- 云托管会：上传封面 → 创建图文草稿 → 调用 `freepublish/submit` **发表**；请在公众平台确认账号已开通「发布」能力且有发表配额。
-- `WECHAT_CLOUD_PUBLISH_URL` / `WECHAT_CLOUD_PUBLISH_TOKEN` 未配齐时，会自动跳过公众号发布，不影响 GitHub 存档和飞书推送。
-- 发表成功后：在 [微信公众平台](https://mp.weixin.qq.com/) → **内容与互动 → 发表记录** 可查看；读者在公众号历史消息里看到的就是图文推文。
-
-**只测公众号发布（跳过检索）：**
-
-- **GitHub 线上：** 仓库 → **Actions** → 左侧选 **Test WeChat Publish** → **Run workflow** → 可选修改 `report_path`（默认 `daily_reports/2026-05-20-文献每日速递.md`）→ **Run workflow**。需已配置 Secrets：`WECHAT_CLOUD_PUBLISH_URL`、`WECHAT_CLOUD_PUBLISH_TOKEN`。
-- **本地：** 在已配置云托管地址与 token 后执行：
-
-```bash
-python3 scripts/test_wechat_publish.py
-# 或指定其它 .md
-python3 scripts/test_wechat_publish.py daily_reports/2026-05-20-文献每日速递.md
-```
-
 ---
 
 ## 每天自动跑的时候，仓库里会发生什么？
@@ -205,15 +161,12 @@ python3 scripts/test_wechat_publish.py daily_reports/2026-05-20-文献每日速�
         │
         ▼
   python src/send_to_feishu.py ← 知识库建文档 + 群消息（标题、中文题目列表、链接）
-        │
-        ▼
-  python src/send_to_wechat_cloud.py ← POST 到微信云托管，发表为公众号图文推文
 ```
 
 **重复推送规则（新人常问）：**
 
 - 当前不做发布历史去重，也不按标题去重；每次运行都会基于当次抓取结果生成日报。
-- 同一天多次运行会覆盖当天的 `YYYY-MM-DD-文献每日速递.md`，但飞书/公众号会按当次结果再次推送。
+- 同一天多次运行会覆盖当天的 `YYYY-MM-DD-文献每日速递.md`，飞书会按当次结果再次推送。
 - 周累计文件按运行追加，可能保留重复论文，便于完整记录每次推送结果。
 
 **群消息大致长这样：**
@@ -252,15 +205,9 @@ paper-weekly-agent/
 │   ├── notify_feishu.py          # 飞书 Webhook 文本消息
 │   ├── feishu_client.py          # 飞书 API 鉴权
 │   ├── feishu_wiki.py            # 知识库创建文档、写入 Markdown
-│   ├── send_to_feishu.py         # 单独发布到飞书（CI 第二步调用）
-│   ├── markdown_to_wechat.py     # 日报 Markdown 转公众号 HTML
-│   ├── send_to_wechat_cloud.py   # 调用微信云托管公众号中转服务
-│   ├── wechat_mp_client.py       # 旧版直连微信公众号 API 客户端（备用）
-│   └── send_to_wechat_mp.py      # 旧版直连微信公众号群发脚本（备用）
-├── wechat_cloud/                 # 微信云托管 Django 中转服务
+│   └── send_to_feishu.py         # 单独发布到飞书（CI 第二步调用）
 ├── scripts/
 │   ├── verify_feishu_wiki.py     # CI 里校验飞书配置
-│   ├── test_wechat_publish.py    # 可选：只测公众号发布，跳过文献检索
 │   ├── run-local.sh              # 可选：本地一键试跑
 │   └── clean-local-reports.sh    # 可选：只删本地 md，不动 GitHub
 ├── .env.example                  # 环境变量说明（本地或对照 Secrets）
@@ -316,7 +263,7 @@ A：不会。日报里若是「今日无新增文献」，CI 会跳过飞书推�
 A：这是 arXiv 官方 API 的**频率限制或网络慢**，不是关键词配错。12 个关键词合并查询很容易超时，紧接着连续请求又会触发 **429**。当前代码已对 429 自动退避重试，并在关键词较多时改为逐个查询。请隔 **5～10 分钟**再跑；仍失败可在 `.env` 里加大 `ARXIV_COOLDOWN_SECONDS=20`、`ARXIV_KEYWORD_DELAY=5`，或减少 `config/keywords.yaml` 里的关键词数量。GitHub Actions 机房网络有时比本地更稳，也可直接在 Actions 里 **Run workflow** 试一次。
 
 **Q：能和 Cursor 说什么来大改？**  
-A：例如换模型、改 cron 时区、增加邮件通知、改总结字数、增加微信公众号等——描述目标即可，由 Agent 改对应 `src/` 或 workflow。
+A：例如换模型、改 cron 时区、增加邮件通知、改总结字数等——描述目标即可，由 Agent 改对应 `src/` 或 workflow。
 
 ---
 
