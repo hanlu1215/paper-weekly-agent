@@ -28,7 +28,9 @@
 
 1. **Actions** → 左侧 **Daily Paper Agent** → **Run workflow** → 分支选 **main** → Run。  
 2. 默认每天北京时间约 9:00 也会自动跑一次。  
-3. 日报在仓库 **daily_reports/**；飞书会收到知识库链接。
+3. 日报在仓库 **daily_reports/**；飞书会收到知识库链接。  
+
+若 **Commit and push** 失败并提示 `rejected (fetch first)`，重新 **Run workflow** 即可（已自动先拉取远程再推送）。
 
 ### 4. 改检索方向（Cursor / Codex）
 
