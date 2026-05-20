@@ -67,6 +67,7 @@ def publish_to_wechat_cloud(report_path: Path) -> None:
         return
 
     payload = build_payload(report_path)
+    payload["token"] = token
     print(f"正在发送公众号文章到微信云托管：{payload['title']}", flush=True)
     response = requests.post(
         url,

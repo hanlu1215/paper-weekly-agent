@@ -43,7 +43,9 @@ def _verify_token(request, payload: dict[str, Any]) -> None:
     bearer = auth.removeprefix("Bearer ").strip() if auth.startswith("Bearer ") else ""
     provided = bearer or str(payload.get("token") or "").strip()
     if provided != expected:
-        raise PublishError("invalid_publish_token")
+        provided_hint = "empty" if not provided else f"len={len(provided)}"
+        expected_hint = f"len={len(expected)}"
+        raise PublishError(f"invalid_publish_token provided={provided_hint} expected={expected_hint}")
 
 
 def _article_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
