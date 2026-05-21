@@ -2,8 +2,9 @@ name: Daily Paper Agent
 
 on:
   schedule:
-    # 每天北京时间 09:00（UTC+8，无夏令时）= UTC 01:00；仅对仓库默认分支 main 触发
-    - cron: "0 1 * * *"
+    # 每天北京时间 09:00（显式指定 Asia/Shanghai，避免 UTC 换算偏差）
+    - cron: "0 9 * * *"
+      timezone: Asia/Shanghai
   workflow_dispatch:
 
 # 定时任务仅在 main 上执行；避免并发重复推送
@@ -30,6 +31,18 @@ jobs:
           ref: main
           persist-credentials: true
           fetch-depth: 0
+
+      - name: Verify Beijing 09:00 schedule window
+        if: github.event_name == 'schedule'
+        run: |
+          NOW=$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S %Z')
+          HOUR=$(TZ=Asia/Shanghai date +%H)
+          echo "定时任务触发时间（北京时间）：${NOW}"
+          # 允许 08:00–10:59 启动（GitHub 可能延迟数小时）
+          if [ "$HOUR" -lt 8 ] || [ "$HOUR" -ge 11 ]; then
+            echo "::error::定时任务不在北京时间 08:00–10:59 窗口内（当前 ${HOUR} 点），已跳过，避免下午误推送。"
+            exit 1
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
