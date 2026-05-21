@@ -111,13 +111,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p daily_reports
-          git add daily_reports/*.md 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "No new or updated daily report to commit."
-          else
-            git commit -m "chore: update daily paper report $(date +%Y-%m-%d)"
-            push_with_retry
+          TODAY=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+          REPORT="daily_reports/${TODAY}-文献每日速递.md"
+          if [ ! -f "$REPORT" ]; then
+            echo "::error::未找到日报文件 ${REPORT}，无法提交到仓库。"
+            exit 1
           fi
+          # .gitignore 忽略了日报正文，Actions 需 -f 强制加入暂存区
+          git add -f "$REPORT"
+          git add daily_reports/README.md 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "::error::日报已生成但 git 未暂存任何变更，请检查 .gitignore 与 git add。"
+            exit 1
+          fi
+          git commit -m "chore: update daily paper report ${TODAY}"
+          push_with_retry
 
       - name: Validate Feishu wiki secrets
         if: success()
