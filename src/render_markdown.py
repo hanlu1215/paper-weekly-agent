@@ -1,10 +1,14 @@
 import datetime
+import re
 from pathlib import Path
 
 from report_date import report_today
 
 DAILY_REPORTS_DIR = Path("daily_reports")
-DAILY_CUMULATIVE_DIR = Path("daily_cumulative")
+MAX_RETAINED_DAILY_REPORTS = 30
+_DAILY_REPORT_FILENAME_RE = re.compile(
+    r"^(\d{4}-\d{2}-\d{2})-文献每日速递\.md$",
+)
 
 
 def _render_paper_section(
@@ -40,22 +44,61 @@ def daily_report_title(today: datetime.date | None = None) -> str:
 
 
 def daily_report_path(today: datetime.date | None = None) -> Path:
-    """当日速递固定路径；同日多次运行覆盖同一文件，不在 GitHub 新增 -02 等副本。"""
+    """当日日报固定路径；目录不存在时自动创建。"""
     today = today or report_today()
     DAILY_REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     return DAILY_REPORTS_DIR / f"{today.isoformat()}-文献每日速递.md"
 
 
-def _remove_legacy_same_day_suffix_files(date_str: str) -> None:
-    """删除旧版同日递增后缀文件（如 …-02.md），避免仓库残留多余条目。"""
-    for path in DAILY_REPORTS_DIR.glob(f"{date_str}-文献每日速递-*.md"):
+def _list_dated_daily_reports() -> list[tuple[datetime.date, Path]]:
+    """列出 daily_reports/ 下符合命名规范的日报 .md（不含 README）。"""
+    if not DAILY_REPORTS_DIR.is_dir():
+        return []
+
+    reports: list[tuple[datetime.date, Path]] = []
+    for path in DAILY_REPORTS_DIR.glob("*.md"):
+        if path.name.upper() == "README.MD":
+            continue
+        match = _DAILY_REPORT_FILENAME_RE.match(path.name)
+        if not match:
+            continue
+        try:
+            report_date = datetime.date.fromisoformat(match.group(1))
+        except ValueError:
+            continue
+        reports.append((report_date, path))
+
+    return sorted(reports, key=lambda item: item[0])
+
+
+def _cleanup_same_day_extra_files(today: datetime.date) -> None:
+    """删除同一天非标准命名的重复 .md（如 …-1.md、…-copy.md）。"""
+    if not DAILY_REPORTS_DIR.is_dir():
+        return
+
+    date_str = today.isoformat()
+    canonical = daily_report_path(today)
+    for path in DAILY_REPORTS_DIR.glob(f"{date_str}*.md"):
+        if path.resolve() == canonical.resolve():
+            continue
+        if path.is_file():
+            path.unlink(missing_ok=True)
+            print(f"已删除同日重复文件：{path.name}", flush=True)
+
+
+def _prune_old_daily_reports(max_count: int = MAX_RETAINED_DAILY_REPORTS) -> None:
+    """daily_reports/ 内仅保留最近 max_count 份标准日报，按日期删最旧的 .md。"""
+    reports = _list_dated_daily_reports()
+    if len(reports) <= max_count:
+        return
+
+    excess = len(reports) - max_count
+    for report_date, path in reports[:excess]:
         path.unlink(missing_ok=True)
-
-
-def _daily_cumulative_path(today: datetime.date | None = None) -> Path:
-    today = today or report_today()
-    DAILY_CUMULATIVE_DIR.mkdir(parents=True, exist_ok=True)
-    return DAILY_CUMULATIVE_DIR / f"{today.year}-{today.month:02d}-文献日报-累计.md"
+        print(
+            f"已删除过期日报（{report_date.isoformat()}）：{path.name}",
+            flush=True,
+        )
 
 
 def render_daily_report(
@@ -63,11 +106,11 @@ def render_daily_report(
     *,
     output_path: Path | None = None,
 ) -> Path:
-    """生成当日速递（仅包含本次新增文献），写入 daily_reports/。"""
+    """生成当日日报并写入 daily_reports/（覆盖同日文件，并清理超量旧文件）。"""
     today = report_today()
     output_path = output_path or daily_report_path(today)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    _remove_legacy_same_day_suffix_files(today.isoformat())
+    _cleanup_same_day_extra_files(today)
 
     lines = [
         f"# {daily_report_title(today)}\n",
@@ -91,53 +134,10 @@ def render_daily_report(
             )
 
     output_path.write_text("\n".join(lines), encoding="utf-8")
-    return output_path
-
-
-def append_to_daily_cumulative(papers_with_summaries) -> Path | None:
-    """将新增文献追加到当月日报累计文件（daily_cumulative/，只追加不覆盖）。"""
-    if not papers_with_summaries:
-        return None
-
-    today = report_today()
-    output_path = _daily_cumulative_path(today)
-
-    if output_path.exists():
-        existing = output_path.read_text(encoding="utf-8")
-        next_idx = existing.count("\n## ") + 1
-        lines = [existing.rstrip(), "", f"\n> 追加日期：{today}\n"]
-    else:
-        next_idx = 1
-        lines = [
-            f"# {today.year}年{today.month}月文献日报累计\n",
-            f"> 生成日期：{today}\n",
-            "---\n",
-            "本月日报累计文献（按日追加）：\n",
-        ]
-
-    added = 0
-    for item in papers_with_summaries:
-        paper = item["paper"]
-        lines.extend(
-            _render_paper_section(
-                next_idx,
-                paper,
-                item["summary"],
-                item.get("title_zh", ""),
-            )
-        )
-        next_idx += 1
-        added += 1
-
-    if added == 0:
-        return output_path if output_path.exists() else None
-
-    output_path.write_text("\n".join(lines), encoding="utf-8")
+    _prune_old_daily_reports()
     return output_path
 
 
 def render_markdown_report(papers_with_summaries) -> Path:
-    """生成每日速递存档，并追加到当月日报累计。"""
-    daily_path = render_daily_report(papers_with_summaries)
-    append_to_daily_cumulative(papers_with_summaries)
-    return daily_path
+    """生成每日日报 Markdown，统一保存到 daily_reports/。"""
+    return render_daily_report(papers_with_summaries)
