@@ -8,12 +8,17 @@ import requests
 
 DEFAULT_TIMEOUT = 60
 DEFAULT_CONNECT_TIMEOUT = 15
-DEFAULT_MAX_RETRIES = 4
-DEFAULT_KEYWORD_DELAY = 5.0
-DEFAULT_COOLDOWN_AFTER_FAIL = 3
-DEFAULT_TOTAL_FETCH_SECONDS = 600
+DEFAULT_MAX_RETRIES = 3
+DEFAULT_KEYWORD_DELAY = 8.0
+DEFAULT_COOLDOWN_AFTER_FAIL = 8
+DEFAULT_TOTAL_FETCH_SECONDS = 1200
+DEFAULT_MIN_REQUEST_INTERVAL = 3.5
+DEFAULT_RETRY_ROUND_COOLDOWN = 90
+DEFAULT_POST_429_DELAY = 45
 # 合并 OR 查询易触发 429；默认禁用，始终按关键词逐个查询
 BULK_QUERY_MAX_KEYWORDS = 0
+
+_last_arxiv_request_at = 0.0
 
 
 def _env_int(name: str, default: int) -> int:
@@ -68,6 +73,17 @@ def _retry_after_seconds(response: requests.Response | None) -> int | None:
         return None
 
 
+def _throttle_before_request() -> None:
+    """arXiv 要求请求间隔 ≥3s；GitHub Actions 共享 IP 更易 429，全局节流。"""
+    global _last_arxiv_request_at
+    min_interval = _env_float("ARXIV_MIN_REQUEST_INTERVAL", DEFAULT_MIN_REQUEST_INTERVAL)
+    now = time.monotonic()
+    wait = min_interval - (now - _last_arxiv_request_at)
+    if wait > 0:
+        time.sleep(wait)
+    _last_arxiv_request_at = time.monotonic()
+
+
 def _dedupe_papers(papers: list[dict]) -> list[dict]:
     seen: set[str] = set()
     unique: list[dict] = []
@@ -112,6 +128,7 @@ def _parse_arxiv_url(url: str, *, label: str = "") -> tuple[feedparser.FeedParse
     session.trust_env = False
 
     for attempt in range(1, max_retries + 1):
+        _throttle_before_request()
         print(
             f"arXiv 请求开始（{label or 'query'}，第 {attempt}/{max_retries} 次，"
             f"timeout={timeouts[1]}s）...",
@@ -138,11 +155,12 @@ def _parse_arxiv_url(url: str, *, label: str = "") -> tuple[feedparser.FeedParse
 
         if response.status_code == 429:
             retry_after = _retry_after_seconds(response)
-            wait = retry_after or min(120, 20 * attempt)
+            post_429 = _env_float("ARXIV_POST_429_DELAY", DEFAULT_POST_429_DELAY)
+            wait = max(post_429, retry_after or 0, min(120, 15 * attempt))
             if attempt < max_retries:
                 print(
                     f"arXiv 429 请求过频（{label or 'query'}）；"
-                    f"{wait}s 后重试 ({attempt}/{max_retries})…",
+                    f"{wait:.0f}s 后重试 ({attempt}/{max_retries})…",
                     flush=True,
                 )
                 time.sleep(wait)
@@ -186,6 +204,30 @@ def _entries_from_feed(feed: feedparser.FeedParserDict, label: str) -> list[dict
     return [_paper_from_entry(entry) for entry in feed.entries]
 
 
+def _fetch_single_keyword(
+    keyword: str,
+    per_keyword_limit: int,
+    *,
+    index: int,
+    total: int,
+) -> tuple[list[dict], bool]:
+    """查询单个关键词；返回 (论文列表, 是否应加入稍后重试队列)。"""
+    query = f'all:"{keyword}"'
+    label = f"关键词「{keyword}」"
+    print(f"开始查询 {label} ({index + 1}/{total})。", flush=True)
+    try:
+        feed, status = _parse_arxiv_url(_build_arxiv_url(query, per_keyword_limit), label=label)
+    except requests.RequestException as e:
+        print(f"{label} 网络失败，稍后重试：{e}", flush=True)
+        return [], True
+
+    if status == 429:
+        print(f"{label} 触发 429，稍后统一重试。", flush=True)
+        return [], True
+
+    return _entries_from_feed(feed, label), False
+
+
 def _fetch_by_keywords(
     keywords: list[str],
     max_results: int,
@@ -198,12 +240,22 @@ def _fetch_by_keywords(
     inter_keyword_delay = base_delay
     cooldown = _env_float("ARXIV_COOLDOWN_SECONDS", DEFAULT_COOLDOWN_AFTER_FAIL)
     total_budget = _env_float("ARXIV_TOTAL_TIMEOUT_SECONDS", DEFAULT_TOTAL_FETCH_SECONDS)
+    retry_round_cooldown = _env_float(
+        "ARXIV_RETRY_ROUND_COOLDOWN",
+        DEFAULT_RETRY_ROUND_COOLDOWN,
+    )
+    post_429_delay = _env_float("ARXIV_POST_429_DELAY", DEFAULT_POST_429_DELAY)
     started_at = time.monotonic()
-    failed_keywords: list[str] = []
+    retry_later: list[str] = []
 
     print(f"按关键词逐个查询 arXiv（{reason}）…", flush=True)
+    print(
+        f"节流：请求间隔 ≥{_env_float('ARXIV_MIN_REQUEST_INTERVAL', DEFAULT_MIN_REQUEST_INTERVAL):g}s，"
+        f"关键词间隔 {base_delay:g}s。",
+        flush=True,
+    )
     if cooldown > 0:
-        print(f"等待 {cooldown:.0f}s，避免触发频率限制…", flush=True)
+        print(f"首轮开始前等待 {cooldown:.0f}s…", flush=True)
         time.sleep(cooldown)
 
     for index, keyword in enumerate(keywords):
@@ -214,40 +266,69 @@ def _fetch_by_keywords(
                 f"停止继续查询关键词（已收集 {len(papers)} 篇）。",
                 flush=True,
             )
+            retry_later.extend(keywords[index:])
             break
 
         if index > 0 and inter_keyword_delay > 0:
             print(f"等待 {inter_keyword_delay:.1f}s 后查询下一个关键词…", flush=True)
             time.sleep(inter_keyword_delay)
 
-        query = f'all:"{keyword}"'
-        label = f"关键词「{keyword}」"
-        print(f"开始查询 {label} ({index + 1}/{len(keywords)})。", flush=True)
-        try:
-            feed, status = _parse_arxiv_url(_build_arxiv_url(query, per_keyword_limit), label=label)
-        except requests.RequestException as e:
-            print(f"{label} 网络失败，已跳过：{e}", flush=True)
-            failed_keywords.append(keyword)
-            inter_keyword_delay = min(30.0, inter_keyword_delay + base_delay)
-            continue
-
-        if status == 429:
-            print(f"{label} 在多次重试后仍返回 429，已跳过。", flush=True)
-            failed_keywords.append(keyword)
-            inter_keyword_delay = min(30.0, inter_keyword_delay + base_delay * 2)
-            continue
-
-        batch = _entries_from_feed(feed, label)
-        papers.extend(batch)
-        if batch:
-            inter_keyword_delay = base_delay
-
-    if failed_keywords:
-        print(
-            f"arXiv 有 {len(failed_keywords)} 个关键词未成功：{', '.join(failed_keywords[:5])}"
-            f"{'…' if len(failed_keywords) > 5 else ''}",
-            flush=True,
+        batch, need_retry = _fetch_single_keyword(
+            keyword,
+            per_keyword_limit,
+            index=index,
+            total=len(keywords),
         )
+        if need_retry:
+            retry_later.append(keyword)
+            inter_keyword_delay = min(60.0, max(inter_keyword_delay, post_429_delay))
+            continue
+
+        papers.extend(batch)
+        inter_keyword_delay = base_delay
+
+    if retry_later:
+        retry_later = list(dict.fromkeys(retry_later))
+        elapsed = time.monotonic() - started_at
+        remaining = total_budget - elapsed if total_budget > 0 else retry_round_cooldown + 1
+        if remaining > retry_round_cooldown + 30:
+            print(
+                f"\narXiv 有 {len(retry_later)} 个关键词首轮未成功，"
+                f"等待 {retry_round_cooldown:.0f}s 后第二轮重试…",
+                flush=True,
+            )
+            time.sleep(retry_round_cooldown)
+            still_failed: list[str] = []
+            for r_index, keyword in enumerate(retry_later):
+                elapsed = time.monotonic() - started_at
+                if total_budget > 0 and elapsed >= total_budget:
+                    still_failed.extend(retry_later[r_index:])
+                    break
+                if r_index > 0:
+                    print(f"等待 {base_delay:.1f}s 后重试下一个关键词…", flush=True)
+                    time.sleep(base_delay)
+                batch, need_retry = _fetch_single_keyword(
+                    keyword,
+                    per_keyword_limit,
+                    index=r_index,
+                    total=len(retry_later),
+                )
+                if need_retry:
+                    still_failed.append(keyword)
+                    time.sleep(post_429_delay)
+                    continue
+                papers.extend(batch)
+            if still_failed:
+                print(
+                    f"arXiv 第二轮仍有 {len(still_failed)} 个关键词失败："
+                    f"{', '.join(still_failed[:5])}{'…' if len(still_failed) > 5 else ''}",
+                    flush=True,
+                )
+        else:
+            print(
+                f"arXiv 剩余时间不足，跳过第二轮重试（{len(retry_later)} 个关键词）。",
+                flush=True,
+            )
 
     return _dedupe_papers(papers)
 
