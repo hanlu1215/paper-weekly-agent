@@ -8,6 +8,11 @@ _CHINESE_TITLE_RE = re.compile(
     r"^\*\*中文标题[：:]\*\*\s*(.+?)\s*$",
     re.MULTILINE,
 )
+# 独立成行的「AI 总结」标题（含 ### / ## / # 及无空格变体）
+_AI_SUMMARY_HEADING_RE = re.compile(
+    r"^[ \t]*#{0,3}[ \t]*AI[ \t]*总结[ \t]*\r?\n?",
+    re.MULTILINE,
+)
 
 
 DEFAULT_DEEPSEEK_BASE_URL = "https://api.deepseek.com"
@@ -54,11 +59,11 @@ def _build_deepseek_messages(paper):
 原始摘要：
 {paper["summary"]}
 
-输出最开头单独一行（必须在 ### AI 总结 之前）：
+输出最开头单独一行：
 **中文标题：** （将英文标题翻译为简洁准确的中文题目，不超过 40 字）
 
-请严格按以下 Markdown 结构输出，整体控制在 350-550 个中文字符：
-### AI 总结
+请严格按以下 Markdown 结构输出，整体控制在 350-550 个中文字符。
+不要输出“AI 总结”“### AI 总结”等独立标题行，直接从 **研究背景：** 开始：
 
 **研究背景：**  
 请根据论文标题和摘要，组织成一段自然连贯的中文表述，说明该研究是由什么现象、应用需求或技术趋势引出的；现有方法、系统或研究路线存在哪些不足，尤其是同行方法为什么还不能充分解决该问题；进一步说明论文核心想解决的问题及其研究意义。要求只能基于标题和摘要进行归纳，不要机械分点，不要编造摘要中没有的信息。
@@ -139,6 +144,11 @@ def _extract_chinese_title(text: str) -> tuple[str, str]:
     return title_zh, cleaned
 
 
+def _strip_ai_summary_heading(text: str) -> str:
+    """删除独立成行的「AI 总结」标题，保留其余正文与小节不变。"""
+    return _AI_SUMMARY_HEADING_RE.sub("", text).lstrip("\n")
+
+
 def summarize_paper(paper) -> tuple[str, str]:
     """返回 (总结正文, 中文标题)；无 AI 总结时中文标题为空。"""
     try:
@@ -149,6 +159,7 @@ def summarize_paper(paper) -> tuple[str, str]:
 
     if summary:
         title_zh, summary = _extract_chinese_title(summary)
+        summary = _strip_ai_summary_heading(summary)
         return summary, title_zh
 
     return paper["summary"], ""
