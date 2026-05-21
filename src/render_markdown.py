@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 
 from report_date import report_today
+from summarize import _strip_ai_summary_heading
 
 DAILY_REPORTS_DIR = Path("daily_reports")
 MAX_RETAINED_DAILY_REPORTS = 30
@@ -33,7 +34,7 @@ def _render_paper_section(
     if paper.get("categories"):
         lines.append(f"- 分类：{', '.join(paper['categories'])}\n")
     lines.append("\n")
-    lines.append(summary)
+    lines.append(_strip_ai_summary_heading(summary))
     lines.append("\n---\n")
     return lines
 

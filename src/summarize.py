@@ -8,9 +8,15 @@ _CHINESE_TITLE_RE = re.compile(
     r"^\*\*中文标题[：:]\*\*\s*(.+?)\s*$",
     re.MULTILINE,
 )
-# 独立成行的「AI 总结」标题（含 ### / ## / # 及无空格变体）
+# 独立成行的「AI 总结」标题（含 # / ** / AI总结 / 尾部冒号等变体）
 _AI_SUMMARY_HEADING_RE = re.compile(
-    r"^[ \t]*#{0,3}[ \t]*AI[ \t]*总结[ \t]*\r?\n?",
+    r"^[ \t]*"
+    r"(?:#{1,3}[ \t]*)?"
+    r"(?:\*\*[ \t]*)?"
+    r"AI[ \t]*总结"
+    r"(?:[ \t]*\*\*)?"
+    r"[ \t]*[：:]?"
+    r"[ \t]*\r?\n",
     re.MULTILINE,
 )
 
