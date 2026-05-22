@@ -27,7 +27,7 @@
 ### 3. 运行
 
 1. **Actions** → 左侧 **Daily Paper Agent** → **Run workflow** → 分支选 **main** → Run。  
-2. **每天北京时间 09:00** 会在 **main** 分支自动运行（`cron` 使用 `timezone: Asia/Shanghai`）；若 Actions 延迟过久导致不在上午窗口，会自动跳过以免下午误跑。  
+2. **每天北京时间约 09:03** 会在 **main** 自动运行（`cron: 3 9 * * *` + `timezone: Asia/Shanghai`）。GitHub 可能延迟数分钟到数小时，可在 Actions 查看 **Scheduled** 记录。  
 3. 日报在仓库 **daily_reports/**；飞书会收到知识库链接与文献列表。  
 
 若 **Commit and push** 失败并提示 `rejected (fetch first)`，重新 **Run workflow** 即可（已自动先拉取远程再推送）。
