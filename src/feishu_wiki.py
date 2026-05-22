@@ -71,52 +71,44 @@ def get_parent_node_token() -> str:
 
 def get_wiki_space_id() -> str:
     """解析并校验 space_id（必须是纯数字，不能误用 node_token）。"""
-    candidates: list[str] = []
-
-    for key in ("FEISHU_WIKI_SPACE_ID",):
-        raw = _env_str(key)
-        if not raw:
-            continue
-        numeric = _normalize_space_id(raw)
-        if numeric:
-            candidates.append(numeric)
-            continue
-        node_token = _extract_node_token(raw)
-        if node_token:
-            candidates.append(f"node:{node_token}")
-
-    parent = get_parent_node_token()
-    if parent:
-        candidates.append(f"node:{parent}")
-
-    if not candidates:
-        return ""
-
     last_error = FeishuAPIError("未找到可用的 space_id 配置")
 
-    for item in candidates:
-        if item.startswith("node:"):
-            if not (_env_str("FEISHU_APP_ID") and _env_str("FEISHU_APP_SECRET")):
-                continue
-            space_id = _resolve_space_id_via_node(item[5:])
-        else:
-            space_id = item
+    raw_space = _env_str("FEISHU_WIKI_SPACE_ID")
+    if raw_space:
+        numeric = _normalize_space_id(raw_space)
+        if numeric:
+            try:
+                _verify_space_exists(numeric)
+                return numeric
+            except FeishuAPIError as err:
+                last_error = err
 
+        node_token = _extract_node_token(raw_space)
+        if node_token and _env_str("FEISHU_APP_ID") and _env_str("FEISHU_APP_SECRET"):
+            try:
+                space_id = _resolve_space_id_via_node(node_token)
+                _verify_space_exists(space_id)
+                return space_id
+            except FeishuAPIError as err:
+                last_error = err
+
+    parent = get_parent_node_token()
+    if parent and _env_str("FEISHU_APP_ID") and _env_str("FEISHU_APP_SECRET"):
         try:
+            space_id = _resolve_space_id_via_node(parent)
             _verify_space_exists(space_id)
             return space_id
         except FeishuAPIError as err:
             last_error = err
-            continue
 
     raise FeishuAPIError(
         "无法解析有效的 FEISHU_WIKI_SPACE_ID。\n"
         f"最后一次错误：{last_error}\n"
         "请任选一种配置方式：\n"
         "  1) 知识库设置页 URL：.../wiki/settings/数字/ → Secret 只填数字\n"
-        "  2) 目录页 URL：.../wiki/CtA5wUUV2i... → 粘贴整段链接（需 APP_ID/SECRET）\n"
-        "  3) FEISHU_WIKI_PARENT_NODE_TOKEN 填目录 node_token，SPACE_ID 可留空由程序反查\n"
-        "注意：不要把 node_token 当成 space_id 直接填数字以外的字符串。"
+        "  2) 知识库首页/目录页 URL：.../wiki/xxx → 粘贴整段链接（需 APP 已加入该知识库）\n"
+        "  3) FEISHU_WIKI_PARENT_NODE_TOKEN 填有效目录 node_token（无效时可留空）\n"
+        "若报 131005 not found：请确认应用已开通 wiki 权限并加入目标知识库。"
     )
 
 
@@ -165,6 +157,23 @@ def _wiki_document_url(node_token: str) -> str:
     return f"{_wiki_base_url()}/wiki/{node_token}"
 
 
+def _resolve_parent_node_token() -> str:
+    """校验父节点 token；无效时返回空字符串（在空间根目录创建）。"""
+    parent = get_parent_node_token()
+    if not parent:
+        return ""
+    try:
+        feishu_request("GET", "/wiki/v2/spaces/get_node", params={"token": parent})
+        return parent
+    except FeishuAPIError as err:
+        print(
+            f"警告：FEISHU_WIKI_PARENT_NODE_TOKEN 不可用（{parent[:12]}...），"
+            f"将在知识库空间根目录创建文档。原因：{err}",
+            flush=True,
+        )
+        return ""
+
+
 def _create_wiki_docx_node(title: str) -> dict[str, Any]:
     validate_wiki_config()
     space_id = get_wiki_space_id()
@@ -173,7 +182,7 @@ def _create_wiki_docx_node(title: str) -> dict[str, Any]:
         "node_type": "origin",
         "title": title,
     }
-    parent = get_parent_node_token()
+    parent = _resolve_parent_node_token()
     if parent:
         body["parent_node_token"] = parent
 

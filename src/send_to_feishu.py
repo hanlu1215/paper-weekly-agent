@@ -10,9 +10,11 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
+from feishu_client import FeishuAPIError
 from feishu_wiki import publish_report_file_to_wiki, validate_wiki_config, wiki_configured
 from notify_feishu import (
     extract_paper_titles_from_report,
+    get_github_daily_reports_url,
     send_feishu_document_link,
     send_feishu_text_chunks,
 )
@@ -93,15 +95,46 @@ def send_report_as_markdown(report_path: Path, chunk_size: int) -> None:
     print("飞书通知已发送（Markdown 全文模式）。")
 
 
+def send_report_as_github_link(report_path: Path) -> None:
+    """知识库不可用时，推送 GitHub daily_reports 链接与文献列表。"""
+    webhook_url = _get_webhook_url()
+    if not webhook_url:
+        print("未配置 FEISHU_WEBHOOK_URL，跳过飞书推送。", file=sys.stderr)
+        return
+
+    archive_url = get_github_daily_reports_url()
+    if not archive_url:
+        raise FeishuAPIError("无法生成 GitHub daily_reports 链接（请配置 GITHUB_REPOSITORY）。")
+
+    content = report_path.read_text(encoding="utf-8")
+    paper_titles = extract_paper_titles_from_report(content)
+    title = report_path.stem
+
+    send_feishu_document_link(
+        webhook_url,
+        title=title,
+        doc_url=archive_url,
+        paper_titles=paper_titles,
+        archive_url=archive_url,
+    )
+    print(f"飞书已推送 GitHub 日报链接：{archive_url}")
+
+
 def send_report_as_wiki_link(report_path: Path) -> None:
     webhook_url = _get_webhook_url()
     if not webhook_url:
         print("未配置 FEISHU_WEBHOOK_URL，跳过群聊通知。", file=sys.stderr)
         return
 
-    title, doc_url = publish_report_file_to_wiki(report_path)
     content = report_path.read_text(encoding="utf-8")
     paper_titles = extract_paper_titles_from_report(content)
+
+    try:
+        title, doc_url = publish_report_file_to_wiki(report_path)
+    except FeishuAPIError as err:
+        print(f"知识库写入失败，回退 GitHub 链接推送：{err}", file=sys.stderr)
+        send_report_as_github_link(report_path)
+        return
 
     send_feishu_document_link(
         webhook_url,
@@ -118,12 +151,16 @@ def send_report_file(report_path: Path, chunk_size: int = DEFAULT_CHUNK_SIZE) ->
         raise FileNotFoundError(f"日报文件不存在：{report_path}")
 
     mode = _resolve_notify_mode()
-    if mode == "wiki_link":
-        send_report_as_wiki_link(report_path)
-    elif mode == "markdown":
-        send_report_as_markdown(report_path, chunk_size)
-    else:
-        raise ValueError(f"未知的 FEISHU_NOTIFY_MODE：{mode}")
+    try:
+        if mode == "wiki_link":
+            send_report_as_wiki_link(report_path)
+        elif mode == "markdown":
+            send_report_as_markdown(report_path, chunk_size)
+        else:
+            raise ValueError(f"未知的 FEISHU_NOTIFY_MODE：{mode}")
+    except FeishuAPIError as err:
+        print(f"飞书推送失败，尝试 GitHub 链接回退：{err}", file=sys.stderr)
+        send_report_as_github_link(report_path)
 
 
 def main():

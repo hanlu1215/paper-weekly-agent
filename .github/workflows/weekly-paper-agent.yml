@@ -32,16 +32,13 @@ jobs:
           persist-credentials: true
           fetch-depth: 0
 
-      - name: Verify Beijing 09:00 schedule window
+      - name: Log schedule trigger time (Beijing)
         if: github.event_name == 'schedule'
         run: |
-          NOW=$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S %Z')
+          echo "定时任务实际启动时间（北京时间）：$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S %Z')"
           HOUR=$(TZ=Asia/Shanghai date +%H)
-          echo "定时任务触发时间（北京时间）：${NOW}"
-          # 允许 08:00–10:59 启动（GitHub 可能延迟数小时）
-          if [ "$HOUR" -lt 8 ] || [ "$HOUR" -ge 11 ]; then
-            echo "::error::定时任务不在北京时间 08:00–10:59 窗口内（当前 ${HOUR} 点），已跳过，避免下午误推送。"
-            exit 1
+          if [ "$HOUR" -lt 7 ] || [ "$HOUR" -ge 14 ]; then
+            echo "::warning::启动时刻偏离上午 9 点较多（当前 ${HOUR} 点），多为 GitHub 排队延迟，仍继续执行。"
           fi
 
       - name: Set up Python
@@ -133,6 +130,7 @@ jobs:
 
       - name: Validate Feishu wiki secrets
         if: success()
+        continue-on-error: true
         env:
           FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
           FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
@@ -150,7 +148,9 @@ jobs:
           fi
           [ -z "$FEISHU_WEBHOOK_URL" ] && echo "::error::缺少 Secret: FEISHU_WEBHOOK_URL" && missing=1
           if [ "$missing" -ne 0 ]; then exit 1; fi
-          python3 scripts/verify_feishu_wiki.py
+          if ! python3 scripts/verify_feishu_wiki.py; then
+            echo "::warning::飞书知识库校验未通过；推送步骤将尝试写入知识库，失败则回退 GitHub 日报链接。"
+          fi
 
       - name: Send daily report to Feishu
         if: success()
