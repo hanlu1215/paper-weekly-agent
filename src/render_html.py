@@ -7,6 +7,7 @@ from report_date import report_today
 from summarize import _strip_ai_summary_heading
 
 DAILY_REPORTS_DIR = Path("daily_reports")
+REPORT_INDEX_PATH = Path("index.html")
 MAX_RETAINED_DAILY_REPORTS = 30
 _DAILY_REPORT_FILENAME_RE = re.compile(
     r"^(\d{4}-\d{2}-\d{2})-文献每日速递\.html$",
@@ -139,6 +140,207 @@ def _prune_old_daily_reports(max_count: int = MAX_RETAINED_DAILY_REPORTS) -> Non
             f"已删除过期日报（{report_date.isoformat()}）：{path.name}",
             flush=True,
         )
+
+
+def _render_report_index_item(report_date: datetime.date, path: Path) -> str:
+    title = f"{report_date.isoformat()}-文献每日速递"
+    return f"""
+    <a class="report-card" href="{_escape(path.as_posix())}" target="_blank" rel="noreferrer">
+      <div class="report-date">{_escape(report_date.isoformat())}</div>
+      <div class="report-title">{_escape(title)}</div>
+      <div class="report-path">{_escape(path.as_posix())}</div>
+    </a>
+    """
+
+
+def render_report_index() -> Path:
+    """生成根目录 index.html，聚合链接到 daily_reports/ 下的所有日报。"""
+    reports = list(reversed(_list_dated_daily_reports()))
+    report_items = "\n".join(
+        _render_report_index_item(report_date, path)
+        for report_date, path in reports
+    )
+    empty_block = (
+        '<p class="empty">当前还没有生成日报。完成一次运行后，这里会出现可点击的报告目录。</p>'
+        if not reports
+        else ""
+    )
+
+    html_doc = f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>文献报告目录</title>
+  <style>
+    :root {{
+      --bg: #0f172a;
+      --panel: rgba(15, 23, 42, 0.7);
+      --card: rgba(255, 255, 255, 0.08);
+      --card-hover: rgba(255, 255, 255, 0.14);
+      --text: #e5eefc;
+      --muted: #a8b3c7;
+      --accent: #38bdf8;
+      --accent-2: #2dd4bf;
+      --border: rgba(148, 163, 184, 0.25);
+      --shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.28), transparent 32%),
+        radial-gradient(circle at top right, rgba(45, 212, 191, 0.18), transparent 30%),
+        linear-gradient(180deg, #020617 0%, #0f172a 45%, #111827 100%);
+    }}
+    .page {{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 44px 20px 72px;
+    }}
+    .hero {{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      margin-bottom: 24px;
+    }}
+    .eyebrow {{
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 12px;
+    }}
+    h1 {{
+      margin: 0;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.05;
+    }}
+    .lead {{
+      margin: 14px 0 0;
+      max-width: 70ch;
+      color: var(--muted);
+      line-height: 1.8;
+    }}
+    .meta {{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }}
+    .meta span {{
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.04);
+    }}
+    .section-title {{
+      margin: 28px 0 14px;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+    }}
+    .report-grid {{
+      display: grid;
+      gap: 14px;
+    }}
+    .report-card {{
+      display: grid;
+      gap: 8px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }}
+    .report-card:hover {{
+      transform: translateY(-2px);
+      background: var(--card-hover);
+      border-color: rgba(56, 189, 248, 0.5);
+    }}
+    .report-date {{
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }}
+    .report-title {{
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.4;
+    }}
+    .report-path {{
+      color: var(--muted);
+      font-size: 14px;
+      word-break: break-all;
+    }}
+    .empty {{
+      margin: 0;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px dashed var(--border);
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+    }}
+    .footer {{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }}
+    .footer a {{
+      color: var(--accent);
+      text-decoration: none;
+    }}
+    @media (max-width: 720px) {{
+      .page {{ padding: 16px 12px 40px; }}
+      .hero {{ padding: 20px; border-radius: 24px; }}
+      .report-card {{ padding: 16px; }}
+      .report-title {{ font-size: 18px; }}
+    }}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>文献报告目录</h1>
+      <p class="lead">这里汇总根目录下所有可点击的日报入口。每次生成新的日报时，这个页面会自动刷新，保持最新目录。</p>
+      <div class="meta">
+        <span>日报目录：daily_reports/</span>
+        <span>根目录入口：index.html</span>
+        <span>自动更新：每次运行主流程</span>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-title">最近报告</div>
+      <div class="report-grid">
+        {report_items or empty_block}
+      </div>
+      <div class="footer">
+        目录文件来自 <a href="daily_reports/README.md" target="_blank" rel="noreferrer">daily_reports/README.md</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+    REPORT_INDEX_PATH.write_text(html_doc, encoding="utf-8")
+    return REPORT_INDEX_PATH
 
 
 def render_daily_report(
@@ -336,4 +538,6 @@ def render_daily_report(
 
 def render_html_report(papers_with_summaries) -> Path:
     """生成每日日报 HTML，统一保存到 daily_reports/。"""
-    return render_daily_report(papers_with_summaries)
+  report_path = render_daily_report(papers_with_summaries)
+  render_report_index()
+  return report_path
