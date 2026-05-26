@@ -113,14 +113,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p daily_reports
           TODAY=$(TZ=Asia/Shanghai date +%Y-%m-%d)
-          REPORT="daily_reports/${TODAY}-文献每日速递.md"
+          REPORT="daily_reports/${TODAY}-文献每日速递.html"
           if [ ! -f "$REPORT" ]; then
             echo "::error::未找到日报文件 ${REPORT}，无法提交到仓库。"
             exit 1
           fi
           # .gitignore 忽略了日报正文，Actions 需 -f 强制加入暂存区
           git add -f "$REPORT"
-          git add daily_reports/README.md 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "::error::日报已生成但 git 未暂存任何变更，请检查 .gitignore 与 git add。"
             exit 1
@@ -128,51 +127,22 @@ jobs:
           git commit -m "chore: update daily paper report ${TODAY}"
           push_with_retry
 
-      - name: Validate Feishu wiki secrets
-        if: success()
-        continue-on-error: true
-        env:
-          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
-          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
-          FEISHU_WIKI_SPACE_ID: ${{ secrets.FEISHU_WIKI_SPACE_ID }}
-          FEISHU_WIKI_PARENT_NODE_TOKEN: ${{ secrets.FEISHU_WIKI_PARENT_NODE_TOKEN }}
-          FEISHU_WIKI_BASE_URL: ${{ secrets.FEISHU_WIKI_BASE_URL }}
-          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
-        run: |
-          missing=0
-          [ -z "$FEISHU_APP_ID" ] && echo "::error::缺少 Secret: FEISHU_APP_ID" && missing=1
-          [ -z "$FEISHU_APP_SECRET" ] && echo "::error::缺少 Secret: FEISHU_APP_SECRET" && missing=1
-          if [ -z "$FEISHU_WIKI_SPACE_ID" ] && [ -z "$FEISHU_WIKI_PARENT_NODE_TOKEN" ]; then
-            echo "::error::缺少 FEISHU_WIKI_SPACE_ID 或 FEISHU_WIKI_PARENT_NODE_TOKEN（至少填一个）"
-            missing=1
-          fi
-          [ -z "$FEISHU_WEBHOOK_URL" ] && echo "::error::缺少 Secret: FEISHU_WEBHOOK_URL" && missing=1
-          if [ "$missing" -ne 0 ]; then exit 1; fi
-          if ! python3 scripts/verify_feishu_wiki.py; then
-            echo "::warning::飞书知识库校验未通过；推送步骤将尝试写入知识库，失败则回退 GitHub 日报链接。"
-          fi
-
-      - name: Send daily report to Feishu
+      - name: Send daily report webhook notice
         if: success()
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPO_BRANCH: main
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
-          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
-          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
-          FEISHU_WIKI_SPACE_ID: ${{ secrets.FEISHU_WIKI_SPACE_ID }}
-          FEISHU_WIKI_PARENT_NODE_TOKEN: ${{ secrets.FEISHU_WIKI_PARENT_NODE_TOKEN }}
-          FEISHU_WIKI_BASE_URL: ${{ secrets.FEISHU_WIKI_BASE_URL }}
-          FEISHU_NOTIFY_MODE: wiki_link
         run: |
           TODAY=$(date +%Y-%m-%d)
-          LATEST="daily_reports/${TODAY}-文献每日速递.md"
+          LATEST="daily_reports/${TODAY}-文献每日速递.html"
           if [ ! -f "$LATEST" ]; then
             echo "未找到今日日报 ${LATEST}，跳过飞书推送。"
             exit 0
           fi
-          if grep -q "今日无新增文献" "$LATEST"; then
-            echo "今日无新增文献，跳过飞书推送。"
-            exit 0
+          if [ -z "$FEISHU_WEBHOOK_URL" ]; then
+            echo "::error::缺少 Secret: FEISHU_WEBHOOK_URL"
+            exit 1
           fi
-          python3 src/send_to_feishu.py "$LATEST"
+          PAPER_COUNT=$(grep -c '<section class="paper-card">' "$LATEST" || true)
+          python3 src/notify_feishu.py "$LATEST" --paper-count "$PAPER_COUNT"

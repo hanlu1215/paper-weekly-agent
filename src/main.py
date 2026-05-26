@@ -8,9 +8,9 @@ from fetch_arxiv import filter_recent_papers
 from fetch_ieee_xplore import fetch_ieee_xplore_papers
 from fetch_openreview import fetch_openreview_papers
 from fetch_semantic_scholar import fetch_semantic_scholar_papers
-from summarize import summarize_paper
-from render_markdown import render_markdown_report
 from notify_feishu import notify_feishu
+from render_html import render_html_report
+from summarize import summarize_paper
 
 
 DEFAULT_MAX_PAPERS_TO_SUMMARIZE = 20
@@ -86,13 +86,11 @@ def main():
             "title_zh": title_zh,
         })
 
-    print("\n正在生成 Markdown 报告...", flush=True)
-    report_path = render_markdown_report(
+    print("\n正在生成 HTML 报告...", flush=True)
+    report_path = render_html_report(
         papers_with_summaries,
     )
-    print(f"Markdown 日报已生成：{report_path}", flush=True)
-
-    report_text = report_path.read_text(encoding="utf-8")
+    print(f"HTML 日报已生成：{report_path}", flush=True)
 
     if os.getenv("SKIP_FEISHU_NOTIFY", "").lower() in ("1", "true", "yes"):
         print("\n已设置 SKIP_FEISHU_NOTIFY，跳过飞书推送（由 CI 在提交后单独发送）。", flush=True)
@@ -100,7 +98,7 @@ def main():
         print("\n今日无新增文献，跳过飞书推送。", flush=True)
     else:
         print("\n正在推送飞书通知...", flush=True)
-        notify_feishu(report_path, len(papers_with_summaries), report_text=report_text)
+        notify_feishu(report_path, len(papers_with_summaries))
 
     print("\n任务完成。", flush=True)
     print("=" * 60, flush=True)

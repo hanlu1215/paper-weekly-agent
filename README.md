@@ -2,7 +2,7 @@
 
 ## 用途
 
-每天按关键词从 arXiv、Semantic Scholar、OpenReview、IEEE Xplore 检索近期论文，用 DeepSeek 生成中文日报（每次最多 **20** 篇），写入 GitHub 的 `daily_reports/`，并推送到飞书知识库与群消息。
+每天按关键词从 arXiv、Semantic Scholar、OpenReview、IEEE Xplore 检索近期论文，用 DeepSeek 生成中文 HTML 日报（每次最多 **20** 篇），写入 GitHub 的 `daily_reports/`，并通过飞书群机器人 Webhook 发送通知。
 
 ## 怎么使用
 
@@ -18,9 +18,6 @@
 |------|------|
 | `DEEPSEEK_API_KEY` | 生成中文总结 |
 | `FEISHU_WEBHOOK_URL` | 群机器人 Webhook |
-| `FEISHU_APP_ID` / `FEISHU_APP_SECRET` | 飞书自建应用 |
-| `FEISHU_WIKI_SPACE_ID` | 知识库 ID |
-| `FEISHU_WIKI_BASE_URL` | 租户地址，如 `https://xxx.feishu.cn` |
 
 可选：`SEMANTIC_SCHOLAR_API_KEY`、`IEEE_XPLORE_API_KEY`（启用对应来源时填写）。
 
@@ -28,7 +25,7 @@
 
 1. **Actions** → 左侧 **Daily Paper Agent** → **Run workflow** → 分支选 **main** → Run。  
 2. **每天北京时间约 09:03** 会在 **main** 自动运行（`cron: 3 9 * * *` + `timezone: Asia/Shanghai`）。GitHub 可能延迟数分钟到数小时，可在 Actions 查看 **Scheduled** 记录。  
-3. 日报在仓库 **daily_reports/**；飞书会收到知识库链接与文献列表。  
+3. 日报在仓库 **daily_reports/**；飞书会收到 HTML 文件链接与归档链接。  
 
 若 **Commit and push** 失败并提示 `rejected (fetch first)`，重新 **Run workflow** 即可（已自动先拉取远程再推送）。
 
