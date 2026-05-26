@@ -148,7 +148,6 @@ def _render_report_index_item(report_date: datetime.date, path: Path) -> str:
     <a class="report-card" href="{_escape(path.as_posix())}" target="_blank" rel="noreferrer">
       <div class="report-date">{_escape(report_date.isoformat())}</div>
       <div class="report-title">{_escape(title)}</div>
-      <div class="report-path">{_escape(path.as_posix())}</div>
     </a>
     """
 
@@ -161,7 +160,7 @@ def render_report_index() -> Path:
         for report_date, path in reports
     )
     empty_block = (
-        '<p class="empty">当前还没有生成日报。完成一次运行后，这里会出现可点击的报告目录。</p>'
+    '<p class="empty">当前还没有生成日报。</p>'
         if not reports
         else ""
     )
@@ -210,39 +209,10 @@ def render_report_index() -> Path:
       backdrop-filter: blur(16px);
       margin-bottom: 24px;
     }}
-    .eyebrow {{
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      margin-bottom: 12px;
-    }}
     h1 {{
       margin: 0;
       font-size: clamp(32px, 5vw, 56px);
       line-height: 1.05;
-    }}
-    .lead {{
-      margin: 14px 0 0;
-      max-width: 70ch;
-      color: var(--muted);
-      line-height: 1.8;
-    }}
-    .meta {{
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: 14px;
-    }}
-    .meta span {{
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.04);
     }}
     .section-title {{
       margin: 28px 0 14px;
@@ -282,11 +252,6 @@ def render_report_index() -> Path:
       font-weight: 700;
       line-height: 1.4;
     }}
-    .report-path {{
-      color: var(--muted);
-      font-size: 14px;
-      word-break: break-all;
-    }}
     .empty {{
       margin: 0;
       padding: 18px 20px;
@@ -294,15 +259,6 @@ def render_report_index() -> Path:
       border: 1px dashed var(--border);
       color: var(--muted);
       background: rgba(255, 255, 255, 0.04);
-    }}
-    .footer {{
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }}
-    .footer a {{
-      color: var(--accent);
-      text-decoration: none;
     }}
     @media (max-width: 720px) {{
       .page {{ padding: 16px 12px 40px; }}
@@ -315,23 +271,13 @@ def render_report_index() -> Path:
 <body>
   <main class="page">
     <header class="hero">
-      <div class="eyebrow">Paper Weekly Agent</div>
       <h1>文献报告目录</h1>
-      <p class="lead">这里汇总根目录下所有可点击的日报入口。每次生成新的日报时，这个页面会自动刷新，保持最新目录。</p>
-      <div class="meta">
-        <span>日报目录：daily_reports/</span>
-        <span>根目录入口：index.html</span>
-        <span>自动更新：每次运行主流程</span>
-      </div>
     </header>
 
     <section>
-      <div class="section-title">最近报告</div>
+      <div class="section-title">最新日报</div>
       <div class="report-grid">
         {report_items or empty_block}
-      </div>
-      <div class="footer">
-        目录文件来自 <a href="daily_reports/README.md" target="_blank" rel="noreferrer">daily_reports/README.md</a>
       </div>
     </section>
   </main>
