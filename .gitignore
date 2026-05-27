@@ -15,3 +15,9 @@ daily_reports/*-文献每日速递*.html
 daily_reports/*-文献每日速递*.md
 !daily_reports/README.md
 
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
