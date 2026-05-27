@@ -483,7 +483,6 @@ def render_daily_report(
 
 
 def render_html_report(papers_with_summaries) -> Path:
-    """生成每日日报 HTML，统一保存到 daily_reports/。"""
-  report_path = render_daily_report(papers_with_summaries)
-  render_report_index()
-  return report_path
+    report_path = render_daily_report(papers_with_summaries)
+    render_report_index()
+    return report_path
