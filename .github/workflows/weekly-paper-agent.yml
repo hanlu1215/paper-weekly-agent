@@ -2,8 +2,8 @@ name: Daily Paper Agent
 
 on:
   schedule:
-    # 每两天北京时间凌晨 03:00（按 UTC 计算）
-    - cron: "0 19 */2 * *"
+    # 每两天北京时间凌晨 03:12（按 UTC 计算）
+    - cron: "12 19 */2 * *"   
   workflow_dispatch:
 
 # 定时任务仅在 main 上执行；避免并发重复推送
