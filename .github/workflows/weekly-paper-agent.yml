@@ -118,8 +118,8 @@ jobs:
             echo "::error::未找到日报文件 ${REPORT}，无法提交到仓库。"
             exit 1
           fi
-          # .gitignore 忽略了日报正文，Actions 需 -f 强制加入暂存区
-          git add -f "$REPORT"
+          # .gitignore 忽略了日报正文，Actions 需 -f 强制加入暂存区；首页也要一起提交
+          git add -f "$REPORT" index.html
           if git diff --cached --quiet; then
             echo "::error::日报已生成但 git 未暂存任何变更，请检查 .gitignore 与 git add。"
             exit 1
