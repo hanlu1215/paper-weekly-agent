@@ -2,9 +2,8 @@ name: Daily Paper Agent
 
 on:
   schedule:
-    # 每天北京时间约 09:03（Asia/Shanghai；避开整点 09:00 的 Actions 高峰，减少漏跑）
-    - cron: "3 9 * * *"
-      timezone: Asia/Shanghai
+    # 每两天北京时间凌晨 03:00（按 UTC 计算）
+    - cron: "0 19 */2 * *"
   workflow_dispatch:
 
 # 定时任务仅在 main 上执行；避免并发重复推送
