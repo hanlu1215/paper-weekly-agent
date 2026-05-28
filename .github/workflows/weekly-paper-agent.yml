@@ -57,8 +57,6 @@ jobs:
           SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
           SKIP_FEISHU_NOTIFY: "true"
           PYTHONUNBUFFERED: "1"
-          MAX_PAPERS_TO_SUMMARIZE: "20"
-          MAX_RESULTS_PER_SOURCE: "30"
           ARXIV_REQUEST_TIMEOUT: "60"
           ARXIV_MAX_RETRIES: "3"
           ARXIV_MIN_REQUEST_INTERVAL: "3.5"
