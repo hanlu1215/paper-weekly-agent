@@ -1,6 +1,7 @@
 import os
 import time
 import xml.etree.ElementTree as ET
+import re
 
 import requests
 
@@ -139,6 +140,16 @@ def _paper_from_item(item: dict, api_key: str) -> dict | None:
         url = f"https://www.scopus.com/record/display.uri?eid={eid}"
     if not url and doi:
         url = f"https://doi.org/{doi}"
+    # 将 API 返回的 scopus_id 型 URL（如 api.elsevier.com/.../scopus_id/105029360747）转换为
+    # https://www.scopus.com/pages/publications/<id> 格式，便于在浏览器中打开。
+    try:
+        if "scopus_id/" in url:
+            m = re.search(r"scopus_id/(\d+)", url)
+            if m:
+                scopus_num = m.group(1)
+                url = f"https://www.scopus.com/pages/publications/{scopus_num}"
+    except Exception:
+        pass
 
     publication_name = str(item.get("prism:publicationName") or "").strip()
     subtype = str(item.get("subtypeDescription") or "").strip()

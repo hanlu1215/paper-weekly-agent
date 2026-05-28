@@ -61,6 +61,9 @@ def _render_paper_section(
         f"<li><span>来源</span><span>{_escape(source)}</span></li>",
         f"<li><span>发布时间</span><span>{_escape(paper['published'])}</span></li>",
     ]
+    doi = str(paper.get("doi") or "").strip()
+    if doi:
+      meta_items.append(f"<li><span>DOI</span><span>{_escape(doi)}</span></li>")
     if categories:
         meta_items.append(f"<li><span>分类</span><span>{_escape(categories)}</span></li>")
 
