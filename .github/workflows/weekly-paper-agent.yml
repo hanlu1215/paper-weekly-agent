@@ -55,6 +55,7 @@ jobs:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
           SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+          PER_SOURCE_MAX_RESULTS: "30"
           SKIP_FEISHU_NOTIFY: "true"
           PYTHONUNBUFFERED: "1"
           ARXIV_REQUEST_TIMEOUT: "60"

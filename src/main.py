@@ -185,6 +185,12 @@ def main():
     max_results_per_source = _env_int("MAX_RESULTS_PER_SOURCE", DEFAULT_MAX_RESULTS_PER_SOURCE)
     if max_results_per_source <= 0:
         max_results_per_source = DEFAULT_MAX_RESULTS_PER_SOURCE
+    per_source_max = _env_int("PER_SOURCE_MAX_RESULTS", 30)
+    if per_source_max <= 0:
+        per_source_max = 30
+    if per_source_max > 30:
+        print("每个数据源单独限制最多 30 篇，强制设置为 30。", flush=True)
+        per_source_max = 30
 
     print("=" * 60, flush=True)
     print("文献日报 Agent 启动", flush=True)
@@ -207,6 +213,20 @@ def main():
         print(f"\n正在抓取 {source_name} 论文...", flush=True)
         source_papers = fetcher(keywords, max_results=max_results_per_source)
         print(f"{source_name} 原始抓取论文数量：{len(source_papers)}", flush=True)
+        # 对每个数据源只保留最新的若干篇（按 published 字段），以避免单源过多
+        try:
+            source_papers = sorted(
+                source_papers,
+                key=lambda p: _parse_published_time(p.get("published", "")).timestamp(),
+                reverse=True,
+            )
+        except Exception:
+            pass
+
+        if len(source_papers) > per_source_max:
+            print(f"{source_name} 限制到最近 {per_source_max} 篇（从 {len(source_papers)} 降至 {per_source_max}）。", flush=True)
+            source_papers = source_papers[:per_source_max]
+
         papers.extend(source_papers)
 
     print(f"\n多源原始抓取论文总数：{len(papers)}", flush=True)
