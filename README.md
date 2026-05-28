@@ -2,7 +2,7 @@
 
 ## 用途
 
-每天按关键词从 arXiv、Semantic Scholar、OpenReview、IEEE Xplore 检索近期论文，用 DeepSeek 生成中文 HTML 日报（每次最多 **20** 篇），写入 GitHub 的 `daily_reports/`，并通过飞书群机器人 Webhook 发送通知。
+每天按关键词从 arXiv、Semantic Scholar、OpenReview、Scopus 检索近期论文，用 DeepSeek 生成中文 HTML 日报（每次最多 **20** 篇），写入 GitHub 的 `daily_reports/`，并通过飞书群机器人 Webhook 发送通知。
 
 ## 怎么使用
 
@@ -19,7 +19,7 @@
 | `DEEPSEEK_API_KEY` | 生成中文总结 |
 | `FEISHU_WEBHOOK_URL` | 群机器人 Webhook |
 
-可选：`SEMANTIC_SCHOLAR_API_KEY`、`IEEE_XPLORE_API_KEY`（启用对应来源时填写）。
+可选：`SEMANTIC_SCHOLAR_API_KEY`、`SCOPUS_API_KEY`（启用对应来源时填写）。
 
 ### 3. 运行
 

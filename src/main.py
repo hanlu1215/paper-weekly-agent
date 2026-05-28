@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 
 from fetch_arxiv import fetch_arxiv_papers
 from fetch_arxiv import filter_recent_papers
-from fetch_ieee_xplore import fetch_ieee_xplore_papers
 from fetch_openreview import fetch_openreview_papers
+from fetch_scopus import fetch_scopus_papers
 from fetch_semantic_scholar import fetch_semantic_scholar_papers
 from notify_feishu import notify_feishu
 from render_html import render_html_report
@@ -54,7 +54,7 @@ def main():
         ("arXiv", fetch_arxiv_papers),
         ("Semantic Scholar", fetch_semantic_scholar_papers),
         ("OpenReview", fetch_openreview_papers),
-        ("IEEE Xplore", fetch_ieee_xplore_papers),
+        ("Scopus", fetch_scopus_papers),
     ]
     for source_name, fetcher in source_fetchers:
         print(f"\n正在抓取 {source_name} 论文...", flush=True)

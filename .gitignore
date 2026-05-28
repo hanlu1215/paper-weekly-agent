@@ -15,3 +15,4 @@ daily_reports/*-文献每日速递*.html
 daily_reports/*-文献每日速递*.md
 !daily_reports/README.md
 
+scripts/demo.py
