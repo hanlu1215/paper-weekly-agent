@@ -1,10 +1,12 @@
 import os
 import time
+import xml.etree.ElementTree as ET
 
 import requests
 
 
 SCOPUS_API_URL = "https://api.elsevier.com/content/search/scopus"
+SCOPUS_ABSTRACT_API_URL = "https://api.elsevier.com/content/abstract/eid/{eid}"
 DEFAULT_TIMEOUT = 20
 DEFAULT_DELAY = 1.0
 DEFAULT_TOTAL_FETCH_SECONDS = 120
@@ -79,7 +81,53 @@ def _authors(item: dict) -> list[str]:
     return [creator] if creator else []
 
 
-def _paper_from_item(item: dict) -> dict | None:
+def _abstract_text_from_xml(payload: str) -> str:
+    if not payload.strip():
+        return ""
+
+    try:
+        root = ET.fromstring(payload)
+    except ET.ParseError:
+        return ""
+
+    candidates: list[str] = []
+    for element in root.iter():
+        tag = element.tag.split("}", 1)[-1].lower()
+        if tag in {"description", "abstract", "dc:description"}:
+            text = "".join(part.strip() for part in element.itertext()).strip()
+            if text:
+                candidates.append(text)
+
+    if candidates:
+        return max(candidates, key=len)
+
+    return ""
+
+
+def fetch_abstract(api_key: str, eid: str) -> str:
+    if not eid:
+        return "Scopus 未提供摘要。"
+
+    response = requests.get(
+        SCOPUS_ABSTRACT_API_URL.format(eid=eid),
+        headers={
+            "Accept": "application/xml",
+            "X-ELS-APIKey": api_key,
+            "User-Agent": "paper-weekly-agent/0.1",
+        },
+        params={"view": "META_ABS"},
+        timeout=30,
+    )
+
+    if response.status_code in {401, 403, 404, 429}:
+        return "Scopus 未提供摘要。"
+    response.raise_for_status()
+
+    abstract = _abstract_text_from_xml(response.text)
+    return abstract or "Scopus 未提供摘要。"
+
+
+def _paper_from_item(item: dict, api_key: str) -> dict | None:
     title = str(item.get("dc:title") or "").strip()
     if not title:
         return None
@@ -98,11 +146,16 @@ def _paper_from_item(item: dict) -> dict | None:
     categories = [value for value in [publication_name, subtype, f"Cited by: {cited_by}" if cited_by else ""] if value]
 
     cover_date = str(item.get("prism:coverDate") or item.get("coverDate") or "").strip()
+    summary = str(item.get("dc:description") or item.get("description") or "").strip()
+    if not summary:
+        summary = fetch_abstract(api_key, eid)
+    if not summary:
+        summary = "Scopus 未提供摘要。"
 
     return {
         "title": title,
         "authors": _authors(item),
-        "summary": str(item.get("dc:description") or item.get("description") or "Scopus 未提供摘要。").strip(),
+        "summary": summary,
         "published": _normalize_date(cover_date),
         "updated": _normalize_date(cover_date),
         "url": url,
@@ -112,6 +165,7 @@ def _paper_from_item(item: dict) -> dict | None:
         "external_id": eid or doi or title,
         "doi": doi,
         "categories": categories,
+        "skip_recent_filter": True,
     }
 
 
@@ -161,7 +215,7 @@ def _fetch_entries(api_key: str, keyword: str, timeout: float, per_keyword_limit
         for item in entries:
             if not isinstance(item, dict):
                 continue
-            paper = _paper_from_item(item)
+            paper = _paper_from_item(item, api_key)
             if paper:
                 collected.append(paper)
                 if len(collected) >= per_keyword_limit:
