@@ -153,16 +153,16 @@
     <section class="paper-card">
       <div class="paper-index">1</div>
       <div class="paper-body">
-        <h2>循环平稳力作用下壁面湍流极端事件触发与相干结构调制</h2>
+        <h2>集成探索感知的无人机路线优化与路径规划</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Ao Xu, Yun-Qian Bi, Heng-Dong Xi</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-27T00:24:01Z</span></li><li><span>分类</span><span>physics.flu-dyn, physics.comp-ph</span></li>
+          <li><span>作者</span><span>Jimin Choi, Grant Stagg, Cameron K. Peterson, Max Z. Li</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-27T15:54:35Z</span></li><li><span>分类</span><span>cs.RO, eess.SY, math.OC</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.27792v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.27792v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.28654v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.28654v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>大气阵风使壁面湍流承受剧烈非定常作用，诱发复杂的非平衡动力学和极端气动载荷，威胁无人机等飞行器在非平稳大气环境中的安全运行。已有研究多关注稳态或周期性强迫下的湍流结构，对瞬态阵风如何触发近壁极端事件（如回爆、极高壁面剪应力）的机理认识不足。本文通过直接数值模拟揭示瞬态强迫下的能量重分配与结构调制机制，为理解非平衡湍流能量传递及设计有效载荷缓解与流动控制方法提供理论基础。</p>
-<p>**研究思路：**  <br>针对阵风诱导的非平衡湍流问题，作者采用高斯型瞬态强迫下的直接数值模拟，分析湍流结构时空调制与极端事件触发机制。研究发现：高幅值阵风优先增强流向速度分量，造成湍动能再分配的非平衡相位滞后，使壁面摩擦出现滞回并延长松弛时间。谱分析和小波分析表明，强阵风抑制高频随机涨落，将湍动能量组至低频相干结构，且其主频以仅2.4%的偏差锁定于阵风驱动频率。近壁极端正壁面剪应力事件与回爆事件的发生概率在强强迫下提升一个数量级。通过两步条件平均技术，揭示回爆事件由剧烈逆压梯度与强能量喷射驱动，引发缓冲层展向涡卷起；极端正壁面剪应力事件则由高速流体的强清扫压缩展向涡量至壁面邻近区域所主导。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如雷诺数范围、壁面几何条件、阵风类型等参数是否覆盖实际飞行环境，以及结果是否依赖特定数值格式或仅适用于二维/三维平板边界层。此外，研究基于纯数值模拟，缺少实验或真实飞行数据验证，结论向工程应用的推广性有待进一步检验。</p>
-<p>**值得关注：**  <br>本文提出的基于条件平均和时频分析的极端事件触发机制识别思路，可迁移至智能体在非定常气动环境中的感知与决策：例如利用实时壁面剪应力或压力信号检测瞬态扰动，结合强化学习或数据驱动模型，设计主动制抑极端事件的流动控制策略。其对相干结构频率锁定现象的解析，也有助于构建简化低维模型用于无人机气动载荷实时预测与鲁棒飞行控制。</p>
+          <p>**研究背景：**  <br>无人机在灾害、污染、火灾等危险环境执行探索监测时，续航有限，需在访问已知报告点与探索未知信息之间权衡。但先验信息常不完整、空间不精确且可能动态变化，例如报告的危险区域实际位置可能偏移或未被完全观测。现有方法往往假设目标位置确定，或未有效融合探索与利用决策，导致在不确定信息下路线效率低。本文提出一套集成探索感知的框架，在风险和信念不确定场景中同时优化路线和路径，以提升信息获取效率。</p>
+<p>**研究思路：**  <br>针对上述问题，作者将环境建模为空间风险图，每个位置持有危险信念，并将报告的危险视为不确定兴趣区域（ROI）。方法先求解ROI间的车辆路径问题，再添加辅助伪节点改善空间覆盖，将剩余飞行距离预算分配到各路段，并优化动力学可行的B样条轨迹实现局部探索。执行中，无人机测量更新信念图，当新信息和剩余预算合理时触发在线重规划。在48种场景配置下验证，在线重规划相比离线优化平均KL散度降低15.9%，相比直线遍历降低48.6%，证实了该框架在不确定环境中探索与利用平衡的有效性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如实验是否在仿真环境中进行、模型假设（如信念更新方式、B样条参数化）对实际部署的影响、以及不同危险变化模式下的鲁棒性。</p>
+<p>**值得关注：**  <br>该工作将探索与利用的权衡嵌入到经典车辆路径问题中，为具身智能体在部分可观测、动态变化环境中的长期任务规划提供了可借鉴的框架。其在线重规划与B样条轨迹优化思路可推广至多机器人协同探索、未知环境建图与导航等场景，对提升自主决策的适应性和信息效率有重要启发。</p>
         </div>
       </div>
     </section>
@@ -171,16 +171,16 @@
     <section class="paper-card">
       <div class="paper-index">2</div>
       <div class="paper-body">
-        <h2>通信辅助无人机载MIMO层析SAR的点扩散函数优化</h2>
+        <h2>弥合无线电地图估计中的采样分布偏移：轨迹感知范式</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Pouya Fakharizadeh, Mohamed-Amine Lahmeri, Gerhard Krieger, Robert Schober</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-26T17:12:24Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+          <li><span>作者</span><span>Feng Qiu, Zheng Fang, Shuhang Zhang, Kangjun Liu, Longkun Zou, Jing Liu, Ke Chen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-27T09:47:23Z</span></li><li><span>分类</span><span>cs.CV</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.27303v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.27303v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.28234v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.28234v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>无人机载多输入多输出合成孔径雷达（MIMO SAR）层析成像系统通过无人机编队获取场景的三维高度剖面，其成像质量高度依赖于点扩散函数（PSF）的旁瓣抑制能力。然而，高分辨率3D图像生成需要大量计算，通常在地面站完成，这就要求传感器数据通过空对地回传链路实时卸载。现有技术多单独优化无人机编队或通信资源分配，未能充分协同处理感知与通信约束，导致PSF旁瓣水平受限。本文针对这一联合优化问题展开研究，旨在最小化PSF旁瓣，提升三维成像质量。</p>
-<p>**研究思路：**  <br>为降低PSF旁瓣，本文联合优化无人机编队构型与用于数据卸载的功率分配，同时满足实际感知与通信约束。提出一种基于粒子群优化（PSO）的求解方案，该算法需同时处理编队几何设计、频分多址（FDMA）回传链路的资源分配等多变量耦合问题。通过仿真实验，将所提方案与若干基准方法对比，验证了其在旁瓣抑制上的显著提升。</p>
-<p>**局限性：**  <br>摘要仅提供仿真结果，未开展真实无人机或雷达系统实验，因此实际环境中的动态干扰、信道时变、无人机动力学等因素的影响尚未验证；此外，摘要未说明所提PSO算法的计算复杂度及实时性是否满足通信辅助层析SAR的在线需求，也未讨论所假设的传感与通信模型在复杂场景下的泛化能力。</p>
-<p>**值得关注：**  <br>本文提出的联合优化框架为多机器人协同感知与通信一体化设计提供了思路，其基于PSO的求解方法可推广至其他需要平衡传感质量与通信资源的场景（如自动驾驶编队雷达、具身智能中的多机协同成像）。同时，针对PSF旁瓣的指标优化方式，可作为评估多传感器融合系统成像质量的参考，启发后续研究将通信约束作为端到端优化环节嵌入感知系统。</p>
+          <p>**研究背景：**  <br>基于学习的无线电地图估计是无人机辅助无线感知的关键技术，常用于覆盖预测和网络优化。现有方法大多假设训练和测试数据独立同分布，基于随机采样。然而，实际无人机测量沿可行轨迹顺序采集，形成高度结构化、空间相关模式，导致采样分布偏移。这种不匹配增加了空间场恢复的难度，削弱了模型泛化能力。因此，亟需一种能对齐训练与部署采样分布的范式，以提升无线电地图估计在实际场景中的可靠性。</p>
+<p>**研究思路：**  <br>针对随机采样与轨迹采样间的分布偏移，作者提出一种基于随机触发轨迹采样（ST-TBS）的轨迹感知训练范式，在保持轨迹连续性的同时引入采样变异性。从统计视角分析，轨迹采样会降低空间多样性、增加信息冗余。在RadioMapSeer和SpectrumNet数据集上的实验表明，随机采样训练的模型在轨迹观测下性能严重下降（RMSE从0.0391升至0.2632），而ST-TBS方法将RMSE降至0.0571，验证了对齐训练与部署采样分布的必要性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如未说明ST-TBS方法在不同轨迹模式、无人机动态或真实环境下的鲁棒性，也未涉及计算开销或与现有方法的系统对比细节。</p>
+<p>**值得关注：**  <br>该工作揭示了无线感知任务中采样分布偏移的关键影响，提出了简单有效的轨迹感知训练策略。这种“对齐训练与部署分布”的思路可启发其他具身智能任务（如SLAM、主动感知）中模拟与真实间分布差异的弥合。ST-TBS方法中的随机触发机制也为设计更具鲁棒性的序列采样策略提供了新视角。</p>
         </div>
       </div>
     </section>
@@ -189,16 +189,16 @@
     <section class="paper-card">
       <div class="paper-index">3</div>
       <div class="paper-body">
-        <h2>NF-TrackLLM：面向低空经济XL-MIMO系统的无人机轨迹与近场波束联合预测</h2>
+        <h2>FLORO: 跨传感器与尺度的多模态地理空间生态遥感基础模型</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Qianfan Lu, Mengyuan Li, Jiachen Tian, Yu Han, Xiao Li, Shi Jin</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-26T12:23:52Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+          <li><span>作者</span><span>Jorge L. Rodriguez, Victor Angulo Morales, Areej Alwahas, Mariana Elias Lara, Fida Mohammad Thoker, Kasper Johansen, Bernard Ghanem, Fernando T. Maestre, Matthew F. McCabe</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-27T08:55:54Z</span></li><li><span>分类</span><span>cs.CV, cs.AI</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.26928v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.26928v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.28174v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.28174v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>在极大规模MIMO（XL-MIMO）系统中，用户定位与波束管理紧密耦合，尤其密集低空经济（LAE）场景对无人机（UAV）的精准跟踪和波束对准提出更高要求。然而，近场传播带来的强距离敏感性和复杂空间耦合使得联合轨迹与波束预测极为困难。现有方法多未充分利用环境语义信息，且难以建模长时依赖。大语言模型（LLM）在物理层传输中展现长程建模潜力，但尚未被引入近场无人机场景。本文基于此提出将LLM与多模态感知结合，解决密集城市低空环境中轨迹与波束的联合预测难题。</p>
-<p>**研究思路：**  <br>为解决近场空间耦合与距离敏感性导致轨迹-波束联合预测困难的问题，论文提出NF-TrackLLM多模态语义感知框架。该框架首先将视觉和LiDAR感知融入基于Sionna的信道生成管道，利用环境语义与GPS引导预测；随后基于对齐的多模态表示，采用GPT-2时空推理主干与级联预测策略——先推断未来轨迹，再将其作为几何先验指导波束预测。仿真结果表明，NF-TrackLLM在密集城市低空场景下实现了精确的波束预测和可靠的无人机轨迹跟踪。</p>
-<p>**局限性：**  <br>摘要仅提供仿真验证结果，未说明是否在真实硬件平台或实际城市环境中测试，也未讨论多模态传感器（视觉+LiDAR）的鲁棒性、计算开销或对GPS信号的依赖程度。因此，方法的泛化能力、实时性与工程可行性仍需进一步验证。</p>
-<p>**值得关注：**  <br>本文展示了将LLM（GPT-2）引入物理层通信任务的新思路，尤其通过级联预测策略将轨迹推理作为波束预测的几何先验，为感知-通信协同设计提供了可借鉴的范式。结合视觉与LiDAR的多模态语义感知也有助于机器人/自动驾驶中的动态目标定位与链路维持，值得后续研究探索扩展至其他近场通信或移动具身系统。</p>
+          <p>**研究背景：**  <br>现有基础模型在遥感表征迁移方面展现出潜力，但大多依赖超大规模预训练数据和固定传感器配置，难以适应生态与环境应用中观测平台、空间/光谱分辨率及模态的显著差异。FLORO旨在解决这一矛盾，通过从一个小型但高度多样化的遥感语料库中学习可迁移表示，为多源、多尺度生态遥感提供统一基础模型，降低对大规模数据的依赖并提升跨传感器泛化能力。</p>
+<p>**研究思路：**  <br>针对传感器异构性导致传统模型难以统一处理的问题，FLORO提出可用性感知输入机制，显式标记各样本中存在的光谱波段与辅助模态，从而在异质传感器配置下构建统一输入空间。该模型采用掩码自编码在Sentinel-1、Sentinel-2、SkySAT影像、高程及无人机数据构成的异构组合上预训练。在PANGAEA基准上冻结编码器评估场景分类、分割与回归任务，结果显示：尽管预训练语料远小于竞品模型，FLORO仍在中分辨率卫星、机载及超高分辨率无人机数据上实现强且稳定的迁移，分割性能居第二（仅落后于预训练图像多两个数量级的模型），分类竞争性强，回归鲁棒，且定性结果展现了更好的空间结构保持。在EuroSAT-MS控制实验中，地理定位编码进一步提升了分类性能。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>FLORO提出的可用性感知输入机制与小型异构语料预训练策略，为跨平台、跨分辨率的多模态感知任务提供了新范式。该方法可直接启发具身智能与自主系统在多种传感器（如RGB、深度、激光雷达）非对齐场景下的统一表征学习，其冻结编码器迁移范式也降低了在下游任务中的微调成本，对资源受限的环境感知部署具有借鉴意义。</p>
         </div>
       </div>
     </section>
@@ -207,16 +207,13 @@
     <section class="paper-card">
       <div class="paper-index">4</div>
       <div class="paper-body">
-        <h2>NightSight：利用事件相机在黑暗中进行被动计算导航</h2>
+        <h2>Triggering of extreme events and coherent-structure modulation in wall-turbulence under cyclostationary forces</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Deepak Singh, Brijan Vaghasiya, Shreyas Khobragade, Nitin Sanket</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-25T21:07:44Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+          <li><span>作者</span><span>Ao Xu, Yun-Qian Bi, Heng-Dong Xi</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-27T00:24:01Z</span></li><li><span>分类</span><span>physics.flu-dyn, physics.comp-ph</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.26330v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.26330v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.27792v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.27792v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>小型空中机器人凭借其敏捷性、低成本和穿越杂乱空间的能力，非常适用于在密闭危险环境中执行搜索救援任务。然而，在完全黑暗环境下实现自主导航面临巨大挑战，因为小型机器人难以搭载需要大载荷、高功耗或强计算能力的感知系统。现有方法受限于资源约束，无法有效解决黑暗中的深度感知问题。为此，本文提出一种轻量化感知方案，结合事件相机、编码孔径透镜和红外点投影仪，旨在以被动方式从结构光编码中隐式解码场景几何，为黑暗环境中的导航提供鲁棒且实时的深度估计，对于资源受限平台具有重要研究意义。</p>
-<p>**研究思路：**  <br>为解决黑暗环境下深度感知的难题，作者设计了一套仅依赖被动光学计算的方法：利用红外点投影仪投射图案，通过编码孔径透镜成像后，产生深度相关的模糊特征，这些特征隐式编码了场景三维结构。训练一个卷积神经网络，仅使用合成数据（简单平面墙设置）学习从模糊签名到稠密深度图的映射。尽管训练数据极简，模型能够零样本泛化到复杂真实场景。系统在NVIDIA Jetson Orin Nano上以20 Hz实时运行，验证了在资源受限平台上的适用性。主要结论为：该方法在2.5米范围内达到高精度（L1误差7.0厘米，相对误差2.80%），并分析了不同编码孔径设计对深度估计性能的影响，展示了结合结构化照明、编码光学和事件传感在完全黑暗环境中实现鲁棒感知与导航的潜力。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，但可推断：训练数据仅来自简单平面墙合成场景，虽宣称零样本泛化，但真实世界的几何多样性（如曲面、反射表面、动态遮挡）可能带来挑战；深度精度仅在2.5米范围内报告，更远距离或复杂光照条件下的性能未提及；系统依赖特定红外投影仪和编码孔径硬件，在户外强红外干扰环境下可能受限；事件相机的时空特性未被充分讨论（如对比度低、事件嘈杂场景下的鲁棒性）。更多局限性需通过论文全文进一步分析。</p>
-<p>**值得关注：**  <br>本文提出了一种新颖的被动深度感知范式，将事件相机与编码光学和结构光相结合，在完全黑暗中实现轻量级实时导航。其核心启发在于：仅用合成数据训练即可零样本迁移到真实场景，显著降低了对大规模真实标注数据的依赖；20 Hz的实时运行能力展示了在边缘平台（如NVIDIA Jetson）上部署具身智能系统的可行性。该方法为小型飞行器在搜救、井下勘探等黑暗环境下的自主导航提供了低成本、低功耗的方案。未来研究者可借鉴其“被动编码-深度解码”思路，探索更复杂的编码图案、多模态融合或自适应曝光策略，以提升对动态环境和远距离的适应性，推动具身智能在极端光照条件下的实用化进程。</p>
+          <p>Atmospheric gusts expose wall-bounded turbulence to severe unsteady forcing, triggering complex non-equilibrium dynamics and extreme aerodynamic loads. In this study, direct numerical simulations (DNS) are performed to investigate the spatiotemporal modulation of turbulent structures and the triggering mechanisms of near-wall extreme events under Gaussian-type transient forcing. The results reveal that high-amplitude gusts inject energy primarily into the streamwise velocity component, inducing a pronounced non-equilibrium phase lag during turbulent energy redistribution. This process produces hysteresis in wall friction and extends the relaxation time. Spectral and continuous wavelet analyses demonstrate that intense gust forcing suppresses high-frequency random fluctuations and reorganizes turbulent kinetic energy into low-frequency coherent structures. The characteristic frequency of these energetic structures locks onto the gust driving frequency, with a relative deviation of only $2.4\%$. Furthermore, the occurrence probability of extreme near-wall events, including extreme positive (EP) wall-shear-stress events and rare backflow (BF) events, increases by up to an order of magnitude under severe forcing. Using a two-step conditional averaging technique, we demonstrate that BF events are actively driven by intense, localized adverse pressure gradients and energetic ejections, which promote spanwise vortex roll-up in the buffer layer. By contrast, EP events are governed by energetic sweeps of high-speed fluid that compress intense spanwise vorticity into the immediate vicinity of the wall. These findings provide physical insights into non-equilibrium energy transfer and offer theoretical guidance for load alleviation and robust flow control of unmanned aerial vehicles operating in unsteady atmospheric environments.</p>
         </div>
       </div>
     </section>
@@ -225,16 +222,16 @@
     <section class="paper-card">
       <div class="paper-index">5</div>
       <div class="paper-body">
-        <h2>HoLoArm：用于耐碰撞四旋翼飞行的可变形机械臂</h2>
+        <h2>通信辅助无人机MIMO层析SAR的点扩展函数优化</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Quang Ngoc Pham, Jonas Eschmann, Yang Zhou, Alejandro Ojeda Olarte, Giuseppe Loianno, Van Anh Ho</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-25T12:37:18Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+          <li><span>作者</span><span>Pouya Fakharizadeh, Mohamed-Amine Lahmeri, Gerhard Krieger, Robert Schober</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-26T17:12:24Z</span></li><li><span>分类</span><span>eess.SP</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.25790v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.25790v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.27303v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.27303v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>随着无人机在人机共融场景中的普及，碰撞后存活并快速恢复、减小对人与环境风险的设计需求日益迫切。现有刚性结构四旋翼在碰撞中易损且恢复缓慢；完全软体机器人则可能牺牲飞行稳定性。作者借鉴蜻蜓翅节点结构的自然柔性与弹性，提出HoLoArm——一种配备可变形机械臂的四旋翼，旨在实现碰撞容忍与稳定飞行的兼顾，为软体空中机器人形态设计提供新思路。</p>
-<p>**研究思路：**  <br>为解决四旋翼在碰撞后生存与快速恢复的难题，作者设计了仿蜻蜓翅节点结构的可变形臂，使飞行器能在任意方向（包括轴向）被动变形吸收冲击；同时集成强化学习（RL）控制策略，增强碰撞后的恢复与悬停性能。实验验证了该系统可在0.3–0.6秒内恢复、承受7.6 m/s的碰撞速度并携带540 g负载稳定飞行。主要结论表明，所提形态设计与智能控制结合的方法能实现高敏捷性与可靠安全性的统一，适用于杂乱及人机共存环境。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如实验是否涵盖真实户外环境、不同负载或碰撞角度下的泛化能力，以及RL策略对模型参数变化的鲁棒性等。</p>
-<p>**值得关注：**  <br>该工作将仿生结构与强化学习控制融合，为开发兼具耐碰撞与高机动性的软体空中机器人提供了新范式。其被动变形臂加主动控制的思路可启发具身智能中连续体机器人与无人机交互、以及无人机在搜救、包裹投递等碰撞频繁场景中的应用。此外，该设计为未来全软体无人机的实现奠定的基础，展示了“硬件柔顺+智能控制”协同提升安全性的潜力。</p>
+          <p>**研究背景：**  <br>无人机群搭载多输入多输出合成孔径雷达（MIMO SAR）可实现对区域的三维层析成像，获得地表高度剖面。为生成高质量三维图像，需确保点扩展函数（PSF）具有低旁瓣特性。然而，图像生成的大量计算须在地面完成，因此无人机需通过频分多址（FDMA）空对地回传链路实时卸载传感数据。现有方法在联合优化无人机编队与卸载功率以最小化PSF旁瓣方面存在不足，尤其在兼顾实际感知与通信约束的条件下。本文旨在填补这一空白，提升层析SAR成像质量。</p>
+<p>**研究思路：**  <br>作者针对无人机编队构型与回传卸载功率的联合优化问题，以最小化PSF旁瓣水平为目标。提出基于粒子群优化（PSO）的求解方案，确保满足实际感知约束（如空间采样）与通信约束（如功率分配、FDMA链路容量）。通过仿真对比多种基准方案，验证了所提方法在旁瓣抑制性能上的显著提升。结论表明，联合优化可有效改善三维成像质量。</p>
+<p>**局限性：**  <br>摘要仅提及仿真实验，未说明真实环境验证，因此结果可能依赖仿真参数假设（如信道模型、无人机动力学），缺乏对实际电磁干扰、时变信道及编队控制精度的考量。摘要未提供足够信息判断具体局限性，如计算实时性、算法收敛速度等也未涉及。</p>
+<p>**值得关注：**  <br>本文展示了感知与通信联合优化的思想，对具身智能中多机器人协同感知与资源分配具有启发意义。PSO算法在复杂约束下的应用可借鉴到无人机编队任务规划中。此外，将MIMO雷达成像质量指标（PSF旁瓣）直接作为优化目标，为物理层与上层感知联合设计提供了范式。同类方法可推广至自动驾驶中的协同感知、通信与计算资源调度场景。</p>
         </div>
       </div>
     </section>
@@ -243,16 +240,16 @@
     <section class="paper-card">
       <div class="paper-index">6</div>
       <div class="paper-body">
-        <h2>一起飞翔：未知环境中无人机团队的人类引导沉浸式共享控制</h2>
+        <h2>NF-TrackLLM：面向低空经济XL-MIMO系统的无人机轨迹与近场波束联合预测</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Lou De Bel-Air, Luca Morando, Ruitao Chen, Keru Wang, Benjamin Jarvis, Charbel Toumieh, Yang Zhou, Ken Perlin, Dario Floreano, Giuseppe Loianno</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-20T19:37:46Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+          <li><span>作者</span><span>Qianfan Lu, Mengyuan Li, Jiachen Tian, Yu Han, Xiao Li, Shi Jin</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-26T12:23:52Z</span></li><li><span>分类</span><span>eess.SP</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.21680v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.21680v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.26928v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.26928v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>自主多机器人系统虽能实现安全协调的导航，但在非结构化环境中常难以适应突发状况并准确捕捉操作者的目标意图。现有自主规划器可能忽略人类关注的区域，而纯遥操作方式又受限于通信延迟和操作负荷。为此，本文提出一种基于虚拟现实的共享控制框架，旨在让人机协同探索未知受限空域，提升多无人机团队的适应性与任务灵活性。</p>
-<p>**研究思路：**  <br>作者针对自主规划器难以整合操作者意图的难题，设计了融合用户引导的运动基元规划器，该规划器能实时计算连续无碰撞轨迹并持续集成操作员输入。配合导纳控制器，操作者可通过VR界面灵活影响无人机编队行为，并利用迁移点引导集群前往自主系统可能忽略的兴趣区域。系统支持物理与仿真无人机混合现实运行，操作者能即时获得团队状态视觉反馈。实验结果表明，共享控制提升了避障性能、维持了机间间距，并降低了操作员工作负荷，验证了沉浸式人在回路多机器人导航的可行性与优势。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如真实环境测试的规模与复杂度、操作者个体差异的影响、系统对通信时延的鲁棒性，以及该方法在更大规模机队或更动态环境中的适用性仍需进一步验证。</p>
-<p>**值得关注：**  <br>该工作为多机器人系统中的人机共享控制提供了新颖的VR交互范式，特别是将运动基元规划与导纳控制结合以实时融合操作者意图的设计思路，对具身智能在人机协作导航、遥操作疲劳缓解等领域具有启发。其支持混合现实的操作评估方法也可为后续人机互信研究提供参考。</p>
+          <p>**研究背景：**  <br>在极大规模多输入多输出（XL-MIMO）系统中，用户定位与波束管理紧密耦合，尤其在密集低空经济（LAE）场景中。然而，XL-MIMO的近场传播带来了强烈的距离敏感性和复杂的空间耦合，使得现有方法难以同时准确预测无人机轨迹和波束。同时，大语言模型（LLM）在物理层传输中展现了对长程依赖关系的建模能力，但尚未被用于解决此类联合预测问题。为此，本文提出NF-TrackLLM，旨在利用多模态感知和LLM的时序推理能力，实现高精度联合预测，支撑低空无人机通信与导航。</p>
+<p>**研究思路：**  <br>针对近场XL-MIMO中轨迹与波束联动的困难，作者设计了一个多模态语义感知框架NF-TrackLLM。首先，将视觉与LiDAR感知数据融入基于Sionna的信道生成管线，提取环境语义和GPS信息，形成对齐的多模态表征。然后，采用基于GPT-2的时空推理主干网络，并结合级联预测策略：先预测未来轨迹，再将其作为几何先验引导波束预测。仿真结果表明，该方法在密集城市低空场景下实现了准确的波束预测与可靠的无人机轨迹跟踪。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如未说明仿真场景的规模、是否考虑真实环境干扰、计算复杂度以及是否在真实无人机平台上验证。此外，现有方法仅在仿真环境下评估，缺乏实际系统测试与鲁棒性分析。</p>
+<p>**值得关注：**  <br>本文展示了将大语言模型（GPT-2）嵌入物理层信号处理的思路，为具身智能中时序预测与多模态融合提供了新范式。级联“轨迹→波束”预测策略可迁移至其他需要先验引导的任务（如自动驾驶中的路径与动作联合规划）。此外，融合视觉与LiDAR传感作为几何/语义先验，体现了多模态感知在无线通信中的潜力，对未来低空无人机自主导航与通信一体化设计具有启发意义。</p>
         </div>
       </div>
     </section>
@@ -261,16 +258,16 @@
     <section class="paper-card">
       <div class="paper-index">7</div>
       <div class="paper-body">
-        <h2>自组装模块化空中机器人用于多用途空中任务</h2>
+        <h2>NightSight：黑暗环境下基于事件相机的被动计算导航</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Junichiro Sugihara, Masaki Kitagawa, Jinjie Li, Yunong Li, Takuzumi Nishio, Kei Okada, Moju Zhao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-19T06:36:10Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+          <li><span>作者</span><span>Deepak Singh, Brijan Vaghasiya, Shreyas Khobragade, Nitin Sanket</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-25T21:07:44Z</span></li><li><span>分类</span><span>cs.RO</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.19431v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.19431v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.26330v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.26330v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>多旋翼空中机器人在三维空间机动灵活，小型机身能在杂乱受限环境中敏捷穿行；但高空作业平台需更大尺寸以提供高推力，实现稳定的环境物理交互。这两类设计需求相互冲突，形成了“灵活导航”与“鲁棒空中操作”之间的长期权衡。现有单一构型难以兼顾二者，限制了空中机器人在复杂任务中的物理参与能力。受蚂蚁自组织群体的启发，本研究提出LEGION单元——一种可在飞行中自组装成操作臂的可重构模块化空中机器人，旨在打破上述权衡，使小型飞行器既能灵巧机动，又能协同完成重型物理操作。</p>
-<p>**研究思路：**  <br>为同时实现灵巧机动与强健空中操作，作者将每个LEGION单元设计为小巧机动，两端配备带接头的对接接口，支持端到端飞行自组装，形成飞行机械臂。研究的关键难点在于：飞行中自主对接时如何维持零间隙机械联锁，以及如何实现形态重构（从单体灵巧飞行切换为集体关节式操作）。论文通过多单元飞行自主对接实验验证有效性：一旦锁定，通过控制接触力与扭矩即能保持零间隙联锁，即使在室外也能可靠聚合及关节运动。核心结论是，LEGION的自重构能力使得空中机器人群体能够执行推、拉、旋转、抓取、搬运等基本空中操作原语，从被动环境观察者转变为主动参与者，拓宽空中物理交互的应用范围。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。</p>
-<p>**值得关注：**  <br>LEGION为空中机器人群体协作提供了新的系统范式：通过模块自组装实现形态与功能的按需切换，从而在单体灵活性与群体操作能力之间取得平衡。其零间隙联锁控制方法、飞行中对接策略以及自重构机制，可被借鉴到模块化机器人、可重构飞行系统、以及具身智能中的多智能体协同任务设计。此外，从“被动观察者”转向“主动参与者”的研究视角，对空中机器人物理交互、搜索救援、建筑组装等场景具有重要启发。</p>
+          <p>**研究背景：**  <br>小型空中机器人凭借敏捷、低成本及在复杂空间中的通行能力，特别适合在受限危险环境中执行搜救任务。然而，实现完全黑暗环境下的自主导航面临巨大挑战——小型平台无法承载需要大载荷、高功耗或强算力的传统感知系统。现有方法在极端光照条件下往往精度不足或计算开销过大。针对这一矛盾，本文提出一种轻量级感知方案，结合单目事件相机、编码孔径镜头与红外点投影器，旨在无需主动照明（仅被动感知）的情况下，实现对完全黑暗场景的实时深度估计与导航能力，为资源受限小型机器人的全天候自主作业提供可行路径。</p>
+<p>**研究思路：**  <br>为克服小型平台在黑暗中的感知瓶颈，作者利用事件相机对亮度变化敏感、低延迟的特点，辅以编码孔径和红外点投影器——投影图案经编码孔径成像后，会产生随深度变化的模糊特征，从而隐式编码场景几何信息。训练阶段仅使用从简单平面墙壁设置生成的合成数据，训练卷积神经网络将这些模糊模式解码为稠密深度图。该方法在NVIDIA Jetson Orin Nano上以20 Hz实时运行，无需真实标注即可零样本泛化至复杂真实场景。实验表明，在2.5米范围内平均绝对误差仅7.0 cm（相对误差2.80%），不同编码孔径设计对深度估计性能的影响也得到分析，验证了所提方法的准确性和泛化能力。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。可能存在的问题包括：训练数据仅来自简单平面墙设置，模型在非平面、强遮挡或动态场景下的泛化鲁棒性未充分说明；实验限于嵌入式平台离线推理，未给出实物飞行器在真实黑暗环境中的闭环导航验证；红外投影在室外强光下的有效性、多机干扰等实际部署问题也未涉及。</p>
+<p>**值得关注：**  <br>本文巧妙融合事件相机、编码光学与结构化照明三种技术，以极轻量级的传感-计算方案攻克完全黑暗中的深度估计难题，对小型无人机、微型机器人以及极端光照场景下的具身智能导航具有显著启发。其“仅用合成数据即实现零样本泛化”的范式，大幅降低了对真实标注数据的依赖，有望加速相关研究。实时性能（20 Hz）和嵌入式部署能力展示了该方法向实际机器人系统迁移的潜力，未来可进一步结合事件SLAM或强化学习，实现黑暗环境下的完整自主导航。</p>
         </div>
       </div>
     </section>
@@ -279,16 +276,16 @@
     <section class="paper-card">
       <div class="paper-index">8</div>
       <div class="paper-body">
-        <h2>学习空中操纵中的交叉耦合与状态依赖动力学</h2>
+        <h2>HoLoArm：面向抗碰撞四旋翼飞行的可变形臂</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Rishabh Dev Yadav, Samaksh Ujjawal, Sihao Sun, Spandan Roy, Wei Pan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-14T13:17:04Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+          <li><span>作者</span><span>Quang Ngoc Pham, Jonas Eschmann, Yang Zhou, Alejandro Ojeda Olarte, Giuseppe Loianno, Van Anh Ho</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-25T12:37:18Z</span></li><li><span>分类</span><span>cs.RO</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.14805v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.14805v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.25790v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.25790v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>空中操纵器在载荷运输等复杂任务中依赖精确动力学模型，但四旋翼与机械臂的强耦合、延迟气动交互以及因负载变化和机械臂重构导致的状态依赖动力学，使得系统残差动力学同时具备交叉耦合、历史依赖和非平稳特性。现有分析模型和纯离线学习模型在部署时性能显著退化，难以适应这些动态变化。为此，论文旨在前述挑战下，提出一种能联合建模耦合时序动态与部署期非平稳性的自适应学习方法，以提升空中操纵的可靠性。</p>
-<p>**研究思路：**  <br>针对现有方法无法同时处理交叉耦合、时间依赖和非平稳性三大难题，作者提出结构化编码器-解码器框架：非线性潜编码器从状态-输入历史中捕获跨变量耦合与时间依赖，轻量线性潜解码器则通过线性参数化结构支持闭式贝叶斯自适应和一致性驱动协方差膨胀，实现快速稳定在线适应，并兼容实时模型预测控制（MPC）。在真实空中操纵平台上实验，该方法在残差预测精度、变化工况下的适应速度以及MPC轨迹跟踪性能上均优于对比方法。结论表明，联合建模耦合时序动态与部署期非平稳性对可靠空中操纵至关重要。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如实验场景多样性、负载变化范围、机械臂构型类型以及对强扰动或极端工况的鲁棒性等尚未明确说明。</p>
-<p>**值得关注：**  <br>该工作提出的编码器-解码器结构为复杂耦合系统的自适应动力学学习提供了可复用框架，尤其是线性解码器支持贝叶斯在线更新并保持MPC实时性，这种“非线性编码+线性自适应”的设计思路可推广至其他机器人系统（如四足、无人机群）。同时，方法强调同时建模交叉耦合与历史依赖性，对具身智能中非平稳环境适应有启示意义。</p>
+          <p>**研究背景：**  <br>随着无人机在人类密集场景中的广泛应用，碰撞后快速恢复、减少对人身和环境风险的耐撞设计成为迫切需求。传统刚性无人机在撞击时易损坏，且缺乏主动恢复能力。现有柔性设计多局限于特定方向变形，或依赖复杂传感器和主动控制，难以兼顾飞行稳定与碰撞容错。受蜻蜓翅膀结节结构的启发，本研究提出一种融合仿生柔性臂与强化学习控制的四旋翼系统，旨在实现任意方向的高效缓冲与快速恢复，为人机共融环境中的安全飞行提供新范式。</p>
+<p>**研究思路：**  <br>该工作首先从“如何让无人机在碰撞后既保稳定又能快速恢复”这一核心问题出发，利用蜻蜓翅膀结节的结构原理设计出可向任意方向（包括轴向）被动变形的柔性臂，赋予机体天然柔顺性与回弹能力。为维持动态飞行中的稳定性并加速恢复，作者引入强化学习控制策略，使系统能自适应调整姿态。实验通过不同方向与强度的碰撞测试验证性能：无人机可在0.3–0.6秒内完成恢复，耐受高达7.6 m/s的撞击速度，并能承载540 g载荷实现稳定悬停。主要结论表明，这种形态设计显著提升了软体空中机器人的敏捷性与安全性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。但可推测，当前实验可能仅在受控环境中验证特定碰撞模式，其强化学习策略的泛化能力、可变形臂在重复碰撞后的耐久性、以及更大载重或高速下的表现尚待进一步检验。实际部署时的环境干扰与长期可靠性也需要更多数据支持。</p>
+<p>**值得关注：**  <br>本论文为仿生结构与智能控制的深度融合提供了范例，其“被动柔顺+主动恢复”的设计思路可迁移至具身机器人与自动驾驶领域中的碰撞防护场景。特别是强化学习策略针对变形后非线性动力学的适应方法，对提升软体机器人的鲁棒控制有重要启发。此外，该工作指向全软体无人机的未来，提示研究者可从材料、形态与算法协同优化的角度改进无人机安全设计。</p>
         </div>
       </div>
     </section>
@@ -297,16 +294,16 @@
     <section class="paper-card">
       <div class="paper-index">9</div>
       <div class="paper-body">
-        <h2>面向无接触授粉的垂直农业空中操作机器人</h2>
+        <h2>共飞：未知环境中空中机器人团队的人引导沉浸式共享控制</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Chenzhe Jin, Zhuohang Wu, Yifan Cai, Xiangqi Li, Jan Ming Kevin Tan, Narsimlu Kemsaram, Valerio Modugno</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-07T16:58:28Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+          <li><span>作者</span><span>Lou De Bel-Air, Luca Morando, Ruitao Chen, Keru Wang, Benjamin Jarvis, Charbel Toumieh, Yang Zhou, Ken Perlin, Dario Floreano, Giuseppe Loianno</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-20T19:37:46Z</span></li><li><span>分类</span><span>cs.RO</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.06759v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.06759v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.21680v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.21680v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>自然传粉者数量下降使垂直农业等受控室内种植面临严峻挑战，因缺乏昆虫传粉导致作物产量受限。现有地面机器人难以在狭窄层架间灵活作业，而单纯无人机又缺乏对脆弱花朵的精细定位能力。本文由此提出一种集成感知与操控的空中机器人平台，旨在实现厘米级精度的花朵目标检测、定位与接近，为未来无接触授粉系统奠定基础。</p>
-<p>**研究思路：**  <br>针对垂直农业中对花朵精准定位且不损伤花结构的核心需求，论文设计搭载RGBD相机、基于模型预测路径积分（MPPI）控制的无人机，并集成轻量2自由度机械臂。系统在MuJoCo仿真中验证轨迹收敛与目标对齐能力，随后在真实无人机实验室的模拟花目标测试台上评估综合性能。结果表明：仿真中控制器实现稳定轨迹收敛，真实实验中感知-控制-操作框架达成厘米级末端定位精度，验证了平台作为无接触授粉鲁棒载体的可行性。</p>
-<p>**局限性：**  <br>摘要未说明系统在真实垂直农场（如密集植株、复杂光照、动态环境）中的性能，也未评估花朵识别对遮挡或光照变化的鲁棒性。当前实验仅关注定位与接近，未涉及实际无接触授粉操作（如声学花粉操控模块的集成），因此整体授粉效率与成功率仍待验证。</p>
-<p>**值得关注：**  <br>本文为空中机器人精准作业提供了可复用的感知-控制-操作一体化框架，其MPPI控制器结合轻量化机械臂的设计思路可推广至温室采摘、植物监测等场景。未来将非接触末端执行器（如声学花粉操控）集成到该平台是明确方向，其仿真+真实实验的两阶段验证方法对同类研究具有参考价值。</p>
+          <p>**研究背景：**  <br>自主多机器人系统虽能实现安全协调导航，但在非结构化环境下难以灵活应对突发状况及算子意图。现有方法往往无法在未知空间中兼顾自主规划与人机协作，导致关键区域遗漏或人机效率失衡。为此，论文提出基于虚拟现实的沉浸式共享控制框架，旨在让操作者实时引导无人机团队探索受限未知环境，提升任务适应性与人机协同效率。</p>
+<p>**研究思路：**  <br>为弥补纯自主规划在非结构化环境中的局限，作者提出一种新型运动基元规划器，通过持续融合操作者输入，在线生成连续无碰撞轨迹。该规划器与导纳控制器耦合，使操作者能灵活调整团队行为、引导无人机关注自主规划易忽略的区域。系统支持混合现实（虚实无人机共存）操作，并设计双边VR界面，操作者通过迁移点引导团队，同时接收实时视觉反馈。实验结果表明，共享控制相比纯自主方法改善了避障性能、维持了机间安全距离，并降低了操作者负担，验证了沉浸式人机协同多机器人导航的可行性与优势。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。论文实验场景与规模、真实环境下的鲁棒性、实时性限制、以及操作者学习曲线等关键因素均未说明，需后续公开报告详细阐述。</p>
+<p>**值得关注：**  <br>该工作为无人机团队在未知环境中的实时人机协同提供了可借鉴的系统设计：VR双边界面、运动基元规划器与导纳控制器的耦合方式，以及虚实混合验证思路，对具身智能、人机融合导航及多机器人“人在环路”控制研究具有启发性。后续可将该框架扩展到更复杂的地形或动态障碍物场景。</p>
         </div>
       </div>
     </section>
@@ -315,16 +312,16 @@
     <section class="paper-card">
       <div class="paper-index">10</div>
       <div class="paper-body">
-        <h2>集成探索意识的无人机航线优化与路径规划</h2>
+        <h2>自组装模块化空中机器人用于多种空中任务</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Jimin Choi, Grant Stagg, Cameron K. Peterson, Max Z. Li</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-27T15:54:35Z</span></li><li><span>分类</span><span>cs.RO, eess.SY, math.OC</span></li>
+          <li><span>作者</span><span>Junichiro Sugihara, Masaki Kitagawa, Jinjie Li, Yunong Li, Takuzumi Nishio, Kei Okada, Moju Zhao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-19T06:36:10Z</span></li><li><span>分类</span><span>cs.RO</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.28654v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.28654v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.19431v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.19431v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>无人机在灾后、污染区、野火等危险环境中的监测任务日益增多，但续航有限，需在访问已报告地点与探索新信息区域之间合理分配航程。现有方法往往将报告处视为确定目标点，未充分考虑灾害信息的空间不精确性与动态变化性（如实际危险可能偏移、部分可见或未报告）。论文聚焦于在先验信息不确定且动态演变的条件下，如何让无人机同时完成对已知报告区域的检查和未知区域的自主探索，以提升危险监测的信息效率。</p>
-<p>**研究思路：**  <br>论文提出一种集成探索意识的航线优化与路径规划框架。首先将环境建模为空间风险地图，记录每个位置的危险信念；将报告点视为不确定兴趣区（ROI）而非确定目标。方法先对ROI求解车辆路径问题规划初始路线，再通过添加辅助伪节点改善空间覆盖，将剩余飞行距离预算分配至各分段，并优化动态可行的B样条轨迹用于局部探索。在执行过程中，无人机测量实时更新网格信念地图，当新信息与剩余预算支持调整时触发在线重规划。论文通过48种场景配置验证：在线重规划相比离线优化规划的KL散度降低平均15.9%，相比直线遍历降低48.6%。</p>
-<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，例如实验是否在真实无人机或仅仿真环境中进行、对先验不确定性的建模假设（如危险区域形状和大小）是否过于简化、飞行距离预算分配方法是否依赖精确环境建模、在线重规划的计算开销是否满足实时性要求等均未说明。</p>
-<p>**值得关注：**  <br>该工作将探索意识嵌入传统汽车路径问题（VRP）解法中，通过伪节点和B样条轨迹实现了全局路线与局部探索的协同优化，为动态不确定环境下的自主监测提供了系统范本。在线重规划对信息增益提升显著，这种“先规划后自适应”的框架可启发后续研究在具身智能中融合不确定性量化与轨迹优化，尤其适用于现场信息不断更新的灾后搜救、环境采样等任务。</p>
+          <p>**研究背景：**  <br>多旋翼空中机器人在三维空间机动性出色，小型机体能在杂乱受限环境中灵巧穿梭，而用于高空作业的机体往往需要更大尺寸以提供高推力，实现稳定的物理交互。这两种设计需求相互矛盾，导致灵巧导航与鲁棒空中操作之间长期存在权衡。现有系统难以在单个平台同时兼顾敏捷飞行与重型操作。受蚂蚁自组织集体行为启发，本文提出LEGION单元——一种可重构的模块化空中机器人，通过空中自组装实现协同操作，旨在突破上述权衡，将空中机器人从被动观察者转变为环境的主动参与者。</p>
+<p>**研究思路：**  <br>传统空中机器人在小型敏捷与大型操作之间存在矛盾，作者受生物启发，设计了LEGION模块化单元。每个单元保持灵活机动性，两端配备带关节的对接接口，可实现端到端空中自组装，形成飞行机械臂。方法核心在于：多个单元在飞行中自主对接后，通过接触力与力矩控制维持零间隙互锁，支持可靠聚合与关节运动，甚至可在户外运行。摘要通过验证多单元自主空中对接、脱钩后形态切换（从灵巧单体飞行到集体关节操作），以及实现推动、拉动、旋转、抓取、携带等核心空中操作原语，证明了该方法的有效性。主要结论是：LEGION的自组织能力使空中机器人（尤其是蜂群）能够从环境被动观察者转变为主动参与者，拓宽了空中物理交互的应用范围。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。例如未说明多单元自组装的最大单元数量、零间隙互锁在强风或复杂户外环境下的鲁棒性、电池续航对操作时间的影响、以及是否支持非结构化场景下的应急脱钩。此外，实验验证的规模（如单元数目、任务复杂度）和与现有方案的量化对比均未提及。</p>
+<p>**值得关注：**  <br>本文提出的模块化自组装思路为空中机器人的形态动态重构开辟了新路径。其零间隙互锁的力/力矩控制方法可借鉴到其他需要临时刚性连接的机器人系统中。LEGION将蜂群的分布式智能与集体操作能力结合，启示了从被动编队到主动协作物理交互的研究趋势。此外，端到端空中自组装与形态切换的设计，对搜救、高空作业、大范围物体搬运等任务场景具有直接启发价值。</p>
         </div>
       </div>
     </section>
@@ -333,16 +330,16 @@
     <section class="paper-card">
       <div class="paper-index">11</div>
       <div class="paper-body">
-        <h2>弥合无线电地图估计中的采样分布偏移：一种轨迹感知范式</h2>
+        <h2>学习空中操纵器的交叉耦合与工况依赖动力学</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Feng Qiu, Zheng Fang, Shuhang Zhang, Kangjun Liu, Longkun Zou, Jing Liu, Ke Chen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-27T09:47:23Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+          <li><span>作者</span><span>Rishabh Dev Yadav, Samaksh Ujjawal, Sihao Sun, Spandan Roy, Wei Pan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-14T13:17:04Z</span></li><li><span>分类</span><span>cs.RO</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.28234v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.28234v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.14805v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.14805v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>基于学习的无线电地图估计（RME）是无人机辅助无线感知的关键技术，用于覆盖预测和网络优化。现有方法普遍假设训练与测试数据满足独立同分布（i.i.d.）的随机采样条件。然而，实际无人机测量沿可行轨迹顺序采集，数据呈现强结构性和空间相关性，与i.i.d.假设严重不符。这种训练与部署之间的采样分布偏移增加了空间场恢复难度，导致模型泛化能力下降。因此，亟需一种能适应真实轨迹采样特性的训练范式，以提升RME在实际场景中的可靠性。</p>
-<p>**研究思路：**  <br>为克服采样分布偏移问题，论文提出一种基于随机触发轨迹采样（ST-TBS）的轨迹感知训练范式。该方法在保留轨迹连续性的同时引入采样变异性，从统计角度揭示轨迹采样会降低空间多样性、增加信息冗余。为了验证有效性，论文在RadioMapSeer和SpectrumNet数据集上进行了实验。结果显示，使用随机采样训练的模型在真实轨迹观测下性能严重下降（SpectrumNet上RMSE从0.0391升至0.2632），而ST-TBS方法将RMSE有效降低至0.0571。结论表明，对齐训练与部署的采样分布是实现可靠RME的必要条件。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。例如，ST-TBS方法是否对轨迹类型或无人机运动模式敏感、在极端稀疏采样或动态环境下的表现，以及是否已在真实无人机系统上验证，均未说明。</p>
-<p>**值得关注：**  <br>本文提出的“对齐训练与部署采样分布”的思路对具身智能和机器人场景有重要启发：在机器人环境感知、地图构建或自动驾驶中，传感器数据同样沿轨迹顺序采集，且常存在训练与部署分布差异。ST-TBS这种保留轨迹结构同时引入变异性的训练范式可直接迁移到类似任务中，为空间场估计的领域适应和鲁棒学习提供新途径。</p>
+          <p>**研究背景：**  <br>空中操纵器在载荷运输等复杂任务中高度依赖精确动力学模型，但系统面临旋翼‑机械臂强耦合、延迟气动交互以及因载荷变化和构型调整导致的工况依赖动力学变化。这些效应产生同时存在交叉耦合、历史依赖与非平稳性的残差动力学，使现有分析模型和纯离线学习模型在部署时性能严重退化。因此，亟需一种能在线适应复杂空‑机耦合动力学的建模框架，以实现可靠操控。</p>
+<p>**研究思路：**  <br>针对上述残差动力学的多源复杂特性，作者提出结构化编码器‑解码器框架：非线性潜在编码器从状态‑输入历史中提取跨变量耦合与时间依赖关系，轻量线性潜在解码器则负责在线适应工况变化的非平稳动力学。线性参数的解码器结构支持闭式贝叶斯更新及一致性驱动的协方差膨胀，实现暂态与慢变动力学的快速、稳定适应，且兼容实时模型预测控制（MPC）。在真实空中操纵平台上实验，结果表明所提方法在残差预测精度、工况变化下的适应速度以及MPC轨迹跟踪性能上均有显著提升，验证了联合建模耦合时序动态与部署时非平稳性的必要性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如实验平台的规模、不同工况覆盖的广度、与其他先进方法的定量对比细节，以及该方法在极端动态或强干扰下的鲁棒性。此外，线性‑非线性混合结构对计算资源的需求和实时性边界尚需进一步说明。</p>
+<p>**值得关注：**  <br>本文提出的编码器‑解码器框架为具身智能系统中非平稳、强耦合动力学的在线学习提供了一种可落地方案，尤其是线性参数化解码器与贝叶斯更新的结合，既能保持实时控制兼容性，又能实现自适应。该思想可推广至其他受工况漂移影响的机器人系统（如四足机器人、柔性操作臂），是迈向实用化自适应控制的重要尝试。</p>
         </div>
       </div>
     </section>
@@ -351,16 +348,16 @@
     <section class="paper-card">
       <div class="paper-index">12</div>
       <div class="paper-body">
-        <h2>FLORO：面向跨传感器与尺度的生态遥感多模态地理空间基础模型</h2>
+        <h2>面向垂直农业无接触授粉的感知驱动飞行机械臂</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Jorge L. Rodriguez, Victor Angulo Morales, Areej Alwahas, Mariana Elias Lara, Fida Mohammad Thoker, Kasper Johansen, Bernard Ghanem, Fernando T. Maestre, Matthew F. McCabe</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-27T08:55:54Z</span></li><li><span>分类</span><span>cs.CV, cs.AI</span></li>
+          <li><span>作者</span><span>Chenzhe Jin, Zhuohang Wu, Yifan Cai, Xiangqi Li, Jan Ming Kevin Tan, Narsimlu Kemsaram, Valerio Modugno</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-05-07T16:58:28Z</span></li><li><span>分类</span><span>cs.RO</span></li>
         </ul>
-        <ul class="links"><li><a href="https://arxiv.org/abs/2605.28174v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.28174v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2605.06759v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2605.06759v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>当前遥感基础模型依赖海量预训练数据和固定传感器配置，难以适应生态与环境应用中观测平台、光谱分辨率、空间尺度和可用模态频繁变化的需求。现有方法在数据多样性与迁移能力之间权衡不足，导致模型在面对异构传感器融合任务时泛化能力有限。为此，FLORO旨在利用小而高度异质的遥感语料，学习跨传感器与跨尺度的可迁移表示，提升生态遥感的适用性。</p>
-<p>**研究思路：**  <br>为克服大语料依赖与传感器固定配置的局限，FLORO采用掩码自编码预训练，融合Sentinel-1/2、SkySAT、高程和无人机等多源遥感数据。其创新在于引入“可用性感知输入”，显式标记每个样本中可用的光谱波段与辅助模态，从而在统一输入空间内处理传感器异构性。在PANGAEA基准上使用冻结编码器评估场景分类、分割与回归任务，结果显示：尽管预训练语料比竞争模型小两个数量级，FLORO在光学、光学-SAR、光学-高程任务上均取得强且稳定的迁移性能，平均分割精度位列第二，分类与回归结果稳健；在EuroSAT-MS实验中，地理定位编码优于绝对定位编码，进一步验证了模型的空间表征能力。</p>
-<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，例如模型在极端数据稀疏场景下的表现、预训练语料的分布偏差对下游任务的影响、以及模型对真实部署环境的鲁棒性尚待进一步验证。</p>
-<p>**值得关注：**  <br>FLORO针对传感器异构性的“可用性感知输入”设计，为多模态融合提供了一种轻量且通用的范式，可启发机器人、具身智能及自动驾驶中跨不同传感器配置（如LiDAR、雷达、相机）的一体化表征学习。其跨尺度迁移能力（卫星到无人机）对野外环境监测、农业机器人及灾害应急场景具有直接借鉴价值。</p>
+          <p>**研究背景：**  <br>自然传粉者数量下降使得室内农业（尤其是缺乏昆虫授粉的垂直农场）面临严峻的作物生产挑战。现有机器人授粉方案往往难以在精准定位花朵的同时避免对脆弱花结构的物理干扰。本文针对这一矛盾，提出一种集成感知、控制与轻量操作臂的空中作业平台，旨在实现厘米级精度的非接触式花朵定位与对准，为未来无接触授粉系统提供移动载体与定位框架。</p>
+<p>**研究思路：**  <br>作者为克服人工授粉效率低及传统机器人易损伤花朵的问题，设计了一款搭载机载RGB-D相机、MPPI控制算法（基于PX4平台）及2自由度轻量机械臂的无人机。系统先通过感知识别并定位花朵，再由MPPI控制引导无人机稳定趋近目标，最终借助机械臂实现末端执行器的精确对准。在MuJoCo仿真与真实UAV实验室环境中，以花朵靶标测试台评估了整体集成性能。结果表明：仿真中控制器实现了稳定轨迹收敛与精确对准；真实环境中系统能可靠锁定花朵，末端定位精度达厘米级，验证了该平台作为无接触授粉移动基座的可行性。</p>
+<p>**局限性：**  <br>当前工作聚焦于感知引导的定位与对准，尚未集成实际无接触授粉末端执行器（如声学花粉操控模块）。实验仅在仿真与室内受限场景下进行，缺乏真实垂直农场环境中的动态干扰、不同花朵形态及飞行振动影响下的验证。摘要未提供关于系统实时性、能耗或对复杂花丛场景的泛化能力的评估信息。</p>
+<p>**值得关注：**  <br>该研究将视觉感知、MPPI优化控制与轻量机械爪结合在无人机上，为精准农业机器人提供了一套完整的“感知-规划-操作”系统设计范式。厘米级定位精度与模块化架构为后续接入声学、静电等非接触授粉方案奠定了实用基础，对具身智能在细粒度农业操作任务中的应用</p>
         </div>
       </div>
     </section>
@@ -369,16 +366,16 @@
     <section class="paper-card">
       <div class="paper-index">13</div>
       <div class="paper-body">
-        <h2>UAV3D：面向无人机的大规模三维感知基准</h2>
+        <h2>UAV3D：面向无人机的大规模3D感知基准</h2>
         <ul class="meta-list">
           <li><span>作者</span><span>Hui Ye, Rajshekhar Sunderraman, Shihao Ji</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2024-09-26T10:38:51Z</span></li><li><span>分类</span><span>NeurIPS 2024 Track Datasets and Benchmarks Poster, UAV, 3D Perception Benchmark, Object Detection, Object Tracking</span></li>
         </ul>
         <ul class="links"><li><a href="https://openreview.net/forum?id=rGdy9jrBs8" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=rGdy9jrBs8" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>无人机搭载相机已广泛用于航拍、监控和农业等场景，鲁棒的物体检测与跟踪是其有效部署的关键。然而，现有无人机感知基准多针对传统二维任务，难以满足需要三维环境理解的现实应用；同时，单架无人机的视角有限，在长距离或遮挡区域感知能力严重受限。为此，本文提出UAV3D基准，旨在推动无人机三维及协同三维感知研究，填补该领域高质量数据集的空白。</p>
-<p>**研究思路：**  <br>现有单无人机感知和二维基准无法支撑真实应用中的三维理解与多机协作，作者因此构建UAV3D数据集。该数据集包含1000个场景，每个场景20帧，对车辆提供完整的三维边界框标注。基准覆盖四项任务：单机三维检测与跟踪、协同三维检测与跟踪。论文通过提供标准化数据和代码来评估各任务性能，结论表明该基准可有效促进无人机三维感知与协作感知的发展。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。仅从描述看，基准目前仅包含车辆类别，场景数量1,000个，可能难以全面覆盖复杂城市或野外环境；同时缺乏对真实无人机部署的验证，协同感知任务仍需完善室内外场景多样性。</p>
-<p>**值得关注：**  <br>该基准将无人机感知从二维推向三维，并首次系统定义协同三维检测与跟踪任务，为多无人机编队、空中交通管理及具身智能感知提供了标准评估平台。其开源数据和代码可复现性强，有望催生三维轻量化模型、跨视角融合方法，以及与机器人导航、自动驾驶等领域的交叉研究。</p>
+          <p>**研究背景：**  <br>无人机搭载摄像头广泛应用于航拍、监控和农业等领域，其有效部署高度依赖鲁棒的物体检测与跟踪能力。然而，现有无人机感知基准主要聚焦于传统2D任务，难以满足需要3D环境理解的实际应用。此外，单架无人机的有限视野在远距离或遮挡场景下严重制约感知性能。为此，本文提出了UAV3D——一个旨在推动无人机3D感知与协作3D感知研究的大规模基准，以弥补现有2D基准和单机视角的不足。</p>
+<p>**研究思路：**  <br>针对现有基准缺乏3D标注和协作设置的问题，作者构建了包含1000个场景、每个场景20帧、对所有车辆进行完整3D包围框标注的数据集UAV3D，并定义了四类任务：单机3D检测、单机3D跟踪、协作3D检测与协作3D跟踪。该方法通过提供标准化的评测平台，试图解决多视角、遮挡环境下的3D感知困难。摘要未说明具体验证方式，但开放数据集和代码旨在供社区评估与比较。主要结论是UAV3D能够支撑多类3D感知任务的研究，推动无人机从2D向3D、从单机向协作方向的进展。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如数据集的场景多样性、标注精度、传感器类型以及真实系统验证等均未详细说明。</p>
+<p>**值得关注：**  <br>该基准首次系统地将无人机感知从2D拓展至3D并引入协作设置，为后续研究提供了标准化的训练与评估平台。其任务设定（单机+协作、检测+跟踪）可启发多机器人协同3D感知、跨视角融合等方向的数据集设计与评价方法，尤其对低空无人机在复杂环境下的实用部署具有参考价值。</p>
         </div>
       </div>
     </section>
@@ -387,16 +384,16 @@
     <section class="paper-card">
       <div class="paper-index">14</div>
       <div class="paper-body">
-        <h2>无人机大规模3D感知基准UAV3D</h2>
+        <h2>UAVD4L：面向无人机六自由度定位的大规模数据集</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Hui Ye, Rajshekhar Sunderraman, Jonathan Shihao Ji</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2024-01-01T00:00:00Z</span></li><li><span>分类</span><span>NeurIPS 2024</span></li>
+          <li><span>作者</span><span>Rouwan Wu, Xiaoya Cheng, Juelin Zhu, Xuxiang Liu, Maojun Zhang, Shen Yan</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2024-01-01T00:00:00Z</span></li><li><span>分类</span><span>CoRR 2024</span></li>
         </ul>
-        <ul class="links"><li><a href="https://openreview.net/forum?id=FSEG5Ho5lT" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=FSEG5Ho5lT" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://openreview.net/forum?id=6nNGOAOyRv" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=6nNGOAOyRv" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>无人机搭载摄像头广泛应用于航拍、监控与农业，但其部署高度依赖鲁棒的目标检测与跟踪能力。现有无人机相关基准大多局限于传统的二维感知任务，无法满足实际应用对三维环境理解的需求。同时，单架无人机的有限视角严重制约了其在远距离或遮挡场景下的感知性能，迫切需要同时支持单机与协同三维感知的标准化评测平台。为此，论文提出UAV3D基准，旨在推动无人机三维感知研究的进展。</p>
-<p>**研究思路：**  <br>针对现有基准缺乏三维标注及协同感知评测的问题，作者构建了一个包含1000个场景、每场景20帧的大规模数据集，并对其中的车辆进行了全三维边界框标注。该基准覆盖四项任务：单无人机三维目标检测与跟踪、协同无人机三维目标检测与跟踪。论文通过公开数据集与代码提供标准化的训练与评测接口，期望以此填补无人机三维感知领域的基础设施空白。摘要未提供具体实验对比，主要结论为数据集发布及任务设定。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。目前仅标注了车辆类别，未涵盖行人、障碍物等其他常见目标；场景数量（1000个）相对于主流自动驾驶数据集仍偏小；数据集来源（真实拍摄或仿真）及光照、天气等变化因素尚未说明；协作感知任务的真实无线通信条件与延迟等信息也未提及。</p>
-<p>**值得关注：**  <br>该基准首次系统性地将单机与协同三维感知任务统一到无人机场景下，提供了标准化的评测框架，有助于推动多无人机协作感知与三维视觉在机器人、具身智能中的落地研究。其开放的数据与代码可被后续研究者直接复用，便于对比不同方法的性能，并启发更复杂协同策略（如异构无人机、动态拓扑）的探索。</p>
+          <p>**研究背景：**  <br>尽管在GPS拒止环境下无人机全局定位取得了显著进展，现有方法仍受限于数据集可用性。当前数据集多聚焦小规模场景，缺乏视角多样性、精确六自由度真值位姿及无人机内置传感器数据。这些不足导致定位方法泛化能力弱，难以支撑实际应用需求。为此，论文提出大规模六自由度无人机定位数据集UAVD4L，并开发配套定位流程，旨在填补数据缺口、改善定位精度与鲁棒性。</p>
+<p>**研究思路：**  <br>针对现有数据集规模小、视角单一、缺乏真值标注与传感器数据的问题，作者首先构建了大规模六自由度无人机定位数据集UAVD4L，随后设计了两阶段定位流程UAVLoc：离线阶段生成合成数据增强训练，在线阶段执行视觉定位。进一步，基于六自由度估计器构建层次化系统，实现对地面目标的三维空间跟踪。在新数据集上的实验验证了所提方法的有效性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如数据集覆盖场景类型、传感器配置细节、与现有方法的定量对比结果，以及是否在真实无人机平台上完成测试验证。</p>
+<p>**值得关注：**  <br>该工作提供了大规模、多视角、含真值位姿和内置传感器数据的无人机定位基准，有望推动GPS拒止环境下视觉定位研究的标准化与可复现性。其离线合成与在线定位相结合的两阶段思路，以及从定位到目标跟踪的层次化系统设计，对无人机自主导航和具身智能中的环境感知任务具有借鉴意义。开源数据集与代码有助于社区快速跟进与拓展。</p>
         </div>
       </div>
     </section>
@@ -405,16 +402,16 @@
     <section class="paper-card">
       <div class="paper-index">15</div>
       <div class="paper-body">
-        <h2>无人机大规模3D感知基准UAV3D</h2>
+        <h2>UAVD4L：大规模无人机六自由度定位数据集</h2>
         <ul class="meta-list">
-          <li><span>作者</span><span>Hui Ye, Rajshekhar Sunderraman, Shihao Ji</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2024-01-01T00:00:00Z</span></li><li><span>分类</span><span>CoRR 2024</span></li>
+          <li><span>作者</span><span>Rouwan Wu, Xiaoya Cheng, Juelin Zhu, Yuxiang Liu, Maojun Zhang, Shen Yan</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2024-01-01T00:00:00Z</span></li><li><span>分类</span><span>3DV 2024</span></li>
         </ul>
-        <ul class="links"><li><a href="https://openreview.net/forum?id=lXqSlNj6vh" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=lXqSlNj6vh" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <ul class="links"><li><a href="https://openreview.net/forum?id=3DZAVCQurQ" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=3DZAVCQurQ" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>配备摄像头的无人机被广泛用于航拍、监控和农业等领域，其中鲁棒的目标检测与跟踪是高效部署的关键。然而，现有无人机基准主要面向传统2D感知任务，制约了需要三维环境理解的现实应用发展。同时，单无人机平台视角有限，在远距离或遮挡场景下的感知能力显著受限。为此，本文提出UAV3D基准，旨在推动无人机三维感知及多机协作三维感知研究，填补该领域缺乏大规模3D标注数据集的空白。</p>
-<p>**研究思路：**  <br>针对现有2D基准的不足和单无人机视角的局限性，作者构建了包含1000个场景、每场景20帧（共20000帧）的无人机视角数据集，对车辆进行完整的3D边界框标注。该基准定义了四项任务：单无人机3D目标检测与跟踪、协作无人机3D目标检测与跟踪。通过公开数据集和代码，论文为上述任务提供了标准化评估平台，但摘要中未提供具体实验结果或算法对比。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。可推断当前数据集仅标注车辆类别，未涵盖行人、建筑等其他常见目标；且未提及在不同光照、天气或真实物理环境下的有效性验证，其实验验证充分性有待后续论文补充。</p>
-<p>**值得关注：**  <br>UAV3D首次为无人机3D感知及多机协作感知提供了大规模、带完整3D标注的基准，可促进从2D向3D感知的范式迁移。其多任务设定（单机+协作）为研究视角融合、通信约束下的分布式感知提供了标准化评估环境，对无人机自主导航、空中巡检及智能交通等应用具有重要启发。</p>
+          <p>**研究背景：**  <br>在GPS拒止环境中，无人机全局定位技术虽取得显著进展，但现有方法受限于可用数据集的质量与规模。当前数据集多聚焦于小尺度场景，缺乏视角多样性、准确的六自由度位姿真值以及无人机内置传感器数据，这严重制约了算法在真实复杂环境下的泛化能力与鲁棒性。为弥补这一关键数据缺口，本文构建了一个大规模、高标注质量的无人机六自由度定位数据集，并设计配套定位流水线，旨在推动该领域算法在数据驱动下的实质性突破。</p>
+<p>**研究思路：**  <br>针对现有数据集无法有效支撑GPS拒止下无人机定位的研究瓶颈，作者首先提出了UAVD4L大规模六自由度数据集，以提供丰富的场景覆盖、精确位姿真值和传感器记录。在此基础上，开发了一套名为UAVLoc的两阶段定位流水线：首阶段离线生成合成数据，次阶段执行在线视觉定位，从而解决真实标注获取难、视角变化大的核心困难。进一步，利用六自由度估计器，作者设计了一种层次化系统用于3D空间地面目标跟踪。实验在自建数据集上验证了该方法的有效性，结果表明所提流水线能够显著提升定位精度与鲁棒性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如数据集是否覆盖全天候、动态障碍物及多高度等复杂场景，离线合成数据与真实环境间的域差距是否被充分考量，以及实际无人机平台上的实时运行性能尚未明确说明。</p>
+<p>**值得关注：**  <br>该工作为无人机视觉定位提供了高质量数据基准与可复现的流程，其“离线合成+在线定位”的两阶段思路可推广至其他机器人全局定位任务。层次化跟踪设计亦为多任务融合提供了新视角。后续研究可借鉴其数据集构建规范，并探索合成-真实域自适应方法以提升泛化性。</p>
         </div>
       </div>
     </section>
@@ -423,16 +420,16 @@
     <section class="paper-card">
       <div class="paper-index">16</div>
       <div class="paper-body">
-        <h2>基于无人飞行器的情景识别</h2>
+        <h2>无人机情境识别</h2>
         <ul class="meta-list">
           <li><span>作者</span><span>Hung Son Nguyen, Andrzej Skowron, Marcin S. Szczuka</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2000-01-01T00:00:00Z</span></li><li><span>分类</span><span>Rough Sets and Current Trends in Computing 2000</span></li>
         </ul>
         <ul class="links"><li><a href="https://openreview.net/forum?id=4iKImSILzE" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=4iKImSILzE" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>无人机在执行任务时需要实时理解复杂环境中的动态情景，但其传感器信息往往具有不完整性、不精确性或模糊性，传统符号推理或纯统计方法难以有效融合多源异构信息并做出鲁棒判断。现有情景识别系统多面向结构化场景或依赖精确模型，对不确定信息的处理能力有限。论文针对这一需求，提出一种基于软计算的多层识别框架，旨在利用粗糙集等方法对无人机感知到的非精确信息进行分层推理，从而提升情景识别的准确性与鲁棒性。该研究为早期将软计算引入无人机自主决策领域提供了概念性探索。</p>
-<p>**研究思路：**  <br>论文从无人机情景识别任务的多面性出发，指出传统方法难以处理不完整、不精确或模糊信息的问题，因而提出基于软计算的多层识别系统设计思路。该系统通过分层架构逐级抽象传感数据，并结合粗糙集等软计算工具进行推理，以应对信息不确定带来的挑战。论文主要围绕系统概念与设计方法展开讨论，但摘要中未明确说明具体的实验验证方式或定量结果。其核心结论认为，这种多层、基于软计算的识别框架能够为无人机在模糊环境下的情景识别提供有效路径。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。论文仅描述了概念性方法，未展示仿真或真实环境下的实验验证，也未说明该框架在实时性、可扩展性或不同无人机平台上的适用性。因此，无法评估其在实际系统中的性能表现与稳健性。</p>
-<p>**值得关注：**  <br>这篇2000年的工作将粗糙集等软计算方法引入无人机情景识别，为后来基于不确定推理的自主系统设计提供了早期思路。其“多层识别”“软计算推理”的概念对当前具身智能中处理感知不确定性、融合多模态信息仍有借鉴意义，尤其是在缺乏精确模型或标注数据的场景下，可启发新一代轻量级、可解释的空中机器人决策框架。</p>
+          <p>**研究背景：**  <br>无人机在执行自主任务时需要实时感知并理解复杂环境，但传感器数据往往不完整、不精确或带有模糊性。传统的符号推理或单一模型难以有效处理这类不确定性，导致情境识别的鲁棒性不足。该论文针对这一应用需求，提出一种基于软计算的多层次识别框架，旨在通过融合粗糙集等柔性推理方法，提升无人机在不完备信息下的情境判断能力，对智能自主系统的决策可靠性具有重要意义。</p>
+<p>**研究思路：**  <br>论文首先指出无人机情境识别是一个多层面的复杂任务，现有方法在处理不精确与不完备信息时存在局限。为此，作者设计了多层识别系统，核心思路是利用软计算方法（如粗糙集）进行近似推理，以容忍数据中的噪声与缺失。该系统通过分层架构逐步抽象和融合信息，从而在模糊情境中仍能做出合理辨识。摘要中未交代具体的验证方式，但明确阐述了方法的理论框架与设计动机。主要结论是：该多层软计算方案为无人机情境识别提供了可行思路，能有效应对不完整与不精确信息带来的挑战。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。论文未涉及真实飞行实验或量化评估，也未说明该方法在实时性、计算复杂度或对不同环境（如动态障碍物、传感器故障）的适应能力。因此，其实际部署效果与边界条件尚需后续实验验证。</p>
+<p>**值得关注：**  <br>该研究将粗糙集等软计算思想引入无人机感知，展示了一条不同于纯概率或神经网络的处理不确定性的路径。其“多层识别系统”的设计对当前具身智能中多模态融合、分层推理仍有启发；尤其在数据稀少或标注困难的场景下，基于领域知识的近似推理方法可作为深度学习的有益补充。此外，该工作提示我们关注早期粗糙集研究成果在自主系统中的应用潜力。</p>
         </div>
       </div>
     </section>
@@ -441,16 +438,16 @@
     <section class="paper-card">
       <div class="paper-index">17</div>
       <div class="paper-body">
-        <h2>无人机情境识别方法</h2>
+        <h2>无人机情景识别</h2>
         <ul class="meta-list">
           <li><span>作者</span><span>Hung Son Nguyen, Andrzej Skowron, Marcin S. Szczuka</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2000-01-01T00:00:00Z</span></li><li><span>分类</span><span>Rough Sets and Current Trends in Computing 2000</span></li>
         </ul>
         <ul class="links"><li><a href="https://openreview.net/forum?id=JEamf2FbTa" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=JEamf2FbTa" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>无人航空器（UAV）在执行复杂环境任务时，需要实时、准确地识别动态情境。然而，传感器数据往往不完整、不精确或模糊，传统推理系统难以有效处理这类不确定性。现有方法多侧重单一感知或简单规则，缺乏对多层面、多源信息的综合处理能力。该论文针对这一需求，提出基于软计算的多层识别系统，旨在提升UAV在不完备信息下的情境理解鲁棒性，具有重要的理论与应用意义。</p>
-<p>**研究思路：**  <br>论文以UAV多面情境识别任务为动机，构建了一种基于软计算的多层识别系统。方法通过分层架构逐步融合不完整、不精确或模糊的信息，利用粗糙集等软计算技术进行推理决策，试图解决信息不确定性导致的情境误判问题。摘要未说明具体验证方式及结论，但核心贡献在于提出概念框架与推理策略，为后续实现奠定理论基础。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。从描述可知，论文停留在概念框架层面，缺少真实环境或仿真实验验证，也未说明系统在动态、高噪声场景下的性能表现。实际应用效果、计算效率及与现有方法的对比尚不明确。</p>
-<p>**值得关注：**  <br>该研究对无人机自主决策及具身智能系统设计有启发：多层架构结合软计算（如粗糙集）为处理传感器不确定性提供了可行思路，有助于提升机器人在复杂场景中的情境理解鲁棒性。后续可探索将此类推理机制与深度学习、强化学习融合，实现更高效的实时情境识别。</p>
+          <p>**研究背景：**  <br>无人机在执行侦察、监视等任务时，需要从动态、不确定的环境中快速识别复杂情景，例如目标行为模式或异常事件。传统识别系统往往依赖完整、精确的输入数据，但在实际战场或灾害场景中，传感器信息常因噪声、遮挡或通信延迟而呈现不完整、不精确或模糊的特征。现有基于规则或统计的方法难以有效融合这些异构、多源的不确定性信息，导致误判或漏报。为此，本文提出一种基于软计算的多层识别框架，旨在利用粗糙集、模糊逻辑等工具，在缺乏精确信息的条件下仍能实现稳健的情景识别，从而提升无人机自主决策的可靠性。</p>
+<p>**研究思路：**  <br>针对无人机情景识别中信息不完整、不精确的难题，作者引入软计算方法构建多层识别系统。该系统通过分层架构逐步聚合传感器数据，在每一层利用粗糙集或模糊推理对不确定信息进行近似处理，从而从局部特征推导出全局情景。方法的核心是设计一种能容忍噪声、适应动态环境的推理机制，以替代传统硬判决逻辑。摘要未说明具体的实验验证方式，但研究结论表明，该多层软计算框架能够有效处理无人机任务中的模糊信息，为实现稳健的情景识别提供了一种可行方案。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如：未说明所提方法在真实无人机平台上的部署与测试结果，也未给出与现有方法的定量对比；系统对计算资源的需求、处理实时性以及在不同环境（如城市、森林）中的泛化能力均未涉及。</p>
+<p>**值得关注：**  <br>该研究较早将软计算（粗糙集、模糊逻辑）引入无人机情景识别领域，其多层融合架构为处理多传感器异构不确定性提供了系统设计思路。后续研究可借鉴其分层推理策略，结合深度学习或强化学习，构建更鲁棒的端到端自主决策模型。此外，其强调“不完整信息下的推理”问题，对于具身智能中机器人需要在物理世界实时理解复杂场景的任务具有启发意义。</p>
         </div>
       </div>
     </section>
@@ -459,16 +456,16 @@
     <section class="paper-card">
       <div class="paper-index">18</div>
       <div class="paper-body">
-        <h2>空中现场机器人学：面向微型飞行器弹性自主导航综述</h2>
+        <h2>空中现场机器人学：微型飞行器的鲁棒自主导航</h2>
         <ul class="meta-list">
           <li><span>作者</span><span>Mihir Kulkarni, Brady G. Moon, Kostas Alexis, Sebastian A. Scherer</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2024-01-01T00:00:00Z</span></li><li><span>分类</span><span>CoRR 2024</span></li>
         </ul>
         <ul class="links"><li><a href="https://openreview.net/forum?id=SBXz0V6dEq" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=SBXz0V6dEq" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>随着无人机在搜救、巡检等真实场景中的广泛应用，微型飞行器亟需在环境复杂、易发生碰撞、传感器信号退化以及计算资源受限等条件下实现安全导航。现有自主导航系统往往过于依赖理想环境假设，缺乏对碰撞和感知退化的容错能力，难以同时满足实时性与鲁棒性要求。本文旨在系统梳理提升微型飞行器弹性自主能力的关键技术元素，指出当前研究瓶颈，并评估其现场部署的成熟度，为构建更可靠的空中机器人系统提供方向性指引。</p>
-<p>**研究思路：**  <br>作者从微型飞行器在真实环境面临的导航挑战出发，提出弹性自主应包含抗碰撞、抗感知退化及有限计算资源下的高效决策等核心要素。论文采用综述分析的方法：首先概述现有技术在感知、规划、控制等方面的进展，然后重点识别制约弹性导航自主性的瓶颈问题，最后评估当前微型飞行器的现场准备度。主要结论包括：已有若干代表性贡献，但整体距离完全稳健的现场自主仍有差距；未来应关注感知与运动规划的联合容错设计、轻量化算法以及多模态融合等方向。</p>
-<p>**局限性：**  <br>摘要未提供具体实验或仿真验证细节，属于综述性工作，缺乏对所述瓶颈与解决方案的量化评估或对比试验；现场准备度的判断标准也未明确说明，因此无法判断其结论的客观性和全面性。摘要中未提供足够信息判断具体局限性，例如适用场景边界、是否涵盖所有常见退化类型或计算约束下的实际退化测评等。</p>
-<p>**值得关注：**  <br>本文系统梳理了空中现场机器人弹性自主的关键挑战与解决路径，对具身智能体在非结构化环境中的鲁棒性设计具有直接启发。其中提出的“抗碰撞+抗感知退化+计算约束”三层自主能力框架，可迁移至地面或水下机器人系统。此外，论文指出的现场准备度评估思路，为后续研究提供了从仿真走向真实部署的检验维度，值得在算法评测中引入。</p>
+          <p>**研究背景：**  <br>无人机，尤其是微型飞行器（MAV），在真实环境中执行任务时面临碰撞风险、传感退化以及计算资源受限等多重挑战。现有自主导航方法多依赖理想条件，难以在复杂、动态的现场场景中维持安全与可靠性。该研究旨在综述并分析如何通过弹性的自主导航系统，使MAV能在满足计算约束的同时应对感知与物理干扰，从而推动空中机器人在农业、巡检、救援等领域的实际部署。</p>
+<p>**研究思路：**  <br>该论文以提升MAV在真实环境中的鲁棒导航能力为问题动机，系统综述了实现碰撞容忍、传感退化补偿以及低计算开销自主决策的关键技术要素。作者通过梳理当前最先进方法，识别出阻碍弹性导航自主的瓶颈，并评估了MAV的技术就绪度。论文未提供具体实验验证，而是基于文献分析得出主要结论：通过融合容错传感、轻量级规划与鲁棒控制，可显著提升现场鲁棒性，并指出未来研究需聚焦于跨场景泛化与硬件-算法协同设计。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。作为一篇综述性章节，其结论主要依赖已有文献分析，缺乏在真实复杂环境下的系统性实验验证，对不同机型、传感器配置和任务场景的适用性尚未明确讨论。</p>
+<p>**值得关注：**  <br>该论文系统梳理了MAV弹性导航的技术全貌，为后续研究提供了清晰的瓶颈清单与研究方向。其强调在有限计算资源下兼顾鲁棒性与实时性的思路，对具身智能、空地协同以及自主系统在非结构化场景中的部署具有重要借鉴意义。特别是关于碰撞容忍与传感退化应对的综述，可直接启发无人机、机器人以及自动驾驶领域的安全导航设计。</p>
         </div>
       </div>
     </section>
@@ -477,16 +474,16 @@
     <section class="paper-card">
       <div class="paper-index">19</div>
       <div class="paper-body">
-        <h2>空中现场机器人学：面向MAV鲁棒导航的自主性研究</h2>
+        <h2>空中现场机器人学</h2>
         <ul class="meta-list">
           <li><span>作者</span><span>Mihir Kulkarni, Brady G. Moon, Kostas Alexis, Sebastian A. Scherer</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2024-01-01T00:00:00Z</span></li><li><span>分类</span><span>CoRR 2024</span></li>
         </ul>
         <ul class="links"><li><a href="https://openreview.net/forum?id=y4a3nufXMK" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=y4a3nufXMK" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>随着无人机在搜索救援、农业监测等真实环境中应用增多，微型飞行器（MAV）亟需应对碰撞、感知退化与计算资源受限等挑战。现有自主导航方法多聚焦于理想环境，缺乏对碰撞鲁棒性和感知故障的弹性设计，难以满足现场作业需求。该研究系统梳理了当前MAV自主导航的技术瓶颈与现场就绪程度，旨在推动无人机在复杂环境中的弹性导航能力提升。</p>
-<p>**研究思路：**  <br>问题动机源于MAV在真实场景中需同时应对碰撞、传感器失效与有限计算资源三重挑战。方法思路是提炼弹性自主导航的关键要素，包括鲁棒感知、容错控制和低耗决策。论文通过综述现有技术状态、识别瓶颈（如碰撞后重规划、感知退化下的状态估计）并评估现场准备度，得出主要结论：当前MAV已具备基本自主能力，但面对持续性伤害或极端退化仍缺乏系统性解决方案，需进一步研究模块化弹性架构与安全保证机制。</p>
-<p>**局限性：**  <br>摘要未提供具体实验数据或量化评估，也未说明所综述方法的适用范围（如是否涵盖室内外场景、多机协同或复杂动态障碍）。结论基于文献分析而非实际系统验证，因此对“现场就绪度”的判断可能存在主观偏差。</p>
-<p>**值得关注：**  <br>该论文为MAV弹性导航提供了清晰的研究路线图，尤其是将碰撞容忍与感知退化作为核心设计约束，而非事后补救。所总结的瓶颈（如实时重规划与计算资源矛盾的权衡）可启发轻量化神经网络与边缘计算融合的自主决策方案。对“模块化弹性架构”的强调，有助于指导未来具身智能体在非结构化环境中的鲁棒系统设计。</p>
+          <p>**研究背景：**  <br>随着无人飞行器（特别是微型飞行器MAV）在搜救、巡检等真实场景中的应用需求日益增长，如何在复杂、动态且存在碰撞与感知退化风险的环境中实现安全导航成为关键挑战。现有方法往往依赖高精度传感器或强大计算平台，难以在资源受限的MAV上同时保证碰撞鲁棒性和感知可靠性。这篇综述性论文旨在系统梳理该领域的核心瓶颈，评估MAV的现场就绪程度，并指出实现弹性自主导航所需的关键要素与研究缺口。</p>
+<p>**研究思路：**  <br>本文针对MAV在真实环境中安全导航的难题，首先提炼出实现弹性自主的核心要素——即能容忍碰撞和感知退化，同时运行于有限计算资源之上。接着，通过综述当前最新技术，识别制约弹性的主要瓶颈，并评估MAV在真实部署中的成熟度。论文最后总结已取得的显著贡献，并展望未来研究必须关注的方向，以推动空中机器人走向更高水平的现场鲁棒性。由于本文为综述性质，摘要未说明具体的实验验证方式或定量结果。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。作为一篇综述性论文，其本身不涉及新的实验验证或系统实现，因此对现场鲁棒性的评估效果取决于所引用的已有工作是否充分覆盖真实场景中的极端情况，且未明确讨论现有方法在硬件多样性或环境动态性上的适用范围。</p>
+<p>**值得关注：**  <br>本文系统化地界定了MAV现场自主导航的核心挑战与瓶颈，为后续研究者提供了清晰的研究路线图。其关于“计算资源受限下同时保持碰撞与感知鲁棒性”的讨论，对具身智能和边缘AI部署具有直接启发，例如可探索轻量级传感融合、自适应规划与故障恢复机制的集成设计。此外，文中对现场就绪度的评估思路也可为同类系统（如地面或水下机器人）的鲁棒性评价提供参考。</p>
         </div>
       </div>
     </section>
@@ -495,16 +492,16 @@
     <section class="paper-card">
       <div class="paper-index">20</div>
       <div class="paper-body">
-        <h2>双臂空中机器人的蒙特卡洛反应式导航算法</h2>
+        <h2>双机械臂空中机器人的蒙特卡洛反应式导航算法</h2>
         <ul class="meta-list">
           <li><span>作者</span><span>Fran Real, Ángel Rodriguez Castaño, Jesús Capitán</span></li><li><span>来源</span><span>OpenReview</span></li><li><span>发布时间</span><span>2017-01-01T00:00:00Z</span></li><li><span>分类</span><span>ROBOT (1) 2017</span></li>
         </ul>
         <ul class="links"><li><a href="https://openreview.net/forum?id=v250oMcYyz" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://openreview.net/pdf?id=v250oMcYyz" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
         <div class="summary">
-          <p>**研究背景：**  <br>双臂空中机器人在执行抓取、操作等任务时，其导航阶段需同时兼顾飞行平台动力学与双臂机械臂的运动约束。现有导航算法多针对单臂或纯飞行平台设计，难以直接处理双臂协同带来的复杂碰撞空间与构型限制。AEROARMS项目致力于开发可进行空中操作的双臂无人机，亟需一种能实时响应传感器输入、并满足双臂有限自由度的反应式导航方法。本文正是为解决该问题而提出，旨在通过简化双臂构型空间降低碰撞检测复杂度，实现安全高效的导航。</p>
-<p>**研究思路：**  <br>作者针对双臂空中机器人导航中的实时性与多体约束难题，提出一种基于蒙特卡洛采样的反应式导航算法。算法从高层路径规划器接收目标指令，并融合点云传感器数据作为环境输入；无人机的速度指令连续可调，而双臂仅允许在预设的有限构型集合中切换，以此缩小碰撞检测的搜索空间。为验证有效性，作者通过实际数据拟合了项目无人机平台的简单速度动力学模型，并在SITL（软件在环）仿真环境中测试了算法。摘要未给出具体定量结论，但表明该方案在仿真框架下初步可行。</p>
-<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，但可看出：算法仅在SITL仿真中验证，缺少真实飞行与双臂操作实验；双臂运动被限制于预设构型，可能降低任务灵活性；且未讨论对动态障碍物或非结构化复杂环境的适应能力。</p>
-<p>**值得关注：**  <br>本文将蒙特卡洛方法引入空中双臂机器人的反应式导航，为多体耦合系统的实时避障提供了新思路——通过构型空间剪枝降低计算代价。对于具身智能与空中操作机器人，点云驱动的反应式导航是迈向非结构化环境部署的重要一步；该方法与高层规划器协同的分层架构也可推广至其他多臂移动平台。</p>
+          <p>**研究背景：**  <br>随着空中机器人向灵巧操作方向发展，配备双机械臂的无人机在精细抓取、装配等任务中展现出巨大潜力。然而，这类平台在导航阶段面临独特挑战：不仅要保证飞行器本体的避障，还需考虑双机械臂在不同构型下与环境的碰撞风险。现有反应式导航方法多针对单一无人机平台设计，缺乏对机械臂运动约束的系统性整合；而纯规划式方法又难以应对动态环境的实时性需求。为此，本文面向AEROARMS项目中的双机械臂空中平台，提出一种蒙特卡洛反应式导航算法，旨在为高层路径规划器提供低层安全、实时的避障能力，提升带臂无人机在复杂环境中的自主导航可靠性。</p>
+<p>**研究思路：**  <br>针对双机械臂空中机器人导航期间碰撞检测解空间过大的问题，作者首先将双臂运动限制在有限个预定义构型内，从而降低碰撞检测的复杂度。在此基础上，设计反应式导航算法：它接收点云传感器输入和高层路径规划器的速度指令，以蒙特卡洛方式采样候选速度与机械臂构型组合，并基于无人机速度动力学模型评估碰撞风险，实时输出最优控制命令。为验证有效性，研究者基于真实飞行数据建立了简化的速度动力学模型，并在软件在环仿真环境中进行了测试。摘要结论表明，所提方法能够在考虑双机械臂约束的同时实现安全、连续的导航。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。根据现有描述，该方法仅在SITL仿真框架中测试，缺少真实物理样机或复杂室外环境的实验验证；同时，双臂仅能切换有限预定义构型，可能限制其对非结构化障碍物场景的适应能力；此外，算法对传感器噪声、计算延迟等实际部署因素的鲁棒性未作说明。</p>
+<p>**值得关注：**  <br>本文将蒙特卡洛采样思想引入空中机器人的反应式导航，巧妙通过限制机械臂构型空间平衡了实时性与安全性，为带臂无人机的运动规划提供了可借鉴的轻量级框架。该工作启示后续研究：在运行-时间关键任务中，可通过状态空间缩减与随机搜索结合来满足实时约束，同时保留系统关键动态特性。其对点云输入的反应式设计也体现了从感知到控制的直接映射思路，对具身智能中“感知-规划-控制”一体化系统的构建具有参考价值。</p>
         </div>
       </div>
     </section>
