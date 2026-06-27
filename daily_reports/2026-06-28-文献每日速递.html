@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-28-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-06-28-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-06-28<br>存档文件：2026-06-28-文献每日速递.html</p>
+      <p class="count">今日新增 9 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>敏捷飞行强化学习中性能与泛化之间的桥梁</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jonathan Green, Jiaxu Xing, Nico Messikommer, Angel Romero, Davide Scaramuzza</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-25T17:54:36Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.27348v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.27348v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>自主无人机竞速要求飞行器在持续执行器饱和状态下实现时间最优控制，是极具挑战的机器人任务。虽强化学习已在该领域达到人类水平，但现有策略严重缺乏泛化能力——在训练环境外的新赛道上往往立即坠毁。这种零样本泛化失败源于敏捷飞行中高维任务变化与速度-安全性紧耦合的本质。当前改善泛化的方法以牺牲飞行速度为代价：即便是适度泛化，也需显著降低性能。因此，如何在保持竞速速度的同时实现强零样本泛化成为核心难题。</p>
+<p>**研究思路：**  <br>针对上述问题，本文提出混合框架：将基于学习进度的任务感知切换与物理信息驱动的程序化赛道生成器结合，自动生成多样化训练任务以覆盖未见配置，从而产生快速且鲁棒的通用策略，无需测试时适应。该方法在现实世界多种未见赛道上实现了零样本泛化，与最先进方法相比泛化能力提升7.4倍，同时保持有竞争力的竞速速度。验证涵盖仿真和真实环境，包括挑战性的基于视觉的端到端控制设置（无显式状态估计），而所有先前方法在该设置下均完全失效。主要结论是该方法成功弥合了高性能与强泛化之间的鸿沟。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如未说明该方法在极端赛道形状、不同无人机动力学参数或更复杂干扰环境下的表现边界，也未提及训练计算成本或所需数据量。真实世界验证的赛道数量和多样性细节在摘要中没有披露。</p>
+<p>**值得关注：**  <br>本文为具身智能中泛化与性能的权衡问题提供了新思路：通过任务感知调度与物理先验驱动的训练数据生成，而非依赖传统域随机化或测试时适应。该方法直接在真实世界视觉端到端控制中验证了零样本泛化，对无人机、自动驾驶等高速运动控制任务的泛化研究具有启发价值。其“学习进度引导任务切换”机制可推广至其他需要平衡探索与泛化的强化学习场景。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>FlameVQA：基于辐射热监督的无人机野火视觉问答基准</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Mobin Habibpour, John Spodnik, Niloufar Alipour Talemi, Fatemeh Afghah</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-25T15:06:59Z</span></li><li><span>分类</span><span>cs.CV, cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.27128v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.27128v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机野火监测需要对复杂空中场景进行可靠推理，然而烟雾、尺度变化和遮挡常使仅依赖RGB图像的方法性能受限。现有视觉问答（VQA）基准多面向通用场景，缺乏针对野火安全关键任务（如温度感知的火灾定位）的物理基础设计。为此，该论文提出FlameVQA基准，通过引入辐射热图（TIFF）提供温度监督，旨在弥补现有数据集在跨模态推理和灾害适应性方面的不足。</p>
+<p>**研究思路：**  <br>作者基于FLAME 3数据集，为每张图像配对的RGB与辐射热图设计34道多项选择题，覆盖检测、定位、分布/覆盖估计、跨模态推理及飞行规划等6类能力组。为保证标签可靠性，采用多模态大模型（MLLM）辅助标注、确定性热规则及跨问题一致性校验，并经由人工审计。在代表性MLLM上的评估显示，当提供显式跨模态线索时模型表现较好，但在浓烟条件下的存在检测和覆盖估计任务中失败明显，表明当前MLLM需针对野火场景进行领域自适应。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。可推测该基准基于FLAME 3特定数据集，辐射热数据的获取依赖于专业设备，可能限制其在资源受限场景下的直接迁移。此外，评估仅覆盖MLLM，未比较传统视觉方法或专用火灾检测模型的性能，基准细粒度验证有待补充。</p>
+<p>**值得关注：**  <br>该工作为无人机安全关键视觉推理提供了物理基础的VQA评价范式，其“辐射热监督+多能力组”设计可启发具身智能系统在灾害响应中整合多模态传感器（如红外、热成像）。开源的基准与代码有助于推动跨模态理解、鲁棒性检测以及自主飞行规划的联合研究，尤其在浓烟等退化环境下如何融合温度先验值得深入探索。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>无人机蜂群中基于射频和WiFi的安全通信设计与性能评估：试验台实现</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Bhavya Dixit, Aayushi Rajgor, Subham Kumar, Rushikesh Patil, Ananthapadmanabhan A., Gaurav S. Kasbekar, Arnab Maity</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-25T13:36:12Z</span></li><li><span>分类</span><span>cs.CR</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.27028v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.27028v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机蜂群依赖分布式协同与无线通信（RF/WiFi）实现大规模作业，但MAVLink协议缺少加密机制，使得遥测数据易遭窃听。现有方案如AES-CTR等虽能加密却可能带来性能开销。如何在保障轻量级、实时性的前提下为无人机蜂群通信提供安全加密，成为亟需解决的问题。本研究旨在评估一种名为MAVShield的轻量级加密框架在实际蜂群中的可行性。</p>
+<p>**研究思路：**  <br>针对MAVLink缺乏加密的缺陷，作者将MAVShield、AES-CTR、Speck-CTR、ChaCha20和Rabbit五种加密方案集成到四架自制无人机中，通过RF和WiFi链路进行通信。为验证效果，搭建蜂群试验台并执行自主编队与避障飞行，避障算法采用改进的人工势场法（直接在测地坐标计算，减少轨迹振荡）。通过测量CPU占用、内存消耗与数据包传输率（PDR）对比各方案性能。结果：MAVShield效率接近未加密状态，优于其他四种加密方案；代数密码分析与Wireshark流量分析表明其能抵抗密钥恢复攻击并保护遥测机密性。</p>
+<p>**局限性：**  <br>摘要未提及蜂窝规模、飞行环境（室内/室外）、无线信道干扰对加密性能的具体影响，也未说明试验台是否覆盖真实任务场景（如远距离、高动态）或不同无人机数量下的可扩展性。因此，局限性尚需进一步实验验证。</p>
+<p>**值得关注：**  <br>论文为无人机蜂群安全通信提供了一种轻量级加密方案MAVShield，并对比了多种主流加密算法的实际飞行性能。其中直接基于测地坐标的改进人工势场避障算法对减少轨迹振荡、避免局部极小具有实用价值。该研究可为具身智能系统中的实时安全通信与协同控制设计提供参考，尤其在资源受限的无人机平台上具有启发意义。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">4</div>
+      <div class="paper-body">
+        <h2>UAV-MapFusion：RTK对齐的不确定性感知粗到精多会话无人机建图</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Feng Pan, Chunran Zheng, Bing Xue, Yukang Cui, Jiayu Wen, Zhiyu Chen, Wei Wang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-25T12:03:29Z</span></li><li><span>分类</span><span>cs.RO, cs.SI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.26928v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.26928v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>大规模点云地图是机器人与空间智能任务的基础，无人机因高机动性成为大规模地图采集的理想平台。然而，受限于单次飞行的续航与存储，难以完成全域建图。现有跨会话地图融合方法虽能扩展范围，但在无人机场景中很难同时抑制长程漂移并保持局部几何精度。为此，本文提出一套结合RTK观测、不确定性建模和粗到精优化的多会话点云地图合并系统，旨在提升大规模无人机建图的全局一致性与局部精度，具有重要工程价值。</p>
+<p>**研究思路：**  <br>针对现有方法难以兼顾全局漂移抑制与局部精度的问题，论文设计了一套不确定性感知的多会话合并与优化框架。首先利用场景图实现初始地图合并，随后通过RTK时空对齐模块（DTW估计时间偏移，MOGP恢复缺失帧下的连续RTK约束）引入高精度绝对观测。在此基础上构建不确定性感知因子图，并通过迭代平面因子细化提升局部几何精度。在真实数据集上的实验验证了该方法在抑制长程漂移与保持局部结构方面的有效性与鲁棒性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如实验覆盖场景的多样性、与主流方法的定量对比结果、以及RTK信号质量对算法的影响程度等。代码与数据集虽拟公开，但现阶段缺乏独立复现与跨场景验证。</p>
+<p>**值得关注：**  <br>本文在无人机多会话建图中系统性地融合RTK、DTW（动态时间规整）、M</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">5</div>
+      <div class="paper-body">
+        <h2>基于对抗性增强策略的鲁棒大蒜幼苗检测</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Soeun Lee, Chanho Kim, Yeji Kang, YoungKi Hong, Byeongkeun Kang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-25T10:08:37Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.26828v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.26828v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>精准农业中，早期幼苗的准确检测对及时补种和有效管理至关重要。然而，现有研究多在相对稳定的成像条件下（如无人机或温室）评估，忽视了地面户外监测中严重且空间不均匀的光照挑战。当前不少光照鲁棒检测方法依赖额外的增强或特征提取模块，增加了推理开销，且未针对幼苗检测及下游缺苗定位任务进行定制。为此，论文构建了在真实田间强光照变化下采集的大蒜幼苗数据集，并提出了一个无需额外推理开销的鲁棒检测框架。</p>
+<p>**研究思路：**  <br>为克服现有方法对复杂光照适应性差且附加模块增加计算负担的问题，作者提出了基于对抗增强策略学习的鲁棒检测框架。该方法联合优化一个随机增强策略智能体与目标检测器，使检测器能在训练过程中学到应对困难视觉条件的鲁棒特征。同时引入结构惩罚项，在鼓励具有挑战性的增强的同时防止产生不真实失真。实验使用自建数据集验证，结果表明所提方法在AP₅₀上达到91.6%，比基线提升0.9%，优于此前最佳方法0.2%；下游缺苗定位的精确率和F1分数分别达到75.0%和67.0%，较基线提升4.8和2.0个百分点，且不增加推理时计算量。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如该方法是否仅针对大蒜幼苗数据集、对其他作物或光照以外的恶劣条件（如遮挡、雨雾）的泛化能力，以及结构惩罚项在不同网络架构下的敏感性等均未说明。</p>
+<p>**值得关注：**  <br>论文将对抗增强策略学习引入农业视觉任务，为无额外推理开销的鲁棒检测提供了新思路。所提出的联合优化框架和结构惩罚机制可推广至其他光照敏感场景（如自动驾驶、室内机器人导航）。同时，地面监控平台下的真实数据采集与缺苗定位任务设定，对精细农业中的自动化监测具有直接启发意义。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">6</div>
+      <div class="paper-body">
+        <h2>面向海空网络的ISAC：海面扰动下的预测性波束跟踪</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Rui Zhang, Fuwang Dong, Wei Wang, Zhen Du</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-25T03:42:10Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.26569v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.26569v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>由无人飞行器（UAV）与无人水面艇（USV）构成的海空通信网络中，USV在海面诱导扰动下呈现扩展目标特性与三自由度运动，导致UAV跟踪USV时产生波束失准问题。现有方法难以同时应对扩展目标建模、多自由度运动及海杂波干扰对波束对准精度的影响。为此，论文提出基于集成感知与通信（ISAC）的预测性波束跟踪方案，旨在通过协同优化感知与通信模式，在复杂海面环境下实现高精度跟踪与高速率通信。</p>
+<p>**研究思路：**  <br>论文针对波束失准的根源——USV扩展目标特性与海面扰动——提出方法：首先设计基于子阵列选择的宽窄波束切换方案，引入时间分配因子以平衡宽波束下的鲁棒状态感知与窄波束下的高速通信；随后建立联合考虑纵荡、横摇、偏航及海面扰动的海空状态演化模型，并利用扩展卡尔曼滤波器（EKF）对USV上的通信接收端（CR）进行状态预测与估计，测量方程构造自多个散射点观测并建模海杂波噪声。仿真结果表明，所提方案在跟踪精度上优于当前最先进基准方案。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。例如，论文仅通过仿真验证，未提及在真实海面环境或实际USV/UAV平台上的实验，因此不确定其抗实际海杂波、多径及硬件不完美性的鲁棒性；时间分配优化可能依赖海况参数先验，通用性有待进一步检验。</p>
+<p>**值得关注：**  <br>该工作展示了ISAC在海空动态环境中的协同潜力：宽窄波束切换结合时间分配优化思路可迁移至无人机-无人船协同感知与通信系统。所提出的海空状态演化模型与EKF状态预测方法，为具身智能场景下（如海上搜救、环境监测）的移动目标跟踪提供了可借鉴的感知-通信联合框架。此外，针对扩展目标的多散射点观测建模，对机器人系统在非合作目标感知任务中的测量模型设计具有参考价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">7</div>
+      <div class="paper-body">
+        <h2>分层外环控制实现抗干扰多航点无人机到达</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Runfeng Ling</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-24T18:58:57Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.26315v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.26315v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机位置控制在仿真中易验证，但在快速接近、近目标平稳及跨基准一致性上难度骤增。现有方法多依赖单一基准优化，一旦部署至含延迟、过渡-悬停耦合的闭环飞控栈或真实硬件，性能常大幅下降。论文旨在设计一种能在多基准与硬实时条件下保持鲁棒的多航点到达控制器，并通过分阶段评估揭示基准成功与部署稳健性之间的张力。</p>
+<p>**研究思路：**  <br>作者针对仿真-部署性能差距，提出分层外环终端控制架构：将平滑接近生成、持续偏差补偿与有监督的终端调节三层解耦。先于PyBullet加随机风环境筛选核心结构；再将所选架构放入PX4/Gazebo含延迟敏感闭环中测试，暴露何种增益在类部署条件下失效。最终在Vicon跟踪的Tello硬件上完成两级验证。结果表明：主控制器设计若与基准特定优化分离，其成功信息在更苛刻闭环评估中仍具辩护价值。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。实验仅在单一硬件平台（Tello）及特定仿真环境（PyBullet、PX4/Gazebo）进行，且残余失败部分涉及完成语义而非航点丢失，说明仍需进一步分析失败机制与扩展场景多样性。</p>
+<p>**值得关注：**  <br>论文的分阶段评估范式（仿真筛选→仿真转移验证→硬件测试）为机器人鲁棒控制提供了可迁移的评价流程。三层解耦的外环设计对需同时兼顾快速接近、偏差抑制与近目标稳定的任务（如自主着陆、编队会合）具有直接借鉴价值。此外，“基准特定优化”与“主控制器设计”分离的视角，提醒研究者在追求基准指标时避免过度拟合，从而提升方法的实际部署意义。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">8</div>
+      <div class="paper-body">
+        <h2>HALO：面向天空地一体化网络的分层拍卖辅助任务卸载</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Xuli Cai, Poonam Lohan, Sachin Ravikant Trankatwar, Burak Kantarci</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-24T18:38:26Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.26293v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.26293v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着天空地一体化网络（SAGIN）的快速发展，物联网设备的延迟敏感任务需高效卸载至空中边缘节点（如无人机和高空平台）。然而，联合任务关联与连续资源控制（带宽、功率、CPU频率）构成非凸混合整数非线性规划问题，传统方法难解，现有深度强化学习方法（如PPO、DDPG、SAC）在动态</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">9</div>
+      <div class="paper-body">
+        <h2>大规模隧道空地协同FLISP：快速LiDAR-IMU同步路径规划器</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Fenghe Guo, Runjie Shen, Chenyang Sun, Junrui Zhang, Quanxi Zhan, Yongchun Wang, Junjie Zhang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-24T04:44:35Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.25393v2" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.25393v2.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>水电隧道检测对基础设施完整性至关重要，但传统人工方法效率低且危险。现有基于地图的规划范式（如Fast-LIO2+A*、LIO-SAM+RRT*）存在地图栅格化开销大、采样不稳定等瓶颈，难以适应特征退化线性环境的实时协同需求。本文提出一种无需建图的空地协同框架，旨在解决UGV与UAV在狭长隧道中的同步路径规划问题，实现高可靠、低延迟的检测作业。</p>
+<p>**研究思路：**  <br>针对地图依赖方法的结构性缺陷，作者提出FLISP框架，核心思路是：利用单一UGV搭载的LiDAR-IMU套件作为统一感知源，驱动双平台同步路径生成。方法包含三个关键模块：统一架构消除地图生成环节；增强型萤火虫算法实现UGV避障，动态迭代优化器规划UAV飞行；分层精化策略确保运动学可行性并避免状态估计漂移。在1.2公里运营隧道中实验，FLISP实现100%成功率、7ms延迟比网格基方法快7倍、比采样基方法快3个数量级，验证了在真实水电隧道中的可扩展性。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，实验仅在单一1.2km隧道场景中测试，未说明对环境光照、曲率半径、动态障碍物或不同隧道类型的泛化能力；也未提及多机协同下的通信约束或实时性边界。此外，代码已开源但未披露系统实际部署中的硬件要求（如LiDAR型号、计算平台）。</p>
+<p>**值得关注：**  <br>该工作为特征退化线性环境中的空地协同规划提供了一种“零地图依赖”的新范式，其统一感知-双机解耦优化的思路可启发其他长距离基础设施（如管道、矿井、隧道）的机器人检测系统设计。平台间同步效率的提升方法（特别是分层精化策略）以及萤火虫算法的工程化改进，对具身智能中实时避障与轨迹生成具有借鉴价值。开源代码有利于后续复现与扩展。</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
