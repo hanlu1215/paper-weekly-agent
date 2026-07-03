@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-07-04-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-07-04-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-07-04<br>存档文件：2026-07-04-文献每日速递.html</p>
+      <p class="count">今日新增 19 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>QuadRocket：面向火箭类飞行器的自适应推力矢量控制航空机器人试验台</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Pedro Santos, Joel Reis, Paulo Oliveira, Carlos Silvestre</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-02T17:43:09Z</span></li><li><span>分类</span><span>cs.RO, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.02474v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.02474v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>推力矢量控制是火箭类飞行器实现精确机动和稳定飞行的核心技术，但直接在全尺寸火箭上开发和验证控制算法成本高昂、风险极高。现有地面测试平台难以真实模拟飞行中动态耦合与扰动环境，缺乏低成本、低风险的替代方案。本文提出QuadRocket，一款基于四旋翼的火箭原型平台，将火箭主体通过万向节安装在四旋翼上方构成倒立摆系统，旨在以地面实验方式验证先进的推力矢量控制策略，降低研发门槛并加速技术转化。</p>
+<p>**研究思路：**  <br>为在简化硬件条件下保留火箭推力矢量的核心动力学特征，作者将四旋翼与火箭主体视作单轴对称刚性耦合系统并建模。采用约化姿态表示方法，显式利用轴向对称性解耦偏航与推力方向，基于此模型设计了自适应反步控制器，实现近乎全局的轨迹跟踪并能补偿未知常值扰动；同时引入控制点变换以缓解非最小相位行为带来的控制困难。四旋翼被视作推力矢量执行器，为其设计了基于动态面的姿态控制器，避免了对虚拟控制信号的显式微分。通过在仿真与室内运动捕捉环境中的实验验证，系统展现出精确的轨迹跟踪能力和有效的扰动补偿效果，证实QuadRocket作为推力矢量控制试验台的可行性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。例如：实验仅在室内运动捕捉场进行，未说明室外或复杂风扰环境下的表现；平台依赖外部运动捕捉系统提供状态反馈，未提及机载自主定位能力；控制方法对模型参数不确定性的可容许范围未给出定量结论；原型机械结构（万向节）可能限制高速机动性能，但摘要未展开讨论。</p>
+<p>**值得关注：**  <br>1. 将四旋翼作为推力矢量执行器的模块化设计思路，为低成本、可复现的火箭控制算法验证提供了新范式。2. 约化姿态表示与自适应反步控制的结合，可推广到其他轴对称飞行器（如导弹、无人机）的欠驱动控制问题。3. 控制点变换处理非最小相位特性的方法对类似“倒立摆”类系统具有借鉴意义。4. 该平台可作为AI/强化学习算法在推力矢量任务中安全闭环验证的物理沙盒，促进仿真到实物的迁移。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>基于记忆的多智能体系统中的共识破坏全局Hopf分岔</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Casey Maikalani Crane</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-02T16:24:42Z</span></li><li><span>分类</span><span>math.DS</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.02388v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.02388v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>在多智能体系统中，自组织智能体通常追求静止共识（如一阶一致性），但现实场景如无人机编队和金融市场中，需要更丰富的周期振荡行为，如无人机保持空间关系的同时执行复杂摆动，或资产市场中泡沫与崩盘的经济周期。现有研究对记忆效应如何使智能体从稳定共识过渡到周期性多共识缺乏系统性理论分析，尤其对延迟微分方程框架下对称共识破坏分岔的全局性质理解不足。本文首次系统研究该问题，引入新亚类“伪中立型延迟方程”并运用等变拓扑度分析，意义在于揭示记忆机制对多智能体动力学跃迁的根本性作用，为无人机编队控制和经济周期建模提供理论支撑。</p>
+<p>**研究思路：**  <br>作者针对三类基于记忆的多智能体系统（延迟型、中立型及新提出的伪中立型）建立闭环延迟微分方程。为解释记忆如何打破静止共识、诱导周期多共识，采用等变扭曲度这一拓扑学工具分析对称全局Hopf分岔问题，从理论上给出周期多共识解的存在性与对称分类。通过数值计算验证理论预测，并提供分岔分支的稳定性信息（单凭拓扑度无法获得）。进一步，在无人机编队控制（实现可选择的振荡舞动）和网络资产市场（两种不同记忆策略的交易者引起泡沫与崩盘周期）两个实际场景中演示原理，并数值探究中立型系统中共振双Hopf分岔通向混沌的Ruelle-Takens-Newhouse路径及渗透盆地的存在性。主要结论：记忆效应使自组织智能体产生超越静止共识的复杂动力学行为，且全局分岔与对称性分析能系统刻画此类现象。</p>
+<p>**局限性：**  <br>论文主要依赖数值仿真验证理论预测，未在真实多智能体硬件平台（如实际无人机或机器人）上实验；伪中立型延迟方程作为新提出的亚类，其物理可解释性及在实际系统中的普适性仍需进一步确认。此外，摘要未明确说明数值仿真参数范围或随机因素对结果稳健性的影响，稳定性信息的获取依赖具体数值方法，可能受限于所选模型假设。</p>
+<p>**值得关注：**  <br>该工作为具有记忆机制的群体智能系统设计提供了全新的动力学分析框架：通过对称全局Hopf分岔理论，可预测多智能体从共识到灵活周期多共识的跃迁条件，直接指导无人机编队中可控振荡模式的生成。在具身智能领域，自组织智能体借助记忆可实现更丰富的集体行为，如差异化周期策略的涌现；同时，将延迟微分方程与拓扑度工具结合的方法，可推广至其他对称性网络系统（如自动驾驶车队协调、机器人集群探索）。对经济周期建模中记忆型交易策略的启发，也拓宽了AI在金融模拟中的应用边界。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>实时低成本无人机视觉智能：跟踪、扫描与导航的模块化方法</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Andrei-Marian Ungureanu, Stelian Spînu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-02T15:15:56Z</span></li><li><span>分类</span><span>cs.RO, cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.02298v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.02298v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>自主无人机在军事与民用领域需求激增，但现有商业方案多依赖昂贵专用硬件与闭源技术，难以在低成本、开放平台上部署实时视觉智能。常见方法在嵌入式系统上因算力限制，难以同时实现人脸检测、识别与深度估计等多任务。该论文旨在填补低成本、开源无人机系统与高级AI视觉功能之间的空白，探索在受限硬件上运行实时视觉智能的可行性。</p>
+<p>**研究思路：**  <br>作者以DJI Tello无人机为低成本平台，设计模块化架构集成三种核心AI功能：人脸检测、人脸识别及单目深度估计。通过Web界面实现实时控制与视频监控，Python服务器利用轻量级神经网络模型在嵌入式系统上执行推理。系统在真实场景中验证了人员跟踪、室内扫描及基于虚拟传感器的自主循线能力。结论表明，即使硬件受限，通过模块化设计与轻量模型仍能实现稳健的实时视觉导航，为军事、救援与监视等任务奠定基础。</p>
+<p>**局限性：**  <br>摘要未说明不同光照、遮挡或复杂动态环境下系统的鲁棒性测试结果；未提及模型训练数据集规模与多样性；未给出定量指标（如帧率、跟踪精度、深度估计误差）；仅以Tello单平台验证，泛化能力待考。</p>
+<p>**值得关注：**  <br>该工作展示了在极低成本无人机上集成多视觉任务（检测+识别+深度）的可行性，其模块化架构可复用于其他小型无人机或机器人平台。强调开源与低成本策略，有助于推动AI技术的民主化应用，尤其在军事侦察、搜救与安防巡检等资源受限场景中具有实用启发。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">4</div>
+      <div class="paper-body">
+        <h2>NEUROSYMLAND：面向鲁棒边缘部署的神经符号着陆点评估系统</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Weixian Qian, Tianyi Yang, Sebastian Schroder, Yao Deng, Jiaohong Yao, Xiao Cheng, Richard Han, Xi Zheng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-02T14:58:14Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.02277v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.02277v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>自主无人机在非结构化环境中的安全着陆评估仍面临挑战，现有纯视觉学习方法在地形变化下性能退化，且安全决策缺乏透明度。然而，现有方法难以兼顾轻量化部署与结构化推理，尤其在边缘计算资源受限的场景下，已有基准方法（如纯视觉或规则系统）在72个模拟场景中仅实现37-57次成功评估，可靠性不足。该研究针对上述不足，提出融合神经符号推理的着陆点评估系统，旨在提升鲁棒性与可解释性，同时保持边缘设备可执行性。</p>
+<p>**研究思路：**  <br>为克服视觉模型对地形变化的脆弱性及缺乏显式安全约束的问题，作者提出NEUROSYMLAND系统，从机载视觉输入构建概率语义场景图（PSSG），并利用符号约束（如地形平坦度、障碍物间隙、空间一致性）对候选着陆区域进行结构化推理。在72种模拟地形场景中，系统实现61次成功评估，优于四个对比基线（37-57次）。进一步通过100次硬件在环实验，评估端到端延迟、阶段耗时及CPU/GPU利用率、内存占用和功耗等系统指标。结果表明，符号推理仅占端到端延迟的极小部分，主要计算成本来自感知与PSSG构建，验证了在边缘约束无人机上部署的可行性。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，例如未说明模拟场景是否涵盖极端天气或动态障碍物，也未提及真实无人机飞行测试。此外，符号约束的通用性（如是否依赖预设地形假设）和感知模块在极端光照或纹理缺失场景下的鲁棒性尚待进一步验证。</p>
+<p>**值得关注：**  <br>该工作展示了神经符号方法在资源受限机器人平台上的实用潜力，为需要透明安全决策的自主系统（如无人机、自动驾驶）提供了新范式。其开源代码、数据集与符号规则示例可促进后续研究，尤其是在轻量场景理解与显式推理结合的方向上，对提升边缘AI的可解释性和可靠性具有启发意义。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">5</div>
+      <div class="paper-body">
+        <h2>翼膜与尾巴形态对滑翔哺乳动物启发翼的气动性能与控制力影响</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Liming Zheng, Baihui Chen, Alexander van Zuijlen, Salua Hamaza</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-02T14:40:24Z</span></li><li><span>分类</span><span>physics.flu-dyn, physics.bio-ph</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.02246v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.02246v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>滑翔哺乳动物在演化中形成了多样的翼膜和尾巴/尾膜结构，这些形态差异可能直接影响其气动升力、阻力、失速特性以及纵向和横向的机动控制能力。然而，现有研究多集中于单一形态或定性描述，缺乏在可控条件下对不同形态气动性能与操纵权限的系统量化比较，难以揭示形态多样性背后的功能权衡。为此，本研究采用计算流体力学方法，在统一流动条件下分离评估代表性翼膜和尾巴形态的独立气动效应，旨在为仿生变形飞行机器人的形态设计提供定量依据，并解释滑翔哺乳动物形态多样性的功能意义。</p>
+<p>**研究思路：**  <br>针对“不同翼膜与尾巴形态如何在气动性能和控制响应上产生权衡”这一核心问题，作者首先设计了三种翼膜构型（宽、中、窄）和三种尾巴/尾膜构型（类猫猴式整体尾膜、扁平尾等），并在基线流动及对称/非对称偏转条件下进行CFD模拟。通过对比升力、阻力、俯仰力矩及失速后行为，量化每种构型对纵向（俯仰）和横向（滚转、偏航）控制权限的贡献。研究发现：宽翼膜产生最高升力系数，而中等翼膜在失速后表现出更平滑的响应和更低阻力；类猫猴的集成尾膜在对称偏转时显著增强升力和俯仰控制，扁平尾则在非对称偏转时产生更强的滚转和偏航力矩。结论表明，不同形态对应不同的气动权衡而非单一最优解，为理解滑翔哺乳动物功能多样性提供了机理支撑，并为仿生机器人翼面设计给出了明确参数指导。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。本研究仅基于CFD仿真，未涉及真实滑翔动物的柔性膜变形、主动控制策略或非定常气流影响；形态参数空间有限，可能未涵盖所有自然变异；缺乏实验验证或真实机器人平台的闭环测试，模拟结果向工程应用的推广性尚需进一步评估。</p>
+<p>**值得关注：**  <br>该工作首次在统一仿真框架下系统对比了多种滑翔哺乳动物启发的翼膜与尾巴构型，揭示了升力、阻力、失速特性与操纵权限之间的明确权衡关系。这为AI驱动的形态参数化优化提供了物理约束目标函数，可指导仿生飞行机器人根据任务（如滑翔效率优先或机动性优先）自适应性选择或调制翼膜轮廓与尾部构型。同时，其“形态-控制权限”映射方法可直接嵌入具身智能体的形态搜索与在线适应策略中，促进“形态即控制”的软体机器人设计思路。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">6</div>
+      <div class="paper-body">
+        <h2>轻量级安全强化学习用于端到端无人机导航</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Shenghui Zhang, YuXuan Gao, Songwei Zhao, Jifeng Hu, Zijing Zhang, Hechang Chen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-02T07:12:24Z</span></li><li><span>分类</span><span>cs.RO, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.01794v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.01794v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着自主空中系统快速发展，无人机在巡检、环境监测与救援等任务中对可靠自主导航的需求日益增长。然而，在稀疏感知与动态约束下，密集环境中的导航仍具挑战。现有强化学习方法普遍缺乏显式安全机制，导致不安全探索与危险行为；安全强化学习虽能约束动作，但常通过投影到安全集实现，可能引入不稳定。此外，多数方法依赖密集输入或大网络，增加计算负担，限制轻量化机载部署。为此，论文提出一种安全约束的感知控制集成框架，旨在实现高效、安全的端到端无人机导航。</p>
+<p>**研究思路：**  <br>论文将导航任务构建为约束马尔可夫决策过程，在层次化控制架构下，采用基于拉格朗日法的安全PPO算法进行求解。轻量级网络利用非对称卷积与深度可分离卷积，从稀疏观测中提取碰撞风险特征，减少计算开销。课程学习进一步提升训练稳定性。实验在不同障碍密度与飞行速度下进行，结果表明该方法在成功率、安全性与效率上均优于现有强化学习基线。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。例如，实验环境未明确说明是仿真还是真实场景；未讨论算法在真实无人机上的部署效果、计算资源需求或泛化到其他机型/环境的可行性；也未分析失败案例或极端条件下的鲁棒性。</p>
+<p>**值得关注：**  <br>本文在端到端无人机导航中融合了轻量级网络设计、层次化控制与安全约束强化学习，为在资源受限的机载系统上实现安全自主飞行提供了可行思路。其稀疏感知编码与课程学习策略可借鉴至其他具身智能任务，如机器人在窄通道或动态障碍中的安全导航。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">7</div>
+      <div class="paper-body">
+        <h2>通过排斥笼实现受攻击智能体的分布式围堵</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Luigi Petruzziello, Camilla Fioravanti, Gabriele Oliva</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T17:59:24Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.01230v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.01230v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机集群与信息物理多智能体系统在安全关键任务中日益普及，需要协同运动、分布式决策与自主性。核心风险在于合法智能体被劫持后，受敌对高层命令驱动。现有方法多聚焦于恶意智能体的检测与隔离，但这类方案可能因延迟或误判而失效。本文利用自主平台中一个常见结构特性：低层避障模块通常作为独立安全层，即使在高层被攻陷时仍可保持活跃。基于此，论文提出分布式围堵框架，通过防御者配置几何形状，将受攻击智能体未受损的避障响应作为间接控制通道，将其限制在规定区域并引导至目标。该思路创新性地将防御问题从检测隔离转向主动利用底层行为，具有重要安全意义。</p>
+<p>**研究思路：**  <br>针对现有检测隔离方法在动态对抗场景下的不足，作者尝试从“被动发现”转向“主动利用”。方法上，将交互建模为在线Stackelberg博弈：防御者作为领导者选择几何配置，对手作为追随者选择目标命令。利用支撑函数与法锥论证，精确刻画单步鲁棒围堵的几何条件，提出“排斥笼”概念。基于此构建集中式Stackelberg最优决策器，进而通过局部通信与动态场估计，设计完全分布式的在线近似算法，避免全局信息依赖。有效性通过仿真验证，论文证明相对于集中式基准，该分布式方法满足次线性动态遗憾界，量化了网络估计误差与时变最优的影响，理论结果与仿真一致，证实了方法的可行性与鲁棒性。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，但需注意：方法严格依赖低层避障模块保持独立且正常运行的假设；验证仅基于仿真环境，缺少真实平台与复杂障碍物场景的测试；理论分析主要针对单步鲁棒围堵，多步长期行为与多目标协调性能仍需进一步考察；分布式近似中网络通信质量对遗憾界的影响可能在实际部署中成为瓶颈。</p>
+<p>**值得关注：**  <br>本文提出了一种新颖的主动围堵思路——不依赖检测与隔离，而是利用被攻陷智能体自身的安全避障机制进行间接控制。将问题建模为Stackelberg博弈，并引入排斥笼的几何概念，为分布式多机器人对抗安全提供了理论分析工具。其在线分布式算法与动态遗憾界证明，对具身智能系统中安全层与高层控制的协同设计具有启发意义。未来研究可借鉴该框架，拓展至异构群体、动态障碍环境或与检测模块融合，推动更鲁棒的自主安全策略落地。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">8</div>
+      <div class="paper-body">
+        <h2>RF无人机基准测试高估了多少？——UAV信号识别中数据泄漏的控制实验与理论</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>David Shulman</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T14:57:44Z</span></li><li><span>分类</span><span>physics.app-ph, cs.LG</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.01025v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.01025v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>射频感测是反无人机系统的重要感知方式，通过解析无人机与操作员之间的控制、遥测及视频链路信号实现探测与身份识别。当前文献中RF信号识别的准确率报告往往异常高，但多数研究采用将少量连续记录切分为短片段后进行交叉验证的方法。这种划分方式可能导致同一记录的近似重复切片同时进入训练集和测试集，引发严重的数据泄漏，使得评估结果过于乐观，无法反映模型在实际部署中的真实性能。</p>
+<p>**研究思路：**  <br>作者基于数据泄漏问题，首先从理论层面形式化分析了片段级交叉验证的乐观偏差。运用Cover函数计数定理证明：当独立记录数R远小于特征维度d时（即2R ≤ d），分类器能够精确记忆记录到标签的映射关系，导致朴素准确率趋近1，而真实准确率与贝叶斯最优准确率之间的膨胀差距可达1 - ACC*。通过10个随机种子的受控合成实验验证了理论预测：朴素平衡准确率从贝叶斯水平逐渐升至1.0，而采用按记录分组的诚实评估则降至随机水平，差距达0.5。在公开的DroneRF数据集上，采用留一记录交叉验证进行无人机类型识别（AR vs Bebop），朴素宏F1从0.74骤降至0.46（二类随机水平）。泄漏路径消融实验表明，几乎所有性能膨胀均源自片段级泄漏。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，例如未讨论其他类型的数据泄漏（如时间依赖或设备偏差）、未说明合成实验是否覆盖真实场景的全部噪声特征、以及未验证该方法在更多样化无人机型号或不同射频环境下的泛化能力。</p>
+<p>**值得关注：**  <br>本文揭示了机器学习评估中的一个易被忽视但影响巨大的陷阱——片段级数据泄漏，为RF无人机识别领域提供了一套严谨的评估范式。其理论分析框架（Cover定理应用）可推广至其他时间序列分类任务（如声学、振动信号识别），并启发研究者：在评估小样本连续信号模型时，必须严格按独立记录分组划分数据，避免近似重复片段导致的虚假高性能。该工作也对具身智能中连续感知序列的评估有警示意义，有助于设计更可信的基准测试。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">9</div>
+      <div class="paper-body">
+        <h2>图像域倾斜约束分布式融合的多相机光电机动无人机跟踪</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Minxing Sun, Yao Mao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T14:45:43Z</span></li><li><span>分类</span><span>eess.IV, cs.RO, eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.01008v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.01008v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>短时预测对光电无人机跟踪至关重要，尤其当目标体积小、机动性强或被间歇性观测时。现有方法利用图像中心、视线和距离测量直接约束目标位置，但对加速度的约束很弱，导致在剧烈机动时预测滞后。为此，论文提出一种利用图像域旋翼无人机外观滚转与俯仰作为低层机动线索的方法，以增强加速度约束，提升短时预测的鲁棒性。</p>
+<p>**研究思路：**  <br>针对加速度约束不足导致预测滞后的问题，论文提出图像域倾斜约束的分布式融合方法。首先设计弱先验自动标注管道，利用同步视频、云台IMU和无人机IMU生成定向边界框和图像域倾斜标签；随后训练YOLO-OBB检测器在线输出目标位置和倾斜测量。在融合阶段，将无人机状态建模为位置、速度和加速度，把图像域滚转和俯仰作为加速度相关的伪观测引入滤波。系统异步融合一台移动云台相机和两台固定地面相机，并增广相机姿态误差状态以吸收外参漂移和跨相机系统偏差；同时采用协方差扩展的马氏门控来拒绝误报和处理丢帧。仿真实验加入倾斜观测后预测RMSE从1.991m降至0.821m，累计预测误差降低60.75%；真实分布式实验中自一致性评估显示累计预测误差降低18.10%，证实图像域倾斜能提供有效的加速度约束。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。例如，仿真环境和真实实验的规模、目标动态范围、与更多基线方法的对比等未说明；自一致性评估可能依赖假设而非绝对真值，其泛化性有待进一步验证。</p>
+<p>**值得关注：**  <br>该方法将无人机图像外观中的滚转与俯仰角作为受约束的伪观测引入滤波框架，为利用视觉形态信息增强运动学预测提供了新思路。自动标注管线和YOLO-OBB检测器的组合降低了数据依赖；分布式融合中相机外参的在线增广处理对多相机系统部署有实用价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">10</div>
+      <div class="paper-body">
+        <h2>几何感知跨高度信道知识地图预测用于无人机辅助通信与不确定性引导三维感知</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Zhihan Zeng, Amir Hussain, Yue Xiu, Phee Lep Yeoh, Lu Chen, Zhongpei Zhang, Guan Gui</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T12:53:55Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.00887v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.00887v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>低空无人机在复杂城市环境中通信时，常需从有限高度层的稀疏观测推断整个高度范围的信道知识，但现有方法（如3D-RadioDiff）在未观测高度上重建稠密信道地图的精度仍有较大提升空间。该问题源于几何丰富的城市环境导致信道随高度变化剧烈，而稀疏观测难以捕捉完整的空间分布。论文聚焦于跨高度信道知识地图（CKM）的条件预测，旨在利用场景几何先验和不确定度量提升重建的准确性与鲁棒性，对无人机辅助通信的实时规划具有重要意义。</p>
+<p>**研究思路：**  <br>作者提出几何感知条件预测框架，融合城市场景先验、稀疏多高度观测及目标高度描述子，以生成未观测高度上的稠密CKM，并引入不确定性头评估预测置信度，支持成本感知的在线无人机采样。在分层空中CKM基准上，采用FPN-Transformer架构实现最优性能：零样本预测RMSE降至5.347 dB（基线6.937 dB），经典随机协议下RMSE为1.111 dB（基线1.221 dB）。进一步，10样本两高度微调使零样本RMSE降至3.518 dB；不确定性引导的感知策略在预算40时RMSE为4.79 dB，优于纯不确定性策略（5.08 dB）和随机采样（5.84 dB）。</p>
+<p>**局限性：**  <br>论文实验基于分层空中CKM仿真基准，未在真实无人机通信或实际城市环境中验证，几何先验的获取与建模在真实场景中可能面临精度与实时性挑战；摘要未讨论计算开销、模型泛化至不同城市布局的鲁棒性，以及不确定性引导策略在动态障碍场景下的适用</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">11</div>
+      <div class="paper-body">
+        <h2>流体时空随机几何：非平稳场中的信息流</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Wen-Yu Dong, Weiwei Jiang, Song Zhao, Qi Bi, Sheng Chen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T08:37:22Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.00616v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.00616v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>空间网络中信息流动的基本极限通常基于平稳空间点过程来刻画，但这一假设无法捕捉节点强度场在时空上连续演化的非平稳场景。实际网络，如移动自组网或无人机编队，其拓扑动态变化频繁，现有方法难以分析这种复杂演化下的信息流理论极限。为此，本文旨在建立一个统一的理论框架，以表征非平稳拓扑中信息流动的本质规律，弥补现有随机几何方法在处理时空非平稳性上的不足。</p>
+<p>**研究思路：**  <br>作者将动态网络拓扑视为离散节点星座的流体动力学极限，从而引入连续模型。通过将潜在网络动力学识别转化为逆边界值问题，并运用最优输运中的最小动能原理，证明了控制网络负载压缩演化的标量势场的唯一存在性。该场论公式耦合了连续拉格朗日输运与离散欧拉干扰几何。基于此模型，推导了信息通量向量作为宏观平流的充分统计量，以及物质导数作为拓扑散度的运动学预测因子。最后，通过能量密度缩放和信源-信道解释，揭示了协调开销、拓扑形变与控制信令需求同演化拓扑运动学熵之间的关联。摘要未说明具体的实验或仿真验证，主要贡献为理论推导。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。论文侧重理论框架的建立与形式化推导，未提及实际网络数据或仿真验证，其在实际场景中的适用性和精确性有待后续研究检验。</p>
+<p>**值得关注：**  <br>本文提出的流体极限与最优输运相结合的方法，为动态网络（如多机器人编队、具身智能群体）的通信与协调分析提供了新的理论工具。信息通量向量和运动学熵等概念可用于评估机器人集群中的通信开销与拓扑鲁棒性，对自适应网络调度和分布式决策系统的设计具有重要启发。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">12</div>
+      <div class="paper-body">
+        <h2>WaveLander: 基于强化学习的无人机波浪扰动平台着陆通用层次化控制框架</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Chun-Kit Li, Iok Long Sit, Ming Fung Siu, Ka Yu Kui, Hin Wang Lin, Pengyu Wang, Ling Shi</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T08:28:15Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.01281v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.01281v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机在波浪扰动的海洋平台自主着陆面临平台随机运动、姿态时变和触地不确定性等核心挑战。现有基于模型的方法依赖精确运动预测与在线优化，计算负担重且难以应对复杂扰动；端到端学习方法虽能直接学习策略，但训练复杂度高、可解释性有限。如何设计一种兼顾泛化性、鲁棒性与可解释性的控制框架，成为实现无人机海上安全回收的关键技术难题。</p>
+<p>**研究思路：**  <br>针对上述问题，论文提出WaveLander层次化控制框架，核心动机是将动态平台着陆解耦为高层时机决策与低层飞行稳定两个子问题。具体地，强化学习策略仅将平台相对观测映射为单一标量垂直速度参考，而底层常规控制器负责姿态稳定与横向跟踪。这种设计将高维动态着陆简化为低维时序敏感控制问题，避免显式切换规则。通过随机波浪扰动下的仿真实验，验证了框架在多种未见过扰动条件下的鲁棒着陆性能与泛化能力。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，仅能推断当前验证全部基于仿真环境，缺少真实海洋平台、实际风浪扰动及传感器噪声下的系统级实验。此外，未讨论框架对不同类型无人机（如固定翼/混合构型）或极端海况（如大涌浪）的适用性，也未提及平台运动预测精度对策略迁移的具体影响。</p>
+<p>**值得关注：**  <br>本文提出的层次化学习控制架构为无人机在动态环境下的自主降落提供了新范式：高层RL策略保持数据驱动泛化能力，低层传统控制器保证稳定性与可解释性，二者互补降低训练复杂度。该思路可推广至其他受随机扰动影响的机器人着陆/回收场景，如移动车辆上降落或海上船舰补给，并为未来结合运动预测的实时自适应控制提供了可借鉴的基架。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">13</div>
+      <div class="paper-body">
+        <h2>基于测量的6G城市低空空地信道特性与统计建模（FR1/FR3）</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Bin Ao, Jianhua Zhang, Pan Tang, Peijie Liu, Boyang He, Hao Zheng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T07:33:11Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.00541v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.00541v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机通信被视为6G空天地海一体化网络的关键组成部分。然而，精准的空地信道特性与建模是低空通信系统设计与优化的基础。现有研究多依赖仿真或单一频段实测，缺乏覆盖FR1与FR3多频段的实际信道测量，且LoS/NLoS传播状态识别方法在复杂城市环境中可靠性不足。为此，本文通过实测与弱监督方法，系统分析不同频段下低空A2G信道特性，为6G低空通信设计提供统计模型支持。</p>
+<p>**研究思路：**  <br>为弥补多频段实测数据的缺失，作者在城市环境开展2.85、4.6和7.25 GHz三个频点（分别对应FR1与FR3）的宽带信道测量。针对LoS/NLoS状态识别困难，提出融合几何先验、信道特征与空间一致性约束的弱监督方法。基于实测数据提取路径损耗、阴影衰落、功率延迟谱、均方根时延扩展及莱斯K因子等参数，并与3GPP参考模型对比。结果表明：近参考距离模型比3GPP模型拟合更准确；NLoS传播的路径损耗指数和阴影衰落更强；高频信道有效多径数减少、时延扩展降低（LoS下均值从93.11降至46.84 ns），且莱斯K因子增加（均值从9.16增至12.88 dB）。统计发现RMS-DS与K因子分别服从对数正态和正态分布；接收机移动使信道空间非平稳性加剧。</p>
+<p>**局限性：**  <br>摘要未说明测量场景的具体城市类型、无人机高度范围及移动速度等实验参数，也未讨论不同地形或建筑物密度的影响。弱监督方法的泛化性、模型在大规模或动态场景下的适用性尚需进一步验证。此外，仅基于三个频点的单次测量，统计模型在更宽频段或更复杂环境下的可靠性仍需更多实测数据支撑。</p>
+<p>**值得关注：**  <br>该工作为6G低空通信信道建模提供了实测基准，其弱监督LoS/NLoS识别方法可迁移至其他无线信道研究；所得统计学分布模型（如RMS-DS与K因子参数）可直接用于无人机通信系统仿真与链路预算分析。对具身智能与机器人领域而言，精准的空地信道模型有助于优化无人机自主飞行中的通信决策，例如在信号遮挡场景下动态调整路径或频谱资源，提升低空通信的鲁棒性。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">14</div>
+      <div class="paper-body">
+        <h2>基于视觉-语言集成的多任务无人机图像质量评估</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Wei Sun, Weixia Zhang, Hongjian Zhan, Mingkai Lu, Yixuan Gao, Guangtao Zhai</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T04:17:02Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.00416v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.00416v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着低空无人机在航拍、巡检、农业等场景中的广泛应用，无人机图像的质量评估（IQA）成为保障后续任务效果的关键。现有图像质量评估方法多针对自然场景，缺乏对无人机低空图像中目标感知、背景退化等特殊因素的建模能力；同时，多数方法仅预测全局质量，未区分目标与背景区域，难以满足实际任务对细粒度质量分析的需求。ICME 2026 Drone-IQA挑战赛正是针对这一缺口，提出了目标感知的低空无人机图像质量评估任务。本文针对该任务，提出一种融合视觉编码器与大语言模型的集成框架，旨在同时预测全局、目标和背景三个维度的质量分数，为无人机图像质量评估提供更全面的解决方案。</p>
+<p>**研究思路：**  <br>作者为应对挑战赛中多任务、多维度质量评估的需求，设计了两条互补的管线：第一条采用SigLIP2视觉编码器配合多任务回归头，分别预测全局、目标和背景质量；第二条使用LoRA微调的Qwen3.5-9B多模态大语言模型直接回归质量分数。两条管线的输出通过算术平均得到最终全局质量预测，从而兼顾特征提取的稳定性和大语言模型的语义理解能力。方法在ICME 2026 Drone-IQA Grand Challenge中取得第二名，验证了其有效性。摘要表明，该集成策略成功解决了无人机图像中目标与背景区域的质量差异问题，并利用大语言模型增强了质量评估的鲁棒性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如不同无人机场景下的泛化能力、目标检测的准确性对质量评估的影响、以及两条管线集成方式的最优性等，均需进一步实验验证。</p>
+<p>**值得关注：**  <br>本文展示了视觉-语言模型在非生成式任务（如图像质量评估）中的应用潜力，特别是LoRA微调大语言模型回归连续值的方法，为低数据量场景下的质量评估提供了新思路。同时，多任务联合预测全局、目标、背景质量的框架设计，可迁移至自动驾驶感知、机器人视觉等需要细粒度图像质量分析的领域。此外，两管线集成的策略对后续多模态融合研究具有借鉴价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">15</div>
+      <div class="paper-body">
+        <h2>DroneFINE：面向无人机图像的域感知参数高效微调方法</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ke Wu, Yanan Zhang, Yingjie Gao, Wenhao Li, Chenyu Zhou, XinZhu Ma, Jiaxin Chen, Di Huang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T02:27:40Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.00338v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.00338v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机在开放动态环境中进行目标检测极具挑战。虽然视觉语言模型（VLM）为通用检测提供了强大方案，但将其适配到无人机场景面临显著域差距——VLM预训练数据以“自然场景、前景主导”为主，而无人机图像是“鸟瞰、背景主导、小目标”的。现有参数高效微调（PEFT）方法因静态结构限制无法弥合该差距，因此亟需一种专门应对无人机域特性的领域自适应微调范式。</p>
+<p>**研究思路：**  <br>为克服PEFT静态结构对域适应的限制，作者提出DroneFINE，包含两个互补的域感知模块：一是HyperAdapter，一种数据相关、前景感知的多路径动态适配机制，突破PEFT的固定结构；二是SemanticGate，一种基于文本条件的背景抑制策略，利用背景词汇主动引导模型忽略无关区域。在VisDrone和UAVDT数据集上的大量实验表明，DroneFINE显著优于现有PEFT方法，且性能接近全参数微调，同时大幅降低可训练参数量。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如未讨论方法在更多无人机数据集或不同VLM基座上的泛化性、SemanticGate对预定义背景词汇的依赖程度，以及实际部署中的计算开销。</p>
+<p>**值得关注：**  <br>该工作是首个面向无人机VLM检测器的域感知PEFT范式，其HyperAdapter的动态多路径机制和SemanticGate的文本条件背景抑制为其他域适应任务（如遥感、自动驾驶中的鸟瞰小目标检测）提供了可借鉴思路，同时验证了少量参数即可保留全微调性能，对资源受限的无人机平台具有实用价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">16</div>
+      <div class="paper-body">
+        <h2>面向无人机-ISAC辅助海洋数据收集的队列感知图强化学习</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Bohan Li, Min Ye, Haochen Liu, Yongkang Gong, Ning Gao, Jie Nie, Pei Xiao, Xiuzhen Cheng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T01:50:04Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.00324v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.00324v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>海洋环境监测中，无人机集群需协同感知浮标并收集监测数据。现有方法多关注瞬时吞吐量，忽略浮标端观测数据的缓冲队列状态与长期累积效用。此外，感知-通信-移动的混合离散连续优化存在组合关联难题，传统确定性解码器难以在拥堵海事场景下兼顾负载均衡与约束满足。本文提出一种队列感知的图强化学习框架，在高空平台（HAP）辅助的稀疏协作ISAC系统中，通过优化长期队列加权收集效用，提升数据收集效率与系统鲁棒性。</p>
+<p>**研究思路：**  <br>为应对长期优化中的队列状态与多约束耦合，作者将问题建模为队列加权缓冲收集马尔可夫决策过程，显式考虑海斑空间相关性、浮标动力学、RCS与杂波感知、后验CRB及无人机能耗约束。提出结构化可行关联图MARL框架：异构图编码器生成候选关联对数，掩码顺序b-匹配策略在满足无人机负载与浮标聚类约束下采样合法关联。采用MAPPO风格训练、独立队列状态值评论家及一致性验证协议。仿真表明，相比速率驱动确定性基线，该方法在拥挤海事场景下累积效用提升约106%，在不同海况与中高流量下保持显著优势，且可零微调迁移至更大规模网络。</p>
+<p>**局限性：**  <br>摘要主要基于仿真环境验证，未提及真实海上实验或硬件在环测试；模型对海况、RCS杂波等参数的依赖性强，在极端或未覆盖场景下的泛化能力未知；计算复杂度与实时部署可行性尚未讨论。</p>
+<p>**值得关注：**  <br>本文为具身智能与海洋机器人提供了“队列状态感知+图强化学习”的新范式，其结构化的关联匹配策略可启发多机器人协同中约束满足与组合优化的通用解法。任务设定中融合感知、通信与运动控制的长期累积效用目标，对自动驾驶中的编队数据采集、应急搜救等场景具有借鉴价值。迁移能力验证展示了方法的泛化潜力，利于推广至大规模异构机群系统。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">17</div>
+      <div class="paper-body">
+        <h2>基于预测潜在模型的通信与安全感知无人机控制</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Hamid Shiri, Mehdi Bennis</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-01T00:31:53Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.00288v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.00288v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机在部分可观测且动态不确定的环境中执行任务时，其运动控制与通信质量、安全性之间存在紧密耦合。传统方法往往将路径规划、通信资源分配和碰撞规避分开处理，难以在有限带宽和随机干扰下实现高效协同。现有反应式控制策略因缺乏前瞻能力，容易导致终端定位误差大、通信中断频繁或碰撞风险升高。本文针对上述问题，提出一种同时考虑通信状态与安全风险的前瞻性控制框架，旨在通过联合优化运动与发射功率，在能耗、可靠性与安全性之间取得平衡。</p>
+<p>**研究思路：**  <br>为克服部分观测和不确定性带来的控制难题，作者设计了一种通信与安全感知的预测潜在控制（CRPL）框架。该框架基于联合嵌入预测架构（JEPA）学习潜在动力学模型，能够生成递归多步推演，预测未来运动、信道衰退和碰撞风险。控制器将这些预测信息融入统一的安全感知优化问题，实现主动式的能量效率和轨迹调整。通过在有限带宽和动态不确定性下的仿真实验，CRPL与理想化的解析预测控制器及反应式基线进行了对比。结果表明，CRPL的终端误差降低约3倍，中断持续时间减少约18%，同时通信能耗和碰撞风险均有下降，仅以适度的运动能耗增加为代价，展现了良好的权衡特性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。仿真环境的具体参数、是否考虑真实传感器噪声、多机协作场景、以及潜在模型在线更新与泛化能力等关键问题均未涉及，因此尚不清楚该方法在真实硬件部署或极端动态条件下的鲁棒性。</p>
+<p>**值得关注：**  <br>该研究提出的将预测潜在状态学习与安全约束优化结合的思路，对无人机之外的具身智能系统（如自动驾驶车辆、移动机器人）具有借鉴意义。其强调通信与安全联合前瞻建模的框架，为资源受限场景下多 agent 协同提供了新范式；此外，JEPA 作为无监督表示学习工具在控制中的应用，也值得后续研究跟进其在更复杂任务中的适应性与可迁移性。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">18</div>
+      <div class="paper-body">
+        <h2>低空经济网络中无人机无线充电的SLM/LLM/Agentic AI对比研究</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Feibo Jiang, Li Dong, Lei Mao, Kezhi Wang, Xianbin Wang, Abbas Jamalipour</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-30T23:06:04Z</span></li><li><span>分类</span><span>cs.IT</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.00255v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.00255v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机已成为低空经济网络的关键使能平台，但在资源受限且动态变化的环境中实现高效自适应的优化仍面临挑战。现有方法难以同时满足低复杂度、低延迟和高能效要求，同时缺乏对语言模型不同能力层次（轻量推理 vs. 强交互推理）在无人机无线充电（WPT）系统中适用性的系统探究。为此，本文研究语言模型如何赋能无人机WPT系统，旨在对比小型语言模型（SLM）、大型语言模型（LLM）以及基于Agentic AI的方法，为动态路径与能量协同优化提供技术选型依据。</p>
+<p>**研究思路：**  <br>针对无人机WPT系统在动态环境中实时优化难度大的问题，作者首先提出基于SLM的轻量化解决方案：采用预训练BERT主干，结合增强的无人机嵌入与上下文特征、几何感知路径解码器及集成推理，实现低复杂度、低延迟与高能效。其次，设计Agentic AI框架，利用LLM的推理与交互能力，构建由初始化、执行、评估、反思四类智能体（Initializer、Actor、Critic、Reflector）组成的闭环迭代优化流程，用于无人机路径与能量分配。最后，通过仿真实验对SLM、LLM和Agentic AI三种方法进行性能比较，以评估各方案在资源约束下的实际表现。摘要未说明具体结论，但通过对比验证了不同语言模型范式的适用场景。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，如仿真环境假设、任务复杂度、是否涵盖真实飞行约束、不同语言模型的实际部署开销等均未在摘要中明确。此外，三种方法的对比结果和适用边界仍需通过完整实验数据进一步确认。</p>
+<p>**值得关注：**  <br>本文系统性地将语言模型分类（SLM、LLM、Agentic AI）引入无人机无线充电系统设计，为低空经济中的智能优化提供了新的研究范式。其多智能体闭环框架（生成-优化-评估-反思）可推广至其他资源受限的机器人/无人机协同任务；SLM方案的低复杂度设计对边缘部署有启发价值；而Agentic AI的交互推理能力或可用于更复杂的具身决策场景。该工作也为后续研究者在选择语言模型规模与智能体架构时提供了对比基准与思路。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">19</div>
+      <div class="paper-body">
+        <h2>DynFly: 面向城市环境中无人机视觉语言导航的动态感知连续轨迹生成</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Wen Jiang, Hanfang Liang, Li Wang, Kangyao Huang, Wang Xu, Wei Fan, Jinyuan Liu, Shaoyu Liu, Hongwei Duan, Bin Xu, Xiangyang Ji, Huaping Liu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-06-30T13:33:48Z</span></li><li><span>分类</span><span>cs.RO, cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2606.31654v2" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2606.31654v2.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>多模态大模型显著提升了无人机视觉语言导航（UAV-VLN）的高层感知与推理能力，但现有方法主要预测离散动作、局部目标或稀疏路点，从导航意图到可执行飞行的连续过渡建模薄弱。这种“运动接口鸿沟”限制了生成轨迹的连续性、稳定性与可执行性。为此，本文提出DynFly动态感知连续轨迹生成框架，旨在桥接高层推理与底层运动控制，提升无人机在复杂城市环境中的实际导航能力。</p>
+<p>**研究思路：**  <br>针对现有离散输出导致的执行断层，DynFly引入轻量轨迹生成层，将专家轨迹表示在B样条控制点空间，并设计Spline-DiT生成器通过流匹配学习条件轨迹分布。为赋予无人机运动感知，作者创新性地引入位置、有限差速度/加速度、航向一致性及局部目标对齐等多维动态监督，使轨迹更贴合UAV运动特性。该方法可无缝集成现有UAV-VLN框架，保留原有视觉语言推理流程。在OpenUAV基准验证中，DynFly在Test Unseen Full上相比最强基线提升NDTW 4.69、SDTW 2.40、SR 2.14、OSR 4.87点，并将导航误差降低4.51米，证明了轨迹质量与导航性能的同步提升。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如是否在真实飞行条件下验证、对专家轨迹质量的依赖程度、计算开销等有待进一步说明。</p>
+<p>**值得关注：**  <br>本文为UAV-VLN提供了从离散动作到连续轨迹的范式转变，其B样条+流匹配的生成方式与动态感知监督策略可推广至其他机器人连续运动规划任务；与现有框架的兼容设计便于实际部署，对具身智能中高层语义到低层控制的端到端建模具有参考价值。</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
