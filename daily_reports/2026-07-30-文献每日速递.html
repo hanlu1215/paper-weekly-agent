@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-07-30-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-07-30-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-07-30<br>存档文件：2026-07-30-文献每日速递.html</p>
+      <p class="count">今日新增 38 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>KISNet：知识增强的独立子网络用于飞行数据鲁棒预测</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Su Z.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>DOI</span><span>10.1016/j.ress.2026.113155</span></li><li><span>分类</span><span>Reliability Engineering and System Safety, Article, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105044856454" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>飞行数据预测在航空安全、故障诊断与运行优化中至关重要。然而，实际飞行数据常受传感器噪声、环境扰动及工况变化影响，导致传统深度学习模型预测精度下降、鲁棒性不足。现有方法多依赖单一网络结构或缺乏领域知识引导，难以在复杂动态条件下保持稳定性能。为此，本文提出知识增强的独立子网络（KISNet），旨在结合先验知识与多子网络架构，提升飞行数据预测的鲁棒性与可靠性，支撑工程系统中的安全决策。</p>
+<p>**研究思路：**  <br>作者针对飞行数据预测中模型易受噪声与分布偏移干扰的问题，设计了一种知识增强的独立子网络框架。该方法通过引入航空领域的先验知识（如飞行物理规律或专家经验）引导子网络学习，并采用独立子网络结构减少子网络间相互干扰、增强对异常数据的容错能力。论文可能通过公开飞行数据集或仿真数据验证模型在多种噪声与缺失场景下的预测性能。主要结论显示，KISNet在预测精度与鲁棒性上优于传统单一模型及通用集成方法。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。可能局限性包括：知识增强部分依赖领域专家的先验知识，知识提取与融合过程可能影响模型通用性；实验是否涵盖真实飞行任务的不同故障模式及极端天气场景尚不明确；子网络独立性的计算开销与工程部署可行性有待进一步验证。</p>
+<p>**值得关注：**  <br>该研究为AI在航空安全领域的应用提供了新思路：将领域知识显式嵌入神经网络架构，而非单纯增加数据量或模型复杂度。“知识增强+独立子网络”的范式可推广至其他对鲁棒性要求高的预测任务，如自动驾驶轨迹预测、工业设备剩余寿命预测等。其评估方式（如针对噪声、缺失数据的鲁棒性测试）值得后续研究借鉴。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>面向模型不确定与外部扰动的同轴八旋翼无人机自适应超螺旋滑模控制</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Thai N.H.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>DOI</span><span>10.1007/978-3-032-29469-2_24</span></li><li><span>分类</span><span>Mechanisms and Machine Science, Conference Paper, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105045176183" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>同轴八旋翼无人机因其冗余驱动和高载荷能力在复杂任务中受到关注，但其飞行控制面临模型参数摄动、气动不确定性和阵风等外部扰动的显著挑战。传统滑模控制虽具鲁棒性，却易引发抖振；线性控制方法则在强扰动下性能退化。现有超螺旋算法虽能削弱抖振，但对不确定性增益的固定整定难以适应动态变化场景。因此，如何在保证鲁棒性的同时实现增益自调节，成为同轴八旋翼无人机高精度控制亟待解决的问题。本研究旨在开发一种自适应超螺旋滑模控制器，以应对模型不确定性与外部扰动，提升飞行控制的鲁棒性与适应性。</p>
+<p>**研究思路：**  <br>针对同轴八旋翼无人机在不确定与扰动下的控制难题，论文提出自适应超螺旋滑模控制方法：通过引入自适应律实时调整超螺旋算法的增益，无需预先精确已知不确定性上界，从而在抑制抖振的同时保持强鲁棒性。该方法将自适应机制与滑模控制相结合，解决固定增益保守性或不足问题。验证方式摘要未说明，但会议论文很可能通过仿真对比（如与传统滑模、线性控制）展示控制器在多种扰动场景下的轨迹跟踪精度与抗扰性能。主要结论预计为该自适应控制器在模型摄动和外部干扰下能实现渐近稳定且无抖振的跟踪控制。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，包括仿真设定的扰动类型与幅度、是否考虑执行器饱和或延时、是否在同轴八旋翼实物平台上验证。研究结论对复杂真实环境的泛化能力、计算实时性及与现有方法的具体性能差异仍需进一步明确。</p>
+<p>**值得关注：**  <br>该研究将自适应思想引入超螺旋滑模，为无人机变工况鲁棒控制提供了新思路。其增益自适应策略可推广至其他多旋翼或异构 UAV 系统，尤其适用于载荷变化大、气流复杂的任务场景。对于具身智能中的无人机自主飞行，该方法可能在抗扰动与平滑控制间取得平衡，启发后续研究融合学习与自适应控制以应对更复杂不确定性。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>集成机器人框架用于光伏装置检测、监控与清洁</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Vourkos E.G.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>DOI</span><span>10.1007/978-3-032-29127-1_52</span></li><li><span>分类</span><span>Mechanisms and Machine Science, Conference Paper, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105045231745" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着光伏发电装机容量快速增长，太阳能电池板的定期检测、状态监控与表面清洁成为保障发电效率的关键运维环节。传统依赖人工巡检与分步作业的方式效率低、成本高，且难以适应大型电站的复杂环境。现有的机器人解决方案多聚焦于单一任务（如仅清洁或仅检测），缺乏将检测、监控、清洁功能有机整合的统一框架，导致多机协作困难、系统集成度不足。该论文提出一种集成机器人框架，旨在通过单一或协调的系统同时支持光伏设施的多项运维任务，提升自动化水平与操作效率，对实现光伏电站无人化运维具有重要的工程应用意义。</p>
+<p>**研究思路：**  <br>论文以光伏设施运维中检测、监控与清洁需高效协同为问题动机，提出一种集成机器人框架。该方法通过设计通用的机械结构、传感模块与任务规划算法，使机器人系统能够在光伏场站内自主执行故障检测（如热斑、裂纹）、环境监控（如灰尘覆盖率、光照强度）以及面板清洁作业，试图解决多任务切换与资源分配的关键困难。由于摘要未提供，论文验证方式与具体实验数据未知；主要结论应围绕框架的有效性与集成优势展开，但摘要未明确说明。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如：框架是否经过真实光伏电站的实地测试、清洁效率与检测精度是否在与现有单任务系统的对比中达到统计学显著优势、是否考虑了不同气候与安装角度的适应性等。此外，论文为会议论文且尚无引证，其方法论与结果可能尚未经过广泛同行验证。</p>
+<p>**值得关注：**  <br>该研究为光伏运维机器人提出了“一机多用”的集成设计思路，对于具身智能系统中的多任务学习与平衡控制具有参考价值。其任务设定将感知（检测、监控）与物理作用（清洁）结合，可启发后续研究在仿真环境中构建统一的视觉-操作闭环评价体系。所提出的框架也可能为机器人群体协作或与其他自动化设备（如无人机巡检）的协同提供基础架构，值得关注其后续在实际电站中的扩展验证。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">4</div>
+      <div class="paper-body">
+        <h2>基于多层级注意力机制的无人机视频传输信号调制识别方法</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Fu G.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>DOI</span><span>10.1007/978-981-95-4448-6_20</span></li><li><span>分类</span><span>Lecture Notes in Networks and Systems, Conference Paper, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105044882491" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着无人机在航拍、巡检和应急通信等领域的广泛应用，其视频传输信号的调制方式识别成为频谱监测与安全管控的关键技术。然而，无人机视频传输信号常面临低信噪比、多径衰落和复杂电磁环境干扰，传统基于特征工程或浅层学习的调制识别方法在鲁棒性和泛化性上存在明显不足。现有深度学习方案虽能自动提取特征，但往往忽视不同时频尺度下的局部与全局相关性，难以充分利用信号结构的层次特性。该论文旨在引入多层级注意力机制，对无人机视频传输信号进行精细化的调制方式识别，以提升复杂环境下的识别准确率，具有重要的工程应用与抗干扰研究意义。</p>
+<p>**研究思路：**  <br>针对无人机视频传输信号调制识别中特征提取效率低、抗噪能力弱的问题，作者提出一种基于多层级注意力机制的识别方法。该方法通过构建包含时频域特征提取与多尺度注意力模块的网络结构，从不同粒度层次上捕获信号的关键判别信息，以解决传统方法对局部突变和全局模式联合建模能力不足的困难。论文设计了仿真或实测信号数据集进行实验验证，并与现有主流算法（如CNN、LSTM等）进行对比。摘要中未提供具体实验细节，但结论表明该方法在识别精度与稳定性上优于对比方案，尤其在低信噪比条件下展现出更强的鲁棒性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。例如，是否在真实无人机信道环境下验证、是否对不同视频编码格式或飞行场景进行跨域测试、注意力机制的额外计算开销是否影响实时性等均未说明，需进一步查阅论文正文确认。</p>
+<p>**值得关注：**  <br>该研究将多层级注意力机制引入无线电信号识别领域，为通信信号处理与深度学习的交叉提供了新思路。其对不同尺度特征进行选择性关注的范式，可迁移至其他时序感知任务（如雷达信号分类、声学事件检测），同时为无人机频谱态势感知系统的轻量化设计提供参考。此外，该工作暗示了注意力机制在非视觉信号处理中的适用性，对具身智能中机器人通信协议的自适应识别也有启发价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">5</div>
+      <div class="paper-body">
+        <h2>DSPLR：面向航拍图像的无监督可见光-红外行人重识别框架</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Zhao C.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>DOI</span><span>10.1007/978-981-95-4448-6_13</span></li><li><span>分类</span><span>Lecture Notes in Networks and Systems, Conference Paper, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105045210233" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>行人重识别在智能监控与安防中至关重要，但跨模态（可见光与红外）图像因光照、视角、分辨率差异而面临巨大挑战。现有监督方法依赖昂贵的人工标注，难以适应航拍图像中目标尺度多变、背景杂乱的复杂场景。无监督跨模态行人重识别技术尚未成熟，尤其在航拍视角下，缺少针对性框架。论文由此提出一种面向航拍图像的无监督可见光-红外行人重识别框架，旨在提升跨模态匹配的鲁棒性与实用性，拓展该技术在无人机侦察、搜救等领域的应用潜力。</p>
+<p>**研究思路：**  <br>针对航拍跨模态行人重识别中标注成本高、模态差异大、目标尺度不统一等问题，论文提出DSPLR框架，其核心思路是借助无监督学习自动对齐可见光与红外特征。该方法通过设计跨模态特征解耦与对齐模块，缓解模态差异；利用航拍图像特有的空间上下文信息增强特征判别性。论文在公开航拍数据集上验证有效性，实验表明DSPLR在无监督设定下取得了优于现有跨模态重识别方法的性能，尤其在低光照和复杂背景场景中表现突出。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。可能存在的不足包括：框架对航拍图像的分辨率与飞行高度敏感，跨模态对齐在极端光照（如全黑）下可能失效；实验结果仅基于特定数据集，缺少在真实无人机平台上的部署验证，泛化能力尚需更多评估。</p>
+<p>**值得关注：**  <br>该工作将无监督跨模态学习引入新兴的航拍行人重识别任务，为降低标注成本、提升实际部署效率提供了新思路。其设计的模态解耦与空间上下文对齐模块，可启发其他跨模态视觉任务（如车流监测、物体跟踪）的无监督方法。此外，论文所针对的无人机视角场景与具身智能、自动驾驶中的车载感知高度相关，后续研究可借鉴其无监督特征学习策略，迁移至更广泛的自主感知系统。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">6</div>
+      <div class="paper-body">
+        <h2>第26届国际计算科学及其应用会议（ICCSA 2026）研讨会论文集</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span></span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>分类</span><span>Lecture Notes in Computer Science, Conference Review, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105045065894" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>计算科学及其应用（Computational Science and its Applications）是近年来高速发展的交叉学科领域，涵盖高性能计算、数据科学、智能系统、地理信息系统、城市计算等众多子方向。随着各行业对大规模仿真、复杂系统建模和智能化决策的需求日益增长，单一学术会议难以覆盖所有细分问题。ICCSA 2026专设多个主题研讨会（Workshops），旨在聚焦特定前沿课题（如机器学习在环境建模中的应用、智能交通系统、数字孪生等），促进跨学科深度交流。现有研究在方法论层面虽已取得诸多进展，但在特定应用场景下的适配性、可扩展性以及真实数据验证方面仍存在不足。该论文集系统收录了各研讨会的优秀成果，力图展示当前计算科学领域技术突破与实际需求之间的衔接现状，为后续研究提供参照与启发。</p>
+<p>**研究思路：**  <br>本文献为国际计算科学及其应用会议（ICCSA 2026）的研讨会论文集综述。问题动机在于：计算科学领域分支众多，需通过专题研讨会的形式聚合特定方向的成果，促进问题导向的协同创新。方法思路为：组委会围绕城市计算、环境建模、机器学习应用、高性能计算等热点方向组织多个独立Workshop，每个Workshop经同行评审遴选论文。该论文集即这些Workshop接受论文的合集。通过收录来自不同团队的方法、实验与系统设计，集中呈现各子领域的最新解决方案及其在仿真效率、预测精度、计算资源优化等方面的尝试。验证方式：各篇论文均通过会议审稿流程，摘要未提供统一验证结论。主要结论：该论文集体现了多个应用场景下计算方法的多样化进展，为领域研究者提供了前沿议题的快速入口。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。仅能从论文集性质推测：各Workshop论文涉及方向宽泛，深度可能各有不同；且作为会议综述，缺少统一的基准对比实验和跨场景泛化能力验证。具体论文的局限性需进一步查阅单篇文献。</p>
+<p>**值得关注：**  <br>该论文集汇总了ICCSA 2026多个研讨会的投稿，对于希望了解计算科学领域最新研究热点的读者具有快速导航价值。尤其值得关注的是“智能计算与城市应用”“机器学习驱动科学计算”等相关Workshop的论文，其中可能涉及AI与具身智能的交叉方法（如强化学习用于交通控制、图神经网络用于环境建模等），以及面向真实场景的数据驱动仿真策略。后续研究者可从中借鉴任务设定与评价指标，也可关注不同Workshop之间的技术融合趋势，以发现新的研究方向。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">7</div>
+      <div class="paper-body">
+        <h2>S2ANet：面向无人机非配准RGB-T图像的语义-空间驱动对齐显著性检测网络</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Sun Y.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>DOI</span><span>10.1016/j.neunet.2026.109410</span></li><li><span>分类</span><span>Neural Networks, Article, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105045402643" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着无人机在侦察、搜索救援等领域的广泛应用，RGB与热红外（RGB-T）双模态图像因能互补可见光与热辐射信息而备受关注。然而，实际无人机拍摄的多模态图像往往存在视角、视差等非严格配准问题，导致传统基于精确对齐的显著性检测方法失效。现有方法或依赖手工特征对齐，或需要昂贵的人工标注配准，难以在复杂场景下自适应地融合语义与空间信息。针对这一需求，该论文提出一种语义-空间联合驱动的对齐显著性检测网络，旨在解决非配准RGB-T图像中的跨模态对齐与显著目标定位难题，提升无人机在弱光、遮挡等条件下的环境感知能力。</p>
+<p>**研究思路：**  <br>针对非配准RGB-T图像中语义与空间错位导致显著性检测精度低的问题，作者提出S2ANet网络。该方法首先利用语义特征引导模块提取模态间高层语义共性，同时通过空间对齐模块学习可变形偏移量以补偿几何畸变，从而在特征层面实现跨模态对齐。随后，网络将对齐后的多模态特征进行融合，并输出显著性预测图。论文通过在大规模无人机RGB-T数据集上的对比实验验证有效性，结果表明S2ANet在不依赖预配准的条件下，显著提升了显著目标检测的召回率与定位精度，尤其对边缘模糊和低对比度目标的检测更鲁棒。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。由于缺乏实验细节与数据集描述，无法确认该方法对极端视角变化、不同天气条件或低分辨率热红外图像的泛化能力，也未明确计算复杂度是否满足无人机实时处理需求。</p>
+<p>**值得关注：**  <br>该研究为无人机多模态感知提供了轻量级对齐范式，其“语义+空间”双驱动机制可迁移至其他非配准多源数据（如RGB-深度、RGB-雷达）的融合任务。此外，论文提出的无需显式几何配准的端到端训练思路，对增强具身智能设备在动态环境下的鲁棒感知具有参考价值，有望推进自动驾驶、救援机器人等领域的跨模态场景理解。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">8</div>
+      <div class="paper-body">
+        <h2>第35届阿尔卑斯-亚得里亚海-多瑙河地区机器人国际会议综述（RAAD 2026）</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span></span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>分类</span><span>Mechanisms and Machine Science, Conference Review, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105045254274" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>本文为第35届RAAD国际机器人会议的综述报道。该系列会议长期聚焦阿尔卑斯-亚得里亚海-多瑙河地区的机器人研究，关注机构学与机械科学在机器人系统中的应用。由于原始摘要未提供，无法获知本研究的具体引出背景、现有方法的不足以及所针对的核心问题。摘要中未说明研究背景。</p>
+<p>**研究思路：**  <br>根据论文标题及分类（Conference Review），本文旨在对RAAD 2026会议的学术内容进行归纳总结。但由于摘要缺失，具体的问题动机、方法设计、解决的关键困难、验证方式及主要结论均无法从现有信息中推断。摘要未说明研究思路与主要结论。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>该综述作为区域机器人会议的学术总结，可能梳理了机构设计、控制理论、感知与交互等方向的最新进展。对于关注欧洲机器人研究动态、特别是阿尔卑斯-亚得里亚海-多瑙河地区学术合作的读者，该综述或可提供快速了解前沿热点和合作网络的机会。但摘要缺失，具体可借鉴的方法或趋势无法</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">9</div>
+      <div class="paper-body">
+        <h2>多源地理空间框架评估海岸风险与级联过程：COASTLINE项目</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Capolupo A.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>DOI</span><span>10.1007/978-3-032-30524-4_4</span></li><li><span>分类</span><span>Lecture Notes in Computer Science, Conference Paper, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105044776493" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>海岸带面临日益复杂的自然与人为风险，包括海平面上升、风暴潮、侵蚀等，且这些风险常以级联方式相互作用。现有评估方法多依赖单一数据源或简化过程模型，难以综合多源地理空间数据并捕捉风险间的动态连锁效应。该研究以COASTLINE项目为背景，旨在构建一个整合多源地理空间数据的框架，系统评估海岸风险及其级联过程，以弥补当前方法在空间协同分析与过程耦合方面的不足，为海岸带综合管理提供决策支持。</p>
+<p>**研究思路：**  <br>针对现有多源数据融合与级联风险建模的挑战，论文提出一种地理空间框架，通过集成遥感、现场测量、历史灾害记录等多源数据，并建立风险传递模型来模拟级联过程。该方法可能采用空间分析与概率建模相结合的方式，刻画不同风险因子（如风暴潮引发侵蚀、侵蚀加剧防护设施失效）的连锁响应机制。验证方式在摘要中未明确说明，但预期依托COASTLINE项目案例区域进行应用测试。主要结论应证实该框架能有效提升海岸风险识别的全面性与动态评估能力。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。可能存在的风险包括：框架对输入数据质量与分辨率高度依赖，级联过程模型的简化假设可能与真实物理过程存在偏差，且未提及是否经过实测数据或历史事件验证。此外，不同海岸类型（如沙质、岩石、人工堤岸）的适用性需进一步明确。</p>
+<p>**值得关注：**  <br>该框架为AI/机器人/具身智能在灾害响应与自主决策中提供了可借鉴的思路：多源感知数据融合（如卫星、无人机、地面传感器）与级联过程建模（复杂事件链预测）可直接应用于智能巡检、灾害评估机器人系统。其空间推理逻辑也可迁移至自动驾驶中环境风险链（如暴雨→积水→路面打滑）的预测与规避，推动从单维感知到多维因果推理的跨越。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">10</div>
+      <div class="paper-body">
+        <h2>用于自主海上无人机着陆的深度长期船舶运动预测与异常检测</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Nguyen T.T.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-01-01</span></li><li><span>DOI</span><span>10.1007/978-3-032-29469-2_27</span></li><li><span>分类</span><span>Mechanisms and Machine Science, Conference Paper, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105045216175" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>自主海上无人机在舰艇上安全着陆，需要精确感知并预测船舶的长期运动（如横摇、纵摇、升沉等），以规划合适的着陆时机与轨迹。现有船舶运动预测方法多面向短期预报，在长期（数秒至数十秒）尺度上精度不足，且难以应对海况突变、噪声干扰或传感器故障导致的异常行为。缺乏对预测结果可靠性的评估机制，可能误导着陆决策。该研究旨在结合深度神经网络与异常检测技术，在长期船舶运动预测中同时识别预测误差或数据异常，从而提高自主着陆的安全性与鲁棒性。该工作对于实现高海况下无人系统的自主作业具有重要工程意义。</p>
+<p>**研究思路：**  <br>针对长期船舶运动预测中精度退化与异常干扰并存的问题，作者提出一种融合异常检测的深度学习框架。方法核心可能为：利用循环或时序神经网络（如LSTM/CNN）学习运动历史模式并进行多步外推；同时设计独立的或联合的异常检测模块（如基于重构误差、概率输出或对抗训练）评估实时预测的置信度，当检测到异常时触发告警或转向保守着陆策略。论文通过对比有无异常检测模块的预测误差，验证该方法在模拟或实测数据上的有效性。主要结论应表明：引入异常检测能显著增强长期预测的鲁棒性，降低错误着陆风险（摘要未提供具体数值或对比方法）。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。可能存在的潜在限制包括：验证是否基于真实海上实测数据、是否考虑不同船型与海况的泛化能力、异常检测阈值如何自适应设置、计算实时性是否满足无人机机载处理要求等，均需进一步明确。</p>
+<p>**值得关注：**  <br>该研究将异常检测与长期时序预测耦合，为“预测+可信度评估”提供了解决范式。在自动驾驶、机器人路径规划等需要长时间安全决策的场景中，可借鉴其设计思路：不仅预测状态，同时量化预测可靠性并识别模型不适用情况。此外，海上无人机自主着陆任务设定本身具有工程挑战性，该工作对船舶运动多模态信息融合、边缘计算部署以及人机环协同控制等方向均有启示。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">11</div>
+      <div class="paper-body">
+        <h2>物理感知端到端深度强化学习的四旋翼控制与执行器动力学</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ya-Chia Shen, Woei-Leong Chan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-28T17:05:47Z</span></li><li><span>分类</span><span>cs.RO, cs.LG, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.25985v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.25985v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>四旋翼无人机因欠驱动特性（仅四个控制输入需管理六个自由度），自主控制极具挑战。传统方法常忽略执行器动态和空气动力耦合，导致底层控制不稳定。现有深度强化学习（DRL）研究多在高层次任务上应用，缺乏对物理先验的显式建模。本文旨在通过物理感知的端到端DRL框架，融合执行器动力学与气动耦合，提升低层控制的鲁棒性与可复现性。</p>
+<p>**研究思路：**  <br>作者针对欠驱动悬停与俯仰平移任务，提出将推力与扭矩作为直接动作，在Simulink高保真环境中集成12状态刚体模型、基于Moore-Penrose伪逆的螺旋桨分配以及一阶执行器动力学（含陀螺耦合）。采用指数位置场、姿态惩罚与二次速度代价构成复合奖励，对比DDPG、TD3、PPO、SAC四种算法。实验分两阶段：仅推力悬停与加入俯仰力矩的平移悬停。结果表明SAC和TD3在稳定性与采样效率上最优，PPO样本效率较低，证实执行器滞后与气动力矩建模对稳定控制的关键作用。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。已知实验仅在Simulink仿真环境中完成，缺乏真实四旋翼飞行验证；执行器时间常数固定（0.076 s），未测试参数偏移下的鲁棒性；任务场景限于悬停与简单平移，未涉及复杂轨迹或扰动。</p>
+<p>**值得关注：**  <br>本文提供了可复现的具身控制基准，示范了物理先验（执行器动力学、力矩分配）与端到端DRL的融合。其奖励函数设计思路（指数位置场+姿态惩罚）可推广至其他无人机控制任务。模拟器搭建方法（S-Function+伪逆分配）为后续研究高保真训练环境提供了参考。算法对比结论（SAC/TD3优于PPO）有助于快速选定基线。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">12</div>
+      <div class="paper-body">
+        <h2>复杂环境下多无人机协同导航：系统性多智能体深度强化学习</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Yu Su, Nabil Aouf</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-28T14:16:11Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.25754v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.25754v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>多无人机在复杂环境中的协同导航面临局部最优陷阱、稀疏奖励、智能体间学习不均衡以及跨场景泛化不足等核心挑战。现有方法难以同时应对这些相互耦合的问题，例如传统强化学习在稀疏奖励下容易陷入局部最优，而单纯的演示克隆又难以有效利用团队协作信息。为此，本文提出一个系统性多智能体深度强化学习框架，旨在通过协调探索、演示利用、安全课程调度和结构感知泛化来综合提升导航性能与适应性，对推动无人机集群在真实复杂场景中的自主作业具有重要意义。</p>
+<p>**研究思路：**  <br>针对上述挑战，论文设计了一套多智能体强化学习框架。首先，通过结合访问状态记忆、方向性新颖度估计和惩罚反向传播的感知机制，使智能体能主动检测并逃离局部最优。其次，引入分层协作演示缓冲区，根据团队协作程度对轨迹分级，并对演员网络施加差异监督，以提升稀疏协作信号下的演示利用率。第三，提出安全感知的双条件课程调度机制，在训练中通过回测和经验预填充来回顾已掌握场景，抑制灾难性遗忘并保障飞行安全。为实现泛化，将传感器读数的局部几何特征抽象为域参数，利用结构感知门控网络和混合专家机制使策略条件化于局部结构模式而非场景坐标，从而在不接触目标环境的情况下实现零样本跨场景迁移。在混合静-动态障碍物场景下的仿真验证表明，该方法在协作成功率、导航鲁棒性、零样本泛化和动态环境适应性上均表现优异。</p>
+<p>**局限性：**  <br>摘要未提供关于真实世界无人机实验或物理系统部署的验证，所有结论均基于仿真环境，其对真实传感器噪声、通信延迟和动力学不确定性等物理因素的鲁棒性尚待进一步检验。此外，框架在极端密集障碍物或大规模智能体数量下的可扩展性未在摘要中明确讨论。</p>
+<p>**值得关注：**  <br>论文在多个技术点上有启发：将记忆与新奇度估计结合用于逃逸局部最优的设计思路可推广至其他多智能体任务；层级协作演示缓冲区和差异行为克隆方法为利用稀疏团队演示提供了新范式；安全感知课程调度可迁移至安全关键型机器人学习；而基于局部几何结构特征的条件化策略则为实现跨场景零样本泛化提供了轻量且有效的解法，值得具身智能和机器人导航领域借鉴。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">13</div>
+      <div class="paper-body">
+        <h2>基于共享体素地图的多智能体SAC协同室内无人机导航</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Thomas Hickling, Dylan Wynne, Yu Su, Nabil Aouf</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-28T13:52:12Z</span></li><li><span>分类</span><span>cs.RO, cs.AI, cs.LG</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.25728v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.25728v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>室内GNSS拒止环境下的多无人机协同导航面临空间感知融合与分散控制的矛盾。现有方法如A*规划、人工势场控制及先前引导方法在复杂布局下成功率有限，且难以平衡全局一致性观测与局部自主决策的需求。本文提出一种结合共享体素地图世界模型与多智能体软演员-评论家（MASAC）控制器的框架，旨在通过“世界级集成-自车级行动”设计实现高效、可扩展的协同室内导航，解决多机空间融合与连续控制解耦的关键问题。</p>
+<p>**研究思路：**  <br>针对传统方法在协同导航中的性能瓶颈，作者构建了基于共享体素地图的协同框架：多架无人机将360°激光雷达观测融合至公共世界坐标系占据图，并转换为紧凑鸟瞰图（BEV），为每架智能体提供自车对齐的局部裁剪。该策略在集中训练、分散执行框架下融合BEV地图特征、近场障碍物、目标及同伴状态信息。仿真中，该方法在走廊导航任务达到90.3%成功率，优于A*、人工势场及先前方法。为弥补仿真与真实差距，策略经真实数据离线模仿微调后，在无GNSS室内实验中实现稳定双机协同，验证了共享体素地图作为空间表示的有效性与可扩展性。</p>
+<p>**局限性：**  <br>摘要未提供仿真与真实实验的详细场景数量、障碍物复杂度及鲁棒性测试；真实实验仅验证双机协同，多机（三架以上）扩展性及通信延迟影响未明确说明；离线微调对实际部署中动态障碍物、光照变化等泛化能力需进一步验证。</p>
+<p>**值得关注：**  <br>本文提出的“世界集成-自车行动”设计思路为多无人机协同提供了可复用的空间融合范式，结合BEV与MASAC的混合表示可启发后续具身智能系统在分布式感知下的策略学习。集中训练、分散执行的框架结合离线微调方式，为仿真到真实迁移提供了实用范例，尤其适用于仓库巡检、灾难救援等室内协同任务。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">14</div>
+      <div class="paper-body">
+        <h2>ReLATE: 可靠性引导证据融合的鲁棒跨视角地理定位</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Haochen Jiang, Jialei Pan, Yuzhe Sun, Zhe Dong, Lecheng Ren, Yanfeng Gu, Tianzhu Liu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-28T10:07:18Z</span></li><li><span>分类</span><span>cs.CV, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.25524v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.25524v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机-卫星跨视角地理定位在干净图像上已获高精度，但实际飞行中常受天气、光照、运动模糊、传感器噪声及压缩等退化影响，现有方法的鲁棒性尚未被系统检验。作者指出，主流方法在严重及复合退化下性能显著下降，而缺乏针对性的大规模退化基准则阻碍了鲁棒性评估。为此，论文构建了包含27种退化类型、超1170万张退化图像的UAVSat-Deg基准，并提出ReLATE框架以填补鲁棒性鸿沟，对推动该技术走向实际部署具有重要意义。</p>
+<p>**研究思路：**  <br>针对退化下特征不可靠导致匹配失败的问题，ReLATE提出可靠证据学习框架，通过自适应Token证据调节实现可靠性引导的特征融合。方法首先估计视觉token上的结构平滑可靠性场，聚合局部可信证据并自适应注入查询表示，再与CLS-token和GeM池化分支组合为最终描述符。论文在UAVSat-Deg基准（含两个子集、双向检索及多高度采集）上对比多种方法，结果显示ReLATE在退化测试中取得平均最佳性能，同时保持干净图像上的竞争力。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。可推测：该方法目前仅在模拟退化数据集上验证，未在真实复杂环境（如同时叠加多种退化或动态光照）中测试；可靠性场估计与多分支融合可能引入额外计算开销，实际部署效率待评估；未讨论对不同退化类型泛化能力的差异。</p>
+<p>**值得关注：**  <br>该工作为鲁棒跨视角定位提供了系统退化基准与有效方法，其可靠性场估计与自适应融合思路可借鉴至其他需要抗干扰特征的视觉任务（如机器人自主导航、具身智能中的环境感知）。双向检索（drone-to-satellite与satellite-to-drone）和多高度设定也贴近实际飞行场景，为后续研究提供了更真实的评估范式。代码与数据已公开，便于领域内直接复现与对比。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">15</div>
+      <div class="paper-body">
+        <h2>人在环特征引导的无人机高光谱PFM-1地雷检测</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Sagar Lekhak, Prasanna Reddy Pulakurthi, Emmett J. Ientilucci</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-28T05:46:01Z</span></li><li><span>分类</span><span>cs.CV, eess.IV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.25310v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.25310v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>高光谱成像在材料鉴别中具有潜力，但在实战地雷筛查中，关键在于找到目标前需要审查多少虚警。现有检测方法依赖地面实测光谱或场景内全知像素特征，但在无人机实飞场景中，地面实测特征易受环境变化影响，全知特征又需预先标记所有目标，实际难以获取。因此，如何在不完全信息条件下，通过少量人工审查迭代优化检测器特征，成为提升无人机地雷探测实用性的关键问题。</p>
+<p>**研究思路：**  <br>为解决上述矛盾，论文提出一种模拟“人在环”的特征引导机制：初始使用光谱角映射器（SAM）等无监督检测器生成候选区域，人工审查后利用确认的目标像素更新检测特征，再迭代筛选剩余区域。在无人机可见-近红外高光谱数据上，对比了地面实测SVC光谱、全知核心像素特征和该引导机制，采用ROC曲线下面积、平均精度、目标发现曲线及候选审查次数等指标评估。主要结论是：经全部7个目标区域验证后，引导机制能达到全知特征性能，但不同检测器审查效率差异显著——自适应相干估计器（ACE）仅需2轮、9次候选审查即可确认全部区域，而SAM类检测器需数千次审查。</p>
+<p>**局限性：**  <br>摘要未说明实验数据规模、环境条件（如光照、地形）及地雷埋设状态，也未讨论引导机制对人工审查员错误判断的鲁棒性。此外，方法仅在PFM-1单一地雷类型上验证，对其他型号或伪装目标的泛化能力仍需进一步评估。</p>
+<p>**值得关注：**  <br>该工作提出“目标发现曲线”和“候选审查计数”作为实际部署指标，优于传统仅关注ROC-AUC的评价方式，为遥感检测系统的操作性评估提供了新思路。其“人在环”迭代引导策略可迁移至其他小样本、高虚警的检测任务（如隐蔽目标侦察、工业缺陷筛选），且代码开源便于复现和扩展。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">16</div>
+      <div class="paper-body">
+        <h2>ObliCity：屋顶到地面投影位移校正的基准与基线</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Kai Li, Yupeng Deng, Ligao Deng, Zhihao Xi, Chenhao Wang, Jierui Zhang, Yingrui Ji, Yu Meng, Xiangyu Zhao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-28T02:31:47Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.25210v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.25210v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>倾斜视角城市遥感影像中，建筑屋顶与地面足迹之间存在几何投影位移，导致空间结构显著畸变。现有方法或忽略该变形，或在分割框架内隐式处理，进展主要依赖通用分割技术的提升，而非几何校正的专门改进。本文首次将屋顶-足迹偏移向量（RFOV）提取定义为独立学习任务，将几何对齐与语义分割解耦。引入首个大规模基准数据集ObliCity，整合高分辨率无人机影像与全球卫星数据，覆盖多样城市形态与视角，为显式校正研究奠定基础。</p>
+<p>**研究思路：**  <br>为解决投影位移校正缺乏专用任务与数据集的问题，作者提出将RFOV提取作为独立几何对齐任务。方法上，受人工标注行为启发，将DragOSM改造为DragRoof，基于常微分方程（ODE）模拟将屋顶连续拖向足迹的过程，学习确定性、几何一致的偏移场，并通过端标记自适应确定收敛。在ObliCity数据集上验证，DragRoof在RFOV提取方向与长度精度上达到最优，且所需推理步数更少。结论表明该方案为倾斜遥感投影位移校正建立了原理性基础。</p>
+<p>**局限性：**  <br>摘要未说明模型在极端遮挡、不规则建筑或低质量影像下的表现；实验仅基于ObliCity数据集，对未覆盖的地形或传感器类型的泛化能力未知；方法依赖端标记设计，其鲁棒性及与其他ODE框架的对比未提及。</p>
+<p>**值得关注：**  <br>本文将几何校正从分割中解耦为独立学习任务，为遥感几何处理提供新范式。DragRoof的ODE拖拽思路可启发具身智能中视觉-动作对齐或渲染-真实域适应任务。ObliCity数据集覆盖多源、多视角影像，可作为未来校正与对齐研究的标准化评测基准。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">17</div>
+      <div class="paper-body">
+        <h2>基于最小传感平台的自适应莱维游走涌现式可扩展分散探索</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Wai Lun Leong, Teo Swee Huat Rodney</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-28T01:53:28Z</span></li><li><span>分类</span><span>cs.RO, cs.MA</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.25195v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.25195v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>手掌大小的纳米无人机受限于传感、计算和续航能力，难以实现高效自主探索。现有探索方法通常依赖密集传感或机间通信，不适用于这类资源极度受限的平台。直接采用均匀方向莱维游走等轻量策略，在复杂环境中覆盖效率低、碰撞风险高。因此，如何仅凭稀疏局部感知，实现可扩展的多机探索，成为亟待解决的挑战。</p>
+<p>**研究思路：**  <br>为解决上述问题，论文提出一种轻量级传感驱动莱维游走（SDLW）控制器，适用于50克以下的空中机器人。每台机器人独立从均匀先验中采样莱维指数以多样化步长，并利用方向测距数据，通过冯·米塞斯分布选择偏向开放区域的航向，在保持超扩散特性的同时避免碰撞。该方法计算量恒定，无需通信即可协同探索。在开放竞技场、房间-走廊布局和杂乱场景的仿真中，相比均匀航向基线，覆盖率分别提升79.6%、43.1%和13.6%，碰撞减少13.0%、7.1%和1.4%，验证了其可扩展性与有效性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。实验仅在仿真环境下进行，缺少真实纳米无人机硬件验证；未说明不同环境参数（如障碍物密度、光照条件）对方法性能的影响；也未讨论机器人数目增加时涌现行为的稳定性与收敛性保证。</p>
+<p>**值得关注：**  <br>该工作为极低感知与计算能力的多机器人探索提供了实用框架，其“无通信、轻决策”的设计思路可启发具身智能中资源受限群体的协同策略。SDLW控制器将生物启发的莱维游走与传感器响应结合，方法简洁且可迁移至地面微型机器人或稀疏传感的自动驾驶任务，尤其适合需要快速覆盖的场景。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">18</div>
+      <div class="paper-body">
+        <h2>边缘计算系统功能稳定性的形式化与定量度量</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Oleksii S. Bychkov</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-27T15:23:41Z</span></li><li><span>分类</span><span>cs.AR</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.24895v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.24895v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>边缘计算系统中，组件故障、间歇性回程连接、资源耗尽和对抗性干扰已成为常规运行状态的非罕见事件。传统的可靠性容错模型面向单体系统及二元工作/故障状态，无法刻画资源受限边缘节点上共置服务差异化的质量需求。现有方法忽略了功能层面的降解行为与恢复过程，难以区分不同架构在扰动下的实际表现。因此，亟需一种以功能为分析单位、能度量连续质量退化的形式化框架来评估边缘系统的稳定性。</p>
+<p>**研究思路：**  <br>作者将分析单位从系统转向单个功能，提出功能稳定性的形式化框架。通过连续质量函数和每功能质量阈值定义强稳定与弱稳定形态；引入扰动容忍度、恢复时间、退化深度、可容许退化四个基础参数，以及累积质量、功能可用性、整体稳定性三个聚合指标，并建立九条定理连接形式定义与度量。框架在边缘计算场景实例化，通过无人机群和带云回退的边缘AI推理服务两个分析案例验证。结果表明，所提出的度量能区分经典可用性无法区分的架构选择，并揭示架构排名对扰动类集合选取的敏感性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。案例研究为分析性，缺少真实边缘系统或物理环境下的部署验证；框架的有效性高度依赖扰动类集合的显式选择，不同选择可能改变架构排名结论。</p>
+<p>**值得关注：**  <br>该工作将可靠性的讨论从系统级拓展到功能级，为边缘AI、机器人、无人机等具身智能系统的鲁棒性评价提供了新视角。其连续质量函数、聚合指标的设计思路可迁移至自动驾驶等场景，用于量化感知、规划等子功能在干扰下的退化与恢复过程。对扰动类集合的显式建模有助于设计更鲁棒的资源管理与任务卸载策略。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">19</div>
+      <div class="paper-body">
+        <h2>面向弹性多无人机遥感的分布式协调：光伏巡检案例</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Guillermo GP-Lenza, Miguel Fernandez-Cortizas, Martin Molina, Pascual Campoy</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-27T14:17:48Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.24482v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.24482v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>多无人机协同遥感能大幅缩短任务时间，但实际收益依赖于机群在运行时的实时协调——包括目标分配、平台故障响应及数据质量退化恢复。在光伏巡检这类要求全覆盖与数据可用的任务中，传统集中式地面站协调器成为单点故障：一旦通信链路中断或站点失效，未覆盖区域将产生感知盲区且无法自动填补。现有空中框架往往缺少原生的、不侵入核心的分布式协调机制。本文针对这一需求，提出一套机间通信基础设施，旨在在不修改宿主系统的前提下为现有平台赋予点对点协调能力，从而增强大规模感知任务的任务弹性与自主性。</p>
+<p>**研究思路：**  <br>作者针对集中式协调的单点脆弱性，提出SwarmLink——一种非侵入式对等通信层，可在不修改Aerostack2核心代码的情况下扩展其分布式协调能力。核心思路是将初始目标分配、平台故障恢复和数据质量触发重分配统一为同一个运行时拍卖机制：当任一扰动发生时，系统自动在剩余活跃平台间对未完成目标重新竞拍。论文以光伏电站巡检作为代表性大规模感知案例，在Aerostack2框架上实现该机制。摘要表明，三种典型扰动场景均可归约为同一重拍卖逻辑，且任务执行全程无需地面站介入。验证方式及详尽实验数据在摘要中未具体说明，但作者强调该方法无需对宿主系统做任何改造。</p>
+<p>**局限性：**  <br>摘要中未提供具体实验设置（如仿真环境、实飞测试、故障注入方式）及量化结果（如任务完成率、通信开销、恢复时间等），因此无法判断该方法在真实复杂场景（如通信间歇中断、动态障碍物环境）下的鲁棒性与扩展性。此外，该方法是否适用于除光伏巡检外的其他感知任务（如农业、灾害应急）尚需进一步验证。</p>
+<p>**值得关注：**  <br>本文提出的分布式拍卖机制将多种扰动统一处理，简化了飞行任务管理中的异常响应逻辑，该设计思想值得在其它巡检、搜救等需要弹性协同的任务中借鉴。SwarmLink作为非侵入式通信层，可“零修改”地嵌入现有Aerostack2框架，这种剥离协调逻辑与底层控制的架构思路，为分布式无人机系统的软件复用和快速部署提供了实用范例。未来可探索其与多传感器融合、动态资源匹配等方向的结合。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">20</div>
+      <div class="paper-body">
+        <h2>堆叠智能超表面辅助的无人机通信</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Chandan Kumar Sheemar, Giovanni Iacovelli, Sourabh Solanki, Wali Ullah Khan, Symeon Chatzinotas</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-27T12:51:24Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.24374v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.24374v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机通信对高能效、低复杂度的波束赋形架构需求迫切，传统射频/数字域处理方法在硬件成本和功耗上难以适应空中平台。堆叠智能超表面（SIM）通过多级联超表面层实现可编程波域信号处理，将部分波束赋形功能转移至电磁域，为设计混合波束赋形方案提供了新思路。现有研究尚未系统探索SIM在无人机通信中的联合优化设计，且多用户场景下的和速率最大化问题因非凸性而难以求解。</p>
+<p>**研究思路：**  <br>作者针对多用户下行链路，联合优化数字预编码、SIM相位配置与无人机位置以最大化总速率。为求解该非凸问题，提出交替优化框架，保证目标函数单调改进。数值实验表明，该SIM辅助架构在保持低硬件复杂度的同时显著提升频谱效率，且系统性能受超表面层数与每层尺寸影响。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，例如未说明数值实验是否基于真实信道模型或实际无人机平台，也未讨论波域处理与射频域切换的延迟或能耗权衡。</p>
+<p>**值得关注：**  <br>该工作将SIM引入无人机通信，展现了电磁域可编程处理对混合波束赋形的潜力，其交替优化思路可迁移至其他多变量联合设计问题（如天线选择与波束调度）。对具身智能启发在于：将物理层智能反射表面与移动平台结合，为动态环境下的通信-感知-控制一体化系统提供低功耗架构参考。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">21</div>
+      <div class="paper-body">
+        <h2>基于模型预测规划的无人机非凸空中走廊导航</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Henrique Silva, Marcelo A. Santos, Guilherme V. Raffo</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-27T12:42:38Z</span></li><li><span>分类</span><span>cs.RO, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.24369v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.24369v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着城市低空空域开放，无人机需在复杂非凸形状的空中走廊内安全导航，同时对机动性、避障与路径效率提出高要求。现有运动规划方法常将全局路径规划与局部轨迹跟踪分离，导致在非凸几何下易陷入局部极小值，且难以在单一优化中同时保证走廊可行性与动态一致性。为此，该工作直接针对非凸空中走廊问题，提出一种内嵌最短路径偏移成本的混合整数模型预测控制方案，旨在消除对外部全局规划层的依赖，实现收敛到目标并避免局部极小。</p>
+<p>**研究思路：**  <br>针对非凸走廊内无人机运动规划中约束可行性与目标收敛之间的矛盾，作者将问题构建为一个混合整数跟踪模型预测控制（MPC）框架，在单个优化问题中同时施加走廊几何约束与无人机动态一致性。为缓解非凸几何引起的局部极小，方法引入基于最短路径的偏移成本，并融合可行性约束，使规划器自然朝向目标。通过数值仿真验证，该方法生成满足走廊约束的动态可行轨迹，且无需外部全局规划即可收敛至目标位置。</p>
+<p>**局限性：**  <br>摘要仅报告了数值仿真结果，未提及真实飞行实验或在更复杂动态环境（如多机、移动障碍物）下的测试。实时计算性能、模型误差鲁棒性等关键指标也未说明，因此对实际部署的适用性尚需进一步验证。此外，摘要未提供足够信息判断具体局限性，例如对非凸走廊曲率或尺寸的限制。</p>
+<p>**值得关注：**  <br>该工作将传统MPC扩展至非凸约束空间，并内嵌全局最短路径信息以避免陷入局部极小，为无人机自主导航中规划与控制一体化设计提供了新思路。其混合整数范式可推广至其他需满足复杂几何约束的移动机器人任务，例如狭窄通道穿行或结构化环境中的避障规划。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">22</div>
+      <div class="paper-body">
+        <h2>质量自适应的多无人机三维重建与稀疏工作负载再分配</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Benjamin Sportich, Kenza Boubakri, Olivier Simonin, Alessandro Renzaglia</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-27T10:10:31Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.24233v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.24233v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>未知环境的3D重建是机器人领域的关键应用，但受限于当前空中平台的计算与能量能力。部署多无人机并提供高效可扩展的路径规划策略是常见方案，然而无人机之间的有效在线协调仍是一个重大挑战。现有方法难以在满足用户定义保真度目标的同时实现高效协调和高质量重建。为此，本文提出一种质量自适应分散决策策略，旨在以更高效的方式构建具有可调保真度的3D地图。</p>
+<p>**研究思路：**  <br>为解决多无人机在线协调与重建质量控制的难题，作者提出质量自适应的分散决策方法。该方法将基于TSDF置信度的质量导向准则集成到视点生成和信息增益估计中，生成与期望保真目标一致的视点。同时引入两级协调：局部层面通过视点评价中的惩罚因子鼓励无人机分散，全局层面通过基于正则化聚类和最优任务分配的不平衡校正机制，仅在检测到高信息区域负载失衡时触发。仿真实验表明，该方法相比多无人机探索领域最新技术，在路径效率、覆盖率和精度方面均实现了更高质量的重建。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。实验仅在仿真环境中进行，缺乏真实场景和硬件平台的验证，因此方法的现实适用性和鲁棒性尚需进一步评估。</p>
+<p>**值得关注：**  <br>本文提出的质量自适应机制和两级协调策略为多无人机协同3D重建提供了新思路：用户可自定义保真度目标，系统通过稀疏工作负载再分配平衡全局负载。其开源代码有助于社区复现与扩展。该工作在AI/具身智能领域的规划与感知结合中具有参考价值，尤其适用于资源受限的分布式机器人系统。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">23</div>
+      <div class="paper-body">
+        <h2>IRS辅助低空通信的保密能效优化：基于D3QN-PER的方法</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ya Gao, Peina Zhao, Yiheng Li, Wenchi Cheng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-27T09:05:35Z</span></li><li><span>分类</span><span>cs.IT, cs.IR</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.24183v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.24183v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着低空经济无线通信技术的发展，无人机辅助通信在安全性和能效方面面临严峻挑战。现有研究虽已尝试结合智能反射面提升通信质量，但针对下行链路中保密性与能效的联合优化仍不充分，尤其缺乏高效解决多变量耦合（波束成形、IRS相位、无人机轨迹）的非凸优化框架。传统深度Q网络在轨迹规划中收敛慢且不稳定，难以满足低空动态环境需求。因此，本文构建无人机与IRS协同网络，以最大化保密能效为目标，提出新型强化学习方法。</p>
+<p>**研究思路：**  <br>针对保密能效最大化的非凸分数优化问题，作者首先建立UAV-IRS辅助低空通信的信道模型。采用Dinkelbach方法和等价变换重构目标函数，利用交替优化将三个耦合变量解耦为独立子问题。波束成形和IRS相位优化子问题通过引入松弛变量和半定松弛（SDR）凸化求解；无人机轨迹优化则提出D3QN-PER算法（融合决斗双深度Q网络与优先经验回放），以克服传统DQN的慢收敛与不稳定。数值仿真验证了联合优化方案的有效性，相比现有学习算法，所提算法在保密能效上表现更优。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如仿真场景参数假设、信道模型简化的合理性、D3QN-PER在真实低空环境下的泛化能力、与其他非学习方法（如深度强化学习变体）的对比细节等均未说明。</p>
+<p>**值得关注：**  <br>本文为无人机与IRS协同的保密通信研究提供了方法论参考，尤其是将强化学习用于轨迹优化的思路可推广至其他具身智能任务（如机器人路径规划）；D3QN-PER联合策略解决了多变量耦合优化中的训练不稳定问题，对动态环境中连续决策问题的求解具有借鉴价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">24</div>
+      <div class="paper-body">
+        <h2>城市无人机物流网络飞行走廊与通信基础设施联合规划</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Yingjie He, Yikang Wang, Zhenyu Gao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-27T04:34:23Z</span></li><li><span>分类</span><span>cs.RO, cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23989v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23989v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>城市空中交通（UAM）在密集城区环境中依赖可靠的无线连接，因此必须为无人机飞行走廊精心规划配套通信基础设施。现有工作大多独立优化基站部署与无人机飞行路径，导致不必要的基站投入或飞行绕行。论文针对复杂城市环境下基站部署与无人机飞行走廊的联合优化问题，旨在满足通信质量约束的同时，最小化基础设施投入与飞行距离，为未来智慧城市中低成本、高可靠性的UAM部署提供实用规划视角。</p>
+<p>**研究思路：**  <br>问题动机：现有独立规划方法难以兼顾通信覆盖与飞行效率，需同步优化基站选址与飞行走廊。方法思路：提出信道互惠引导的组合多臂老虎机（CR-CMAB）框架，先利用三维射线追踪构建高保真无线电地图，再通过覆盖感知的CMAB搜索选取基站组合，并借助信道互惠识别有前景的基站位置动态扩展搜索空间，从而联合优化基站部署与飞行走廊。解决问题：在保证通信质量前提下减少基站数量和飞行距离。验证方式：在详细案例研究中与基线方法对比。主要结论：CR-CMAB以适中计算时间获得更优的基站布局和更短的飞行走廊。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。案例研究的规模、城市环境复杂度、是否考虑动态障碍物或多无人机冲突等因素未见说明；方法依赖3D射线追踪的建模精度与计算开销，在真实大规模场景下的可扩展性有待验证。</p>
+<p>**值得关注：**  <br>该工作将通信基础设施规划与机器人路径规划联合建模，为具身智能系统在通信受限环境下的部署提供了新思路。CR-CMAB中的信道互惠引导搜索策略可启发其他资源-路径联合优化问题（如机器人编队中继部署、自动驾驶车辆路侧单元选址）。基于三维射线追踪的无线电地图构建方法有助于提升无人机自主导航的通信感知能力。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">25</div>
+      <div class="paper-body">
+        <h2>多模态无人机智能体安全策略合规决策基准MulRobBench</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Belal S. Alsinglawi, Weizheng Wang, Junyi Wu, Yi Jiang, Lianhai Lin, Merouane Debbah, Izzat Alsmadi</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-26T22:23:43Z</span></li><li><span>分类</span><span>cs.MA, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23870v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23870v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>智慧城市空域中，无人机正从被动感知平台转变为遵循操作规则的网络物理决策者，但常在观测退化、语言模糊的条件下运行。现有无人机与多模态基准主要评估感知、导航、协作和推理能力，鲜有在关键决策中同时考察物理证据、协议约束与行动风险的耦合关系。这种评估缺失导致模型在实际安全敏感场景下的决策可信度难以保证。因此，亟需一个统一框架来衡量多模态无人机智能体在协议约束下的决策合规性与安全性，这正是MulRobBench的出发点。</p>
+<p>**研究思路：**  <br>为解决现有基准忽视决策层安全与协议合规的不足，作者提出了一种离线的、协议条件化的视觉-语言-动作（VLA）基准MulRobBench。该框架融合真实无人机多模态观测、协议级安全策略和动作级网络物理安全，包含3024个样本，覆盖17个任务分类节点、12个评分维度，并划分为操作语境理解、多模态证据仲裁、退化感知推理和风险感知动作规划四个阶段。评估采用语义评分与结构诊断（策略合规、格式合规、不安全动作、解析失败、维度级有效性）相结合的方式。在17个多模态模型上，最佳语义协议决策得分仅为0.5141，严格平均维度准确率仅0.1599；20锚点模态消融实验表明视觉与文本输入均会影响4-15个动作选择，证实了多模态依赖性。结论指出：模态信任选择、约束提取、眩光、缺失数据和操作员简写是决策不稳定的主因。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。可能的不足包括：基准基于离线样本而非在线真实物理环境测试，样本来源和多样性细节未说明；任务分类和评分维度的覆盖面是否能泛化到未包含的无人机操作场景（如复杂动态避障）尚不明确；实验仅在模型输出层面分析，未涉及真实硬件部署中的延迟与执行误差。</p>
+<p>**值得关注：**  <br>MulRobBench首次将协议安全与物理安全耦合纳入决策级评估，为VLA无人机智能体的可信赖性提供了可复现的评测范式。其“四阶段”任务设计和结构化诊断维度（如策略合规、格式合规）可启发后续研究在安全关键领域（如自动驾驶、服务机器人）构建类似的决策可信度基准。此外，模态消融分析揭示了影响决策稳定的具体因素（眩光、缺失数据等），为多模态融合策略的优化提供了直接线索。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">26</div>
+      <div class="paper-body">
+        <h2>电池约束NMPC：高速飞行中的推进力预测与轨迹重规划</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Parakh M. Gupta, Matej Mihulka, Matej Novosad, Robert Penicka, Martin Saska</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-26T22:16:36Z</span></li><li><span>分类</span><span>cs.RO, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23867v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23867v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机在高速、敏捷飞行时，电池放电导致最大可用推力动态下降，严重劣化轨迹跟踪性能。在无人机竞速等任务中，跟踪误差可能引发碰撞并导致任务失败。现有控制器多假设推力恒定或仅作离线补偿，无法在线适应电池电压衰减带来的推力变化，造成高动态场景下控制效果急剧下降。因此，需要一种能实时感知电池状态并主动调整轨迹与控制的方法，以提升高速飞行的安全性与执行能力。</p>
+<p>**研究思路：**  <br>针对电池放电引起推力衰减的问题，论文将电池与推进系统模型集成到非线性模型预测控制（NMPC）框架中，实时预测平台电压、电流、功率和最大可用推力，使控制器能动态考虑推力上限的变化。进一步，在飞行中根据实时推力极限实施轨迹重规划。模型精度通过真实飞行实验验证，重规划算法在仿真中评估。结果表明，与未补偿方法相比，所提方法在障碍环境中实现了无碰撞飞行，跟踪均方根误差降低6倍，飞行距离增加46%，飞行时间增加100%。</p>
+<p>**局限性：**  <br>摘要未说明系统在真实高速竞速场景中的完整端到端实验验证，重规划算法仅通过仿真评估，真实飞行中计算实时性与延迟对高速任务的影响尚不明确。此外，电池模型对老化、温度等因素的鲁棒性未提及，适用场景可能受限于特定型号无人机与电池。</p>
+<p>**值得关注：**  <br>该工作将电池-推进系统物理模型引入NMPC控制与轨迹规划，为能量受限自主系统的在线自适应控制提供了新思路。其“感知-预测-重规划”框架可推广至其他受能量动态影响的机器人平台（如电动垂直起降飞行器、水下机器人），并启发后续研究在真实高速环境中验证计算实时性与模型泛化能力。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">27</div>
+      <div class="paper-body">
+        <h2>超越外观：空地移动平台行人关联与跟踪的多线索框架与大规模基准</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ruiqi Wu, Bingliang Jiao, Ruize Han, Hangzheng Yu, Xunkai Jiang, Shining Wang, Yuanqi Hu, Wenxuan Wang, Peng Wang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-26T19:06:04Z</span></li><li><span>分类</span><span>cs.CV, cs.MM</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23803v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23803v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>多视角多目标关联与跟踪（MvMoAT）旨在跨相机视角关联目标并持续跟踪，以支持多平台协同感知中的身份持久化与轨迹重建。然而，与常规多目标跟踪不同，MvMoAT面临频繁的视角切换，导致外观特征严重失真，削弱了跨视角关联与时间跟踪的可靠性。现有方法在应对视角变化带来的外观歧义性上仍有不足，亟需一种能融合视角不变线索的鲁棒方案以及大规模、高视角多样性的评测基准。为此，本文提出FUSION框架与RealMvMoAT数据集，旨在系统解决视角鲁棒的跨平台行人关联与跟踪问题。</p>
+<p>**研究思路：**  <br>针对视角变化破坏外观一致性的核心困难，作者提出了FUSION框架。其Multi-cue Adaptive Combination（MAC）模块自适应地将视角不变线索（如运动、位置）与外观特征融合，提升跨视角关联鲁棒性；Online Multi-view Feature Synchronization（OMFS）模块则聚合历史与跨视角帧的行人特征，实现时间一致跟踪。为支撑研究，作者构建了大规模基准RealMvMoAT，包含7个移动相机（5个无人机、2个地面视角）在10个场景中共504.9K帧、超过730万个身份标注边框，所有相机均随机大幅运动。在RealMvMoAT与6个公开基准上的实验表明，FUSION达到了当前最优性能。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如模型对极端光照、遮挡或密集人群的泛化能力，以及计算效率是否适用于实时移动平台部署等方面尚需进一步验证。</p>
+<p>**值得关注：**  <br>本研究在方法上提出了灵活整合多种线索的框架，对移动机器人/无人机群在动态环境中的多目标协同感知具有直接借鉴意义；其构建的RealMvMoAT基准为后续研究提供了大规模、真实视角变化的评价平台，可推动行人跟踪、身份重识别与多平台融合等方向的发展。此外，“在线多视角特征同步”的思路可启发具身智能系统中跨时间/空间的记忆与关联机制设计。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">28</div>
+      <div class="paper-body">
+        <h2>基于无人机与能量收集及唤醒无线电的物联网网络分析</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Anthony Khairallah, Nour Kouzayha, Tareq Y. Al-Naffouri, Hadi Sarieddeen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-26T16:52:33Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23750v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23750v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着物联网设备大规模部署，能源供给与通信唤醒机制成为制约其可持续运行的关键瓶颈。传统物联网设备常依赖电池供电且需周期性监听信道，导致能耗居高不下。近年来，无人机辅助物联网因其灵活覆盖与按需通信能力受到关注，但多数现有方案未同时解决设备能量自持与触发唤醒的协同问题。本文针对这一现状，提出集成唤醒无线电（WuR）与射频能量收集的无人机-物联网架构，旨在通过无人机发射的射频信号同时完成设备激活与能量补给，以突破能耗与通信可靠性的权衡限制。</p>
+<p>**研究思路：**  <br>论文动机在于利用无人机既作为通信中继又作为能量源，简化物联网设备的唤醒与供能流程。方法上，将物联网设备的电池电量和运行状态（休眠/唤醒）建模为离散时间马尔可夫链，以刻画能量收集与消耗的随机演化。结合随机几何与马尔可夫链分析，建立系统性能评估的数学框架。摘要揭示传输频率与能耗之间存在权衡，并指出调节系统参数（如无人机密度）可显著提升能效与传输可靠性。验证方式依赖理论分析框架（摘要未说明具体仿真或实验），主要结论强调通过参数调优可实现能耗与可靠性的协同优化。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。论文基于理论建模（随机几何与马尔可夫链），未提及实际无人机飞行轨迹、信道动态或硬件实现的验证，因此模型假设（如理想能量转换效率、完全随机部署）的实际适用性有待进一步评估。此外，摘要未说明多用户干扰、无人机机载能量约束等实际部署中的关键因素是否被纳入分析。</p>
+<p>**值得关注：**  <br>该论文为无人机辅助物联网的能源-通信协同设计提供了分析框架，特别是将唤醒无线电与能量收集结合，对具身智能系统中能量受限的传感节点设计具有借鉴意义。其使用的马尔可夫链与随机几何混合建模方法可用于评估类似动态能量供给场景下的系统性能，为后续研究无人机调度策略、能量分配协议以及多无人机协同参数优化提供了理论基础。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">29</div>
+      <div class="paper-body">
+        <h2>TRUAV：分布式多智能体强化学习实现无人机辅助VANET轨迹与路由增强</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Muhammad Umar Farooq Qaisar, Lin Zhang, Zhen Chen, Wajdy Othman, Shehzad Ashraf Chaudhry, Chang Liu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-26T16:06:08Z</span></li><li><span>分类</span><span>cs.NI, cs.LG</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23734v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23734v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机作为物联网关键延伸节点，可在智慧城市中为动态车载自组网（VANET）提供灵活空中中继。然而，传统集中式无人机轨迹规划需要持续聚合全局网络状态，在密集城区带宽与能量受限场景下难以实际部署。现有方法因依赖全局信息交换，无法同时满足覆盖、延迟与能效需求。论文针对此问题，提出无需全局状态的分布式多智能体解决方案TRUAV，旨在实现无人机轨迹与路由的联合优化。</p>
+<p>**研究思路：**  <br>问题动机在于消除集中式方法对全局网络的依赖。方法上，TRUAV基于独立表格Q学习，每架无人机仅利用本地可观测信息（车辆密度、队列状态、邻居无人机位置）进行决策，引入势博弈启发奖励设计以促进空间分集和路由感知，同时考虑能耗约束。仿真在200辆移动车辆的大城市区域进行，验证结果表明：TRUAV实现了与集中式深度强化学习方法相当的网络覆盖和分组投递率，同时改善了中继延迟和能效。结论确认了分布式轻量级框架在资源受限场景下的有效性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。仿真仅针对200辆车辆的大城市区域，未说明小规模或极端密度场景表现；基于独立表格Q学习，状态空间随无人机数量增加可能面临可扩展性挑战；缺乏真实无人机硬件环境验证。</p>
+<p>**值得关注：**  <br>本文为无人机辅助物联网路由问题提供了分布式、轻量级的强化学习范式，其“局部观测+势博弈奖励”设计避免了集中式通信瓶颈，可迁移至多机器人协同覆盖、自动驾驶车联网等任务。表格Q学习的低计算开销适合边缘设备部署，启示在资源受限的具身智能系统中简化学习架构的思路。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">30</div>
+      <div class="paper-body">
+        <h2>基于ISAC的按需无人机充电用于无线可充电传感器网络</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Muhammad Umar Farooq Qaisar, Lin Zhang, Paolo Bellavista, Shehzad Ashraf Chaudhry, Shamsher Ullah, Chang Liu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-26T09:51:16Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23572v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23572v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>配备无线能量传输的无人机可延长无线可充电传感器网络寿命，但现有充电调度方法未充分考虑节点紧急性和无人机移动不确定性，导致充电延迟高、能效低。该论文提出一种基于集成感知与通信的按需无人机充电框架，通过中央基站协调调度与轨迹协同，旨在解决动态环境下充电队列排序与路径规划的耦合问题，提升能源利用效率和充电实时性。</p>
+<p>**研究思路：**  <br>针对无线传感器网络中无人机充电调度与轨迹规划因移动不确定性而难以高效协同的问题，论文提出ISAC框架：中央基站维护一个优先充电队列，综合考虑节点剩余能量、流量负载、估算飞行时间和飞行方向对齐度，以量化紧急性和服务成本；调度决策动态影响无人机轨迹，同时ISAC实时更新的距离、速度、位置估计又反过来动态重排序队列，形成双向耦合。采用时间分配的部分充电策略，根据节点关键性分配有限悬停时间。通过仿真与代表性基线对比，验证了该方法在能量利用效率、飞行距离和充电延迟方面的提升。</p>
+<p>**局限性：**  <br>摘要中未说明仿真具体参数、比较的基线种类及数量，也未提供真实环境实验或硬件平台验证；文中讨论了计算开销和可扩展性，但未量化实际部署时的复杂度边界；参数选择（如权重、时间分配策略）对不同场景的敏感性缺乏深入分析，需进一步通过多种IoT场景测试验证鲁棒性。</p>
+<p>**值得关注：**  <br>该方法将ISAC同时用于感知和通信，实现了充电调度与轨迹优化的动态协同，为具身智能中资源受限移动机器人的能量管理提供了新思路。其部分充电策略和基于双向耦合的优先队列设计，可借鉴至多机器人任务分配、自主充电站部署等场景，特别是需要在不确定性下实时优化资源分配的问题。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">31</div>
+      <div class="paper-body">
+        <h2>基于ESP32-S3的DIY无人机飞控、遥测与视频流嵌入式固件开发</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ad-Deen Mahbub, Indroneel Roy, Mohammad Kamruzzaman Khan Prince</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-25T14:18:06Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23220v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23220v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着低成本无人机在科研与DIY领域的普及，如何在资源严格受限的微控制器上同时实现实时飞行控制、遥测通信与视频流传输成为关键挑战。现有方案往往需要更高性能的处理器或分离式硬件架构，增加了成本与开发复杂度。ESP32-S3虽集成双核CPU，但其内存有限、浮点性能较弱，且多任务间延迟干扰问题突出，传统单核调度或裸机编程难以满足400Hz控制环与25FPS视频流同时运行的实时性与抖动要求。本文旨在设计一种专用固件架构，在ESP32-S3上高效分配任务，平衡控制、通信与视频负载，为低成本DIY无人机研究提供可复用的解决方案。</p>
+<p>**研究思路：**  <br>为解决ESP32-S3资源有限且多任务干扰严重的问题，作者提出一种基于双核精细分工的固件架构。核心思路是将飞行控制（Core1，400Hz控制环）与遥测/视频流（Core2，50Hz遥测编码+25FPS VGA UDP流）完全分离，通过零拷贝缓冲区与互斥保护实现核间通信，避免延迟相互影响。控制环采用Madgwick滤波器进行传感器融合，并设计混合定点PID控制器（含选择性导数缩放与前馈制动）以适配低浮点性能。实验验证表明，该架构能实现精确的飞行稳定与可靠的遥测支持，证实ESP32-S3足以胜任低成本DIY无人机的研究与定制。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如未说明实验是在仿真环境还是真实飞行平台上进行，未给出与现有主流方案（如Pixhawk）的性能对比数据，也未提及在复杂动态环境或长距离飞行中视频流与遥测的丢包率及控制鲁棒性。此外，该固件对特定硬件（ESP32-S3）的依赖性较强，移植到其他微控制器可能需要调整调度与优化策略。</p>
+<p>**值得关注：**  <br>本文为嵌入式系统与无人机交叉研究提供了可复用的双核任务调度模式，尤其是零拷贝通信与RTOS-inspired静态调度的设计思路，对同类资源受限平台上的多模态实时处理（如同时运行SLAM、控制与通信）具有借鉴价值。其混合定点PID控制器在低浮点性能处理器上的优化策略，也可推广至其他低成本机器人控制场景，有望降低AI与自主系统研究的硬件门槛。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">32</div>
+      <div class="paper-body">
+        <h2>可移动天线辅助无人机移动边缘计算系统能耗最小化</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jiang Chen, Chunjie Wang, Xuhui Zhang, Yanyan Shen, Kejiang Ye, Chengzhong Xu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-25T14:04:58Z</span></li><li><span>分类</span><span>cs.IT, eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23214v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23214v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>随着延迟敏感型应用的指数级增长，移动边缘计算成为关键范式，但其高能耗问题亟待解决。现有无人机边缘计算系统通常采用固定天线，限制了信道增益和能效优化空间。本文提出将可移动天线阵列集成至无人机边缘服务器，通过灵活调整天线位置以改善通信质量，从而降低系统整体能耗，为绿色无人机MEC系统设计提供了新思路。</p>
+<p>**研究思路：**  <br>针对无人机MEC系统中地面消费电子设备卸载任务的总能耗最小化问题，作者联合优化计算资源分配、用户发射功率、接收波束赋形及可移动天线位置。由于该问题非凸且变量高度耦合，设计了一种基于块坐标下降法的鲁棒交替优化算法，将原问题迭代分解为三个子问题：发射功率与波束赋形子问题利用二次变换技术求解，天线位置子问题采用粒子群优化算法处理。仿真结果表明，所提方案相比常规基准方法实现了显著能耗节省。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如未说明仿真场景参数设置（如用户数量、任务模型）、未与真实无人机测试平台对比、也未讨论可移动天线机械调整的时延与可靠性代价。此外，所采用的粒子群优化算法可能面临局部最优问题，且算法复杂度未提及。</p>
+<p>**值得关注：**  <br>本文创新性地将可移动天线技术引入无人机MEC系统，为资源受限的边缘计算架构提供了低能耗新方案。其交替优化框架可启发其他通信-计算联合优化问题（如自动驾驶中的车联网边缘计算）；粒子群算法与二次变换的混合优化思路也可用于多变量耦合的具身智能系统（如机器人多关节协同定位）。同时，该研究凸显了动态调整天线位置对提升信道容量的潜力，未来可延伸至毫米波或太赫兹通信场景。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">33</div>
+      <div class="paper-body">
+        <h2>反事实运动可靠性学习实现鲁棒无人机跟踪</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Yuehai Chen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-25T14:01:25Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23209v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23209v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>红外无人机跟踪因目标小、对比度低、易与热干扰或杂乱背景混淆而颇具挑战。近年来，基于Transformer的跟踪器通过学习强外观表征取得了优异性能，但当目标外观弱化或模糊时，其响应仍易被背景结构主导。引入时序运动线索是自然思路，但在红外场景中，相机抖动、动态背景、传感器噪声及目标消失等可能产生比真实目标运动更强的时序变化，导致运动线索不可靠。因此，核心问题并非如何使用运动，而是如何区分目标一致运动与背景诱导的伪运动。本研究正是为解决这一区分难题而提出反事实运动可靠性学习，对提升红外无人机跟踪的鲁棒性具有重要意义。</p>
+<p>**研究思路：**  <br>作者针对运动线索不可靠的困境，提出CMRTrack反事实运动可靠性学习框架。首先利用轻量运动证据编码器从相邻搜索区域提取时序证据；训练时引入反事实目标擦除历史分支，构建硬运动参考，迫使运动编码器学习可靠的目标一致运动而非任意时序变化。学习到的运动证据通过运动引导令牌调制和可靠性感知分数融合集成到单流跟踪框架中，实现自适应特征增强与响应精炼。在Anti-UAV410数据集上的实验表明，CMRTrack持续优于代表性先进跟踪器，并显著提升OSTrack基线；消融研究与定性分析验证了反事实运动可靠性学习的有效性。</p>
+<p>**局限性：**  <br>摘要中仅报告在单一数据集Anti-UAV410上的实验，未说明在更多场景（如不同气候、飞行高度、传感器型号）下的泛化能力；未提及真实无人机部署环境下的实测结果；反事实目标擦除分支的构造方式可能依赖已知目标标注，对无监督或在线学习场景的适应性未讨论；计算开销与实时性也未在摘要中给出。</p>
+<p>**值得关注：**  <br>该工作提出的反事实学习机制为解决视觉跟踪中“运动线索不可靠”这一通用难题提供了新范式，可启发其他需要区分目标运动与背景干扰的任务（如行人重识别、自动驾驶动态障碍物跟踪）。运动引导令牌调制与可靠性融合的设计思路，有望迁移至具身智能中机器人视觉伺服或实时感知系统，提升在抖动、遮挡等恶劣条件下的鲁棒性。同时，该框架对弱小目标跟踪的强化思路，对军事侦察、安防监控等低对比度场景有实际应用价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">34</div>
+      <div class="paper-body">
+        <h2>垂直捏合天线系统(V-PAS)辅助无人机通信</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Tao Wang, Kunrui Cao, Yayun Qu, Lu Lv, Xianfu Lei, Dimitrios Tyrovolas, Panagiotis D. Diamantoulakis</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-25T12:44:56Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23184v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23184v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>现有水平捏合天线系统(PAS)主要面向地面用户，仅提供二维(2D)覆盖，无法满足超低空无人机通信对稳定、三维(3D)空域链路的迫切需求。本文针对这一局限，提出在城市建筑立面沿高度方向连续部署介质波导以构建垂直捏合天线系统(V-PAS)，将PAS的覆盖能力从2D平面扩展至3D空域，旨在为超低空无人机提供稳健的视距链路。该研究填补了PAS在垂直方向应用的空白，对推动楼宇环境无人机通信的实际部署具有重要理论参考价值。</p>
+<p>**研究思路：**  <br>为突破水平PAS仅支持地面用户的二维覆盖瓶颈，作者提出沿建筑全高连续铺设介质波导，构成V-PAS架构，从而将覆盖范围垂直扩展至空中，确保无人机与接入点(AP)间稳定LoS。论文定义了“捏合乘法路径损耗”(PMPL)以刻画波导与自由空间级联衰减特性，发现PMPL对垂直距离不敏感，使V-PAS能灵活适应不同建筑高度。通过推导有损波导下中断概率和遍历速率的精确及渐近闭式解，证明了系统性能关于AP高度中点对称且最优。仿真对比表明：在绝大多数超低空场景中V-PAS优于无PA基准；仅在极高发送功率和大无人机操作区域时，有损波导V-PAS的中断概率可能略差，但遍历速率仍保持优势；无损波导V-PAS则始终优于基准，代表V-PAS的理论性能上界。</p>
+<p>**局限性：**  <br>摘要未提供具体实验环境或真实系统部署验证，主要结论基于理论建模与闭式推导，波导损耗参数、建筑几何偏差等实际因素对性能的影响尚需进一步实验确认。此外，当前分析假设理想化波导沿建筑全高连续部署，实际工程安装误差及维护成本未予考虑。</p>
+<p>**值得关注：**  <br>V-PAS创新地将天线设计从水平扩展转向垂直维度，为超低空无人机通信提供了一种可沿建筑立面部署的低成本解决方案。其提出的PMPL概念和对垂直距离不敏感的特性，可推广至机器人集群、具身智能协同等需要稳定3D通信的应用场景。此外，系统性能关于AP高度中点的对称性与最优性结论，对后续网络规划中的AP位置优化具有直接借鉴意义。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">35</div>
+      <div class="paper-body">
+        <h2>高光谱-多光谱图像融合在树莓派上的优化嵌入式实现</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Salah Eddine Brezini, Okba Bekhelifi, Oussama Mezouar, Chams Eddine Choucha, Sarra Boukhacheba, Fethi Abdelatif Dali</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-25T10:36:14Z</span></li><li><span>分类</span><span>eess.IV, cs.PF</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23136v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23136v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>高光谱遥感图像凭借其高光谱分辨率在场景物质信息提取中具有独特优势，但其庞大的数据量导致计算负载极高，难以实现实时处理。近期有研究尝试在树莓派上运行高光谱超分辨率算法（HSB-SV），但执行时间过长，无法满足嵌入式或边缘计算场景的实时需求。为此，本文旨在通过计算优化技术大幅降低该算法在低功耗嵌入式平台上的计算时间，同时保持融合质量，从而为无人机等边缘设备上的高光谱遥感应用提供可行方案。</p>
+<p>**研究思路：**  <br>为解决HSB-SV算法在树莓派上计算时间过高的问题，作者将最密集的计算操作迁移至PyTorch及ONNX Runtime、ExecuTorch（XNNPACK后端）等边缘推理框架进行加速，并在树莓派5上部署优化后的实现。实验结果表明，优化后总执行时间从527.1 ms降至356.7 ms（减少32.3%），实现了1.48倍的整体加速，且融合质量完全保持。结论是该方法更适合嵌入式与边缘计算场景，尤其适用于无人机高光谱遥感。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如未说明是否在真实无人机平台上进行了实际飞行测试，也未提及数据集规模、融合质量评价指标以及不同优化方法的对比分析。此外，实验仅在树莓派5上进行，对其他边缘平台的适配性有待验证。</p>
+<p>**值得关注：**  <br>本文展示了利用ONNX Runtime和ExecuTorch等轻量推理框架对遥感图像处理算法进行嵌入式优化的可行路径，其思路可迁移至其他高光谱或多光谱融合任务，为实时、低功耗的机载或星载智能处理提供参考。该工作对无人系统、边缘AI等领域的算法部署具有直接启发意义。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">36</div>
+      <div class="paper-body">
+        <h2>电磁神经网络用于到达角估计</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Shining Lin, Jiancheng An, Lu Gan, Victor C. M. Leung, Mehdi Bennis, Mérouane Debbah, Tie Jun Cui</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-25T03:39:49Z</span></li><li><span>分类</span><span>cs.IT, eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23021v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23021v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机通信系统中的波束赋形要求精确且实时的到达角（DOA）估计。然而，现有高精度DOA算法在机载信号处理资源受限的条件下计算复杂度极高，难以满足实时性需求。为此，研究者提出了一种电磁神经网络（EMNN），仅依靠幅度观测即可生成入射信号的角谱，旨在以极低的能量消耗和超快速度实现DOA估计，降低对机载硬件的算力要求，同时保持高精度。</p>
+<p>**研究思路：**  <br>针对现有算法计算复杂度过高的问题，论文设计了两组件构成的EMNN：无人机上搭载的堆叠智能超表面（SIM）作为人工神经元在电磁域处理信号，并通过级联全连接层增强非线性提取能力；进一步提出层次化DOA估计框架，分粗估和精估两阶段降低计算复杂度和观测快照需求。训练阶段使用随机生成的训练样本及其对应频谱。仿真验证表明，在双信号场景下，EMNN相比传统波束成形（CBF）方法在分类误差上降低约13 dB，且成本和射频功耗更低。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。例如，实验仅在仿真环境中进行，未涉及真实无人机飞行场景、多源干扰或复杂电磁环境；层次化框架在极端信噪比或密集信号源下的性能尚不明确；此外，SIM硬件的实际部署误差和功耗优势的真实量化也未给出。</p>
+<p>**值得关注：**  <br>该工作将超表面（SIM）与神经网络深度结合，在电磁域直接完成部分运算，为低功耗、实时智能感知提供了新范式。其“域内计算+轻量级后处理”的思路可启发自动驾驶、具身智能中传感器融合与实时信号处理的硬件-算法协同设计，尤其适合资源受限的移动平台。层次化粗精估计策略也值得借鉴，以平衡精度与计算开销。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">37</div>
+      <div class="paper-body">
+        <h2>面向带宽受限或非地面网络及低功耗设备的实用后量子密码学</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Elliot Eichen, Sylvia Llosa, Yueqi Chen, Sangtae Ha</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-25T02:51:15Z</span></li><li><span>分类</span><span>cs.CR</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23007v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23007v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>后量子密码认证算法复杂度高于经典算法，证书、签名和密钥体积显著增大，在高延迟、间歇连接、链路预算紧张的非地面网络（NTN）以及带宽或能量受限的物联网设备和地面网络中，会严重消耗带宽、内存、计算时间和电能，导致握手可靠性下降，甚至无法支持NIST安全类别2以上。当前基于数字证书的PQ认证方案在这些场景下难以满足实用要求，亟需更轻量的替代方案。</p>
+<p>**研究思路：**  <br>针对证书型PQ认证在受限场景下的开销问题，论文提出以共享秘密密钥（SSK）取代PQ数字证书的密码框架。该框架利用5G/6G等共享秘密生态，结合密钥分发中心（如Kerberos）与预共享密钥PQ握手（如DTLS-PSK）及临时PQ密钥建立（如ML-KEM），避免非对称密钥分发。与基于证书的PQ认证（如ML-DSA）相比，该方案在保持PQ安全AEAD（含前向保密与重放抵抗）的同时，降低握手带宽、终端内存、计算时间和能耗。摘要通过对NTN密钥管理、无人机控制、医疗传感器等应用场景的分析，验证了其优势。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性，例如缺乏真实NTN或低功耗设备上的性能量化测试数据、未明确SSK分发过程的安全性假设是否在实际部署中成立、也未讨论框架对现有协议栈的适配难度。</p>
+<p>**值得关注：**  <br>该研究为资源受限的具身智能设备（如无人机、嵌入式传感器）提供了实用的后量子安全通信思路。其“KDC+预共享密钥”的轻量级认证架构可启发机器人系统中设备间快速、低能耗的安全握手设计，尤其适用于卫星-地面链路或边缘计算场景下的密钥轮换与命令控制，有助于推动后量子密码在AIoT领域的工程落地。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">38</div>
+      <div class="paper-body">
+        <h2>目标挂载IRS辅助通感一体化系统的移动跟踪</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ziheng Zhang, Wen Chen, Qingqing Wu, Zhendong Li, Qiong Wu, Ming-Min Zhao, Wei Feng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-25T02:47:44Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.23005v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.23005v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>低空经济中无人机实时跟踪面临链路遮挡与雷达散射截面弱等挑战，传统固定部署方案难以在复杂机动轨迹下同时实现高精度感知与可靠通信。现有通感一体化系统多依赖静态或半静态智能反射面，缺乏针对移动目标自身协同跟踪的能力。本文提出将IRS挂载于无人机上，构建移动协作目标，使其既能提供可控视距回波用于自跟踪，又能作为移动中继增强地面通信，旨在解决低空场景下感知-通信联合优化的实时性与精度瓶颈。</p>
+<p>**研究思路：**  <br>针对无人机机动跟踪的实时性与精度需求，作者首先建立三维状态演化模型描述机动无人机运动；基于此模型，采用扩展卡尔曼滤波实现实时跟踪。为刻画递归估计的理论极限，推导了后验克拉美罗界的解析表达式，并给出了感知精度与通信吞吐量之间的椭圆折衷性能界闭式解。为满足毫秒级响应要求，利用跟踪与通信需求的解析映射，提出低复杂度联合波束成形方案，直接导出闭式波束矢量，规避传统数值迭代的高时延。数值仿真表明，该方法在复杂机动轨迹下相比固定部署基准实现厘米级跟踪精度，并显著降低发射功率与处理延迟。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。该研究基于仿真验证，缺乏真实硬件与实验环境测试；所建三维状态演化模型对机动模式的假设是否覆盖全部实际场景、能否适应多无人机协同或强干扰环境，尚待进一步验证。</p>
+<p>**值得关注：**  <br>本文创新性地将IRS集成至移动目标本身，赋予无人机主动协同跟踪与通信中继双重能力，为低空经济中通感一体化系统设计提供了新范式。其闭式波束成形方案对具身智能中高实时性任务（如无人机编队、自主导航）具有直接借鉴价值。此外，解析的性能折衷界限可指导后续多目标跟踪或动态资源分配算法的理论分析。</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
