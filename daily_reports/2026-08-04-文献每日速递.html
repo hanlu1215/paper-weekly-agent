@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-08-04-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-08-04-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-08-04<br>存档文件：2026-08-04-文献每日速递.html</p>
+      <p class="count">今日新增 3 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>Homotopy-Aware Corridor Generation without Predefined Reference Paths</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Haoze Dong, Minghan Li, Meng Guo, Zhongkui Li</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-31T15:15:04Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.29513v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.29513v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Generating safe corridors is essential for collision-free robotic motion planning, yet most existing methods rely on predefined reference paths, which bias corridor geometry and implicitly limit the homotopy classes that can be explored. We propose a reference-path-free corridor generation framework on graphs of convex sets (GCS) that constructs corridors directly as sequences of convex sets, allowing corridor structure to emerge from the free-space representation rather than from a guiding path. To reason about similarity among corridors, we extend visibility-based deformation from paths to convex-set sequences, enabling the fusion of topologically redundant corridors while preserving distinct alternatives. To overcome the limited adaptability of existing GCS methods based on static global decompositions, we further develop an adaptive multi-scale GCS, in which a sampling-based fine-scale graph supports localized updates and a visibility-based coarse-scale graph enables compact global exploration. The two levels maintain topological consistency, allowing incremental updates without full graph reconstruction under environmental uncertainty. Numerical experiments characterize GCS construction, corridor generation, homotopy-aware exploration, and local updates, showing efficient graph construction, stable trajectory-level performance, and shorter-duration homotopy-aware trajectories than existing baselines. Hardware experiments on ground and aerial robots, including deployment with onboard localization, further validate the framework under translated and previously unknown obstacles.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>SULAND v2: A Refined RGB Dataset and Deep Learning Object Detection Benchmark for UAV/UGV-Based SUrface LANDmine Detection Under Domain Shift</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Sagar Lekhak, Prasanna Reddy Pulakurthi, Lalit Joshi, Ramesh Bhatta, Emmett J. Ientilucci</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-31T03:51:17Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.28996v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.28996v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>RGB imagery offers a practical, low-cost option for Unmanned Aerial/Ground Vehicle (UAV/UGV) survey support in surface-landmine detection, but object detectors remain underexplored in this safety-critical domain. Limited cross-architecture benchmarking and insufficient out-of-distribution (OOD) analysis obscure whether detectors generalize across deployment conditions. This challenge is amplified by the scarcity of public RGB landmine datasets, making SULAND a key benchmark for PFM-1 and PMA-2 detection. However, inspection reveals missing/false annotations, localization errors, inconsistent visibility criteria, visual artifacts, temporal labeling inconsistencies, and an inverted OOD class-ID convention in SULAND. We present SULAND_v2, a refined RGB surface-landmine dataset and benchmark. Preserving original images and splits, we manually revise annotations to ensure completeness, precise localization, label validity, and class consistency. SULAND_v2 contains 33,771 images and 12,433 bounding boxes. We benchmark 35 detector configurations across nine families. Annotation refinement improves YOLOv8 in-distribution (IID) test mAP@50 by 14.6-19.6 percentage points, while fixing the OOD class-ID convention increases mean YOLOv8 OOD mAP@50 by ~25 percentage points. On SULAND_v2, YOLOv12-Small achieves the highest IID mAP@50 (0.908), while RF-DETR-Large yields the strongest OOD performance (0.799 mAP@50, 0.675 recall). Our results demonstrate that high IID accuracy does not guarantee operational readiness. SULAND_v2 provides a reliable benchmark for evaluating domain-shift robustness in RGB-based mine-action survey support.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>基于STL-GO的多智能体规划：时空与拓扑约束</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Sheryl Paul, Vidisha Kudalkar, Anand Balakrishnan, Lars Lindemann, Alberto Speranzon, Jyotirmoy V. Deshmukh</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-07-29T16:12:58Z</span></li><li><span>分类</span><span>cs.AI, cs.MA</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2607.28679v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2607.28679v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>多智能体规划在灭火、工厂巡检等场景中面临双重挑战：任务需满足时空约束，即智能体在特定时间与位置执行动作，同时需遵守拓扑约束，即智能体间的感知、通信与任务关系。现有基于时空逻辑的形式化框架虽能描述这些需求，但在处理多智能体及动态变化的图拓扑时存在表达能力或求解效率不足的问题。本文聚焦STL-GO这一支持图算子的时空逻辑，核心解决其约束下的多智能体路径规划难题，该问题因需编码多个随时间变化的图结构而尤为困难。</p>
+<p>**研究思路：**  <br>作者针对STL-GO约束下的多智能体路径规划问题，提出基于混合整数规划（MIP）和可满足性模理论（SMT）的两种编码方案，并证明其可靠性。为便于实际应用，设计了统一接口来指定智能体约束、图拓扑和STL-GO规范，实现两种方法的无缝切换与直接对比。通过多无人机搜索救援基准测试，控制队伍规模和图复杂度进行消融实验，验证了编码在动态多图交互场景下的表达能力与有效性。</p>
+<p>**局限性：**  <br>摘要未说明两种编码在求解规模和实时性上的具体性能对比，也未提及是否在真实系统中验证，目前结论仅基于仿真基准测试。此外，STL-GO表达能力较强，其编码复杂度随智能体数量和图结构增加的可扩展性尚需进一步评估。摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>该工作为多智能体系统提供了将复杂时空拓扑需求形式化并求解的完整范式，统一接口设计使不同求解方法可公平对比，这对机器人任务规划研究具有方法论借鉴价值。其问题设定——同时处理时变感知、通信与任务图——贴近真实多机器人协同场景，可为具身智能中的多机协作任务提供新的建模与求解思路。</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
