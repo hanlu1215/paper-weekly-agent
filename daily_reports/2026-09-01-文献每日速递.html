@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-09-01-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-09-01-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-09-01<br>存档文件：2026-09-01-文献每日速递.html</p>
+      <p class="count">今日新增 8 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>GeoFF3D: Coordinate-Anchored Feed-Forward Reconstruction for Large-Scale UAV Mapping</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Xiang Yang, Yongli Wang, Yunsheng Zhang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-08-28T12:51:57Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2608.28288v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2608.28288v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Existing feed-forward 3D reconstruction methods typically process a bounded number of images and recover cameras and geometry in local or internally normalized frames. Extending them to large-scale UAV mapping requires scalable multi-chunk processing and reliable aggregation, while full Sim(3) alignment can become unstable for near collinear trajectories. We present GeoFF3D, which combines a coordinate-anchored model with a spatial large-scale reconstruction framework (SLRF). The model uses georeferenced camera translations and optional geometric priors to predict camera poses and dense point maps directly in a gravity-aligned Z-up metric frame. SLRF partitions images into spatially overlapping chunks, propagates shared-view priors, and aggregates local reconstructions hierarchically, while remaining applicable to different bounded-view models. Across nine aerial mapping blocks, GeoFF3D achieves the best average reconstruction quality, improving F@5 from 0.829 for Pi3X + SLRF to 0.877. On long UAVScenes sequences, it reaches 0.848, compared with 0.687 for Pi3X + SLRF and 0.451 for the strongest evaluated SLAM/streaming baseline. GeoFF3D reconstructs 2,000 images in approximately five minutes, demonstrating scalable and robust large-scale UAV reconstruction.The code is available at https://github.com/yanxian-ll/GeoFF3D.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>Spatial-Semantic Reasoning using Large Language Models for Efficient UAV Search Operations</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Marin Maletic, Marijana Peti, Tamara Petrovic, Stjepan Bogdan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-08-28T12:33:49Z</span></li><li><span>分类</span><span>cs.RO, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2608.28270v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2608.28270v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>We present a real-time semantic navigation framework for Unmanned Aerial Vehicles (UAVs) focused on improving time efficiency in the Object Goal Navigation (ObjectNav) task. Central to our approach is a Large Language Model (LLM) that interprets user-provided natural language instructions and performs semantic reasoning over detected objects and spatial context to prioritize high-probability search regions. The system combines real-time object detection, 3D spatial mapping, and polynomial spline interpolation for smooth and feasible UAV trajectory planning. Unlike prior methods that rely on offline reasoning or simulator-constrained action spaces, our framework can operate in real time, continuously updating semantic relevance based on new observations. Experiments in both simulated and real-world settings demonstrate reductions in mission duration while maintaining high search accuracy, underscoring the effectiveness of LLM-guided reasoning for time- efficient UAV-based ObjectNav.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>From Architecture to Binary: Ensuring Cross-Domain Consistency in Model-Based Airborne Software Development</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Nils Schlautmann, Viktor Sinitsyn, Benjamin Engelhard, Florian Holzapfel</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-08-28T10:16:36Z</span></li><li><span>分类</span><span>cs.SE</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2608.28156v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2608.28156v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper presents an airborne software development approach for manned and unmanned aerial vehicles aimed at reducing inconsistencies across system, model-based functional, and embedded software domains. In environments influenced by standards such as ARP-4754B and DO-178C, these inconsistencies typically stem from insufficient enforcement across domain boundaries rather than missing process definitions. Building on a previously proposed toolchain centered on a relational interface database, we identify recurring failure modes and propose a repository-centered implementation to address them, tailored to small, resource-constrained teams operating without heavyweight process overhead. Each domain is assigned a primary repository with cross-repository references and dedicated CI pipelines that generate, update, and validate the exchanged artifacts. Automated interface updates, differential change notifications, and consistency checks propagate changes with minimal manual effort and surface inconsistencies before the time-consuming code-generation and compilation steps. An initial implementation in an ongoing experimental project is described, with qualitative feedback from its early use.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">4</div>
+      <div class="paper-body">
+        <h2>无人机蜂群协同感知中针对从众驱动拜占庭攻击的安全防护</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ruixing Ren, Junhui Zhao, Qiuping Li, He Fang, Jiamin Li, Dongming Wang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-08-28T07:33:15Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2608.28017v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2608.28017v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>在6G通感一体化使能的无人机蜂群网络中，模仿性从众协同机制易被拜占庭攻击者利用以制造虚假共识，导致正常无人机的有效错误概率动态演化并远超其固有感知误差。这一现象使基于独立性假设的传统融合方法失效，亟需设计能够抵御此类从众驱动攻击的弹性融合机制。</p>
+<p>**研究思路：**  <br>针对上述问题，论文提出一种融合演化博弈论与最大后验估计的从众感知拜占庭弹性融合框架。首先以有界理性意见动态刻画正常无人机的策略更新，并在死亡-出生更新规则下推导错误信息比例的演化动力学及演化稳定状态。随后建立三项理论结果：异构感知误差下零阶ESS仅由误差分布均值决定；获得一阶弱选择修正的闭式解及任意选择强度下精确的均场不动点；揭示攻击概率超过二分之一时群体级错误信息可压倒多数，且该阈值独立于感知误差和恶意比例。将预测的错误动态嵌入逐节点MAP规则后，该机制在不同网络拓扑、攻击强度、网络规模和误差分布下均接近100%的态势推断准确率，在±20%参数失配下仍保持99%以上；而多数投票、信誉加权和独立融合在多数翻转阈值后完全失效。</p>
+<p>**局限性：**  <br>摘要未提供真实系统部署或硬件在环测试信息，其结论可能主要基于仿真和理论分析；从众行为模型、网络规模假设等理论前提在真实复杂电磁环境中的适用性仍需进一步验证。摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>该工作揭示了群体协同机制在对抗环境中的脆弱性，并将演化博弈论引入安全融合设计，为蜂群感知系统提供了理论可解释的安全边界。其“攻击概率过半即失控”的阈值结论对无人机蜂群、自动驾驶车队等分布式协同感知系统的安全阈值设定具有重要参考价值，MAP融合与错误动力学预测结合的方法也可迁移至其他多智能体鲁棒融合场景。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">5</div>
+      <div class="paper-body">
+        <h2>SAGIN中可移动天线无人机群安全通信：CKM辅助多智能体强化学习框架</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jiayang Wan, Yafei Wang, Jiawei Zhuang, Wenjin Wang, Tony Q. S. Quek</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-08-28T06:38:35Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2608.27973v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2608.27973v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>空天地一体化网络可为无人机提供泛在可靠连接，但空对地链路以视距传播为主，且无线信道广播特性使其易受被动窃听。物理层安全是提升无人机通信安全的重要途径，然而现有方法通常依赖实时信道状态信息获取，开销较大，且难以适应无人机群动态变化的链路选择与天线调控需求。为此，论文研究如何在SAGIN中联合优化可移动天线位置、无人机轨迹与服务链路选择，以提升无人机群的保密通信性能。</p>
+<p>**研究思路：**  <br>论文以最大化无人机群保密能量效率为目标，建立联合优化问题，同时考虑无人机移动性、天线运动及链路连接能力等约束。为降低实时信道信息获取开销，作者提出基于信道知识图的多智能体强化学习框架：先利用Kriging插值从稀疏信道测量构建CKM，再结合卫星星历信息实现信道信息的高效存储与检索。同时，通过刚体运动学将天线阵列建模为全局刚体平移，降低动作空间维度；设计个体-团队协作奖励与动作掩码，在系统约束下对齐局部决策与全局性能。</p>
+<p>**局限性：**  <br>摘要中未提供实验验证细节，未说明该框架在仿真或真实系统中的验证情况，也未讨论CKM构建对信道测量密度、插值精度的依赖，以及模型在动态环境下的泛化能力。摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>该工作为多智能体协同决策提供了可借鉴的范式：基于环境先验知识图降低状态获取成本，通过运动学建模压缩动作空间，并借助结构化奖励与动作掩码处理混合约束，对机器人集群、自动驾驶等需在动态环境中协同决策与资源分配的AI系统具有参考意义。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">6</div>
+      <div class="paper-body">
+        <h2>几何感知对齐Transformer用于多模态无人机感知</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jingpu Yang, Debin Tang, Yilin Sun, Fengxian Ji, Jiahua Zhu, Wenrui Ding, Yufeng Wang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-08-28T06:36:17Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2608.27971v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2608.27971v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机多模态感知需融合可见光、红外、SAR和深度传感器，以应对复杂环境下的场景理解。然而，不同传感器在光学特性、分辨率和安装方式上的差异，使实际系统往往只能实现全局或图像中心对齐。经令牌化后，视差、平台运动与镜头畸变会进一步导致跨模态对应块中心偏移，破坏稠密对比学习与跨模态融合所依赖的空间对应关系，制约多模态基础模型在无人机任务中的迁移能力。</p>
+<p>**研究思路：**  <br>针对上述残余错位问题，作者提出对齐优先的预训练模型GAAT。其核心思路是：在跨模态交互前先估计局部对应可靠性，而非直接进行全局稠密融合。GAAT引入syncPATC，在同步视角变换下学习块中心一致性，无需对应标注即可输出查询中心、子令牌偏移等几何先验。在此基础上，MG-Sparse-MMA利用这些先验在Top-K个可靠区域执行查询介导的稀疏融合，取代稠密全交互；RA-QCGCL则通过三类对比分支匹配该稀疏瓶颈。论文构建UAVMeta和StateBench数据集，引入四个采集状态评分，并在六项下游任务中验证了GAAT的领先迁移性能。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。例如，几何先验对极端视差或传感器故障的鲁棒性、StateBench评分体系的客观性，以及稀疏融合相对稠密方法在信息保真度上的损失，均需进一步实验说明。</p>
+<p>**值得关注：**  <br>该工作为多模态融合提供了“对齐优先、稀疏交互”的新范式，其免标注的几何一致性学习方法可迁移至机器人或自动驾驶中的异质传感器融合。StateBench提出的采集状态量化诊断框架，也为评估真实部署条件影响、指导传感器配置与算法适配提供了可借鉴的工具。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">7</div>
+      <div class="paper-body">
+        <h2>低空流体天线网络的多智能体强化学习设计</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Tong Zhang, Yanfei Su, Shuai Wang, Wanli Ni, Chengzhong Xu, Huseyin Arslan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-08-28T04:27:44Z</span></li><li><span>分类</span><span>cs.IT, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2608.27909v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2608.27909v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>低空无线网络通过融合地面与空中平台，为无人机和电动垂直起降飞行器提供泛在通信、感知与定位服务，是支撑未来低空经济的关键基础设施。然而，空对地与空对空信道的动态变化、突发遮挡以及异构干扰，使得这一目标难以实现。流体天线作为前沿的MIMO技术，可通过重构天线位置解锁额外空间自由度，为解决上述信道挑战提供了新途径。论文旨在将流体天线引入低空网络，探索如何快速、高性能地配置天线位置，从而真正落地低空流体天线网络。</p>
+<p>**研究思路：**  <br>论文从低空FA网络的天线位置动态优化问题出发，提出电磁数字孪生辅助的多智能体强化学习框架，以应对动态信道环境下的实时决策需求。为弥合仿真与真实系统之间的差距，作者设计了两阶段迁移学习框架。案例研究表明，将FA位置与波束赋形联合优化，相比固定位置基线可使系统总速率提升118.5%，该增益主要来自毫秒级的天线阵列动态重构以及对高机动空中用户的自适应波束对准。</p>
+<p>**局限性：**  <br>摘要仅呈现了基于数字孪生或仿真的案例研究结果，未提供真实外场实验数据，也未见关于算法计算开销、通信时延开销以及不同网络规模下扩展性的说明。摘要中未提供足够信息判断更具体的局限性。</p>
+<p>**值得关注：**  <br>该研究展示了将多智能体强化学习与电磁数字孪生结合，以解决动态环境下的联合优化问题，这种“数字孪生环境预训练+迁移学习落地”的方法论对机器人、自动驾驶等领域具有借鉴价值。此外，流体天线通过物理移动天线位置获取额外自由度，与具身智能体通过运动扩展感知与行动空间的思路相通，可为无人机集群、低空物流等场景下的通信与运动协同设计提供参考。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">8</div>
+      <div class="paper-body">
+        <h2>FlyBlind：5G 跨切片时效性攻击下的无人机态势感知失明</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Wagner Comin Sonaglio, Ágney Lopes Roth Ferraz, André Elias Melo, Guevara Noubir, Lourenço Alves Pereira Júnior</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-08-27T18:37:12Z</span></li><li><span>分类</span><span>cs.CR</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2608.27604v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2608.27604v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>BVLOS（超视距）无人机系统在 5G SA 网络中，指令控制与视频回传共用用户面，且依赖网络切片间的软隔离来保证链路质量。运营商通常以时延和可用性评估链路健康，但授权共租户能否在不中断连接的前提下，使地面站的态势感知状态逐渐过期，这一问题尚未被充分探索。现有链路监测手段难以捕捉这类隐蔽的时效性退化，FlyBlind 正是指向这一安全盲区。</p>
+<p>**研究思路：**  <br>作者提出 FlyBlind——一种由相邻切片上合法共租户发起的时效性攻击。其关键洞察是：在软隔离下，共享空闲资源会使授权竞争转化为状态老化，且常规链路监控无法察觉。作者将这种静默状态陈旧效应形式化为可证伪的“假健康谓词”。在专用测试台上，GCS 的遥测年龄饱和于约 12 秒，位置估计与真实值相差数十米，而单向时延保持在几十毫秒、可用性仍高于 99.9%，无人机持续运行且不触发安全机制。结论是：在非对称上行链路强制场景下，必须在目的地验证状态新鲜度，而非仅依赖链路健康指标。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性，例如攻击对切片配置、流量模型或测试台规模的依赖程度，以及是否考虑防御方升级监测手段后的对抗场景。此外，单一专用测试台的验证是否足以代表真实复杂网络环境中的攻击效果，摘要未予说明。</p>
+<p>**值得关注：**  <br>这项研究对依赖远程遥测与指令链路的机器人系统具有警示意义：链路连通不能等同于数据新鲜。论文提出的“端到端状态时效性验证”思路，以及对假健康谓词的刻画，可迁移至自动驾驶远程接管、具身智能体云端控制等场景，推动在设计上将数据新鲜度作为独立于链路质量的关键安全指标。</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
