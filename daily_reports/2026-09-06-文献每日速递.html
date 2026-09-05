@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-09-06-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-09-06-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-09-06<br>存档文件：2026-09-06-文献每日速递.html</p>
+      <p class="count">今日新增 3 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>全向多旋翼无人机的局部路径规划与避障</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Mikolaj Helinski, Spilios Theodoulis, Mahmoud Hamandi, Abdullah Mohamed Ali, Anthony Tzes, Marija Popovic</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-09-03T10:25:14Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2609.03630v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2609.03630v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>自主无人机在杂乱环境中执行任务时，RRT*等全局规划器难以在控制频率下直接部署，制约了实时避障能力。与常规多旋翼相比，全向多旋翼（omnicopter）具备六自由度运动能力，但其高维状态空间使实时局部规划更具挑战。现有方法多聚焦于欠驱动平台或低维动态窗口，难以兼顾全向机动的安全性与计算效率，因此亟需面向六自由度平台的高效局部规划与动态避障方案。</p>
+<p>**研究思路：**  <br>针对上述问题，本文将动态窗口法扩展至六自由度（6D-DWA），通过局部地图体素化、紧凑球体近似机体几何、以及六维搜索空间自适应速度采样实现实时可行。为提升对未知障碍的响应能力，引入情境感知的“Agile Mode”，在规避机动中在线调整评分权重，动态权衡目标推进、安全间隙与航向约束。仿真实验涵盖计算压力测试、密集航点路径跟踪和静态/未知障碍场景，结果表明规划器可在0.2s控制循环内稳定运行，平均横向跟踪误差小于0.1m，航向误差约13度；Agile Mode对偏心未知障碍的成功率达79.3%，展示了自适应加权的有效性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。需指出的是，针对中心障碍场景，Agile Mode成功率仅41.4%，表明在高度受限几何构型中仍存在明显不足；此外，当前验证仅限于仿真环境，缺少真实平台测试证据。</p>
+<p>**值得关注：**  <br>该方法为全向无人机在密集环境中的实时规划提供了可借鉴的系统设计范式，六维搜索空间的自适应采样与在线权重调节思路对具身智能平台的运动规划具有参考价值。其模块化设计——从地图体素化、几何近似到上下文感知机动模式——可迁移至其他高机动机器人系统。对未知障碍避障采用量化成功率评估的方式，也为后续研究建立了清晰、可复现的性能基准。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>Air-Ground Collaborative Vision-and-Language Navigation via Shared Bird&#x27;s-Eye Maps</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Shuning Zhang, Liang Li, Yunheng Wang, Tao Wang, Yihang Kang, Renjing Xu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-09-03T07:38:41Z</span></li><li><span>分类</span><span>cs.RO, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2609.03483v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2609.03483v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Air-ground collaborative Vision-and-Language Navigation (VLN) pairs an unmanned aerial vehicle (UAV) with a global bird&#x27;s-eye view and an unmanned ground vehicle (UGV) with a local first-person view, yet the setting remains largely unexplored: existing training-free methods solve single-agent tasks but offer no collaboration mechanism, and a recent CARLA-Air evaluation found no stable cooperative behavior across five state-of-the-art VLA models; naive semantic communication or bidirectional coupling even degrades performance. We establish AGC-VLN (Air-Ground Collaborative VLN), the first training-free baseline for air-ground collaborative VLN. The key insight is that training-free methods decompose navigation into VLM-based semantic reasoning and deterministic geometric execution, exposing a collaboration interface: the UAV&#x27;s global view, over which it renders the UGV&#x27;s reported pose and the VLM-anchored target as CAR/GOAL markers with distance labels, yielding a shared bird&#x27;s-eye map. From this map, the UGV acquires global spatial context its first-person view cannot provide, plans a road-following path with a frozen VLM, and executes it under closed-loop control; in parallel, the UAV runs 3D-SPF, a spatial-search upgrade of SPF that localizes the target in the downward view and flies toward it. On 100 closed-loop episodes in CARLA-Air&#x27;s Town10HD scene, AGC-VLN reaches a 77.0% joint success rate, a collaboration gain of +27.0% over the weaker individual agent (the UAV, 50.0%), and exceeds the strongest published single-agent baseline (Travel UAV, 53.0%) by 24.0 points, stemming from the complementarity of the UAV&#x27;s global view and the UGV&#x27;s road-following execution. Project page: https://github.com/ZSN2024/AGC-VLN.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>Enhancing UAV Trajectory and Communications Through Vision-Inertial Tracking</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Abdallah S. Ghazy, Hussein A. Ammar, James Bayes, Francois Chan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-09-02T19:21:53Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2609.03099v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2609.03099v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>In this paper, we propose an energy-efficient and reliable communication system for non-terrestrial networks deployed in dynamic GPS-denied wireless environments, enabled by a Vision--Inertial Tracking-Assisted UAV Communication (VIT-UAVCom) system. To the best of our knowledge, this is the first work to exploit onboard UAV cameras and IMU sensors for UAV-assisted communications. We consider a complete VIT-UAVCom system that incorporates the key design parameters while explicitly accounting for system noise and residual tracking inaccuracies. Building on this framework, we formulate an optimization problem for jointly designing the UAV trajectory and communication performance to improve propulsion energy efficiency, reduce outage probability, and enhance physical-layer security. We then develop a dedicated solution framework to efficiently compute near-optimal trajectory and communication control actions in dynamic scenarios. Furthermore, to enable real-time implementation, we propose and evaluate three optimizers, namely linear search (LS), binary search (BS), and genetic search. Our numerical results demonstrate that our proposed VIT-UAVCom framework significantly outperforms the K-means benchmark in terms of energy consumption while maintaining robust secrecy performance and reliable user coverage. Specifically, our proposed framework improves the energy efficiency by 144% compared to the benchmark. Interestingly, our results also show that, compared with the LS, the BS reduces the computational time by approximately 50%.</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
