@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-10-08-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-10-08-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-10-08<br>存档文件：2026-10-08-文献每日速递.html</p>
+      <p class="count">今日新增 26 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>NMPP: Nonlinear Model Predictive Planning for Agile UAV Flight in Cluttered Environments</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ondřej Procházka, Juraj Pauko, Robert Pěnička, Martin Saska</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T17:10:59Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.08695v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.08695v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Flying a quadrotor through a cluttered environment requires not only planning a collision-free reference trajectory based on perceived obstacles, but the reference also needs to be dynamically feasible and within the actuation limits of the vehicle, so that the controller can track it precisely. Existing methods either optimize a smooth polynomial inside a convex corridor, which limits agility, or treat obstacles as soft costs traded against tracking performance. We propose a Nonlinear Model Predictive Planning (NMPP) that imposes perceived obstacles as hard geometric constraints and hands a full-state reference to an obstacle-blind SE(3) controller. Our planner achieves a 58-67 % lower position RMSE than a linear Model Predictive Control trajectory planner and a 41-70 % lower RMSE than a polynomial trajectory planner. It also completes all forest flights with up to 9.5 m/s speed without collisions, and achieves 86 % flight success rate under a more aggressive speed profile where a state-of-the-art planner has only 26 % success rate. The real-world deployment showed reliable execution flying up to 5.5 m/s in an unknown cluttered environment.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>WareFly-VLA: A Vision-Language-Action Framework for UAV Navigation and Human Tracking in Smart Warehouses</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Thinh D. Le, Son T. Nguyen, Duong Q. Nguyen, Dung D. Le, Ngo Anh Vien, H. Nguyen-Xuan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T15:21:14Z</span></li><li><span>分类</span><span>cs.RO, cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.08526v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.08526v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Vision-Language-Action (VLA) models have achieved impressive results in robotic manipulation and ground-mobile navigation, yet language-conditioned control of unmanned aerial vehicles (UAVs) in smart warehouses remains largely unexplored, hindered by the lack of benchmarks that jointly provide continuous low-level flight actions, fine-grained natural-language target descriptions, and realistic industrial environments. This paper introduces WareFly-VLA, a photorealistic UAV VLA framework and dataset for language-guided human search, localization, and tracking in warehouse environments. It contains 507 human-teleoperated flight episodes and 8,504 high-resolution RGB transitions collected in NVIDIA Isaac Sim, each paired with a human-written appearance description of the target worker and a synchronized four-degree-of-freedom control command. Two aerial tasks are covered: target approach and person following, under occlusion, long-range search, altitude variation, and clutter. A unified benchmark of four open-source VLA architectures (SmolVLA, GR00T N1.7, pi_0 and OpenVLA) is established under a leakage-free episode-level protocol at two control rates. The results show that language-conditioned aerial control in warehouses is far from solved: performance drops substantially under strict generalization settings, continuous action modeling consistently outperforms discrete action tokenization, only the forward channel is reliably learnable from a single frame, and current foundation-model interfaces transfer poorly from ground and humanoid embodiments to aerial platforms. The synchronized video, language, action, pose, and difficulty annotations further support world-model research. The dataset, baselines, and evaluation protocol are released to support language-grounded aerial autonomy in smart warehouses.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>Catastrophic Forgetting in Sequential Thermal Anti-UAV Detection: The Role of Scale-Conditioned Gradient Imbalance</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Khac Duc Giang Nguyen, Seyed Sahand Mohammadi Ziabari, Ali Mohammed Mansoor Alsahag</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T13:18:10Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.08315v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.08315v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Counter-UAV systems based on thermal infrared detection must stay accurate as operational datasets evolve, yet sequential fine-tuning causes catastrophic forgetting of prior tasks, a problem that remains insufficiently characterized in this domain. This continual-learning study measures the stability-plasticity trade-off in YOLOMG, a YOLOv5-based detector run as a single thermal-infrared stream with the motion channel disabled, trained sequentially across three anti-UAV benchmarks of rising scale difficulty: Anti-UAV-RGBT, Anti-UAV410, and CST Anti-UAV. Naive fine-tuning on CST yields a Forgetting Measure of -0.605 against the Stage 1 ceiling, corresponding to a 90% capability loss, with -0.572 occurring in Stage 3 alone. In contrast, knowledge distillation from a frozen teacher is associated with FM = -0.033 +/- 0.004 across three seeds, corresponding to 95% retention. Because no Stage 2 no-KD control is included, this result establishes retention under KD training rather than a causal KD effect. Per-stratum analysis shows large-target detection collapsing to near zero within the first epoch, despite an inter-stage cosine similarity of 0.987 over the gradient-updated weights, pointing to scale-conditioned gradient imbalance, rather than weight drift, as a candidate mechanism. Scale-Stratified Herding (SSH), a 300-exemplar buffer balanced across four UAV size strata, roughly halves the forgetting (FM = -0.605 to -0.311) and keeps large-target detection non-zero. An ablation attributes the gain primarily to scale stratification rather than herding: random-stratified replay performs at least as well (FM = -0.221 versus -0.311 for SSH). These replay results are single-seed and should therefore be treated as preliminary.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">4</div>
+      <div class="paper-body">
+        <h2>UWB Meets Crazyflow: Simulating Degraded Feedback at Scale for Aerial Robotics</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Martin Schuck, Marcel P. Rath, Yufei Hua, Abhishek Goudar, SiQi Zhou, Angela P. Schoellig</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T12:13:21Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.08225v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.08225v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>In this work, we introduce Crazyflow, an accurate, differentiable simulator built on JAX. By leveraging jit compilation via XLA, Crazyflow unifies physics and control into a single differentiable computation graph, enabling massive parallelization on accelerated hardware without sacrificing modeling accuracy. This architecture achieves order-of-magnitude speedups over existing baselines, capable of training deployable reinforcement learning agents in seconds. To highlight its highly modular design, we demonstrate how easily Crazyflow can be extended by integrating a complete, high-fidelity Ultra-Wideband (UWB) and Inertial Measurement Unit (IMU) simulation pipeline coupled with a full-state Extended Kalman Filter (EKF). This capability allows for massive parallel controller evaluation under realistic, degraded state feedback with minimal impact on GPU throughput. By combining speed, accuracy, and extensibility, Crazyflow serves as a foundational tool for the next generation of aerial robotics research.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">5</div>
+      <div class="paper-body">
+        <h2>Waveform Randomization for Secure ISAC</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Zexin Fang, Bin Han, Shuangyang Li, Hans D. Schotten</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T08:54:03Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.07994v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.07994v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper studies waveform-level security for Integrated Sensing and Communication (ISAC). Instead of relying on spatial beamforming or power allocation, we randomize the sensing waveform itself using phase keys and tangent Artificial Noise (AN) applied to a Fourier-curve constellation. Coordinated legitimate nodes know the key and recover the sensing reference, while Eve observes only a randomized waveform and cannot construct the correct coherent matched reference. We consider an Unmanned Aerial Vehicle (UAV)-mounted Eve with a dominant Line-of-Sight (LOS) link who fully exploits favorable geometry, including a bypass scenario where Eve listens to both the direct and echo sides to circumvent our design. We further consider a stronger Eve that attempts phase-key reconstruction from long-term observations; even then, residual key mismatch structurally degrades correlation and AN cancellation, while accurate key recovery incurs high computational complexity. Numerical results show that the proposed design reduces Eve&#x27;s probability of detecting the sensing reference using non-coherent detection and, in the bypass case, substantially suppresses her correct-delay lock probability, while the legitimate receiver reliably locks onto the reference through echo accumulation.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">6</div>
+      <div class="paper-body">
+        <h2>From Model to Prototype: Design and Motor-Flap Propulsion Control of a Twin-Wing Metamorphic UAV</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Anja Bosak, Dorian Erić, Ana Milas, Stjepan Bogdan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T07:43:38Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.07896v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.07896v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper presents the design and control strategy for MetaMorpher, a metamorphic Unmanned Aerial Vehicle (UAV), capable of both spinning-wing hover and fixed flying-wing cruise flight. Since control of the cruise configuration is comparatively well established in the literature, this paper focuses on control of the MetaMorpher in hover mode, building on the flight dynamics model and conceptual design validated in previous work. The control algorithm is implemented using one of two phase-synchronized strategies: motor propulsion, which pulses motor thrust in synchrony with the vehicle&#x27;s rotation, or flap propulsion, a novel strategy that pulses the deflection of the wing-mounted elevons. We evaluate both strategies in simulation through different flight experiments. Simulation results confirm the mathematical model and show stable reference tracking, demonstrating flap propulsion as a lightweight, decoupled alternative for hover control. Experimental testing validated the vertical-dynamics propulsion model against the physical prototype, demonstrating very good steady-state agreement across different configurations.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">7</div>
+      <div class="paper-body">
+        <h2>When Weak Reports Matter: Staged Anchored Fusion for Cooperative UAV Sensing</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Xingqin Lin</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T04:41:11Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.07747v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.07747v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Local multipath rejection can erase evidence needed for cooperative sensing. We propose staged anchored recovery: preserve strong-only confirmations, then query compatible weak reports using unused strong anchors. For any number of sensing nodes, we prove lossless residual screening and derive corroboration and bidirectional cost laws. In 1,024 five-UAV drops, recovery adds 30 matched targets and three false outputs over strict consensus, matching one-pass anchored confirmation&#x27;s detection counts while reducing weak uploads by 97.4%. Equal-sized cue/report records yield 4.5% less payload than uploading all eligible reports. Independent validation recovers four additional targets with no observed false outputs.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">8</div>
+      <div class="paper-body">
+        <h2>What Frame-Level Labels Can and Cannot Do for Small-UAV Point Detection in Thermal Video</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Wonbin Son, Gyumum Choi, Junil Seo, Hyungjoon Kim</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T03:58:26Z</span></li><li><span>分类</span><span>cs.CV, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.07705v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.07705v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>The growing use of unmanned aerial vehicles (UAVs) has increased the importance of image-based UAV detection. Learning-based detectors are trained on imagery and annotations, with annotation type determining the information available during training. We focus on learning localization from frame-level target presence/absence labels when sensor or scene changes make spatial annotations for additional training burdensome. We analyze the detection capability, learning behavior, and potential applications of an existing architecture for point detection of small UAVs, trained with presence/absence labels and requiring no external detector. The architecture freezes spatial features learned through classification and trains a readout with the same frame labels to produce spatial score maps and point detections. On two thermal infrared datasets, CST Anti-UAV and Anti-UAV410, we evaluate localization hit rates and detection rates under false-alarm constraints, analyze the effects of training stages, label allocation, synthesis, and model configuration, and compare with bounding-box detectors. We also explore potential applications on Airborne Object Tracking (AOT) using its visible-light imagery and frame labels. Classification training strengthened target-related spatial responses, while readout training helped extract them consistently. Distributing similar label counts across more videos yielded higher localization hit rates, while synthesis effects varied by dataset and evaluation criterion. Higher localization hit rates did not always improve detection under false-alarm constraints, and failures remained when target signals were weak relative to background variation and under cross-dataset transfer. These findings provide guidance on label allocation, spatial representations and readouts, synthesis, and false-alarm control.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">9</div>
+      <div class="paper-body">
+        <h2>Cooperating with Future Collaborators: Multi-Agent RL under Staggered Participation</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jianglin Qiao, Siyi Hu, Thien Hoang Nguyen, Zehong Cao, Salah Sukkarieh</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-06T01:13:24Z</span></li><li><span>分类</span><span>cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.07578v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.07578v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>In cooperative Multi-Agent Reinforcement Learning (MARL), agents are often trained under concurrent participation, while in many tasks some agents act earlier and leave task-relevant information that becomes useful to agents participating later. We study this setting as staggered participation (SP), which introduces a cross-time, cross-agent learning dependency because an early action may affect the return through the information it provides and the later policy that uses it. Learning under SP therefore requires both identifying what information is useful for future decisions and learning how later agents should use it. We propose Staggered Participation Learning (SPL), a training-time augmentation that addresses these two parts with prospective acquisition supervision for earlier agents and outcome-supervised receiver learning for later agents. We evaluate SPL across multiple policy-based MARL backbones, environments, and staggered-participation patterns. Across 60 MPE/RWARE backbone setting comparisons, SPL achieves higher observed mean task completion in every case, with an average difference of 14.1%. The gains also extend to eight-agent teams and a physics-based UAV-UGV environment in Isaac Lab, providing evidence across algorithmic, temporal, and embodied settings.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">10</div>
+      <div class="paper-body">
+        <h2>Dynamics Modeling of a Multi-UAV Slung Load System Using a Discrete-Link Cable Approach</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Harvey Merton, Ian W. Hunter</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-05T22:05:39Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.07456v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.07456v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>A common assumption to simplify the problem of controlling a multi-UAV slung load system (MUSLS) is that the flexible cables can be modeled as massless rigid rods. In this work, we propose an alternative Euler-Newton derived dynamical model which uses a series of rigid links to model the flexible cables. The model is specifically designed to allow efficient simulation using Featherstone&#x27;s articulated body algorithm. We perform real-world validation of this model on gentle, aggressive, and tension-engagement maneuvers and run a parameter sweep to determine the number of links, joint damping, and joint friction to achieve the greatest model fidelity. The model closely matches real-world flight data with mean load translation errors below 132 mm (5.5% of the cable length) and orientation errors below 11.4 degrees. We make the real-world flight data publicly available for the development of future cable models.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">11</div>
+      <div class="paper-body">
+        <h2>LiLib: Lifelong Air-to-Ground Path-Loss Prediction on UAVs via a Drift-Triggered Model Library</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Minh Tran</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-05T15:53:19Z</span></li><li><span>分类</span><span>cs.LG, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.07111v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.07111v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>UAVs that act as relays or base stations need accurate air-to-ground path-loss predictions for rate adaptation and placement, but propagation conditions change as a UAV moves between suburban, urban and high-rise areas, and the same areas are often revisited. Online regressors that adapt by forgetting must relearn each environment from scratch, whereas a single model trained on all data averages incompatible regimes. We propose LiLib, a lightweight continual-learning scheme in which a UAV maintains a small library of recursive-least-squares experts. A windowed residual test detects drift; a short probe phase then either reuses the best stored expert or creates a new one. In simulations based on four standard urbanization profiles, LiLib reduces prediction RMSE from 5.89 dB (best sliding-window baseline) to 4.03 dB (p &lt; 0.001), lowers the error shortly after a return to a known environment from 12.3 dB to 5.7 dB, and recovers 99% of the throughput of a regime-aware oracle in rate adaptation. The library stores four experts in under 0.5 KB, and identifies regimes with 92% purity without labels. When a second UAV is initialized with the library of a peer, its error after environment changes halves. LiLib does not reach the oracle, and similar regimes may be merged when shadowing is strong. The results indicate that, for recurring drift, remembering is more effective than re-adapting.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">12</div>
+      <div class="paper-body">
+        <h2>Who Can Safely Wait? Risk-Aware 5G Scheduling for Low-Altitude UAV Operation</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>André Melo, Yueqi Chen, Lourenço Pereira, Igor Kadota</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-05T14:37:35Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.07101v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.07101v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Cellular-connected UAV operations already fly in many countries. However, cellular networks were designed for terrestrial users and remain blind to the operational consequences of delaying information from low-altitude aircraft. We present Risk-Aware (RA), a framework that translates information freshness and operational context into aircraft-specific operational risk, enabling uplink scheduling based on operational consequence rather than network metrics alone. RA balances the consequence of further delay against the service cost of heterogeneous single- and multi-slot updates. It combines a regulation-inspired risk proxy, risk-directed prioritization based on marginal risk growth, and a Max-Weight scheduler with Lyapunov-based performance guarantees. Although RA is derived from an analytically tractable model, we evaluate it under moving UAV trajectories, dynamic operational context, geographically varying population exposure, and realistic UAV video traffic. Across 48 operating points and fleets of up to 120 UAVs in São Paulo delivery operations and the Interlagos Formula 1 Grand Prix setting, RA reduces 99th-percentile per-UAV risk by up to 96% over proportional fair and 86% over round robin, while supporting fleets up to 1.5$\times$ and 3$\times$ larger, respectively, within the same risk envelope.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">13</div>
+      <div class="paper-body">
+        <h2>HexaGripper: A Single-Actuator, Winch-Deployed Gripper for Autonomous Aerial Parcel Collection</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Nimantha Adikaram, Mahen Abeyratne, Lakmina Chandrajith, A. H. T. E. De Silva, Isira Naotunna, Asanka Perera</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-05T14:31:57Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.08259v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.08259v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Autonomous aerial parcel collection remains constrained by package-transfer operations that require manual loading, landing, or dedicated ground infrastructure. This letter presents HexaGripper, a single-actuator, winch-deployed six-plate gripper for autonomous collection of cuboid parcels. The proposed mechanism provides synchronized grasping with a wide capture region and tolerance to positional misalignment during pickup. The system integrates vision-based alignment, range sensing, winch deployment, and state-based control to enable autonomous collection while maintaining UAV separation from the pickup surface. Experimental evaluation covered static grasping, capture-workspace assessment, and end-to-end outdoor aerial collection. Static experiments achieved 100% pickup success (15/15 trials) across three parcel geometries, while workspace experiments achieved successful pickup at all 28 tested positions up to a 150 mm radial offset. End-to-end outdoor aerial collection achieved an 80% success rate (4/5 trials). These results demonstrate the feasibility of mechanically synchronized, winch-deployed grasping for landing-free autonomous aerial parcel collection.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">14</div>
+      <div class="paper-body">
+        <h2>Channel Knowledge Maps for FR3 UAV Base Stations: Dataset and ML-based Modeling</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Guillem Moreno~Garcia, Sergi Abadal, Evgenii Vinogradov</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-05T13:54:32Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.06356v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.06356v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper introduces a dense upper mid-band Frequency Range (FR3) Channel Knowledge Map (CKM) dataset for Uncrewed Aerial Vehicles (UAVs) with an on-board base station (UxNB). It contains 16,180 CKM samples from 3,236 urban locations in 66 cities at 7.125 GHz and UxNB heights of up to 500 meters. Every 513x513 sample stores the building geometry, the line-of-sight (LOS) state, attenuation, delay spread, angular spread, and variable transmitter height. As a focused first use-case, we propose an interpretable height-aware attenuation model. Its LOS branch combines free-space loss, two-ray term, and compact data-based height/range calibration. Its non-LOS (NLOS) branch combines a COST 231-Hata basis with local environment-specific linear calibration. The proposed model reaches 1.93 dB overall root mean square error, with 1.74 dB in LOS and 3.54 dB in NLOS on over 500 unique locations in 14 unseen cities (2,590 samples in total). The result provides attenuation data for FR3 UxNB deployments and a physical anchor for future FR3 modeling efforts.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">15</div>
+      <div class="paper-body">
+        <h2>Towards Quadruped-Provided Localization and Active Tracking for Micro-UAVs</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Alejandro Lorite Mora, Andrés Faíña</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-05T12:24:11Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.06215v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.06215v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Micro unmanned aerial vehicles (micro-UAVs) are small enough to reach confined spaces that larger robots cannot access, but too small to carry the sensing and computing power required for autonomous flight. We move the localization stack entirely off the aerial platform onto a quadruped robot with a 7-degree-of-freedom (DOF) arm, which supplies the micro-UAV (27 g bare, 42 g with fiducial markers) its full 6-DOF pose. A camera at the arm&#x27;s end-effector detects AprilTag fiducial markers on the drone and composes that observation with the quadruped&#x27;s own self-localization to place the drone in a shared map frame, so the ground robot localizes its partner, rather than only tracking it relative to the camera. The arm acts as an actively-controlled observer, repositioning to keep the drone in view as both robots move; the drone carries only an inertial measurement unit and fuses the external pose to fly commanded setpoints. In lab flights the external pose is accurate to 12-16 mm, enough to fly the drone autonomously within 2-5 cm of motion-capture-fed control. Having the quadruped actively follow the drone reduces the tracking error from 11.0 cm to 6.9 cm by holding the camera in the close range, where the markers are most accurate.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">16</div>
+      <div class="paper-body">
+        <h2>On the Sum of Inverse Gamma RVs and its Application to Wireless Communications Networks</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Petros S. Bithas, Liang Yang, Qiuming Zhu, Hector E. Nistazakis, Daniel Benevides Da Costa</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-05T10:05:57Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.06073v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.06073v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Investigating the statistics of the sum of random variables (RVs) is fundamental in wireless communication systems, as it can be used to accurately estimate their performance. In this paper, exact closed-form expressions are derived for the probability density function (PDF) and cumulative distribution function (CDF) of the sum of inverse-gamma (IG) RVs. The IG distribution is especially suitable for performance analysis purposes because it provides a tractable yet accurate model of shadowing/local mean power variations. Unlike prior studies on sums of shadowing RVs, the resulting formulas are simple to evaluate and numerically stable. Their utility is demonstrated in two practical settings: unmanned aerial vehicle (UAV)-assisted networks and high-speed railway communications. Across all considered scenarios, the analytical results are in excellent agreement with the Monte Carlo simulation results, while the asymptotic approximations closely track the exact results</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">17</div>
+      <div class="paper-body">
+        <h2>Bayesian Data Augmentation for DNN Retraining with Binomial Outcomes in Vision-Based UAV Landing</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ashik E Rasul, Hyung-Jin Yoon</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-05T01:38:48Z</span></li><li><span>分类</span><span>cs.RO, cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.05674v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.05674v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>In GPS-denied or cluttered urban environments, vision-based landing is essential for reliable UAV missions. Real-world landing sites are often unstructured and highly variable, requiring strong generalization by the perception system. Deep Neural Networks (DNNs) trained with synthetic data augmentation offer a scalable solution for learning landing-site features across diverse vehicle and environmental states. However, computationally expensive DNN retraining, along with challenging performance validation via test flights, limits exhaustive model fine-tuning and necessitates an optimized retraining pipeline. In this work, we deploy a Bayesian data augmentation framework integrated with a photorealistic simulator featuring high-fidelity vehicle dynamics to iteratively retrain the helipad detector DNN, maximizing landing performance as the objective function.   We validate our framework with experiments in a photorealistic simulator under different environmental conditions and vehicle states, demonstrating improved landing performance and tighter confidence intervals on predicted landing outcomes.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">18</div>
+      <div class="paper-body">
+        <h2>TIRMamba: A Thermal-Prior-Modulated State-Space Network for Sub-Million-Parameter Infrared Image Super-Resolution</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Chun-An Lin, Tsung-Jung Liu, Yen-Chieh Ouyang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-04T12:45:13Z</span></li><li><span>分类</span><span>eess.IV, cs.CV, cs.LG</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.05182v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.05182v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Infrared image super-resolution is currently led by Mamba-based networks with 26 to 37 million parameters, which are difficult to deploy on the airborne and handheld platforms where thermal imaging is most needed. This paper presents TIRMamba, a network with 896K to 910K parameters for single-channel thermal imagery. A Thermal Prior Highway computes gradient, local-contrast and spectral cues once at the input and, through one adapter per residual group, modulates a weight-tied bidirectional state-space trunk and gates its dual-scale detail branch; a tri-path reconstruction adds the learned residual to a bicubic radiometric baseline. Because the standard benchmark provides only 265 infrared training images and evaluates fusion products on full images, we train with a replay strategy: grayscale DIV2K pre-training followed by fine-tuning on 64-pixel patches drawn with equal probability from the infrared and natural corpora. At scale factor 4, TIRMamba matches the strongest protocol-trained methods on both official test sets with 29 to 40 times fewer parameters and 2.8 to 9.4 times lower latency; at scale factor 2 it gives the highest SSIM on both. A variant with prior-conditioned selectivity, TIRMamba-Rad, corrects a 3 dB raw-thermal failure of an intermediate size-invariant design and gives the best results at scale factor 4 on raw-thermal, unmanned-aerial-vehicle and independent-sensor test sets. Code and trained models will be released at https://github.com/julian135707/TIRMamba upon acceptance.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">19</div>
+      <div class="paper-body">
+        <h2>PB-STDG: A Prediction-Based Short-Term Decentralized Greedy Guidance Algorithm for a Drone Road System</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Zhouyu Qu, Andreas Willig, Xiaobing Wu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-04T11:04:39Z</span></li><li><span>分类</span><span>cs.RO, cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.05122v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.05122v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>In recent years, Unmanned Aerial Vehicles (UAVs) or drones have been increasingly adopted in urban environments for applications such as parcel delivery, infrastructure inspection, emergency response, and drone light shows. A non-negligible issue is how to manage the increasing number of drones operated by different entities, to enable them to cooperatively avoid potential collisions and determine conflict-free short-term flight paths in urban airspace. This paper presents a Prediction-Based Short-Term Decentralized Greedy (PB-STDG) guidance algorithm for a structured Drone Road System (DRS). PB-STDG extends the original STDG algorithm by introducing a prediction mechanism that enables drones to anticipate the decisions of neighboring drones using additional information shared in beacon packets, aiming to address the over-conservative behavior observed in the STDG algorithm. Several simulation scenarios are conducted to evaluate and compare the proposed algorithm with STDG. The results show that PB-STDG improves traffic efficiency while maintaining a safety level comparable to that of STDG.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">20</div>
+      <div class="paper-body">
+        <h2>ReDiffNet: Differential RGB-Infrared Learning for Low-Light UAV Oriented Vehicle Detection</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Qifan Zhang, Ziran Zhou, Ruijie Li, Jincheng Tang, Hao Wang, Qihao Qiao, Chunliu Wang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-04T09:15:36Z</span></li><li><span>分类</span><span>cs.LG</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.05074v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.05074v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Low-light UAV-based RGB-infrared oriented small-vehicle detection is important for nighttime traffic monitoring, emergency response, and urban inspection. Illumination variations, headlight glare, local shadows, and thermal-response degradation cause spatially varying modality reliability, while the small visual extent of vehicles further weakens boundaries, orientation cues, and thermal responses. Accordingly, selecting trustworthy observations based on local modality reliability while further exploiting complementary discriminative information in regions with ambiguous modality preference is key to constructing effective multimodal representations. Based on this insight, we propose ReDiffNet, a reliability-conditioned differential representation network in which modality reliability guides both evidence selection and complementary recovery. Specifically, degradation-aware reliability learning estimates relative spatial reliability, uncertainty-guided differential recovery exploits cross-modal differences to recover complementary cues in ambiguous regions, and reliability-conditioned reconstruction integrates retained and recovered evidence into a unified representation. ReDiffNet achieves 85.3% and 73.9% mAP50 on DroneVehicle and VEDAI, respectively, supporting its effectiveness.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">21</div>
+      <div class="paper-body">
+        <h2>基于贝叶斯MCMC的城市主干道异质交通同步速度预测模型</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>S. M Towhidul Alam, Md. Muhtashim Shahrier, Nazmul Haque, Md Asif Raihan, Md. Hadiuzzaman</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-04T07:46:39Z</span></li><li><span>分类</span><span>stat.AP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.05027v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.05027v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>城市主干道交通常呈异质、非车道化特征（如达卡），多车型混行使运行速度难以准确刻画。摘要未说明现有方法的具体不足，但该研究关注六类车型的运行速度同时受各车型密度影响，需以同步建模方式支撑交通运行分析与管理需求。</p>
+<p>**研究思路：**  <br>作者用无人机视频采集达卡五条主干道数据，经深度学习提取车辆轨迹、流量、密度与空间平均速度，建立覆盖标准小汽车、多用途车、重型车、三轮车、两轮车与非机动车的六个贝叶斯MCMC同步速度方程，并以拟合优度评估、以独立路段检验迁移性。结果显示，六类车R²为0.922–0.956，RMSE为0.50–1.56 km/h；速度随流量增加持续下降，中高需求下交通组成影响显著；剔除非机动车后速度上升、拥堵延迟；模型在其它路段预测可靠。</p>
+<p>**局限性：**  <br>数据仅来自达卡五条主干道，样本量与时空覆盖、是否经真实系统验证、是否与其他模型对比均未说明；迁移性仅在路段层面得到检验，跨城市与跨交通组成的适用性仍待验证。</p>
+<p>**值得关注：**  <br>多车型同步方程组与贝叶斯MCMC不确定性量化，可为自动驾驶与具身智能在混合交通中的交互预测、场景生成，以及无人机视觉数据的闭环建模提供借鉴。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">22</div>
+      <div class="paper-body">
+        <h2>LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Yiming Zhao, Tianshun Li, Jingle He, Ruonan Chai, Xinhu Zheng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-04T07:37:44Z</span></li><li><span>分类</span><span>cs.CV, cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.05024v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.05024v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Aerial vision-and-language navigation (VLN) enables unmanned aerial vehicles to execute long-horizon natural-language instructions from visual observations in complex three-dimensional environments. However, recent aerial VLN models often rely on large-scale vision-language backbones and dense visual histories, imposing substantial computation and memory costs that hinder onboard deployment. We propose LightVLN, a lightweight history-aware aerial VLN framework that combines a compact 0.5B language backbone with compact representations of both historical and current observations. LightVLN compresses each historical frame into a single token using visual features already computed by the policy. It further introduces history- and instruction-conditioned local aggregation to reduce the current observation from 256 to 32 visual tokens while preserving navigation-relevant spatial information. With up to 16 historical frames, the policy uses at most 48 observation-derived tokens. On the public OpenFly dataset, LightVLN achieves 50.93% Test-Seen and 36.14% Test-Unseen success rates (SR), outperforming the evaluated 7B language-backbone baselines on most reported metrics. It also achieves 25.83% SR on AerialVLN-S Val-Seen. In a reconstructed unseen campus, we deploy LightVLN on a DJI M350 RTK with an external Jetson Orin NX 16 GB for closed-loop onboard-compute real-to-sim hardware-in-the-loop (HIL) evaluation, achieving 14.61 Hz model inference and 11.13 Hz end-to-end decision updates. These results demonstrate the effectiveness and efficiency of LightVLN for aerial navigation.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">23</div>
+      <div class="paper-body">
+        <h2>Toward Lightweight Aerial 5G gNBs: Reproducible OAI Testbed on Commodity ARM Platforms</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Marc Duboc, Ammar El Falou</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-04T07:02:22Z</span></li><li><span>分类</span><span>cs.CR, eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.05007v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.05007v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>For a battery-powered UAV base station, every gram and watt devoted to RAN-compute competes with flight-duration margin. We therefore keep the 5G Core (5GC) and central unit (CU) on the ground and design the airborne unit around only the backhaul endpoint, distributed unit (DU), and radio. The key question is then a practical one: can widely available commodity ARM computers sustain a real radio OpenAirInterface (OAI) 5G DU with useful performance over heterogeneous F1? We answer it with Raspberry Pi~5 and Jetson Orin Nano as DUs, a USRP B210, a commercial handset, and Ethernet, Wi-Fi/GRE, and 5G/WireGuard backhaul. Jetson preserves 88.4% of x86 split-DU Ethernet DL throughput and 87.5-89.0% across all three bearers; 5G/WireGuard preserves 76.4-77.1% of each host&#x27;s wired DL rate. The validated Jetson/B210/RM500Q-GL electronics weigh 657.4 g and draw about 28 W under sustained traffic (757.4 g with integration allowance). A controlled link adaptation intervention raises split DL from 23.4 to 99.4 Mb/s as the dominant Modulation and Coding Scheme (MCS) moves from 3 to 26. Finally, synchronized radio, F1-U, CPU, and UHD evidence narrows the remaining monolithic-split gap to split-path scheduling/timing behavior. Beyond performance, this capability serves the emergency-response use case that motivates the aerial cell: once deployed above an affected area, it can broadcast a PWS warning message. We release the OAI patch that carries the single-segment Write-Replace Warning over F1 from CU to DU, where SIB8 is scheduled to the handset. The public artifact makes the payload, performance, and emergency-broadcast baseline reproducible with laboratory-accessible hardware.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">24</div>
+      <div class="paper-body">
+        <h2>Beamforming and Trajectory Optimization for Aerial RIS-Aided Secure ISAC via Model Predictive Control</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Zhendong Li, Zesheng Zhang, Zhou Su, Ziwei Liu, Ying Wang, Wen Chen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-04T02:47:11Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.04885v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.04885v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper proposes a novel aerial reconfigurable intelligent surface (RIS)-aided secure integrated sensing and communication (ISAC) architecture. An unmanned aerial vehicle (UAV)-mounted RIS establishes virtual line-of-sight links to bypass blockages, serving legitimate users while sensing potential eavesdroppers. To ensure communication security and sensing reliability, we formulate an infinite-horizon dynamic control problem maximizing the long-term average system secrecy rate and minimizing UAV flight energy. This formulation jointly optimizes the UAV trajectory, active beamforming with artificial noise (AN) at the base station, and RIS phase shifts, subject to strict radar signal-to-noise ratio and UAV kinematic constraints. Due to the highly coupled non-convex variables, solving this problem directly is intractable. Therefore, we propose an online joint optimization framework based on model predictive control (MPC). Within each receding horizon, alternating optimization is employed to decouple the problem into three subproblems, efficiently solved via successive convex approximation and difference of convex programming. Extensive simulations demonstrate that our MPC-based algorithm significantly outperforms static baselines in secrecy rate, exhibiting superior online correction capability and robustness against environmental perturbations.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">25</div>
+      <div class="paper-body">
+        <h2>Synthetic-to-Real ViT-Based Pose Estimation of a Noncooperative UAV</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Krishnanujam Srinivas, Hanish Acharla, Brij Agrawal, Leonardo Herrera</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-03T06:59:23Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.04335v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.04335v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Remote pose estimation of noncooperative Unmanned Aerial Vehicles (UAVs) from imagery is critical, as they cannot be influenced or instrumented in advance. Deep-learning-based approaches offer a promising solution; however, their development is constrained by the cost and difficulty of acquiring large-scale real-world datasets with accurate pose labels. Synthetic imagery provides an alternative, but models trained on synthetic data must overcome the synthetic-to-real domain gap to generalize to real-world imagery. This work investigates the inherent synthetic-to-real generalization capability of a Vision Transformer (ViT)-based model for monocular UAV pose estimation. The proposed approach employs a self-supervised DINOv2 backbone and is trained exclusively on labeled synthetic imagery while being evaluated on labeled real-world imagery. Pose ambiguity-aware strategies are incorporated during training and inference to address ambiguities arising from the projection of a three-dimensional target onto a two-dimensional image plane and from target symmetries. An $α$-$β$ filter is further integrated during inference to improve pose estimations. To assess the model under operational requirements, it is evaluated in terms of Mean Angular Error (MAE) and inference time, both before and after filtering, using a real-world dataset containing 77,077 labeled UAV images. Before filtering, the model achieves an MAE of $19.18^{\circ}$ and an inference time of $13.25$ ms, whereas after filtering, these values are $8.74^{\circ}$ and $13.42$ ms, respectively.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">26</div>
+      <div class="paper-body">
+        <h2>Barrier-Shaped Recurrent Reinforcement Learning for Autonomous Landing on a Heaving Ship Deck</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ritwik Shankar, Chiranjeev Prachand, Abhishek, Soumya Ranjan Sahoo</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-02T18:36:57Z</span></li><li><span>分类</span><span>eess.SY, cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.03924v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.03924v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper addresses autonomous landing of unmanned aerial vehicle (UAV) rotorcrafts on a heaving ship deck using a recurrent policy trained via asymmetric actor-critic reinforcement learning: the critic sees 6 s of future deck height during training, while the actor sees only what the onboard sensors provide in flight, a 17-dimensional state made of the vehicle&#x27;s position, velocity and attitude relative to the deck and outputs world-frame velocity and yaw-rate commands. Training is performed across 4096 parallel simulated environments, followed by fine-tuning in 16 environments with an onboard vision pipeline in the loop. A control-barrier-function (CBF) stopping margin on the deck-relative vertical state is incorporated at two stages: as a reward term during training, where it halves the median simulated contact speed relative to a policy trained without it, and as a runtime safety filter at deployment, evaluated at every control step to abort and retry the descent when the margin is violated. Because the autopilot&#x27;s disarm logic cannot detect the vehicle resting on a moving deck, proximity-based thrust cutoff at touchdown is commanded directly in the landing pipeline. The proposed approach is validated using a parallel-manipulator-platform-based deck emulator that reproduces the heaving motion of the ship deck (scaled to 0.70 m peak-to-peak, 7.5 s mean period) and a quadcopter UAV with an onboard camera. Across 31 motion-capture and 20 vision-based trials, the UAV landed every time, with median times to contact of 6.5 and 7.3 s; 77% and 50% landed on the first attempt, with mean deck-relative speeds of 0.29 and 0.27 m/s, respectively, at the instant of thrust cutoff, which is the last speed under the policy&#x27;s control. Supplementary video: https://youtu.be/S5hDkrSZJt4</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
