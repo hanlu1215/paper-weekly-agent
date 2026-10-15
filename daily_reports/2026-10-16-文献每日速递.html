@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-10-16-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-10-16-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-10-16<br>存档文件：2026-10-16-文献每日速递.html</p>
+      <p class="count">今日新增 30 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>FPV-CRASH: A Dataset for Offline Crash Moment Localization in Drone First-Person-View Videos</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jifan Zhang, Tingyu Wang, Qian Liu, Zhedong Zheng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-14T08:32:57Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.19785v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.19785v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Crash Moment Localization aims to localize the major physical impact that interrupts controlled flight in an onboard first-person-view (FPV) video recorded by a drone, thereby providing a temporal reference for retrospective crash analysis in aerial robotics. However, existing crash-video datasets predominantly target surveillance or dash-camera footage, and their annotation schemes and task formulations are not designed for temporal localization of the major physical impact in UAV onboard FPV videos. To address this gap, we present FPV-CRASH, a dataset and fixed-protocol reference evaluation for offline Crash Moment Localization in drone FPV videos. FPV-CRASH contains 1,052 drone FPV clips (526 Crash and 526 Normal); each Crash clip has a single-frame reference annotation for the Crash Moment, and every clip is paired with four English captions automatically generated from sampled frames and the known Crash/Normal label. Normal clips carry no timestamp target and provide training-time background supervision. The captions support an auxiliary Text-to-Video Retrieval task, whereas localization inference remains video-only. We further provide a heatmap-based reference model that estimates a continuous Crash Moment timestamp from sparsely sampled frames. Under the fixed, non-source-disjoint clip-level protocol, the reference model reduces MAE from 1.12 s for the strongest fixed timing-prior baseline to 0.56 s (a 50% relative reduction) and achieves a median absolute error (MedAE) of 0.33 s; the fraction of clips localized within 0.5 s rises from 37.14% to 65.71%. The release includes annotations, available source video identifiers and URLs, clipping metadata, fixed split lists, and preprocessing code so that the reportable portion can be reconstructed without redistributing source footage. At submission time, all source-compilation URLs remained accessible.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>禁飞区与用户移动下的</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Bin Li, Senning Wan, Decheng Zhang, Yonglei Yao, Yu Xue</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-14T03:32:46Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.19515v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.19515v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p class="empty">暂无摘要内容。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>Agronomic Characterization and Time-Series UAV Phenotyping to Support Field Pea Breeding in Iowa</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Yanben Shen, Joscif Raigne, Asheesh Singh, Arti Singh</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-13T20:21:52Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.19154v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.19154v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Field pea has gained interest in the Midwest U.S. and has the potential to benefit Iowa cropping systems. This study evaluated 17 accessions and 7 Canadian varieties for agronomic and seed yield performance. This study found that PI accession trials exhibit genetic diversity in phenology and canopy traits, whereas the Canadian elite varieties demonstrated great yield potential under Iowa conditions. The accession genotypes matured between 75 DAP (late June) and 95 DAP (late July) across six site-years. The top-yielding Canadian varieties averaged 1961 kg/ha across two site-years. To comprehensively assess field pea performance, this study extracted time-series Unmanned Aerial Vehicle(UAV)-derived traits, assessed UAV-derived traits, and evaluated their correlations with multiple agronomic traits and yield. The results found that UAV-derived time-series canopy area was the most yield-relevant trait (r = 0.63) among all UAV-derived canopy features, vegetation indices, and manually collected measurements. Compared with yield, UAV-derived canopy area showed higher selection reliability (H2 = 0.87, CV = 13.46%), making it suitable for phenotypic selection and accelerating Midwest field pea breeding programs. This study identifies useful UAV-derived features for pea breeding and demonstrates the value of integrating diverse germplasm, elite commercial varieties, and time-series UAV phenotyping. Combining genetic variation from the accession trial with the yield potential of high-performing commercial varieties provides valuable breeding materials and phenotyping strategies for developing locally adapted, high-yielding field pea varieties for future production in the Midwest.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">4</div>
+      <div class="paper-body">
+        <h2>Collaborative Planning for UAV-UGV Teams under Operational Constraints via Masked Error-bounded Neuro-Symbolic Diffusion</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Zihao Deng, Qianhuang Li, Maggie Wigness, John Rogers, Donghyun Kim, Hao Zhang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-13T17:58:37Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.18850v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.18850v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Collaborative planning under operational constraints is essential for heterogeneous robot teams in large-scale missions. Unmanned Aerial Vehicles (UAVs) provide rapid area coverage but are limited by onboard energy, while Unmanned Ground Vehicles (UGVs) can serve as mobile recharging stations yet are constrained by road-network traversability. Effective collaboration must enforce operational constraints during execution while enabling parallel, coordinated actions. Masked Diffusion Models (MDMs) have shown promise through token unmasking but have two key limitations: entropy-guided scheduling assumes distributional alignment and reliance on differentiable constraints for diffusion-time optimization. We propose Masked Error-bounded Neuro-Symbolic Diffusion (MEND), which formulates collaborative planning as a conditional masked generative process to generate context-aware action sequences for UAV-UGV teams. MEND introduces a neuro-symbolic diffusion paradigm that constrains conditional masked diffusion policies at execution by reweighting the learned action distribution with a logic-induced admissibility indicator, thereby enforcing compliance with operational constraints. MEND introduces an error-bounded inference scheduling at execution that constructs the unmasking schedule by selecting positions with minimal predictive entropy over the constraint-aware action distribution, enhancing collaborative planning optimality under operational constraints. Extensive experimental results in simulation, on real-world maps, and with physical robot teams demonstrate that MEND advances UAV-UGV collaborative planning under operational constraints.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">5</div>
+      <div class="paper-body">
+        <h2>A Distributed Energy Relay Framework for Sustainable Drone Missions</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>I-Ling Yen, Farokh Bastani, Akeem Mohammed, Agastya Bose</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-13T17:31:01Z</span></li><li><span>分类</span><span>cs.DC</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.18772v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.18772v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Limited battery endurance remains a major obstacle to persistent UAV missions. Existing energy-replenishment approaches typically rely on battery-swapping/charging infrastructure or on ground vehicles with accessible road networks - assumptions that may not hold in infrastructure-less regions (ILRs) such as remote wilderness, mountainous terrain, and disaster-stricken areas. We formulate energy resupply in ILRs as a distinct logistics problem, in which energy itself must be projected into a region with no pre-existing infrastructure, and proposes a Distributed Energy Relay Framework that enables cooperative energy delivery using porter drones. The framework introduces a Transportation-by-Relay-and-Cache (TRC) mechanism, in which drones relay battery resources toward a mission location. Additional models are developed to characterize battery transportation capacity, relay amplification, energy-delivery capability, operational cost, and reliability. Based on these models, stations independently evaluate their delivery capability and submit bids to a mission coordinator, which selects an energy-delivery coalition that satisfies mission requirements while minimizing cost. Analytical evaluation illustrates the impact of battery characteristics and drone capabilities on energy projection and demonstrates the effectiveness of the proposed framework for sustaining UAV missions in ILRs.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">6</div>
+      <div class="paper-body">
+        <h2>CALM: Decentralized Control of Cooperative Aerial Manipulation with Multi-Agent Reinforcement Learning</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jiaxi Huo, Petre Ricioppo, Fausto Francesco Lizzio</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-13T14:03:36Z</span></li><li><span>分类</span><span>cs.RO, cs.MA</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.18425v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.18425v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Cooperative aerial manipulation is difficult under wind, payload motion, and noisy goal broadcasts because multiple Unmanned Aerial Vehicles (UAVs) are coupled through a shared payload. We present CALM (Cooperative Aerial Learned Manipulation), a decentralized controller for aerial manipulators carrying a basket while tracking a moving ground robot. CALM combines a parameter-shared Multi-Agent Reinforcement Learning (MARL) policy, trained using Multi-Agent Proximal Policy Optimization (MAPPO), with goal estimation, per-UAV Extended State Observers (ESOs), basket-mass estimation, and anticipatory formation-yaw feedforward. The anticipatory formation-yaw feedforward uses estimated goal motion to rotate the formation before position error develops, reducing basket-yaw lag without adding net commanded force. A disturbance-conditioned critic supports centralized training while execution remains decentralized. Across held-out trajectories, CALM achieves lower mean position and orientation errors than all evaluated baselines, including the matched arm baseline (7.68 versus 10.95 cm and 3.3 versus 4.7$^\circ$), the cable-suspended realization, and two model-based controllers. Under unseen full-information-path degradation, CALM remains statistically comparable or superior to the arm baseline. Videos are available at https://petreric.github.io/CALM/.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">7</div>
+      <div class="paper-body">
+        <h2>CrossFly：面向异构环境的交互导向空中移动基准</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Zhibo Duan, Hanlin Kong, Tianran Ma, Yuze Wu, Yuxuan Xu, Kenghou Hoi, Changheng Xie, Xin Zhou, Jianzhe Gao, Fei Gao, Wenguan Wang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-13T13:33:38Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.18381v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.18381v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>空中移动操作要求无人机穿越室内、室外等异构环境，并在同一轨迹中连接导航与后续物理交互。现有空中基准多局限于单一环境，难以评估连续环境转换；涉及交互时，智能体又常被初始化在目标附近，导致从导航到交互的过渡未被充分考察。因此，论文希望建立长时程、交互导向的异构环境空中移动评测，推动空中具身智能走向统一移动与物理交互。</p>
+<p>**研究思路：**  <br>针对上述空白，作者提出 CrossFly 基准，在统一仿真与评测框架下汇集 15K 轨迹、20 多个重建场景，覆盖室内、室外及室内↔室外轨迹。方法上引入 Interaction Readiness Rate（IRR），不假设特定操作策略，评估终端导航状态是否为下游交互提供合适条件。实验使用五种代表性空中 VLA 智能体及 CrossFly-Agent，发现室内↔室外设置比单环境更难，未见场景最高成功率为 9.7%；下游操作案例进一步验证交互导向到达与后续物理交互的相关性。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。仅可看出评测基于统一仿真与重建场景，真实无人机系统验证摘要未说明；IRR 对下游交互的通用有效性目前主要由案例研究支持；跨更多环境、操作策略与真实扰动的泛化能力仍待验证。</p>
+<p>**值得关注：**  <br>该工作将“到达”重新定义为交互准备状态，为空中 VLA 与具身智能评测提供了新任务设定和指标思路。其室内外连续转换、长时程导航到操作衔接，以及不绑定具体操作策略的评价方式，值得后续研究借鉴，也提示需关注环境切换下的鲁棒性与导航—操作接口。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">8</div>
+      <div class="paper-body">
+        <h2>FleetGuard:Identity-Capped Conformal Risk Allocation for Reliable UAV Edge-Cloud Offloading</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Junhao Wei, Haochen Li, Yifu Zhao, Yanxiao Li, Dexing Yao, Baili Lu, Ngai Cheong, Sio-Kei Im, Xu Yang, Yapeng Wang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-13T09:04:38Z</span></li><li><span>分类</span><span>cs.CE</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.18003v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.18003v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Compromised UAV reporters can poison latency telemetry and attract offloaded tasks to degraded servers. We present FleetGuard, an identity-capped conformal offloader for local, edge, and cloud execution. With equal buffers of m scores and a cap of K compromised identities, a Km rank correction retains one-sided fixed-level coverage without an honest-reporter majority. A deterministic repair scheduler allocates task-specific risk under fleet, capacity, and deadline constraints. Heavy-tailed simulations with eight reporters, four edges, 30 independent seeds, and 20 batches per seed and condition yield 2.08% deadline misses under seven low-score compromised reporters (95% clustered interval: 1.94-2.24%), compared with approximately 9.6% for pooled conformal, reporter-median, and mean rules. FleetGuard saves 22.3% energy over fixed-risk BRC and approaches adaptive exact assignment within 1.1%, with 2.6x lower mean scheduling time.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">9</div>
+      <div class="paper-body">
+        <h2>低空智能体网络：从无人机连接到工作流驱动的能力编排</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Baolin Chong, Fuhui Zhou, Qihui Wu, Ran Tu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-13T03:14:04Z</span></li><li><span>分类</span><span>eess.IV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.17642v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.17642v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>低空平台正从联网感知</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">10</div>
+      <div class="paper-body">
+        <h2>Learning or Modeling? Virtual XL-RIS Observation Reconstruction for Near-Field Sensing</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Tuo Wu, Jie Tang, Jiacheng Wang, Kangda Zhi, Maged Elkashlan, Matthew C. Valenti, Mérouane Debbah, Kenneth Tong</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-13T01:36:45Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.17566v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.17566v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>A passive extremely large-scale reconfigurable intelligent surface (XL-RIS) offers a position-sensitive aperture for near-field sensing, but its element-wise signals are not directly observed. Recovering this virtual RIS observation (VOR) from fewer base-station measurements requires prior information. This paper investigates when calibrated propagation geometry or paired training data provides the more effective reconstruction prior. For a common sensing operator and target signal, we develop off-grid near-field sparse parametric reconstruction (OG-NF-SPR) and compare it with compact and DenseNet-based deep reconstructors. OG-NF-SPR uses reflected-path projection for position initialization, followed by Bayesian estimation of all path gains and continuous position refinement. A causal extension incorporates temporal correlation without trajectory labels. Controlled simulations use near-field UAV tracking as an illustration and separately examine noise, position-distribution shift, calibration error, and propagation mismatch. Under matched propagation at 20 dB, OG-NF-SPR achieves approximately 67% lower reconstruction NMSE than the two nominal deep networks. At low SNR, statistical averaging is more effective than selecting a single geometric explanation. Under sufficiently strong repeatable mismatch, a same-size network trained on the mismatch family outperforms the nominal physical estimator, whereas nominal training does not provide this benefit. Temporal regularization also reduces position RMSE from 0.653 m to 0.225 m on a shared trajectory. The results relate reconstruction performance to measurement quality, calibration accuracy, and training coverage, providing guidance on when geometry can replace supervised labels and when additional data are useful.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">11</div>
+      <div class="paper-body">
+        <h2>Learning Reachability-Based Safety Representations for Real-Time Robot Navigation in Unknown and Dynamic Environments</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Bojan Derajić</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-12T10:10:45Z</span></li><li><span>分类</span><span>cs.RO, cs.LG, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.16522v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.16522v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Safe robot navigation in unknown, dynamic environments requires more than geometric collision checking: a robot still far from an obstacle may be unable to avoid it because of its speed, orientation, or the obstacle&#x27;s motion. Hamilton--Jacobi (HJ) reachability analysis captures this in a value function whose sign separates states that admit a safe continuation from those where collision is unavoidable, but computing it online for every newly observed environment is too expensive. This dissertation trains neural implicit representations offline on reachability solutions to give optimization-based controllers this information in real time. Since the value function never exceeds the constraint, it equals a directly computed constraint, such as a signed distance, minus a nonnegative dynamics correction. Learning only this correction keeps represented obstacles outside the predicted safe set despite approximation errors. The first two of five methods use the learned function as a terminal constraint in model predictive control, for static local environments and predicted obstacle motion. The next two use it as a barrier candidate in control barrier function safety filters, for static environments and, through pairwise barriers in relative coordinates, for a varying number of moving obstacles. Simulations and hardware experiments on ground and aerial robots show better collision avoidance than geometric and hand-designed baselines, especially for short horizons and moving obstacles. The fifth method replaces the grid-based offline solver, which limits the first four to low-dimensional models. For control-affine dynamics with polytopic inputs, the HJ Hamiltonian is maximized at a vertex, so a parallelizable tree search over vertex inputs can generate training labels. With a loss from the HJ variational inequality, these labels yield barrier candidates for systems with up to 13 states.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">12</div>
+      <div class="paper-body">
+        <h2>Analysis of Integrated Communication and Sensing in Cylindrical Aerial Corridors</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Harris K. Armeniakos, Petros S. Bithas, Athanasios G. Kanatas, Harpreet S. Dhillon</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-12T08:01:20Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.16342v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.16342v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>In unmanned aerial vehicle (UAV) networks, integrated communication and sensing (ISAC) is emerging as a key enabler to support extended and continuous communication and sensing capabilities for sixth-generation (6G) services among UAVs operating in swarms. In this paper, a comprehensive framework is presented to investigate the ISAC coverage probability of a reference UAV-base station (BS) in a UAV network. A fixed number of UAV user equipment (UAVUEs) and UAV-BSs are deployed in an aerial corridor modeled as a finite cylinder. The three-dimensional (3D) binomial point process (BPP) is used to model both the 3D spatial locations of the UAV-UEs and the UAV-BSs. By adopting realistic 3D third generation partnership project (3GPP) antenna patterns for both the UAV-UEs and UAV-BSs, the UAVs&#x27; boresight direction of the maximum antenna gain is modeled as a random unit vector. All UAV-BSs have sensing capabilities, so an arbitrary yet fixed reference UAV-BS acts as a monostatic radar to acquire sensing measurements associated with a target UAV-UE at a given time snapshot while the target UAVUE communicates with the reference UAV-BS. Consequently, considering both clutter and communication interference, exact analytical expressions for ISAC coverage probability are derived. Low complexity baseline analytical expressions are also derived by ignoring clutter interference and directional characteristics of the UAV-UEs. Finally, motivated by the vision for intelligent UAV networks, a DeepSets-based model is developed and trained to estimate the optimal location of the reference UAV-BS that maximizes ISAC performance given a spatial deployment of the UAVs. To the best of our knowledge, this is the first work to rigorously investigate ISAC performance in UAV networks while incorporating the directionality characteristics of the UAV antennas.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">13</div>
+      <div class="paper-body">
+        <h2>Multimodal Sensor-Gated Mid-Air Launch and Vision-Based Recovery of a Child UAV on a Hovering Mothership Drone</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Aashish Sahu, R. Prasanth Kumar</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-11T16:23:16Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.15740v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.15740v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Launching a micro unmanned aerial vehicle (UAV) from a hovering carrier and recovering it in flight requires reliable confirmation that the child is securely seated before the carrier is allowed to descend. This is challenging because vision provides relative guidance but does not directly indicate load transfer, and a downward-facing camera can lose its fiducial near touchdown. This letter presents a mothership-child quadrotor system in which mission transitions are gated by complementary nonvisual sensing. An upward-facing single-beam LiDAR on the recovery deck provides a binary occupancy state using hysteresis and a debounce interval derived from the child&#x27;s occluding footprint and crossing speed; real-time kinematic (RTK) positioning conditions the carrier hover; and carrier thrust provides a proprioceptive indication of load transfer. In ten outdoor missions using an F450-class mothership and a Q250-class child with camera-guided recovery, nine completed successfully while RTK-fixed positioning was maintained through release and capture. A complementary MuJoCo study of fully autonomous fiducial-based recovery achieved touchdown 0.077 m from the deck center, while marker detection was lost within the final approximately 0.2 m above the docked configuration. In simulation, carrier thrust changed by -17.0 N at release and +17.3 N at capture, agreeing within 6% with the child&#x27;s 18.0 N hover thrust. The results support a sensing architecture in which vision guides the approach, while range and proprioceptive information corroborate the final docking decision.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">14</div>
+      <div class="paper-body">
+        <h2>GNFormer: Gaussian Neural Field Transformer for Efficient Camera-based Occupancy Prediction</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Guangcheng Chen, Li He, Hong Zhang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-11T10:39:58Z</span></li><li><span>分类</span><span>cs.RO, cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.15522v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.15522v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Camera-based occupancy prediction provides geometric and semantic scene understanding for robot perception and has been adopted in autonomous vehicle and UAV perception systems. Gaussian primitives offer a promising alternative by potentially representing only occupied regions, thereby concentrating computation and representational capacity where needed and reducing wasted computation and memory in empty space. However, existing Gaussian-based methods suffer from poor primitive utilization, as ineffective training objectives leave some Gaussians in empty space, while the limited expressiveness of Gaussian functions restricts their ability to model complex shapes. To address these limitations, we propose a novel 3D representation, Gaussian Neural Field (GNF), which can accurately map voxel positions to semantic occupancies. In GNF, Gaussians and a neural network jointly parameterize the field, where the Gaussians define its spatial support and provide features for neural decoding, while the neural network enables more expressive occupancy modeling than Gaussian functions alone. We further develop the Gaussian Neural Field Transformer (GNFormer), a streamlined and flexible method that predicts GNFs for camera-based occupancy prediction. Across Occ-ScanNet, SSCBench-KITTI-360, and nuScenes-SurroundOcc benchmarks, GNFormer achieves the highest IoU and mIoU and the fastest inference among the compared single-frame methods. In the experiments, GNFormer can represent indoor and outdoor scenes with only 256 and 1024 Gaussians, respectively, substantially fewer primitives than prior Gaussian-based methods. The code will be released.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">15</div>
+      <div class="paper-body">
+        <h2>An Open MuJoCo Simulation Framework for a Quadrotor Carrying a Tendon-Driven Soft Continuum Arm</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Haitham El-Hussieny</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-11T03:32:57Z</span></li><li><span>分类</span><span>cs.RO, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.15308v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.15308v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Combining aerial robots with soft continuum manipulators promises safe, compliant interaction with the environment, but the coupled dynamics of a free-flying base and a highly deformable, underactuated arm are difficult to study without a suitable simulator. This paper describes an open-source simulation framework, built on the MuJoCo physics engine, for a quadrotor that carries a tendon-driven soft continuum arm underneath its body. The arm is modelled as a pseudo-rigid-body chain of twelve segments joined by pairs of orthogonal compliant hinges. Three tendons, spaced \SI{120}{\degree} apart and routed through every segment, bend it in any direction. A geometric tracking controller on $SE(3)$ flies the vehicle; its rotor allocation matrix is generated directly from the model description. A closed-form tendon-tension allocation keeps every tension within its limits and gives the same bending moment in every direction. We report the full set of modelling choices and parameters, and we evaluate the framework in four simulated scenarios: a \SI{36}{\second} mission with a figure-eight and a tendon-driven tip sweep, an attitude-gain study, a quasi-static characterization of the bending workspace, and an impulsive disturbance applied to the arm tip. With the nominal gains the vehicle tracks the mission with \SI{3.1}{\centi\meter} RMS position error while the arm tip swings up to \SI{37}{\centi\meter} from the body axis. The gain study shows that a low-bandwidth attitude loop lets the arm excite sustained oscillations. The simulation runs about $15\times$ faster than real time on a laptop CPU. All models, controllers and scripts that reproduce the figures are released.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">16</div>
+      <div class="paper-body">
+        <h2>Targeting the Right Situations: Mutation Testing of Fuzzy-Powered Situation Hyperspace</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Nawshin Mannan Proma</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T18:55:12Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.15122v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.15122v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Ensuring the safety of autonomous Unmanned Aerial Vehicles (UAVs) operating in underground mines is challenging due to the vast and uncertain Operational Design Domain (ODD). Traditional validation approaches, such as random testing, often result in inefficient situation coverage, allocating computational resources to low-risk scenarios while failing to expose critical edge cases. Building on prior work in risk-prioritized Situation Coverage, this paper investigates whether Fuzzy Logic-based risk estimation effectively correlates with real system failures. To this end, we conduct a mutation testing study within our SCALOFT simulation framework. A fixed set of software mutants is systematically injected and evaluated under two testing strategies: (i) uniformly random situation generation and (ii) Fuzzy-Guided risk-prioritized situation generation. Experimental results show that the Fuzzy-Guided approach achieves a higher mutation score and is more effective at exposing difficult-to-detect faults compared to random testing.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">17</div>
+      <div class="paper-body">
+        <h2>UAV-Mounted Hybrid RIS-Assisted ISAC-RSMA: Performance Analysis with Imperfect CSI and SIC</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Chandan Kumar Singh, Arthur Sousa de Sena, Smriti Uniyal, Deepak Kumar, Prabhat K. Upadhyay, Matti Latva-aho</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T17:10:03Z</span></li><li><span>分类</span><span>eess.SP, cs.ET, cs.PF, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.15072v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.15072v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>In integrated sensing and communication (ISAC) systems, strict sensing requirements can substantially constrain the transmit power available for communication. A hybrid reconfigurable intelligent surface (HRIS) with passive reflection and active amplification capabilities mounted on an unmanned aerial vehicle (UAV) can enhance coverage and strengthen communication links in such power-limited regimes. Meanwhile, rate-splitting multiple access (RSMA) provides an effective transmission strategy for managing inter-user interference, particularly in dense multiuser wireless scenarios. Motivated by this, we analyze the performance of a UAV-mounted HRIS-assisted monostatic ISAC system employing RSMA scheme. We consider the imperfections in the channel state information and successive interference cancellation in the RSMA, which are inevitable in practical system implementations. We then derive highly accurate expressions for outage probability, ergodic rate, and throughput to evaluate communication performance over Nakagami-$m$ fading channels. These expressions reveal key insights into the diversity order and coding gain of the system in the high signal-to-noise ratio regime. To characterize the sensing performance, we derive expressions for the probability of detection, the probability of false alarm, and the Cramér-Rao lower bound. Numerical results validate the theoretical findings and highlight the performance gains of the proposed system over conventional multiple-access schemes and RIS-based systems.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">18</div>
+      <div class="paper-body">
+        <h2>Use Of Convolutional Neural Networks In Detection Of Branch Dieback Disease In Pequi Trees</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ronilson Rodrigues Pinho, Elua Ramos Coutinho, Nilza de Lima Pereira Sales, Sildenir Aalves Ribeiro, Sergio Manuel Serra da Cruz</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T16:40:42Z</span></li><li><span>分类</span><span>cs.CV, cs.CE, cs.DB</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.15049v2" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.15049v2.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This study evaluates and compares five convolutional neural network (CNN) architectures, AlexNet, Inception, LeNet, VGG16, and MobileNet, for diagnosing branch dieback (seca-dos-ponteiros) in pequi trees (Caryocar brasiliense). This phytopathology represents a severe threat to tree development and fruit yield, causing substantial economic and ecological losses across the Brazilian Cerrado. The methodology implements computer vision techniques using deep learning frameworks to process and evaluate a field dataset expanded to 6,272 multi-scale images, captured via UAV and handheld sensors under uncontrolled illumination. The models were trained to detect pathological visual patterns across leaves, branches, and canopies. The experimental initial results reveal that architectural complexity did not guarantee diagnostic reliability, heavily parameterized networks experienced optimization failures (VGG16 collapsed into majority-class prediction), whereas compact architectures achieved greater stability. MobileNet delivered the most competitive overall performance, obtaining the highest Precision (0.71) and ROC-AUC (0.63), closely followed by LeNet (AUC = 0.62). These findings indicate the viability of lightweight CNNs as foundational tools for automated phytosanitary surveillance of native flora in resource-constrained field environments.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">19</div>
+      <div class="paper-body">
+        <h2>DSM-Free UAV Visual Localization via Latent-Depth Variable Projection and Structure-Adaptive Coupling</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Yibin Ye, Xichao Teng, Shuo Chen, Xiaokai Song, Yuli Sun, Qifeng Yu, Zhang Li</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T14:20:43Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14945v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14945v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Visual localization enables unmanned aerial vehicles (UAVs) to maintain absolute positioning in GNSS-denied environments. A common approach matches UAV images with geo-tagged orthographic maps and estimates camera pose using Perspective-n-Point (PnP) with elevations from Digital Surface Models (DSMs). However, accurate and up-to-date DSMs are often unavailable in practice. Orthographic-perspective geometry (OPG) enables DSM-free localization in scenes with varying elevations, yet existing methods typically estimate pose indirectly through intermediate matrix estimation and decomposition. To address this limitation, we propose Latent-Depth Variable Projection (LDVP), which treats the unknown scales along perspective viewing rays as latent depths. By analytically eliminating these depths and solving for the horizontal camera center in closed form given the rotation, LDVP reduces nonlinear estimation to a rotation-only problem, enabling direct recovery of metric horizontal position without assuming a planar scene. To improve localization robustness across different scene structures, we further introduce Structure-Adaptive Coupling (SAC), which uses relative scene structure inferred from monocular depth estimation to select LDVP when the matched points are not dominated by a single plane, and Planar-PnP otherwise. Our local observability analysis reveals how scene elevation variation affects the geometric constraints of OPG, providing a basis for this adaptive strategy. Extensive experiments show that LDVP consistently outperforms existing OPG-based DSM-free methods, while SAC further improves robustness across diverse scenes and substantially narrows the gap to DSM-based localization. Code will be released at https://github.com/UAV-AVL/LDVP-SAC.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">20</div>
+      <div class="paper-body">
+        <h2>ScalLoc: Continuous Oblique Thermal UAV Geo-Localization with a 2D Satellite Map</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Xiaoran Zhang, Yu Liu, Jinyu Liang, Huaxin Xiao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T12:35:57Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14866v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14866v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Cross-modal Thermal Geo-localization (TG) provides an illumination-robust positioning solution for Unmanned Aerial Vehicles (UAVs) in Global Navigation Satellite System (GNSS)-denied environments. However, existing thermal geo-localization methods mainly focus on near-nadir observations or depend on map-side elevation priors, limiting their applicability to continuous oblique thermal localization with only geo-referenced 2D satellite maps. To address this problem, we propose ScalLoc, a scale-aligned local-to-map localization framework for continuous oblique thermal UAV geo-localization. ScalLoc follows a reconstruction--refinement--anchoring--propagation design: it reconstructs local window geometry from thermal sequences, refines camera poses using track-based pose optimization, adaptively anchors each window to the satellite map, and propagates validated states to recover frame-level global trajectories. To support systematic evaluation, we construct Thermal-Oblique, a real thermal UAV sequence dataset containing 216 urban and rural day--night trajectories and 28,112 thermal frames with frame-level annotations. Extensive experiments demonstrate that ScalLoc reduces the mean localization error from 112.69 m to 26.97 m compared with the VGGT-only configuration, corresponding to a 76.07% reduction, and achieves the lowest frame-weighted mean position error among the compared methods. These results demonstrate the feasibility of continuous oblique thermal geo-localization using only lightweight 2D satellite maps, without requiring digital surface models or preconstructed 3D maps. Code and dataset are available at https://github.com/FloralHercules/ScalLoc.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">21</div>
+      <div class="paper-body">
+        <h2>C2Flight: A Closed-Loop Co-Simulation Framework for Early-Stage Evaluation of Heterogeneous UAV Computing Systems</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Xizhu Chen, Shuyuan Zhang, Yixuan Li, Huazhong Yang, Yu Wang, Jincheng Yu, Hongyang Jia</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T08:31:54Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14715v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14715v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Early-stage design of heterogeneous UAV computing systems requires evaluating how algorithm, hardware, communication, and system topology affect closed-loop flight before the complete system is available. However, design choices interact through the robotic feedback loop, making task performance difficult to predict from isolated component metrics, while existing execution-driven approaches postpone system-level design feedback until the computing system is integrated. This work presents C2Flight, a closed-loop co-simulation framework that represents target systems as parameterized dataflow graphs and integrates models of hardware under design with independently accessible physical hardware through a unified node interface. Its graph runtime captures the combined effects of buffering, activation, resource sharing, communication, and local timing on closed-loop flight behavior. Validation against onboard and wireless offboard physical computing pipelines confirms its timing fidelity and closed-loop prediction accuracy. Two case studies demonstrate early-stage exploration of deployment and accelerator bit-width choices. These results show that C2Flight exposes system-level design trade-offs before full-system integration, enabling rapid early-stage design refinement.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">22</div>
+      <div class="paper-body">
+        <h2>BGC-Nav: Cross-Altitude Multi-UAV Collaborative Navigation via Belief-Guided Coupling</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jiuwu Hao, Yueyang Wu, Liguo Sun, Haolin Song, Zao Zhang, Pin Lv</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T08:19:56Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14702v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14702v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Despite recent advances in Aerial Vision-and-Language Navigation (VLN), single Unmanned Aerial Vehicle (UAV) search-and-rescue in outdoor scenarios remains challenging due to partial observability, making cross-altitude collaboration a promising direction. However, existing collaborative navigation methods rely on precise target localization and rigid goal-dispatching paradigms, ignoring high-altitude observation uncertainty and suppressing low-altitude exploration autonomy. To address these issues, we introduce BGC-Nav, a training-free cross-altitude collaboration framework that enables robust navigation via Belief-Guided Coupling (BGC). Specifically, the high-altitude UAV maintains a Global Belief Memory encoding task-conditioned priors, which the low-altitude agent incorporates into decision-making via Local Exhaustion Memory (LEM), Local Attraction Augmentation (LAA), and Directional Belief Prior (DBP) as an advisory bias rather than a rigid command. Extensive experiments on ESARBench show that BGC-Nav consistently outperforms state-of-the-art single-agent and collaborative methods. Code is available at https://github.com/uestchjw/BGC-Nav.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">23</div>
+      <div class="paper-body">
+        <h2>Can Synthetic UAV Benchmarks Be Trusted? Real-Synthetic Validation for UAV Model Selection</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Yuyi Zhi, Min Du, Bill Shi, Guodong Yuan, Junheng Liang, Peifan Liao, Xin Guan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T06:57:46Z</span></li><li><span>分类</span><span>cs.CV, cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14647v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14647v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Synthetic UAV imagery can expand pre-deployment test evidence when task-specific Real data are scarce, but visual plausibility or semantic label alignment alone does not establish validity for model selection. We study when Synthetic evaluation preserves the model-selection conclusions obtained from Real UAV data through two complementary cases under fixed evaluation protocols. In a requirement-specific road-debris benchmark, four language-conditioned perception systems obtain lower absolute F1 on Synthetic data, yet the point-estimate ordering and top-ranked model are preserved; bootstrap analysis yields no supported pairwise reversal, and size-matched resampling preserves the top-model decision. In contrast, a closed-set stress test on a separately materialized business corpus, using four VisDrone-compatible detectors over eight empirically supported classes, changes the point-estimate top-ranked detector and reverses three of six pairwise point-estimate preference directions. A complementary audit of five UAV business scenarios further reveals substantial Real-Synthetic mismatch in class composition, object density, and target scale, including systematic under-representation of small targets. These results show that Synthetic UAV benchmark trust is conditional: semantic coverage is insufficient, and validity must be established empirically for the task, operating regime, and model panel of interest.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">24</div>
+      <div class="paper-body">
+        <h2>Optimal Receive Design on the Observation Axis for RSMA Satellite-UAV Downlinks</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Xianwei Meng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T06:47:38Z</span></li><li><span>分类</span><span>cs.IT</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14641v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14641v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>A receiver can change its observation state while the physical signal remains the same. In rate-splitting multiple access (RSMA) downlinks, this distinction separates receive-beam design and phase-reference transport from the motion of the satellite--UAV line of sight. We formulate receive optimization within the physical--observation dual-axis (PODA) structure and obtain three complementary results. For a known line-of-sight response and positive-definite receiver-noise covariance, a noise-weighted matched combiner simultaneously maximizes every decoding SINR and the minimum user rate. Under directional uncertainty, the principal eigenvector of the conditional response covariance globally maximizes mean array gain; for a Gaussian directional model, an equal-amplitude receiver is optimized by steering towards the conditional mean. Mean rate requires a different objective. We prove that the RSMA common-rate water level is jointly concave in the users&#x27; receive gains and derive a semidefinite relaxation with a computable global upper bound. A feasible rank-one beam can therefore be compared directly with the optimum of the finite-scenario problem. We also derive a precision-weighted linear predictor that suppresses uncertain physical-velocity estimates after observation-frame transport. Paired dynamic simulations reduce direction-cosine RMSE by 51.29\% relative to unrestricted nine-point extrapolation. In a separate uncertainty experiment, direct rate optimization increases mean minimum spectral efficiency from 0.32425 to 0.41712 bit/s/Hz, an improvement of 28.64\%; the corresponding design objective is within $2.28\times10^{-4}$ bit/s/Hz of a global upper bound. The phase-transport equation fixes a coherent representative of each optimal beam without changing its gain.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">25</div>
+      <div class="paper-body">
+        <h2>面向6G无人机集群共识协同感知的从众驱动拜占庭攻击防御</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ruixing Ren, Junhui Zhao, He Fang, Xiaoke Sun, Jiamin Li, Pengcheng Zhu, Dongming Wang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T06:43:39Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14639v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14639v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：** 在ISAC使能的6G网络中，无人机集群依赖基于共识的协同感知，节点迭代交换并融合邻居决策以逼近全局环境图景，支撑任务关键场景的高可靠低时延推断。然而这一从众机制恰成拜占庭攻击的杠杆：恶意节点利用更新规则制造虚假共识，逐轮诱导诚实节点偏离真实观测，使其实际误差概率动态演化并远超固有感知误差。传统融合模型假设节点误差固定且独立，因而严重失配。论文主张转换防御视角：不追查坏节点，而理解好节点为何变坏。</p>
+<p>**研究思路：** 作者以演化博弈论刻画上述诱导动态，并把所得规律交给融合中心，使其动态校正正常节点的真实误差水平。仿真表明，该方法在广泛攻击强度与网络规模下维持近乎完美的态势推断，并自然支持低时延决策；文中还讨论了迈向安全ISAC-6G集群感知的若干开放挑战。</p>
+<p>**局限性：** 摘要仅报告仿真结果，未说明是否包含真实无人机系统或实测验证；攻击模型假设、网络拓扑与融合规则等条件未披露；演化博弈刻画的有效边界、节点移动与通信受限场景下的表现，摘要中均未说明，具体局限性缺乏足够信息判断。</p>
+<p>**值得关注：** “不识别恶意节点、改为在线校正误差水平”的思路，可迁移至多机器人协同SLAM、车路协同感知与集群决策中的拜占庭鲁棒融合；把从众效应建模为可预测动态、再由博弈输出校正量，为具身智能体的分布式共识安全提供了可借鉴的范式与评价视角。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">26</div>
+      <div class="paper-body">
+        <h2>Efficient Multimodal Beam Prediction for Real-World 6G UAV Communications via Image-Position-Synthetic Fusion</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Rifat Bin Reza, Md Ahadul Haque Suvo, Jia Uddin, Saifur Rahman Sabuj</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T05:28:59Z</span></li><li><span>分类</span><span>eess.SP, eess.IV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14593v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14593v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Camera-based beam selection can reduce the need for exhaustive channel measurement in highly mobile millimeter-wave UAV links, but the complementary value of visual and position-derived representations and their behavior under modality degradation require further investigation. This paper develops a staged multimodal framework for current-beam prediction using real-world UAV measurements. The proposed 32-beam classifier combines an ImageNet-pretrained EfficientNet-B3 visual encoder with two deterministic position-derived representations: an explicit Geometric-Kinematic vector and a nonlinear synthetic feature basis constructed from position. The image and synthetic representations are fused first, followed by late fusion with the geometry representation. Experiments on DeepSense 6G Scenario 23 show that Image-Synthetic fusion achieves 86.92% Top-1, 99.03% Top-3, and 99.56% Top-5 accuracy, improving Top-1 performance by 2.64 percentage points over image-only inference and outperforming the 60.71% Top-1 accuracy of synthetic-only inference. Adding the Geometric-Kinematic branch yields the highest measured performance, reaching 87.14% Top-1, 99.12% Top-3, and 99.60% Top-5 accuracy. Controlled input interventions further demonstrate complementary behavior under visual degradation and strong sensitivity to severe synthetic-input corruption. Position-derived nonlinear features provide complementary information to visual context and improve current-beam prediction in the evaluated real-world UAV setting.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">27</div>
+      <div class="paper-body">
+        <h2>DeepTelecom: A Differentiable Multimodal Framework for Channel Twinning in Dynamic Heterogeneous Wireless Environments</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Bohao Wang, Tianen Yuan, William Yen, Zehua Jiang, Chongwen Huang, Li Wei, Chen Zhu, Jiguang He, Hang Zou, Lina Bariah, Brahim Mefgouda, Anis Bara, Yongliang Shen, Zhaoyang Zhang, Merouane Debbah</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T04:00:56Z</span></li><li><span>分类</span><span>cs.IT</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14545v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14545v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Large-scale multimodal data are a key enabler for integrating large generative artificial intelligence models into wireless networks. However, existing wireless datasets offer limited support for heterogeneous environments, particularly in terms of reusable high-fidelity scenes, scalable differentiable ray tracing, and synchronized multimodal data. These limitations are more pronounced in mobile and aerial scenarios with time-varying environments and channels. To address these limitations, we propose DeepTelecom, a material-aware, high-fidelity multimodal channel dataset and reproducible generation framework for networks involving unmanned aerial vehicles (UAVs) and reconfigurable intelligent surfaces. DeepTelecom refines coarse indoor/outdoor reconstructions and uses a large language model to map segmented surfaces to frequency-dependent electromagnetic parameters, yielding material-aware Level of Detail 3 digital twins. Then, a differentiable GPU-accelerated Sionna ray tracer simulates propagation across the sub-6 GHz/millimeter-wave/sub-terahertz bands, and specifically captures rotor-induced micro-Doppler signatures of stationary or moving UAVs at different pitch angles and translational velocities. The framework synchronously produces channel tensors, coverage maps, transmission videos, multi-view images, and weather-conditioned renderings, and supports differentiable material calibration from sparse channel anchors. The released dataset contains 10 material-aware indoor/outdoor scenes and 50,000 synchronized UAV samples; the framework supports scalable generation of additional data for user-defined scenes and system configurations. In 3D UAV localization, DeepTelecom reduces the 90th-percentile error from 31.05 m to 2.43 m compared with schemes considering only channel state information, demonstrating its significance for artificial-intelligence-enabled wireless systems.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">28</div>
+      <div class="paper-body">
+        <h2>UAV SAR Imaging via Diffusion Posterior Sampling under Non-Ideal Motion in ISAC Systems</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Keying Zhu, Le Liang, Jie Yang, Fan Liu, Shi Jin</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T03:24:06Z</span></li><li><span>分类</span><span>eess.SP, cs.IT</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14516v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14516v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Unmanned aerial vehicle-enabled synthetic aperture radar (SAR) offers significant potential for providing communication services to ground users while sensing the surrounding environment in low-altitude integrated sensing and communication (ISAC) systems. However, its practical deployment is challenged by known non-ULM trajectories and unknown position errors, which violate conventional SAR assumptions and cause severe image defocusing. We address these non-ideal impacts by formulating the ISAC SAR imaging as an exact linear inverse problem to accurately model arbitrary trajectories with multiple-input multiple-output orthogonal frequency division multiplexing waveforms. Based on this formulation, we develop a diffusion posterior sampling (DPS)-based super-resolution SAR framework, where a pre-trained diffusion model provides a data-driven image prior and the exact physical model enforces measurement consistency during posterior inference. The inference process is further accelerated for practical implementation. For unknown position errors, we develop a joint iterative DPS and motion compensation (MoCo) optimization algorithm with discrete cosine transform reparameterization and coarse-to-fine spectral scheduling. Simulations demonstrate that our framework achieves high-accuracy reconstruction across diverse trajectories and remarkable super-resolution, maintaining greater than 21.3 dB peak signal-to-noise ratio (PSNR) even under half physical resolution truncation. Under unknown motion errors, the joint DPS and MoCo algorithm achieves 23.65 dB PSNR with a residual position-error estimation error of 0.19 cm.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">29</div>
+      <div class="paper-body">
+        <h2>Shared-Control Teleoperation of Omnidirectional Aerial Robots for Continuous Valve Rotation</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jinjie Li, Yicheng Chen, Haokun Liu, Moju Zhao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T02:22:13Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14478v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14478v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Omnidirectional aerial robots offer full 6-DoF independent control over position and orientation, making them popular for aerial manipulation. Although there have been advancements in robotic autonomy, human operation remains essential in complex aerial environments. Previously, we proposed an aerial teleoperation system that brings the rotational flexibility of human hands into the unbounded aerial workspace, which was evaluated through a vertically mounted valve-turning task. However, due to the limited range of human forearm&#x27;s motion, the robot could not continuously rotate the valve, hindering its application in industry. In this work, we propose an approach to initiate continuous rotation when the forearm angle exceeds a threshold. This switch of control authority exemplifies the concept shared control from human-robot interaction, marking a further step in aerial teleoperation.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">30</div>
+      <div class="paper-body">
+        <h2>面向多无人机甲烷排放率量化的时空混合路径规划</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ruikun Wu, Derek Hollenbeck, Sihua Shao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-10T01:57:26Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.14471v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.14471v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>甲烷点源排放率准确量化对排放清单核查与泄漏检测至关重要。无人机可近源获取高分辨率测量，但现有量化方法多沿预设轨迹且依赖单机，难以兼顾快速定位与低方差估计。论文据此提出多无人机时空混合路径规划，旨在提升排放率量化的速度、精度与稳定性。</p>
+<p>**研究思路：**  <br>作者在源受体矩阵估计与经验可观测性Gramian路径规划基础上，将测量时间平均，并用MOABS细丝羽流模拟器校准前向高斯羽流模型以减小模型失配。合作无人机先空间分散快速定位源，再以时间滞后顺序重走领航轨迹以降低量化方差。仿真对比单机基线、纯空间、纯时间及不同平均窗口。结果显示空间阶段定位更快；时间阶段方差最低但收敛慢；混合策略收敛远快于纯时间策略且稳态精度相当，误差带窄于纯空间策略；平均窗口越长收益递减。</p>
+<p>**局限性：**  <br>摘要仅显示仿真验证，未提供真实外场实验；结论依赖高斯羽流、SRM、EMGR及MOABS校准等模型假设。多机数量、风场变化、传感器噪声、通信同步和复杂泄漏场景下的鲁棒性，摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>该工作为多机器人主动感知提供“先空间搜索、后时序复测”的混合规划范式，可启发具身智能中的源定位、环境监测与多机协同：利用可观测性指标规划轨迹，用仿真器校准模型，并以收敛</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
