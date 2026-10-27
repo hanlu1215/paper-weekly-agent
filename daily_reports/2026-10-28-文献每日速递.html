@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-10-28-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-10-28-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-10-28<br>存档文件：2026-10-28-文献每日速递.html</p>
+      <p class="count">今日新增 17 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>导频欠采样下双域引导去噪扩散的级联信道估计</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ren X.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-03-01</span></li><li><span>DOI</span><span>10.1016/j.sigpro.2026.110969</span></li><li><span>分类</span><span>Signal Processing, Article, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105053985644" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无线通信中的级联信道估计常面临导频开销受限与欠采样观测问题。扩散模型可为病态逆问题提供生成先验，双域引导则可能融合不同域的信息以提升估计质量。但现有方法在导频欠采样条件下能否充分利用双域约束，摘要未说明；本文核心是想解决该场景下的级联信道估计问题，意义在于以生成式方法缓解导频不足带来的估计困难。</p>
+<p>**研究思路：**  <br>问题动机来自导频欠采样下级联信道估计的不适定性；作者提出带双域引导的去噪扩散方法，思路可能是将扩散生成先验与双域约束结合，用于重建或估计级联信道。它试图解决欠采样观测信息不足、传统估计先验有限等困难。摘要未说明具体验证方式与主要结论，无法确认实验设置、对比方法和性能提升。</p>
+<p>**局限性：**  <br>Scopus 未提供摘要，摘要中未提供足够信息判断具体局限性。适用场景、仿真或真实系统验证、对导频模式与信道模型的依赖、计算复杂度及实时性等均无法从现有信息确认，需查阅全文后再评估。</p>
+<p>**值得关注：**  <br>该题对通信物理层 AI 有启发：将扩散先验与双域引导用于稀疏/欠采样观测下的级联信道估计，可能为信道重建提供新范式。对机器人与自动驾驶中稀疏传感逆问题，也可借鉴多域引导扩散思路，但需重点验证实时性、鲁棒性和真实系统泛化能力。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>A Category-Selective Encryption Framework for Privacy Protection of UAV Images</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ting Yan, Minghui Shang, Haolang Sun, Xu Wang, Yamin Han, Mingze He</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-26T16:46:17Z</span></li><li><span>分类</span><span>cs.CR, cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.35729v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.35729v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Imagery captured by unmanned aerial vehicle (UAV) systems increasingly raises privacy concerns, as UAV aerial surveillance routinely captures sensitive objects such as pedestrians and vehicles alongside ordinary scene content. Existing privacy-preserving approaches typically employ class-agnostic saliency detection to indiscriminately obfuscate all visually salient regions, leading to unnecessary information loss and hindering downstream scene analysis. This paper proposes a category-selective encryption framework for privacy-preserving UAV surveillance. The core advance over prior class-agnostic approaches is semantic-level selectivity: the system first recognizes what is present in the scene via an 80-class detector, then encrypts only user-specified sensitive categories while leaving non-sensitive objects and background intact for downstream analytics. The framework supports two complementary encryption schemes: Thumbnail-Preserving Encryption (TPE), which applies adaptive pixelation with a learnable blend parameter and recovers content through a jointly trained Enhanced U-Net, and XOR stream cipher encryption, which offers parameter-free, mathematically exact reversibility. The architectural design, composite loss formulation, and joint training methodology are presented in detail, establishing a foundation for practical privacy-preserving UAV surveillance that balances protection strength and scene utility.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>VisGeo-PipeTrack: A Visual Geometric Servo Control Framework with MPC-RCAPID Control for UAV-Based Dynamic Pipes Tracking</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Zhenyang Gao, Jianlin Chen, Yang Yu, Honghao Shan, Jiale Gao, Ziyan Jia</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-26T12:34:40Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.35342v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.35342v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>While unmanned aerial vehicles (UAVs) are increasingly deployed for pipeline inspection, prevailing research predominantly assumes static pipes. In real-world industrial environments, pipes often exhibit dynamic movements, such as vibrations. This imposes more stringent requirements on UAVs&#x27; adaptive control and computational efficiency than in static scenarios. Therefore, this paper proposes a servo control framework named VisGeo-PipeTrack, which utilizes geometric constraints to enable UAV tracking of dynamic pipes. To achieve efficient UAV positioning, YOLOv5 is employed to detect labels on the pipe. The positions are derived from visual geometric constraints based on these detected labels to enable precise localization. To address tracking control challenges, a model predictive control based real-time corrected adaptive PID (MPC-RCAPID) controller is proposed. This controller employs the Recursive Least Squares method for real-time model estimation and integrates rolling horizon optimization to dynamically adjust PID parameters. Experiments conducted on both the AirSim simulator and the Tello UAV platform validate the effectiveness of the proposed framework. Simulation comparisons with standard PID, fractional-order PID, adaptive PID, and fuzzy PID demonstrate that MPC-RCAPID achieves the shortest settling time (3.26 s) and the lowest average tracking error (3.52%). In physical experiments on the Tello platform, compared with standard PID control, MPC-RCAPID reduces the average tracking error by 55.52%, 26.72%, and 26.52% across the three test dimensions. These results demonstrate that VisGeo-PipeTrack facilitates efficient autonomous tracking in dynamic pipe environments.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">4</div>
+      <div class="paper-body">
+        <h2>Fluid Antennas Enabled UAV Communication Systems: Fundamentals, Challenges, and Future Directions</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Wenchao Liu, Weijie Yuan, Jun Wu, Jinke Ren, Xuhui Zhang, Changsheng You</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-26T08:58:38Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.35047v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.35047v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Low-altitude wireless networks (LAWNs) require uncrewed aerial vehicle (UAV) communication systems to adapt to large-scale propagation changes and fast local channel fluctuations. Fluid antennas (FAs) provide an additional degree of freedom (DoF) by reconfiguring antenna positions within a compact aperture. This article investigates FA-enabled UAV communication systems from the perspectives of fundamentals, design challenges, and future research directions. We first introduce a dual-mobility perspective, in which UAV trajectory planning provides macro-mobility for large-scale air-to-ground geometry adaptation, and FA position reconfiguration provides micro-mobility for fine-grained local channel adaptation. We then identify key design challenges arising from the high computational complexity and information uncertainty in the joint optimization of UAV trajectory, FA positions, and beamforming under mobility, energy, hardware, and security constraints. To address these challenges, we present a hybrid offline-online optimization framework, where prior information such as environment maps, user mobility patterns, and statistical channel state information (CSI) supports long-term planning, while real-time information such as instantaneous CSI and UAV state enables fast online correction. A case study on FA-enabled UAV-assisted vehicular communications demonstrates the effectiveness of the proposed framework. Finally, we discuss future directions of FA-enabled UAV communication in integrated sensing and communication (ISAC), secure communication, mobile edge computing (MEC), and aerial relaying.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">5</div>
+      <div class="paper-body">
+        <h2>定位不确定性感知的无人机集群GNSS拒止海上搜索</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Siyuan Yang, Junning Lyu, Xiaoyu He, Lakmal Seneviratne, Shaoming He</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-26T05:41:45Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.34873v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.34873v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>GNSS拒止海上环境中，无人机集群依赖机间测距协同定位，测距噪声与邻居不确定性沿多跳参考链累积，影响连通、避碰与搜索效率。摘要指出，控制</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">6</div>
+      <div class="paper-body">
+        <h2>物理与数据驱动的复合扰动分离预测控制：多约束机载光电吊舱</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Yaokun Lu, Yifan Li, Zhixuan Zhang, Enmei Wang, Hao Teng, Jianzhong Qiao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-26T05:06:52Z</span></li><li><span>分类</span><span>cs.RO, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.34849v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.34849v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>机载光电吊舱在载机振动、输入延时与执行器饱和等多重约束下，需要同时实现视轴稳定与目标跟踪。周期性振动与非周期性扰动混杂，使传统单一扰动观测与补偿难以兼顾：线性自抗扰类方法往往把异质扰动合并估计，在频率变化和参数失配时容易放大误差。论文据此提出按物理特性分离扰动、并分别嵌入优化与补偿通道的约束指向控制方案，以提升复杂工况下的指向精度。</p>
+<p>**研究思路：**  <br>作者将复合扰动拆为周期与非周期两部分：自适应周期观测器用线性回归做频率估计，预测多谐波振动并在 MPC 时域内前馈；线性观测器估计非周期扰动，并用有界 LSTM 预测其在输入延时内的变化。周期预测进入 MPC 模型、非周期补偿置于优化器之外，从而抑制非周期估计误差放大。在给定余量包络下用输入集收紧保证指令可行，并给出区域实用跟踪界。通过自建无人机两轴吊舱室内悬停对比实验，以及频率变化与参数失配仿真验证，偏航/俯仰 RMSE 达 0.770°/0.350°，较线性自抗扰分别降低 25.1% 与 45.9%。</p>
+<p>**局限性：**  <br>摘要显示验证以室内悬停实验和仿真为主，未说明室外飞行、大机动或强振动工况下的表现；LSTM 的有界性与跟踪界依赖输入序列与预测状态裕度等显式条件，实际满足程度未知；频率估计与参数失配的鲁棒范围、算力实时性摘要未提供足够信息判断。</p>
+<p>**值得关注：**  <br>“周期进优化器、非周期出优化器”的扰动分离架构，为具身平台中多源扰动补偿提供了可复用范式；结合物理观测器与有界学习模块预测延时内扰动的思路，以及用输入集收紧换取可行性的约束处理方式，对无人机云台、机械臂视觉伺服等指向控制任务具有借鉴价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">7</div>
+      <div class="paper-body">
+        <h2>面向拦截的四旋翼球面方位非线性模型预测控制</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Li Hong, Linkai Liu, Xiangyu Ren, Shuli Lv, Chen Min, Chunjiang Wu, Yujun Zhang, Dingchen Zeng, Quan Quan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-26T03:31:49Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.34789v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.34789v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>未经授权无人机的泛滥催生低成本物理反制需求，搭载固连式相机的四旋翼拦截器因成本低而受关注。但该构型把机体机动与相机指向强耦合在一起：快速接近目标往往导致目标脱离视场，而保持可见性又会牺牲闭合速度。现有控制路线难以显式处理这一冲突，因此本文试图把“追得上”和“看得见”纳入统一的优化框架。</p>
+<p>**研究思路：**  <br>针对上述耦合冲突，作者提出ISB-NMPC，将球面方位预测与非线性四旋翼动力学耦合，联合优化指向目标的闭合运动与目标可见性；并在S^2流形上设计姿态补偿扩展卡尔曼滤波，估计目标方位运动、补偿感知延迟，并预测方位以引导尺度自适应检测。验证上，30组配对仿真中拦截成功率达86.7%，为对比控制器中最高，平均单次目标可见时间99.11%；室外飞行在约150 m处捕获30 cm目标，远距离速度达17 m/s，追踪四旋翼拖曳机动目标约14 m/s。</p>
+<p>**局限性：**  <br>摘要未说明对比控制器的具体构成、仿真场景多样性与失败模式分析；室外验证以单次飞行演示为主，未给出统计成功率，风扰、目标高机动及相机标定误差的影响尚不明确；尺度自适应检测对检测器性能的依赖程度亦未说明，摘要中未提供足够信息判断更具体的局限。</p>
+<p>**值得关注：**  <br>把感知延迟补偿与方位预测直接嵌入MPC预测模型，是“感知—控制一体化”的可借鉴范式；用S^2流形表示方位避免了角度参数化的奇异性。其任务设定（可见性约束下的拦截）、评价方式（成功率+可见时间占比）以及开源软硬件，对反无人机、视觉伺服拦截与移动目标追踪研究均有复用价值。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">8</div>
+      <div class="paper-body">
+        <h2>德国坦克问题与气味寻源导航</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Kordel Kade France</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-25T21:26:36Z</span></li><li><span>分类</span><span>cs.RO, cs.ET, math.PR, math.ST</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.34583v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.34583v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>机器人或无人机追踪气味羽流寻找源头时，面临一个看似简单却难以回答的问题：我是否已经抵达？接近源点时浓度梯度变平、湍流使信号时断时续，小型平台又往往缺乏精确定位能力来重建羽流分布，导致“到达判定”成为嗅觉导航链条中最薄弱的一环。该文由此出发，试图为源头判定提供一个轻量、可解释的终止准则。</p>
+<p>**研究思路：**  <br>作者借用二战中盟军由缴获坦克序列号估计产量的“德国坦克问题”，把机器人的化学传感器采样读数视为观测样本，用无偏估计器推断羽流峰值浓度，并据此推断气味源位置。方法只需维护运行最大值与采样计数器，再由精确置信界把这两个数转化为“继续搜索还是着陆”的判定规则。摘要称推导了估计器及其界，展示了样本效率，并考察了假设失效时的鲁棒性，结论是其可作为嗅觉导航的终止判据。</p>
+<p>**局限性：**  <br>摘要未说明具体实验平台、场景规模与真实飞行验证情况，估计器的置信界依赖采样分布等统计假设，其失效边界仅被笼统提及；在强湍流、多源或传感器漂移等条件下的表现，摘要中未提供足够信息判断。</p>
+<p>**值得关注：**  <br>把经典统计估计引入机器人感知决策，仅用常数级内存实现可证明的停止准则，对资源受限的具身平台气味寻源、泄漏检测与无人机自主收尾具有借鉴意义，也提示“何时停止”应作为导航策略的一等公民来设计。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">9</div>
+      <div class="paper-body">
+        <h2>Nonlinear Control of Aerial Manipulator</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Sandesh Thapa</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-25T17:20:46Z</span></li><li><span>分类</span><span>eess.SY, cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.34454v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.34454v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper presents two controllers for a quadrotor equipped with a two-DOF robot manipulator that physically interacts with the environment. Cartesian impedance and adaptive sliding mode controllers are implemented and compared for a simple hovering task in the presence of some bounded disturbance. A full dynamic model is developed, and the two above controllers are implemented with the same initial conditions and desired position.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">10</div>
+      <div class="paper-body">
+        <h2>HARP: Handoff-Aware Recovery Planning for Active Target Acquisition in Multi-UAV Handoff</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Heegyeong Kim, Alice James, Avishkar Seth, Endrowednes Kuantama, Richard Han</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-24T12:47:38Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.33640v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.33640v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Continuous aerial tracking often requires multiple drones to maintain target coverage over long periods. During handoff, the receiving UAV may lack prior target observations and must actively acquire a usable view without disrupting the sender&#x27;s ongoing coverage. This work introduces HARP, a handoff-aware recovery planner that registers bounded sender predictions in the receiver&#x27;s local map, distinguishes field-of-view failure from physical occlusion, and generates failure-specific yaw, translation, and parallax viewpoints. Candidate motions are checked for receiver clearance, sender-fiducial observability, protected sender--target visibility, temporal validity, and deadline compliance. When a complete trajectory cannot be admitted, HARP may execute a sampled admissible nonzero prefix and replan from updated evidence. In simulation, HARP acquired the target in all 49 standard trials and in 15 of 16 stress trials. Field trials validated HARP&#x27;s recovery geometry under field-of-view limitation and environmental occlusions.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">11</div>
+      <div class="paper-body">
+        <h2>并发任务编排：分层可信协作组构建与受限资源分配</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jiazhi Chen, Xianbin Wang, Xuemin &quot;Sherman&quot; Shen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-23T21:06:36Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.33295v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.33295v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>资源受限的移动智能机器（如无人机）需协作完成复杂任务，但并发任务需求、分布式资源有限和协作者可用性动态变化，使任务特定目标难以满足。既有协作系统难以同时兼顾任务拆分、资源约束、信任与公平性。论文拟通过可信协作组构建与资源分配实现并发任务编排。</p>
+<p>**研究思路：**  <br>作者将任务分解为受动态资源和依赖约束的子任务，建立融合完成目标与价值—风险分析的任务效用模型；把并发编排建模为α公平性下长期效用</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">12</div>
+      <div class="paper-body">
+        <h2>SP-Guide：利用空间先验增强空中视觉语言导航</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Haoxiang Tang, Dong Zhou, Shen Tan, Minxuan Jiang, Xitong Li</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-23T14:21:58Z</span></li><li><span>分类</span><span>cs.CV, cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.32697v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.32697v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>空中视觉语言导航要求无人机仅凭部分自我中心观测，在大型户外场景中理解语言指令并抵达目标。现有方法通常将视角中心 RGB 观测与全局锚定历史地图融合为通用视觉嵌入，使跨模态空间对齐主要依赖稀疏导航监督学习，难以充分建立稳定的空间对应关系。SP-Guide 由此切入，试图以物理落地的空间先验改善跨模态对齐，提升空中导航的鲁棒性。</p>
+<p>**研究思路：**  <br>针对上述对齐不足，作者提出基于 Transformer 的目标预测框架，包含空间先验跨模态编码器、指令增强解码器和用于终端目标细化的目标收敛过滤器。其核心是借助空间先验为视觉—语言—地图信息提供更明确的跨模态空间约束，从而缓解稀疏监督下的学习困难。论文在 CityNav 基准上验证，报告成功率优于代表性基线，且在未见环境中增益最大，说明空间先验可作为有效的归纳偏置。</p>
+<p>**局限性：**  <br>摘要仅说明在 CityNav 基准上验证，未提供真实无人机飞行实验、计算开销、失败案例或具体成功率数值；其对不同场景规模、传感器配置和真实环境扰动的适用性仍待进一步验证。摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>该工作提示 AVLN 可从“通用视觉嵌入融合”转向“空间先验约束的跨模态对齐”，其目标预测、指令增强与终端目标细化设计对具身导航中的长场景目标定位具有借鉴意义；未见环境增益也值得后续研究关注泛化评价与空间先验的迁移方式。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">13</div>
+      <div class="paper-body">
+        <h2>基于蒙特卡洛的动态环境室内无人机定位：仅用四个机载测距传感器</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Mohammad Reza Ranjbar Divkoti, A. Pedro Aguiar</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-23T13:54:30Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.32645v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.32645v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>室内无人机仅依赖少量机载传感器定位仍很困难，动态环境会引入与静态地图不一致的测距，标准MCL在动态障碍下误差可达12.3 cm。论文由此提出仅用四个单点测距传感器和测得航向实现二维鲁棒定位，以降低传感配置并提升动态场景可靠性。</p>
+<p>**研究思路：**  <br>作者提出AF-MCL：拒绝不符合已知静态地图的测距，并自适应注入粒子，以应对定位发散和“绑架”问题；仅在上一位置估计处做光束分类，使射线投射成本不随粒子数增长；粒子分布还提供在线</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">14</div>
+      <div class="paper-body">
+        <h2>从链路可用性到时限约束密钥服务：移动自由空间QKD可行性框架</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Hasan Abbas Al-Mohammed</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-23T13:46:19Z</span></li><li><span>分类</span><span>quant-ph</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.32634v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.32634v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>移动自由空间量子密钥分发（QKD）链路只能间歇性提供秘密比特，而应用往往在指定时刻需要密码密钥材料。摘要指出，光学可行性、有限密钥输出为正、按时交付密钥是三类不同主张，现有讨论易将它们混同。论文由此提出一个按时间索引、带安全限定的到达过程与密钥库存模型，试图把链路是否可用与密钥服务是否满足截止期限区分开，为列车、无人机、高空平台和卫星辅助QKD提供系统层面的核算与基准框架。</p>
+<p>**研究思路：**  <br>作者先给出明确假设，用前缀可行性条件判断所有需求能否在不借用未来接触窗口密钥的情况下被满足；再用风格化有限分块模型说明：长期光学可用性为正，并不保证短接触片段下有限密钥输出为正。摘要提到用两个数值示例区分总密钥产出与密钥交付时间，并展示跨采集窗口合并数据的条件收益。该工作定位于系统级核算和基准框架，而非新的QKD安全性证明或硬件性能演示。</p>
+<p>**局限性：**  <br>摘要未说明具体参数、假设强度及数值示例的规模，也未提供真实列车、无人机或卫星链路的实验验证。模型结论可能依赖有限分块建模与安全假设，实际部署中的信道波动和密钥管理开销仍需检验。摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>该框架把“可用”细化为“按时可服务”，对具身智能和自动驾驶中依赖周期性密钥更新的通信安全设计有借鉴意义；其前缀可行性、密钥库存与跨窗口池化思路，可用于任务级通信资源核算和基准评价。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">15</div>
+      <div class="paper-body">
+        <h2>UAV-SwarmAgent: Scalable Multi-UAV Reconnaissance and Task Allocation via Code Generation and Vision-Language Reasoning</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Oleg Sautenkov, Yasheerah Yaqoot, Muhammad Ahsan Mustafa, Grigorii Kalinin, Chih-Yung Wen, Dzmitry Tsetserukou</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-23T12:41:01Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.32559v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.32559v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Supervising a multi-UAV reconnaissance mission usually means plotting waypoints and watching every drone. We present UAV SwarmAgent, a hierarchical multi-agent system in which an operator states the mission in one natural-language sentence and a ground-station agent writes and executes code that turns it into per-UAV routes. The agent grounds inspection targets in an aerial map with a vision-language model, splits them among N UAVs by balancing route length, and dispatches worker agents that verify incidents with a compact onboard decision model. In simulation over 4 incident types and 3 foundation models, the swarm located the incident in 244 of 255 missions (95.7%). A paired scaling study with one to 5 UAVs shows that flight time follows an Amdahl-type law. The second UAV delivers half of the attainable saving and the speedup is bounded at 1.52x. We discuss what this predictability, and the false alarms we observed, imply for an operator who supervises the swarm, and outline the user study needed to test it.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">16</div>
+      <div class="paper-body">
+        <h2>Practical Complete Tracking Through Gimbaled Unidirectional Actuation with Application to Multirotor UAVs</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ian Willebeek-LeMair, Craig Woolsey</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-22T22:11:44Z</span></li><li><span>分类</span><span>eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.31962v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.31962v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper addresses the problem of practical tracking control for robotic vehicles with gimbaled unidirectional actuators, with special application to multirotor unmanned aerial vehicles. A widely recognized obstacle to tracking control for multirotors is the free-fall singularity --- when a multirotor is commanded to free fall, the vehicle&#x27;s target attitude becomes undefined. This singularity is a pathology pertinent to all robotic vehicles with gimbaled unidirectional actuators. This paper considers the general theoretical problem for vehicles with gimbaled actuators. Starting from a baseline robust controller that assumes unconstrained inputs, we redesign the control law to be compatible with the gimbaled actuator. This is accomplished by driving the output of the gimbaled actuator to a ball centered at the target input value. The baseline controller&#x27;s tracking guarantees are recovered in a practical sense. We apply our results to synthesize a global practical complete position tracking controller for multirotor unmanned aerial vehicles. The theory is demonstrated in simulation.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">17</div>
+      <div class="paper-body">
+        <h2>DisasterRoute：证据引导的双系统路由视觉灾害问答</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Tan Zhang, Xing Deng, Lu Zhang, Xiaofeng Zhu, Ping Hu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-21T05:41:44Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.29231v2" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.29231v2.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>低空无人机图像视觉问答需在有限边缘算力下为灾害响应提供及时准确判断。常规问题可由直接决策快速回答，困难问题更适合逐步推理；但现有研究多聚焦提升视觉理解与生成推理能力，对高效直接决策及其与生成推理的自适应协调探索不足。论文因此关注如何按问题难度分配推理计算，兼顾效率与准确性。</p>
+<p>**研究思路：**  <br>作者先构建面向灾害领域、基于视觉语言模型的Disaster-S1，以选项判别训练，在单次多模态前向中输出答案选项概率分布</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
