@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-11-04-文献每日速递</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --border: #dbe4ee;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #f5f7fb 30%, #f8fafc 100%);
+      color: var(--text);
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+    .hero {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 238, 0.9);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .hero-meta, .count {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.7;
+    }
+    .paper-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .paper-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .paper-index {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .paper-body h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .meta-list, .links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    .meta-list li {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .meta-list span:first-child {
+      min-width: 84px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .summary {
+      background: #f8fbff;
+      border: 1px solid #d9e6f2;
+      border-radius: 18px;
+      padding: 16px 18px;
+      line-height: 1.8;
+    }
+    .summary p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+    .empty {
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .page { padding: 18px 12px 44px; }
+      .hero, .paper-card { padding: 18px; border-radius: 20px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-index { width: 52px; height: 52px; font-size: 20px; }
+      .meta-list li { display: block; }
+      .meta-list span:first-child { display: block; min-width: 0; margin-bottom: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Paper Weekly Agent</div>
+      <h1>2026-11-04-文献每日速递</h1>
+      <p class="hero-meta">生成时间：2026-11-04<br>存档文件：2026-11-04-文献每日速递.html</p>
+      <p class="count">今日新增 23 篇。</p>
+    </header>
+    <section class="paper-grid">
+      
+    <section class="paper-card">
+      <div class="paper-index">1</div>
+      <div class="paper-body">
+        <h2>FedLDC-Lite：面向边缘联邦多模态目标检测的轻量反事实学习</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Liao X.</span></li><li><span>来源</span><span>Scopus</span></li><li><span>发布时间</span><span>2027-03-01</span></li><li><span>DOI</span><span>10.1016/j.patcog.2026.115203</span></li><li><span>分类</span><span>Pattern Recognition, Article, Cited by: 0</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://www.scopus.com/pages/publications/105054839696" target="_blank" rel="noreferrer">论文链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>该研究由边缘侧多模态目标检测的部署需求引出：联邦学习可在隐私约束下协同建模，多模态检测需融合多种传感信息，而边缘设备通常面临算力、通信与能耗限制。但Scopus未提供摘要，现有方法的具体不足、同行路线为何不能充分解决问题均无法从给定信息判断。论文核心似为提出FedLDC-Lite，以轻量反事实学习支撑边缘联邦多模态目标检测，其意义在于探索隐私与资源约束下的协同多模态感知。</p>
+<p>**研究思路：**  <br>按标题可归纳为：针对边缘联邦多模态检测中的资源与隐私约束，引入轻量反事实学习，试图在联邦框架下利用多模态信息并降低计算或通信负担，缓解多模态融合与边缘部署之间的矛盾。但摘要未说明具体方法流程、关键困难、验证方式及实验结论，无法确认其实际有效性。</p>
+<p>**局限性：**  <br>摘要中未提供足够信息判断具体局限性。真实边缘系统验证是否充分、依赖何种数据模态与任务场景、轻量化带来的精度代价、联邦通信与隐私假设、反事实学习的效果边界等均无法从给定信息确认，需查阅全文后再判断。</p>
+<p>**值得关注：**  <br>该题融合轻量反事实学习、联邦学习与边缘多模态检测，对隐私敏感、资源受限的机器人/具身智能感知有潜在启发。后续可重点关注多模态融合效率、通信开销、隐私—精度权衡、反事实样本构造，以及在真实动态边缘环境中的验证方式。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">2</div>
+      <div class="paper-body">
+        <h2>基于高斯过程的监视雷达联合数据关联与跟踪</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Anders Malthe Westerkam, Troels Pedersen</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-02T15:41:34Z</span></li><li><span>分类</span><span>eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.03314v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.03314v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>无人机增多使受限空域安全需求上升，雷达</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">3</div>
+      <div class="paper-body">
+        <h2>KAUSTics-Net：基于扩散的透过水体无人机图像复原与半合成数据集</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Dario Scilla, Omar A. Lopez, Kasper Johansen, Brian O. Nieuwenhuis, Matthew F. McCabe</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-02T13:36:50Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.03120v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.03120v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>浅水环境测绘依赖无人机影像，但水面折射、焦散和波长相关衰减会造成图像畸变；配对失真与参考影像稀缺又限制监督式复原方法的发展。现有路线难以在缺乏真实配对数据时充分训练和泛化，因此论文希望借助半合成数据与条件扩散，实现浅水影像复原，并关注其下游遥感可用性。</p>
+<p>**研究思路：**  <br>作者构建KAUSTics半合成数据集：由32幅高分辨率无人机图像得到1,280个参考图块，并经Blender水面渲染及经验颜色、模糊增强生成12,800个退化观测。随后提出像素空间条件扩散框架KAUSTics-Net，融合多尺度条件编码器、FiLM、交叉注意力和复合重建目标。论文与八种图像复原方法比较，并进行架构消融和跨数据集实验；在KAUSTics上三个训练种子平均PSNR为31.715±0.439 dB、SSIM为0.849±0.002、LPIPS为0.145±0.007。在Sea-Undistort上，采样器感知微调后达到19.469±0.332 dB PSNR和0.554±0.005 SSIM，但仍有感知权衡；真实无人机实验检查了特征保持和分割行为。结论表明半合成训练与条件扩散具有潜力，同时需兼顾重建保真度和下游遥感效用。</p>
+<p>**局限性：**  <br>半合成数据依赖Blender渲染和经验增强，可能与真实水体存在域差异；真实配对数据仍然稀缺。跨数据集指标相对较低且存在感知权衡，真实无人机影像上的验证规模和定量结果摘要未充分说明，适用场景也主要限于浅水无人机影像。</p>
+<p>**值得关注：**  <br>其半合成数据构造、多尺度条件注入与跨数据集采样器感知微</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">4</div>
+      <div class="paper-body">
+        <h2>A Tightly Coupled Magnetic-Inertial SLAM System for Field Robots</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Chuan Huang, Tongxing Peng</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-02T13:23:39Z</span></li><li><span>分类</span><span>cs.RO, eess.SP</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.03106v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.03106v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Field robots operating in mines, tunnels, and disaster areas require reliable localization despite GNSS denial and degraded camera and LiDAR measurements caused by dust, smoke, or poor illumination. Missions involving both ground and aerial robots further motivate complementary sensing modalities that do not depend on visibility, preinstalled infrastructure, or wheel contact. This letter presents MISLAM, a tightly coupled magnetic-inertial simultaneous localization and mapping system using an IMU and a nine-magnetometer array, without relying on external odometry or platform-specific motion assumptions. The system combines the inertial navigation model with local polynomial magnetic-field models for short-term motion estimation and a global Gaussian process model for drift correction using an error-state Kalman filter. Offline evaluation on three indoor datasets collected with a handheld rig shows reductions in total endpoint closure error of 45.7% - 78.0% relative to magnetic-inertial odometry. Under poor illumination, MISLAM maintains tracking after visual-inertial odometry fails, achieving a horizontal closure error of 0.332 m, although vertical drift remains a limitation. These results support magnetic-inertial SLAM as a complementary localization modality for robotic sensor suites operating under degraded visual conditions.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">5</div>
+      <div class="paper-body">
+        <h2>Deep Reinforcement Learning for BD-RIS-Assisted Multi-UAV RSMA Communications</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Aamer Mohamed Huroon, Ali A. Nasir, Daniel B. da Costa</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-02T12:44:45Z</span></li><li><span>分类</span><span>cs.IT, cs.ET</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.03047v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.03047v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Beyond-diagonal reconfigurable intelligent surfaces (BD-RISs) extend conventional diagonal RISs by allowing controllable coupling among reflecting elements. This flexibility is attractive for aerial networks, where unmanned aerial vehicles (UAVs) face rapidly varying channels and strict power limits. In this paper, we study a hybrid BD-RIS-assisted multi-UAV rate-splitting multiple access (RSMA) downlink, in which UAVs within favourable BD-RIS coverage use both direct and BD-RIS-aided links, whereas the remaining UAVs are served through direct links only. We formulate a network sum-rate maximization problem that jointly optimizes UAV trajectories, RSMA common-rate allocation, beamforming, BD-RIS scattering matrices, and UAV-BD-RIS association. The resulting mixed-integer non-convex problem is solved by using deep deterministic policy gradient (DDPG) algorithm, equipped with a constraint-preserving action layer that generates reciprocal and lossless BD-RIS responses in closed form and handles the binary association inside the environment transition. Simulation results, averaged over three training seeds under a physically consistent channel model with blocked direct links near the BD-RISs, show that the proposed design attains a sum rate comparable to SAC and higher than twin delayed deep deterministic policy gradient ( TD3), proximal policy optimization (PPO), and deep Q-network (DQN), exceeds per-slot alternating optimization with fixed trajectories at about 1/65 of its per-slot runtime, and benefits mainly from RSMA, while the additional BD-RIS gain is modest.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">6</div>
+      <div class="paper-body">
+        <h2>Swarm Choreography Made Simple: Superposed Guiding Vector Fields for Rigid Formation Path Following</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jo{ã}o Machado, Matthieu Verdoucq, Christophe Jouffrais, Murat Bronz</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-02T12:16:32Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.03016v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.03016v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper presents a decentralized guiding vector field framework for rigid formation path following in multi- UAV systems based on the superposition of simple rule-driven vector fields. Each control objective is encoded as a dedicated vector-field component: a normalized tangential term to ensure progression along a prescribed geometric path at a desired speed, a convergence term driving the formation toward the path, a local coordination term that preserves the desired formation shape through a pseudo-path parameter, and a local separation term for inter-agent collision avoidance. The coordination mechanism requires the exchange of only a single scalar per agent, resulting in low communication bandwidth. Partial theoretical results establish convergence of the swarm to the desired path and formation in the absence of the sepa- ration term, while collision avoidance is formally guaranteed. The approach is experimentally validated using a swarm of five quadrotors executing two 3D choreographies. The first experiment involves tracking a helical path while maintaining a rigid V-shaped formation. The second demonstrates a spiral- like motion obtained by a rotating circular formation tracking a vertical line. The experimental results support the effectiveness and practical applicability of the proposed framework.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">7</div>
+      <div class="paper-body">
+        <h2>能看见的无线网络：复杂环境中的通感一体化</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Xingqin Lin</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-01T19:47:23Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.02157v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.02157v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>通信中的复杂多径和反射会干扰传输，但同一无线电交互也可用于感知无人机、道路车辆和工业移动机器人，这引出ISAC趋势。然而强回波不等于可靠观测：静止背景会掩盖运动，反射会生成</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">8</div>
+      <div class="paper-body">
+        <h2>基于流模型的FADE多通道尾部估计方法</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Parmida Valiahdi, Niloofar Mehrnia, Mustafa Furkan Beker, Ubeydullah Erdemir, Ibrahim Hokelek, Sinem Coleri</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-01T12:39:43Z</span></li><li><span>分类</span><span>eess.SP, cs.AI, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.01849v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.01849v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>URLLC场景对极低时延与超高可靠性的要求，使其容易受到低接收功率稀有事件的影响；当多个接收机同时经历深衰落时，空间分集带来的增益会被显著削弱。多元极值理论（MEVT）为刻画这类联合尾部行为提供了原则性框架，但传统MEVT方法常依赖较强的参数假设，或只能以离散形式表示依赖结构，因此难以充分反映复杂的多元尾部关系。论文希望在不预设参数形式的前提下，更准确地学习多接收机极端事件之间的依赖结构。</p>
+<p>**研究思路：**  <br>针对上述问题，作者提出基于流模型的角密度估计方法FADE：先将多元极值转换为标准极值表示，再用基于流的密度估计器从变换后的数据中学习依赖结构，从而避开预定参数形式的限制。验证使用无人机通信系统的实测数据，其中无人机作为发射机与两个地面接收机通信，并以经验联合CDF的一致性、MAE、分布一致性和绝对偏差作为评价依据。结果显示，FADE与经验联合CDF更吻合，相较Logistic和MEL等先进方法，MAE最多降低22.4%，并改善了分布一致性、降低了绝对偏差。</p>
+<p>**局限性：**  <br>摘要仅说明实验来自无人机与两个地面接收机的实测数据，未提供更多场景、接收机数量或样本规模信息，因此其在高维多元尾部、其他信道环境及更复杂系统下的泛化能力尚不明确；流模型的训练稳定性与计算开销也缺少说明。摘要中未提供足够信息判断具体局限性。</p>
+<p>**值得关注：**  <br>该工作把流密度估计引入MEVT的角密度建模，为机器人、自动驾驶和具身系统中多传感器或多链路同时失效的尾部风险建模提供了可借鉴思路：用可学习的依赖结构替代强参数假设，并以联合CDF、MAE和偏差等指标评价极端事件刻画质量。后续可关注其在多接收机、多模态感知融合及真实系统可靠性评估中的扩展。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">9</div>
+      <div class="paper-body">
+        <h2>面向异构环境的无人机蜂群领域感知分层联邦学习</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Taha Mahmood, Mudassar Shakeel, Ahmed Naeem, El Mehdi Amhoud, Rizwan Ahmad, Salman Ghafoor</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-01T11:28:04Z</span></li><li><span>分类</span><span>eess.SP, cs.LG</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.01812v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.01812v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>分层联邦学习可在无人机蜂群中实现通信高效的协同训练，但在环境动态变化且高度异构时性能会下降。现有方法难以同时兼顾环境差异、移动性与能量、时延等资源约束。论文由此提出领域感知分层联邦学习（DA-HFL），旨在提升跨异构环境训练的收敛性、精度与稳定性，并保持资源可行性。</p>
+<p>**研究思路：**  <br>作者将移动性信息引入聚类，结合簇级聚合、云端Fisher加权合并、域对抗共享骨干、环境特定预测头以及门控推理与本地适配，形成面向任务的分层学习框架；同时以任务加权优化纳入能量、时延和簇头资格约束。论文通过理论分析给出资源可行性、条件骨干平稳性界、Fisher加权合并的二次最优性及通信计算复杂度界，并在四个异构环境中仿真验证。结果表明其收敛更快、环境切换时精度更高、簇更稳定纯净，较资源感知HFL仅有适度能量开销，消融实验验证了各组件贡献。</p>
+<p>**局限性：**  <br>摘要显示验证主要基于四个异构环境的仿真，摘要未说明真实无人机系统部署、规模扩展及通信故障下的鲁棒性；此外，方法相对资源感知HFL存在适度能量开销，实际应用中的能耗权衡仍需进一步评估。</p>
+<p>**值得关注：**  <br>该工作将移动性聚类、域对抗共享表示、环境特定头和门控推理结合到分层联邦学习中，为无人机蜂群及多机器人跨场景协同感知提供了可借鉴的系统设计；其关注环境切换时的收敛、精度、簇纯度与资源约束，也提示后续研究重视真实部署和动态通信条件。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">10</div>
+      <div class="paper-body">
+        <h2>Vehicle and UAV Detection and Tracking with LTE Downlink Reference Signals: A Ray-Traced Evaluation on a Mapped Suburban Site with Licensed Base-Station Records</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Arun K. Gurung, Satha K. Sathananthan</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-01T02:46:48Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.01459v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.01459v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Passive sensing on the cellular downlink places the receiver at the user equipment and changes nothing in the network. We report simulation results for an LTE band-3 cell-specific reference signal arm on a ray-traced channel. On a synthetic street canyon the arm is compared with an uplink sounding reference signal arm on the same band, target and scorer: missed-detection probabilities of 0.667 and 0.772. On a surveyed site built from OpenStreetMap footprints and the licensed site record, nine receiver positions along the street track the vehicle at coverage between 29.9 % and 61.7 %; a 283 m lap separates target height from trajectory at 1.6 to 30 m; a 137 m lap on the built-up street tracks a vehicle and a 15 m airborne target on every cell, and 8 receivers at 135 m spacing carry one illuminator&#x27;s coverage over 1140 m of the street. Potential future work includes extending the analysis to multiple illuminators and varying receiver configurations, and confirmation through over-the-air measurements.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">11</div>
+      <div class="paper-body">
+        <h2>Dual Path Following for an Aerial Manipulator Under State and Input Constraints via Transverse Feedback Linearization</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Hamza Tariq, Adeel Akhtar</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-11-01T02:28:47Z</span></li><li><span>分类</span><span>cs.RO, eess.SY, math.OC</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.01442v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.01442v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper studies dual path following for a quadrotor carrying a three-degree-of-freedom arm. The center of mass of the combined system must follow a vehicle path and the end effector must follow a second path, while the arm respects its joint limits and avoids its singular postures. The vehicle and the arm are mechanically coupled, so one controller must handle both paths. With the center of mass and the end-effector path coordinates as outputs, and a dynamic extension of the thrust, the system admits a normal form without internal dynamics. We characterize the states where this normal form fails. We formulate the transverse feedback linearizing controller as a quadratic program that relaxes only the speed of the end effector along its path and imposes safety and actuator limits as inequality constraints. The program reduces to a scalar problem with a closed-form solution. If it remains strictly feasible for all time, the feedback is locally Lipschitz, both paths are invariant and attractive, and every constraint holds. In the physics engine Drake, the controller resolves a conflict between the two speed references by slowing the end effector while both paths remain invariant. By contrast, a cascade with a safety filter leaves both paths. Code and animations are available at https://gradslab.github.io/am_dual_pf-/</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">12</div>
+      <div class="paper-body">
+        <h2>基于去中心化碰撞验证的机器人集群鲁棒安全保障</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Grant Phillips, Hoang-Dung Tran, Justin M. Bradley</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-31T16:17:19Z</span></li><li><span>分类</span><span>cs.RO, cs.MA, eess.SY</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.01081v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.01081v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：** 机器人集群作为信息物理系统，其安全验证通常只在数值仿真或高度受控、无噪声的室内环境评估，难以反映户外真实部署中算法假设与系统实现细节的冲突。本文面向尺寸、重量和功耗受限的无人机集群，研究运行时碰撞避免的去中心化验证，试图弥合仿真验证与真实户外部署之间的差距。</p>
+<p>**研究思路：** 作者修改、增强并分析一种基于可达性的去中心化碰撞避免方法，使各无人机在运行时独立验证未来安全性并采取避碰动作。论文通过140次户外飞行（含6次8机集群飞行）收集验证性能、资源利用与时序数据，并随实验迭代改进。结果表明该方法可实时验证多机安全；每架无人机用开源safety_checker约500–520 ms验证未来4 s，其中可达集广播耗时约300–500 ms并主导总耗时。</p>
+<p>**局限性：** 摘要未提供足够信息判断具体局限性。现有证据主要来自特定SWaP受限UAV集群和户外飞行，尚不清楚更大规模、更复杂通信条件、不同任务场景及失效边界下的表现；也未说明统计方差、最坏情况时延和与基线方法的系统比较。</p>
+<p>**值得关注：** 该工作强调真实部署中算法假设与实现细节的匹配，并给出验证时延、资源占用和广播瓶颈的实测画像。其开源safety_checker、面向未来4 s的可达性验证及集群规模飞行评价方式，对具身智能多机器人实时安全、通信受限协同避碰和户外系统评测具有借鉴意义。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">13</div>
+      <div class="paper-body">
+        <h2>跨视角指代推理的视觉定位</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Hao Gan, Liuqian Wang, Shuang Li, Yufei Gao, Wentao Chao, Chong Fu, Chengming Liu, Lei Shi</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-31T16:12:38Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.01074v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.01074v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>跨视角物体地理定位需从另一视角观测中的目标，在卫星图像中完成定位。现有方法多用点击点或边界框指定查询目标，虽标出区域，却未充分利用自然语言中的语义属性与关系；同时指代表达常依赖查询视角，难以直接落到卫星图像。论文因此提出跨视角视觉定位（CVVG），把点/框提示扩展为由指代表达与视觉示例共同引导的实例定位，以提升跨视角语义对齐能力。</p>
+<p>**研究思路：**  <br>作者提出视图感知框架 GAV，选择性迁移视觉与语言证据。核心是视图感知指代推理：从带标记的查询图像生成以目标为中心的描述，检查目标类别一致性，并加入无方向角色线索；再通过示例提示、跨视角对齐和场景级判别，将语义证据落到卫星实例。实验在 MoP-UAV 上以 62.55% Acc@0.5 取得新 SOTA，并构建 CVOGL-Text 基准；在街景与无人机视角划分上分别比点击点基线高 7.09 和 6.79 Acc@0.25，显示对更大视角差的鲁棒性。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。仍需验证方法在更多传感器、地区与场景中的泛化性，以及指代表达和视觉示例的标注成本与依赖程度；真实部署效果也尚不确定。</p>
+<p>**值得关注：**  <br>其“指代表达+视觉示例”的 CVVG 任务设定、无方向角色线索与跨视角证据选择思路，可启发机器人、无人机和自动驾驶中的跨视角目标检索与地理定位；CVOGL</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">14</div>
+      <div class="paper-body">
+        <h2>Appointed-Time Fault-Tolerant Fast Terminal Sliding Control for UAVs with a Tracking Error-Based Disturbance Observer</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jinfa Li, Sheng Xu, Yanjie Wu, Chengyue Su</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-31T15:57:30Z</span></li><li><span>分类</span><span>cs.AI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.01061v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.01061v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper addresses the critical challenge of high-performance fault-tolerant tracking control for quadrotor UAVs under complex conditions including external disturbances, parameter uncertainties, and actuator faults. A synergistic control framework is proposed by decoupling the system into position and attitude loops, each governed by the following three innovations. First, an Appointed-Time Prescribed Performance Function (AT-PPF) is developed to strictly constrain the tracking error within a predefined funnel boundary, ensuring convergence within a fixed time regardless of initial conditions. Second, a Tracking Error-Based Fixed-Time Composite Disturbance Observer (TFxTCDO) is developed to enable fast and accurate estimation of lumped disturbances without requiring full-state information or precise system modeling. This observer directly couples disturbance estimation with the control objective, thereby enhancing robustness and convergence. Third, a Fast Second-Order Terminal Sliding Mode Controller (NFSO-TSMC) is designed to achieve faster convergence and effective chattering mitigation. Simulation results demonstrate that the proposed control strategy significantly outperforms conventional methods in terms of tracking accuracy, fault recovery speed, and robustness against uncertainties.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">15</div>
+      <div class="paper-body">
+        <h2>Flap like a bat: Soft pneumatic wings for biomimetic ornithopters</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Besetty Satyanarayana, Sirivelu Akhilesh, Bammidi Abhilash, Prabhat Kumar</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-31T12:27:39Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.00879v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.00879v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>This paper describes the development of a bio-inspired ornithopter wing mechanism that uses soft pneumatic actuators, such as PneuNet structures, in place of revolute joints, inspired by the complicated kinematics of bat flight. The proposed design employs pneumatically driven air pockets within a flexible wing skeleton to achieve smooth, lifelike flapping motion. The actuation system is controlled by 3/2-way solenoid valves and an air pump, which manipulate airflow and actuator deformation. We demonstrate, using ANSYS FEA software, the bending behavior of the PneuNet actuators under varying pressures to inform the wing&#x27;s structural design. The implementation of soft robotics in the flapping-wing system offers potential advantages over traditional mechanisms, such as reduced mechanical complexity, lower acoustic signatures, enhanced adaptability, and wing morphing. This work demonstrates the feasibility of replacing rigid revolute joints with compliant pneumatic actuators, enabling more agile, silent, and biomimetic aerial robots.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">16</div>
+      <div class="paper-body">
+        <h2>无人机辅助联邦边缘视觉的轨迹感知计算协同设计</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Kaichen Liu, Yueling Che, Sheng Luo, Jianhua Tang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-31T10:08:02Z</span></li><li><span>分类</span><span>cs.NI</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.00790v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.00790v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>UAV辅助联邦边缘视觉需训练计算量大的目标检测模型，但动态视觉感知与大规模就地计算负担紧密耦合。现有研究多把训练数据视为静态，难以刻画感知变化对训练的影响，也未在电池约束下统筹移动、感知与计算。本文旨在最小化期望训练时间，为UAV边缘视觉的联邦训练提供协同设计。</p>
+<p>**研究思路：**  <br>针对上述耦合与数据异构，作者提出四阶段联合轨迹、感知与计算协同设计；用统一感知概率把联邦收敛要求转化为UAV移动约束，以缓解数据异构；再用两层交替优化自适应确定本地数据工作量，平衡训练轮次与就地计算延迟。摘要称仿真验证了该方法在模型收敛和精度上优于基线。</p>
+<p>**局限性：**  <br>摘要仅提到仿真验证，未说明是否包含真实无人机系统实验、不同数据集与检测模型、规模扩展及电池/感知假设的普适性，因此具体局限和实际部署效果仍待验证；摘要未提供足够信息判断更多细节。</p>
+<p>**值得关注：**  <br>该工作把动态感知质量、联邦收敛与边缘计算延迟纳入统一优化，并用移动约束表达收敛需求，对具身智能中“感知—计算—运动”协同和UAV边缘视觉有借鉴意义；其以期望训练时间、收敛与精度评价的思路也值得后续研究参考。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">17</div>
+      <div class="paper-body">
+        <h2>The MASSIMAL Dataset: UAV Hyperspectral Images and Ground Truth Observations for Coastal Habitat Mapping in Norway</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Martin Hansen Skjelvareid, Eli Rinde, Kasper Hancke, Katalin Blix, Galice Guillaume Hoarau, Nicolo Grometto, Maia Røst Kile</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-31T09:19:04Z</span></li><li><span>分类</span><span>eess.IV, cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.00763v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.00763v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>The MASSIMAL dataset was collected in an effort to develop new remote sensing methods for mapping shallow water coastal habitats, such as kelp forests, seagrass meadows and maerl beds. The main component of the dataset is a set of hyperspectral images collected using a unmanned aerial vehicle (UAV). Images were collected during 45 UAV flights performed at 4 main areas along the Norwegian coast, spanning across a wide latitude range, from 59 to 67 degrees north. The ground sampling distance of the hyperspectral images is 3.5 cm, and the spectral range is 400-1000 nm, sampled across 300 spectral bands. During acquisition, push-broom imagery was automatically split into images with a maximum along-track length of 2000 lines. Out of approximately 1000 hyperspectral images, 221 have been annotated, using segmentation masks and a hierarchical taxonomy. An open source image processing pipeline has been developed as part of the dataset preparation, enabling efficient generation of reflectance images and glint-corrected images based on published radiance images. The dataset also includes color images (RGB) and multispectral images collected using UAV, and georeferenced image mosaics constructed from these. Ground truth data supporting the remote sensing images include hours of underwater video, thousands of geotagged underwater images, and tens of kilometers of single-beam sonar data. The data provide a foundation for assessing habitat distribution, tracking changes, and evaluating ecosystem services, thus supporting evidence-based management in Norwegian coastal environments.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">18</div>
+      <div class="paper-body">
+        <h2>面向预算受限高光谱场景巡检的空间不确定性分析</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Ritesh Sharma, Yuichi Motai</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-31T00:11:31Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2611.00478v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2611.00478v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：** 宽幅高光谱调查分类得到的地表覆盖图，误差往往沿类别边界和模糊区域聚集，呈现空间结构化分布。当低空无人机或地面人员只能核查少量点位时，核查预算应投向何处，取决于分类器不确定性在场景中的排布方式，以及固定传感器视场如何覆盖这种排布。若采样忽略这种空间结构，就难以在有限预算下高效命中错误。论文据此研究预算受限下的选址问题，以降低大面积遥感制图的人工验证成本。</p>
+<p>**研究思路：** 作者用光谱分类器集成的不一致度估计逐像素不确定性曲面，再以视场感知的贪心覆盖来最大化覆盖的不确定性质量。在七个基准场景上验证：最高不确定性十分位像素的错误密度为整体的 2.6 至 7.9 倍；15 个点位可覆盖至多 57% 的分类错误，为不确定性无关采样的 1.7 至 18 倍；按整幅足迹打分即可获得同等收益。空间分块评估与光谱-空间分类器下优势仍存，但需把曲面限制在有标注地类内；最佳策略随场景与阈值变化，高斯过程选择在各场景均逊于贪心覆盖。</p>
+<p>**局限性：** 验证限于七个基准场景，摘要未说明是否包含真实无人机或地面核查实验；结论依赖集成不一致度作为不确定性代理，在光谱-空间分类器下其对错误的排序能力下降；策略选择缺乏通用规则，阈值与场景会影响结论；也未涉及定位误差、视场重叠与动态预算分配等问题。</p>
+<p>**值得关注：** 该工作把“不确定性空间结构×传感器视场”作为主动感知的决策变量，为具身智能体的巡检选址与采样规划提供可借鉴范式：以不确定性质量覆盖为奖励，</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">19</div>
+      <div class="paper-body">
+        <h2>超越试错：地理空间引导的空中视觉语言导航主动推理框架</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jiawei Ge, Wenkang Gong, Jiuxin Cao, Bo Liu, Lei Cui, Haoran Wang, Xuelin Zhu, Biwei Cao, Chang Liu, Chen Feng, Ioannis Patras</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-30T08:50:07Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.41446v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.41446v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>空中视觉语言导航要求无人机在大型城市场景中按语言指令定位目标，但高空视角下目标常常很小、外观模糊。现有方法多沿用室内 VLN 的反应式范式，依靠局部观测反复更新导航状态，却未充分利用导航过程中保持稳定的地理空间结构。于是，外观相似的干扰物会让这类搜索不断强化“局部看似合理”的目标假设，导致定位不可靠。论文希望把空中 VLN 从反应式试错转向地理空间引导的主动推理。</p>
+<p>**研究思路：**  <br>为缓解被动证据累积造成的错误确认，作者提出 GeoReasoner：先进行搜索前的地理空间推理，得到区域级先验以约束目标假设空间；再进行假设驱动的探索，主动获取可区分性证据并修正相互竞争的目标假设；最后用一致性感知的目标验证，在停止前对抗式地评估互补证据来源，减少过早或错误的确认。在真实场景 CityNav 基准上，该方法在零样本空中 VLN 方法中取得新的 SOTA，并与监督方法相比具有竞争力。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性；仅提及 CityNav 一个真实基准，跨城市与跨场景泛化、传感器与算力开销、区域先验的来源与质量依赖是否得到验证，均未说明。</p>
+<p>**值得关注：**  <br>将稳定的地理空间结构作为先验、以假设检验替代逐步反应，对无人机巡检配送、具身导航与主动感知有借鉴价值；“先验约束—主动取证—对抗验证”的流程及零样本评测设定，也提示后续研究重视停止准则与证据一致性设计。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">20</div>
+      <div class="paper-body">
+        <h2>Veloxity：面向内存安全的无人机嵌入式固件Rust实现</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Derek Ward, Brian Bascom, Tyler Larsen, James Usevitch, Phil Tokumaru, Tim McLain</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-29T22:51:34Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.41053v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.41053v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：** 近年来，安全关键系统采用内存安全编程语言的趋势增强，此类语言有望消除多种常见软件错误并降低分析成本。但航空航天领域尤其是无人机对内存安全语言的采用仍碎片化、不完整；已有Rust无人机项目或仅限仿真、或闭源，或未集成成熟自主生态并与现有C/C++固件测试对比。论文据此提出开源Rust嵌入式无人机自驾仪Veloxity，试图降低内存安全语言在现代无人机生态中的使用门槛。</p>
+<p>**研究思路：** 针对上述缺口，作者以最小、模块化的自主无人机基础为思路，开发开源Rust自驾仪，并将其与等效C++自驾仪在仿真、硬件测试台和户外航点跟随飞行中对比。结果显示二者功能对等且性能有所提升，表明现代内存安全语言可作为可靠、高性能的自主航空航天固件方案。</p>
+<p>**局限性：** 摘要未提供足够信息判断具体局限性；验证平台范围、性能提升指标、长期运行可靠性与安全认证等仍需后续验证，与现有C/C++生态的兼容广度也有待考察。</p>
+<p>**值得关注：** 该工作为无人机飞控固件提供了Rust开源模块化范式，其“仿真—台架—外场”递进验证方式对具身智能和自主系统软件安全研究具有借鉴意义，后续可关注其生态互操作与性能评价。</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">21</div>
+      <div class="paper-body">
+        <h2>Drone-PUR：从视觉线索发现到无人机场景理解与推理</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Jiahe Wu, Bing Cao, Xingyue Guo, Ruipu Zhao, Beiming Yu, Jiekang Feng, Qinghua Hu, Pengfei Zhu</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-29T18:01:30Z</span></li><li><span>分类</span><span>cs.CV</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.40801v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.40801v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>**研究背景：**  <br>视觉语言模型的推理能力常受不完整或不准确的视觉观察制约；在无人机场景中，小目标、细微属性和视角变化进一步增加感知与理解难度。通用模型在空间判断、跨模态及跨视角推理上仍显不足。为此，论文提出 Drone-PUR，围绕视觉线索的发现、解释与整合，对应感知、理解、推理三项能力，试图建立面向无人机场景的数据集与评测基准。</p>
+<p>**研究思路：**  <br>作者构建含11项任务、175k训练和20k测试样本的基准，覆盖单图、图像序列、跨模态图像和多视角，测试样本均经人工审核；再评估22个通用VLM以定位空间与跨视角推理短板，并通过单任务微调考察感知与推理间的选择性双向迁移；最后以Qwen3-VL为基础，经分阶段微调和辅助监督得到UAV-PUR，其4B/8B版本整体选择题准确率分别较预训练模型提升18.33和17.52个百分点。</p>
+<p>**局限性：**  <br>摘要未提供足够信息判断具体局限性。可确定的是，结论主要基于所构建基准和特定基座模型的微调实验；真实无人机部署、实时性、跨数据集泛化及</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">22</div>
+      <div class="paper-body">
+        <h2>INLA for Adaptive UAV Sampling of Radio Environment Maps in IoT Networks: Prior Width Governs Accuracy and Calibration</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Changhao He, Kaichuang Yang, Xiaojuan Zhang</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-29T06:18:50Z</span></li><li><span>分类</span><span>stat.ML, cs.IT, cs.LG</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.40723v1" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.40723v1.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>We study adaptive UAV sampling for radio environment map (REM) construction from non-Gaussian IoT observations. Integrated nested Laplace approximation(INLA) updates a Matérn GMRF posterior, with waypoints selected by entropy pre-screening and Sherman--Morrison lookahead over the reachable set. We show that the likelihood-induced Skew-Normal correction has a sextic entropy effect, explaining its limited influence on waypoint selection. Across 19 retained ray-traced windows,Random and lawnmower sampling cost a median 18.0\% and 14.0\% more residual NMSE than posterior-informed sampling, equivalently reductions of 15.3\% and 12.3\% when referred to those baselines, while differences among informative rules remain unresolved. Widening the prior shadowing standard deviation from 6.0 to 10.025\,dB improves NMSE and credible-interval coverage, with monotone improvement over a 4--16\,dB sweep on this corpus and no observed turning point, although overconfidence persists. Online width estimation from the UAV&#x27;s own counts yields about 6.5\,dB without recovering the gain. Across 30 measured LoRaWAN propagation windows paired with simulated counts and scored only on received cells, the margin over non-adaptive sampling reproduces, the training-derived width minimizes the tested interval score, and GP-UCB has nominally $3$--$5\%$ lower NMSE. The results show substantial, corpus-dependent sensitivity to prior specification, while fine differences among acquisition rules have limited or unresolved effects, the preferred width depends on the corpus, scored cells and model mismatch.</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="paper-card">
+      <div class="paper-index">23</div>
+      <div class="paper-body">
+        <h2>OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation</h2>
+        <ul class="meta-list">
+          <li><span>作者</span><span>Junli Liu, Zhongrui You, Chenhui Li, Zhen Li, Yuyang Tian, Qizhen Chen, Delin Qu, Haoming Song, Dong Wang, Xuelong Li, Zhigang Wang, Bin Zhao</span></li><li><span>来源</span><span>arXiv</span></li><li><span>发布时间</span><span>2026-10-29T03:35:30Z</span></li><li><span>分类</span><span>cs.RO</span></li>
+        </ul>
+        <ul class="links"><li><a href="https://arxiv.org/abs/2610.39287v2" target="_blank" rel="noreferrer">论文链接</a></li><li><a href="https://arxiv.org/pdf/2610.39287v2.pdf" target="_blank" rel="noreferrer">PDF 链接</a></li></ul>
+        <div class="summary">
+          <p>Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act. Endowing aerial robots with an analogous functional organization remains challenging, as existing systems are often specialized for individual capabilities, dependent on offboard computation, or unable to sustain closed-loop operation on resource-constrained platforms. We present OpenFlyV2, a unified onboard vision-language-action architecture that uses a shared vision-language representation to support semantic understanding, language-grounded perception, spatial reasoning, and continuous aerial control within a single model. A compact action expert converts the shared multimodal context into short-horizon flight waypoints, while motion-aware temporal memory and action priors reduce the computational cost of closed-loop execution. We construct \dataset{}, a simulation-based dataset comprising approximately 70,000 navigation trajectories and 60,000 vision-language instruction--response pairs. OpenFlyV2 generates action chunks, each comprising 12 waypoints, entirely onboard at 10 Hz using an NVIDIA Jetson Orin NX. It transfers zero-shot from simulation to physical quadrotor flight, achieving a 48\% navigation success rate across four real-world environments without real-world aerial training data. Extensive results demonstrate that broad vision-language competence and continuous closed-loop flight can coexist within a single model on a resource-constrained aerial platform. Code will be made publicly available at https://github.com/Ideal-ljl/AeroBrain.</p>
+        </div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+</body>
+</html>
